@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/Convert Image.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/XMLVis.gd" type="Script" id=2]
+
+[node name="Convert Image" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Open Image" type="Button" parent="Control"]
+margin_top = 57.1809
+margin_right = 91.0
+margin_bottom = 77.1809
+hint_tooltip = "Open a sprite sheet"
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Open Image"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Open XML" type="Button" parent="Control"]
+margin_top = 97.614
+margin_right = 91.0
+margin_bottom = 117.614
+hint_tooltip = "Open a sprite sheet"
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Open XML file"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Export Images" type="Button" parent="Control"]
+anchor_right = 1.0
+margin_left = 1811.65
+margin_top = 57.1809
+margin_right = 1914.65
+margin_bottom = 77.1809
+hint_tooltip = "Open a sprite sheet"
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Export Images"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image File Box" type="FileDialog" parent="Control"]
+margin_left = 692.905
+margin_top = 354.541
+margin_right = 1069.9
+margin_bottom = 652.541
+window_title = "Open a File"
+resizable = true
+mode = 0
+filters = PoolStringArray( "*.png" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XML File Box" type="FileDialog" parent="Control"]
+margin_left = 692.905
+margin_top = 354.541
+margin_right = 1069.9
+margin_bottom = 652.541
+window_title = "Open a File"
+resizable = true
+mode = 0
+filters = PoolStringArray( "*.xml" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Export Images Box" type="FileDialog" parent="Control"]
+visible = true
+margin_left = 692.905
+margin_top = 354.541
+margin_right = 1069.9
+margin_bottom = 652.541
+window_title = "Open a Directory"
+resizable = true
+mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 955.258, 467.538 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 216.647, 136.37 )
+scale = Vector2( 0.2, 0.2 )
+centered = false
+
+[node name="XMLVis" type="Node2D" parent="Sprite"]
+modulate = Color( 0, 0.741176, 1, 0.270588 )
+script = ExtResource( 2 )
+
+[connection signal="pressed" from="Control/Open Image" to="." method="_on_Open_Image_pressed"]
+[connection signal="pressed" from="Control/Open XML" to="." method="_on_Open_XML_pressed"]
+[connection signal="pressed" from="Control/Export Images" to="." method="_on_Export_Images_pressed"]
+[connection signal="file_selected" from="Control/Image File Box" to="." method="_on_Image_File_Box_file_selected"]
+[connection signal="file_selected" from="Control/XML File Box" to="." method="_on_XML_File_Box_file_selected"]
+[connection signal="dir_selected" from="Control/Export Images Box" to="." method="_on_Export_Images_Box_dir_selected"]

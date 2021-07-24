@@ -1,0 +1,380 @@
+[gd_scene load_steps=109 format=2]
+
+[ext_resource path="res://assets/scripts/Main Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/music/freakyMenu.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0003.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0000.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0001.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0002.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0007.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0008.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0009.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0005.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0004.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0006.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0016.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0003.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0029.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0013.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0009.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0008.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0014.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0001.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0007.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0003.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0006.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0020.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0027.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0000.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0008.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0009.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0012.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0010.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0012.png" type="Texture" id=32]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0016.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0012.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0013.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0007.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0002.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0015.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0017.png" type="Texture" id=39]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0013.png" type="Texture" id=40]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0014.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0018.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0023.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0006.png" type="Texture" id=44]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0006.png" type="Texture" id=45]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0007.png" type="Texture" id=46]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0010.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0004.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0002.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0004.png" type="Texture" id=50]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0018.png" type="Texture" id=51]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0026.png" type="Texture" id=52]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0008.png" type="Texture" id=53]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0028.png" type="Texture" id=54]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0011.png" type="Texture" id=55]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0000.png" type="Texture" id=56]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0017.png" type="Texture" id=57]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0005.png" type="Texture" id=58]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0019.png" type="Texture" id=59]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0021.png" type="Texture" id=60]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0003.png" type="Texture" id=61]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0011.png" type="Texture" id=62]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0001.png" type="Texture" id=63]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0024.png" type="Texture" id=64]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0011.png" type="Texture" id=65]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0015.png" type="Texture" id=66]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0001.png" type="Texture" id=67]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0005.png" type="Texture" id=68]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0005.png" type="Texture" id=69]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0025.png" type="Texture" id=70]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0014.png" type="Texture" id=71]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0010.png" type="Texture" id=72]
+[ext_resource path="res://assets/images/gfdancinmenu/gfDance0022.png" type="Texture" id=73]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0002.png" type="Texture" id=74]
+[ext_resource path="res://assets/images/titleENter/ENTER PRESSED0004.png" type="Texture" id=75]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0000.png" type="Texture" id=76]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0022.png" type="Texture" id=77]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0024.png" type="Texture" id=78]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0023.png" type="Texture" id=79]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0020.png" type="Texture" id=80]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0019.png" type="Texture" id=81]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0021.png" type="Texture" id=82]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0031.png" type="Texture" id=83]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0040.png" type="Texture" id=84]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0039.png" type="Texture" id=85]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0025.png" type="Texture" id=86]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0042.png" type="Texture" id=87]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0044.png" type="Texture" id=88]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0027.png" type="Texture" id=89]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0028.png" type="Texture" id=90]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0032.png" type="Texture" id=91]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0035.png" type="Texture" id=92]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0038.png" type="Texture" id=93]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0037.png" type="Texture" id=94]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0041.png" type="Texture" id=95]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0030.png" type="Texture" id=96]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0026.png" type="Texture" id=97]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0036.png" type="Texture" id=98]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0043.png" type="Texture" id=99]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0029.png" type="Texture" id=100]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0033.png" type="Texture" id=101]
+[ext_resource path="res://assets/images/titleENter/Press Enter to Begin0034.png" type="Texture" id=102]
+
+[sub_resource type="Animation" id=1]
+resource_name = "opening text lol"
+length = 9.463
+step = 0.294
+tracks/0/type = "value"
+tracks/0/path = NodePath("FNF Text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.176, 2.94 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FNF Text2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4.116, 5.88 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FNF Text3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5.88 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("FNF Text:visible_lines")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.176, 2.352 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FNF Text2:visible_lines")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.116, 5.292 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FNF Text3:visible_lines")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 6.468, 7.056, 7.644 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 72 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 17 ), ExtResource( 41 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 56 ), ExtResource( 67 ), ExtResource( 49 ), ExtResource( 15 ), ExtResource( 50 ), ExtResource( 58 ), ExtResource( 45 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 32 ), ExtResource( 40 ), ExtResource( 20 ), ExtResource( 66 ), ExtResource( 33 ), ExtResource( 57 ), ExtResource( 51 ), ExtResource( 59 ), ExtResource( 25 ), ExtResource( 60 ), ExtResource( 73 ), ExtResource( 43 ), ExtResource( 64 ), ExtResource( 70 ), ExtResource( 52 ), ExtResource( 26 ), ExtResource( 54 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 27 ), ExtResource( 63 ), ExtResource( 74 ), ExtResource( 61 ), ExtResource( 75 ), ExtResource( 68 ), ExtResource( 44 ), ExtResource( 36 ), ExtResource( 53 ), ExtResource( 76 ), ExtResource( 21 ), ExtResource( 37 ), ExtResource( 23 ), ExtResource( 48 ), ExtResource( 69 ), ExtResource( 24 ), ExtResource( 46 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 55 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 71 ), ExtResource( 38 ), ExtResource( 14 ), ExtResource( 39 ), ExtResource( 42 ), ExtResource( 81 ), ExtResource( 80 ), ExtResource( 82 ), ExtResource( 77 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 86 ), ExtResource( 97 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 100 ), ExtResource( 96 ), ExtResource( 83 ), ExtResource( 91 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 92 ), ExtResource( 98 ), ExtResource( 94 ), ExtResource( 93 ), ExtResource( 85 ), ExtResource( 84 ), ExtResource( 95 ), ExtResource( 87 ), ExtResource( 99 ), ExtResource( 88 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
+[sub_resource type="Animation" id=6]
+resource_name = "start menu lol"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ColorRect:color:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ColorRect:color:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("ColorRect:color:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("ColorRect:color:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.780382, -0.0662387, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Opening Text:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade in"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -80, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1804.69
+margin_top = -947.65
+margin_right = 2035.31
+margin_bottom = 1212.35
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Opening Text" type="Node2D" parent="."]
+
+[node name="FNF Text" parent="Opening Text" instance=ExtResource( 2 )]
+visible = false
+text = "xdx engine
+by xfunkin"
+visible_lines = 2
+
+[node name="FNF Text2" parent="Opening Text" instance=ExtResource( 2 )]
+visible = false
+text = "new engine
+new possibilities"
+visible_lines = 2
+
+[node name="FNF Text3" parent="Opening Text" instance=ExtResource( 2 )]
+visible = false
+text = "friday
+night
+funkin"
+visible_lines = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Opening Text"]
+"anims/opening text lol" = SubResource( 1 )
+
+[node name="Start Menu" type="Node2D" parent="."]
+visible = false
+
+[node name="logo" type="AnimatedSprite" parent="Start Menu"]
+position = Vector2( -447.139, -179.011 )
+scale = Vector2( 1.46115, 1.46115 )
+frames = SubResource( 3 )
+frame = 10
+
+[node name="gf" type="AnimatedSprite" parent="Start Menu"]
+position = Vector2( 462.029, 75.1701 )
+scale = Vector2( 1.27826, 1.27826 )
+frames = SubResource( 4 )
+frame = 10
+
+[node name="Enter" type="AnimatedSprite" parent="Start Menu"]
+position = Vector2( -119.865, 380.57 )
+frames = SubResource( 5 )
+frame = 51
+
+[node name="ColorRect" type="ColorRect" parent="Start Menu"]
+margin_left = -1810.19
+margin_top = -1023.89
+margin_right = 2029.81
+margin_bottom = 1136.11
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Start Menu"]
+"anims/start menu lol" = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/fade in" = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[connection signal="animation_finished" from="Opening Text/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

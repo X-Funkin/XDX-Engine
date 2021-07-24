@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://FNF Text.gd" type="Script" id=1]
+
+[node name="FNF Text" type="Node2D"]
+script = ExtResource( 1 )
+text = "gamers
+game
+g
+yeah"
+alignment = 1
+visible_lines = 4
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+use_top_left = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
