@@ -1,0 +1,36 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/scenes/notes/Down Arrow.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/NOTE_assets/down confirm0001.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/NOTE_assets/down confirm0000.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/NOTE_assets/down press0001.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/NOTE_assets/down press0000.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/NOTE_assets/arrowDOWN0000.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/NOTE_assets/down press0002.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/NOTE_assets/down press0003.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/NOTE_assets/down confirm0003.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/NOTE_assets/down confirm0002.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "default",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "press",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "confirm",
+"speed": 24.0
+} ]
+
+[node name="Down Arrow" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Down Arrow Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )

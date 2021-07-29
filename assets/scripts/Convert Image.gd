@@ -4,10 +4,13 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+export(int, "XML Convert", "Contrast Max") var mode
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Control/OptionButton.add_item("Convert XML Sprite Sheet", 0)
+	$Control/OptionButton.add_item("maximise contrast", 1)
+#	$Control/OptionButton.add_item("yoowyas3")
 	pass # Replace with function body.
 
 
@@ -102,10 +105,49 @@ func export_image_sequence(dir):
 			sprite_image.save_png("%s/%s.png"%[dir,sprite["name"]])
 	base_image.unlock()
 	print("EXPORTED")
+
+
+
+func export_max_contrast_img(path):
+	base_image.lock()
+	var min_val = base_image.get_pixel(0,0).r
+	var max_val = base_image.get_pixel(0,0).r
+	for x in range(base_image.get_width()):
+		for y in range(base_image.get_height()):
+			var new_color = base_image.get_pixel(x,y)
+			min_val = [min_val,new_color.r,new_color.g,new_color.b].min()
+			max_val = [max_val,new_color.r,new_color.g,new_color.b].max()
+	var max_con_img = Image.new()
+	max_con_img.copy_from(base_image)
+	max_con_img.lock()
+	for x in range(max_con_img.get_width()):
+		for y in range(max_con_img.get_height()):
+			var pixel = max_con_img.get_pixel(x,y)
+			pixel.r = range_lerp(pixel.r,min_val,max_val,0,1)
+			pixel.g = range_lerp(pixel.g,min_val,max_val,0,1)
+			pixel.b = range_lerp(pixel.b,min_val,max_val,0,1)
+			max_con_img.set_pixel(x,y,pixel)
+	max_con_img.save_png(path)
+	base_image.unlock()
+	print("DONE")
+
 func _on_Export_Images_Box_dir_selected(dir):
 	print(dir)
 	export_image_sequence(dir)
 
 
 func _on_Export_Images_pressed():
-	$"Control/Export Images Box".popup()
+	match mode:
+		0:
+			$"Control/Export Images Box".popup()
+		1:
+			$"Control/Export Image Box".popup()
+
+
+func _on_Export_Image_Box_file_selected(path):
+	print(path)
+	export_max_contrast_img(path)
+
+
+func _on_OptionButton_item_selected(index):
+	mode = index

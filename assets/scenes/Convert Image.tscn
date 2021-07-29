@@ -78,7 +78,6 @@ __meta__ = {
 }
 
 [node name="Export Images Box" type="FileDialog" parent="Control"]
-visible = true
 margin_left = 692.905
 margin_top = 354.541
 margin_right = 1069.9
@@ -86,6 +85,27 @@ margin_bottom = 652.541
 window_title = "Open a Directory"
 resizable = true
 mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Export Image Box" type="FileDialog" parent="Control"]
+visible = true
+margin_left = 692.905
+margin_top = 354.541
+margin_right = 1069.9
+margin_bottom = 652.541
+resizable = true
+filters = PoolStringArray( "*.png" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="Control"]
+margin_top = 18.7288
+margin_right = 65.0
+margin_bottom = 38.7288
+text = "Mode"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -108,3 +128,5 @@ script = ExtResource( 2 )
 [connection signal="file_selected" from="Control/Image File Box" to="." method="_on_Image_File_Box_file_selected"]
 [connection signal="file_selected" from="Control/XML File Box" to="." method="_on_XML_File_Box_file_selected"]
 [connection signal="dir_selected" from="Control/Export Images Box" to="." method="_on_Export_Images_Box_dir_selected"]
+[connection signal="file_selected" from="Control/Export Image Box" to="." method="_on_Export_Image_Box_file_selected"]
+[connection signal="item_selected" from="Control/OptionButton" to="." method="_on_OptionButton_item_selected"]

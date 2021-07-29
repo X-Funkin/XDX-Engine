@@ -165,7 +165,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 4.116, 5.292 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2 ]
+"values": [ 0, 1, 3 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("FNF Text3:visible_lines")
@@ -192,7 +192,7 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 72 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 17 ), ExtResource( 41 ) ],
 "loop": true,
@@ -200,7 +200,7 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 56 ), ExtResource( 67 ), ExtResource( 49 ), ExtResource( 15 ), ExtResource( 50 ), ExtResource( 58 ), ExtResource( 45 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 32 ), ExtResource( 40 ), ExtResource( 20 ), ExtResource( 66 ), ExtResource( 33 ), ExtResource( 57 ), ExtResource( 51 ), ExtResource( 59 ), ExtResource( 25 ), ExtResource( 60 ), ExtResource( 73 ), ExtResource( 43 ), ExtResource( 64 ), ExtResource( 70 ), ExtResource( 52 ), ExtResource( 26 ), ExtResource( 54 ), ExtResource( 16 ) ],
 "loop": true,
@@ -208,15 +208,20 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 27 ), ExtResource( 63 ), ExtResource( 74 ), ExtResource( 61 ), ExtResource( 75 ), ExtResource( 68 ), ExtResource( 44 ), ExtResource( 36 ), ExtResource( 53 ), ExtResource( 76 ), ExtResource( 21 ), ExtResource( 37 ), ExtResource( 23 ), ExtResource( 48 ), ExtResource( 69 ), ExtResource( 24 ), ExtResource( 46 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 55 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 71 ), ExtResource( 38 ), ExtResource( 14 ), ExtResource( 39 ), ExtResource( 42 ), ExtResource( 81 ), ExtResource( 80 ), ExtResource( 82 ), ExtResource( 77 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 86 ), ExtResource( 97 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 100 ), ExtResource( 96 ), ExtResource( 83 ), ExtResource( 91 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 92 ), ExtResource( 98 ), ExtResource( 94 ), ExtResource( 93 ), ExtResource( 85 ), ExtResource( 84 ), ExtResource( 95 ), ExtResource( 87 ), ExtResource( 99 ), ExtResource( 88 ) ],
+"frames": [ ExtResource( 76 ), ExtResource( 21 ), ExtResource( 37 ), ExtResource( 23 ), ExtResource( 48 ), ExtResource( 69 ), ExtResource( 24 ), ExtResource( 46 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 55 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 71 ), ExtResource( 38 ), ExtResource( 14 ), ExtResource( 39 ), ExtResource( 42 ), ExtResource( 81 ), ExtResource( 80 ), ExtResource( 82 ), ExtResource( 77 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 86 ), ExtResource( 97 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 100 ), ExtResource( 96 ), ExtResource( 83 ), ExtResource( 91 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 92 ), ExtResource( 98 ), ExtResource( 94 ), ExtResource( 93 ), ExtResource( 85 ), ExtResource( 84 ), ExtResource( 95 ), ExtResource( 87 ), ExtResource( 99 ), ExtResource( 88 ) ],
 "loop": true,
 "name": "default",
 "speed": 24.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 63 ), ExtResource( 74 ), ExtResource( 61 ), ExtResource( 75 ), ExtResource( 68 ), ExtResource( 44 ), ExtResource( 36 ), ExtResource( 53 ) ],
+"loop": true,
+"name": "confirm",
+"speed": 24.0
 } ]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "start menu lol"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -283,8 +288,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fade in"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
 tracks/0/interp = 1
@@ -322,15 +326,16 @@ visible_lines = 2
 [node name="FNF Text2" parent="Opening Text" instance=ExtResource( 2 )]
 visible = false
 text = "new engine
-new possibilities"
-visible_lines = 2
+new possibilities
+poggers"
+visible_lines = 3
 
 [node name="FNF Text3" parent="Opening Text" instance=ExtResource( 2 )]
 visible = false
 text = "friday
 night
 funkin"
-visible_lines = 3
+visible_lines = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Opening Text"]
 "anims/opening text lol" = SubResource( 1 )
@@ -341,19 +346,19 @@ visible = false
 [node name="logo" type="AnimatedSprite" parent="Start Menu"]
 position = Vector2( -447.139, -179.011 )
 scale = Vector2( 1.46115, 1.46115 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 frame = 10
 
 [node name="gf" type="AnimatedSprite" parent="Start Menu"]
 position = Vector2( 462.029, 75.1701 )
 scale = Vector2( 1.27826, 1.27826 )
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 frame = 10
 
 [node name="Enter" type="AnimatedSprite" parent="Start Menu"]
 position = Vector2( -119.865, 380.57 )
-frames = SubResource( 5 )
-frame = 51
+frames = SubResource( 4 )
+animation = "confirm"
 
 [node name="ColorRect" type="ColorRect" parent="Start Menu"]
 margin_left = -1810.19
@@ -366,13 +371,13 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Start Menu"]
-"anims/start menu lol" = SubResource( 6 )
+"anims/start menu lol" = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/fade in" = SubResource( 2 )
+"anims/fade in" = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

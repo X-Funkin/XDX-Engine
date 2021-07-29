@@ -1,0 +1,755 @@
+[gd_scene load_steps=113 format=2]
+
+[ext_resource path="res://assets/images/menuMaxContrast.png" type="Texture" id=1]
+[ext_resource path="res://assets/scenes/Game Menu.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/menuBGBlue.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0000.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0005.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0002.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0001.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0003.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0004.png" type="Texture" id=9]
+[ext_resource path="res://assets/scenes/MenuButtons.gd" type="Script" id=10]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options white0001.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options white0002.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0008.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options white0000.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0001.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0004.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0006.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0002.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0003.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0007.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0005.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0000.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode basic0008.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode white0000.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode white0001.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/fnf_ui_thingy/story mode white0002.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0006.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay white0002.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay basic0003.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay white0001.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay basic0006.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay basic0005.png" type="Texture" id=32]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate white0001.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/fnf_ui_thingy/options basic0007.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0000.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay white0000.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/fnf_ui_thingy/blank.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate white0000.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay basic0008.png" type="Texture" id=39]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay basic0007.png" type="Texture" id=40]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0001.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0002.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay basic0000.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0003.png" type="Texture" id=44]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay basic0001.png" type="Texture" id=45]
+[ext_resource path="res://assets/images/fnf_ui_thingy/freeplay basic0004.png" type="Texture" id=46]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0004.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0008.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate white0002.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0005.png" type="Texture" id=50]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0007.png" type="Texture" id=51]
+[ext_resource path="res://assets/images/fnf_ui_thingy/donate basic0006.png" type="Texture" id=52]
+[ext_resource path="res://assets/sounds/cancelMenu.ogg" type="AudioStream" id=53]
+[ext_resource path="res://assets/sounds/confirmMenu.ogg" type="AudioStream" id=54]
+[ext_resource path="res://assets/sounds/scrollMenu.ogg" type="AudioStream" id=55]
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=1]
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=2]
+uniform_name = "ScalarUniform"
+
+[sub_resource type="VisualShaderNodeVectorOp" id=3]
+
+[sub_resource type="VisualShaderNodeVectorDistance" id=4]
+
+[sub_resource type="VisualShaderNodeCompare" id=5]
+default_input_values = [ 0, 0.0, 1, 0.00392157, 2, 1e-05 ]
+function = 5
+
+[sub_resource type="VisualShaderNodeScalarOp" id=6]
+default_input_values = [ 0, 0.0, 1, 100.0 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeCompare" id=7]
+default_input_values = [ 0, 0.0, 1, 0.0, 2, 0.00392157 ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=8]
+default_input_values = [ 0, 0.0, 1, 255.0 ]
+operator = 3
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=9]
+constant = 0.545
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=10]
+uniform_name = "Texture"
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=11]
+constant = 0.882
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=12]
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=13]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeVec3Uniform" id=14]
+uniform_name = "UV_Offset"
+
+[sub_resource type="VisualShaderNodeVectorOp" id=15]
+
+[sub_resource type="VisualShaderNodeInput" id=16]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=17]
+
+[sub_resource type="VisualShaderNodeColorUniform" id=18]
+uniform_name = "Line_Color"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=19]
+uniform_name = "Base_Color"
+
+[sub_resource type="VisualShaderNodeTexture" id=20]
+texture = ExtResource( 3 )
+
+[sub_resource type="VisualShader" id=21]
+code = "shader_type canvas_item;
+uniform vec4 Line_Color : hint_color;
+uniform vec4 Base_Color : hint_color;
+uniform sampler2D Texture;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:7
+	vec3 n_out7p0 = Line_Color.rgb;
+	float n_out7p1 = Line_Color.a;
+
+// ColorUniform:8
+	vec3 n_out8p0 = Base_Color.rgb;
+	float n_out8p1 = Base_Color.a;
+
+// Input:3
+	vec3 n_out3p0 = vec3(UV, 0.0);
+
+// TextureUniform:2
+	vec3 n_out2p0;
+	float n_out2p1;
+	{
+		vec4 n_tex_read = texture(Texture, n_out3p0.xy);
+		n_out2p0 = n_tex_read.rgb;
+		n_out2p1 = n_tex_read.a;
+	}
+
+// VectorScalarMix:6
+	vec3 n_out6p0 = mix(n_out7p0, n_out8p0, dot(n_out2p0, vec3(0.333333, 0.333333, 0.333333)));
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 307.704, 98.1151 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 380, -60 )
+nodes/fragment/2/node = SubResource( 10 )
+nodes/fragment/2/position = Vector2( -20, 140 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -440, 180 )
+nodes/fragment/6/node = SubResource( 17 )
+nodes/fragment/6/position = Vector2( 160, -140 )
+nodes/fragment/7/node = SubResource( 18 )
+nodes/fragment/7/position = Vector2( -180, -80 )
+nodes/fragment/8/node = SubResource( 19 )
+nodes/fragment/8/position = Vector2( -200, 40 )
+nodes/fragment/9/node = SubResource( 20 )
+nodes/fragment/9/position = Vector2( 340, -340 )
+nodes/fragment/10/node = SubResource( 1 )
+nodes/fragment/10/position = Vector2( 600, -140 )
+nodes/fragment/11/node = SubResource( 2 )
+nodes/fragment/11/position = Vector2( 280, 120 )
+nodes/fragment/12/node = SubResource( 3 )
+nodes/fragment/12/position = Vector2( 780, 80 )
+nodes/fragment/13/node = SubResource( 4 )
+nodes/fragment/13/position = Vector2( 820, -80 )
+nodes/fragment/14/node = SubResource( 5 )
+nodes/fragment/14/position = Vector2( 1040, 20 )
+nodes/fragment/15/node = SubResource( 6 )
+nodes/fragment/15/position = Vector2( 1060, -80 )
+nodes/fragment/16/node = SubResource( 7 )
+nodes/fragment/16/position = Vector2( 680, 180 )
+nodes/fragment/17/node = SubResource( 8 )
+nodes/fragment/17/position = Vector2( 520, 80 )
+nodes/fragment/19/node = SubResource( 9 )
+nodes/fragment/19/position = Vector2( 320, 300 )
+nodes/fragment/20/node = SubResource( 11 )
+nodes/fragment/20/position = Vector2( 280, 420 )
+nodes/fragment/21/node = SubResource( 12 )
+nodes/fragment/21/position = Vector2( 80, 340 )
+nodes/fragment/22/node = SubResource( 13 )
+nodes/fragment/22/position = Vector2( 80, 440 )
+nodes/fragment/23/node = SubResource( 14 )
+nodes/fragment/23/position = Vector2( -440, 280 )
+nodes/fragment/24/node = SubResource( 15 )
+nodes/fragment/24/position = Vector2( -220, 280 )
+nodes/fragment/connections = PoolIntArray( 7, 0, 6, 0, 8, 0, 6, 1, 6, 0, 10, 1, 9, 0, 10, 0, 11, 0, 10, 2, 9, 0, 13, 0, 6, 0, 13, 1, 13, 0, 14, 0, 13, 0, 15, 0, 2, 0, 16, 0, 11, 0, 17, 0, 17, 0, 16, 1, 2, 0, 6, 2, 6, 0, 0, 0, 3, 0, 24, 0, 23, 0, 24, 1, 3, 0, 2, 0 )
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = SubResource( 21 )
+shader_param/Line_Color = Color( 0.858824, 0.454902, 0.14902, 1 )
+shader_param/Base_Color = Color( 0.988235, 0.909804, 0.447059, 1 )
+shader_param/Texture = ExtResource( 1 )
+
+[sub_resource type="AnimatedTexture" id=23]
+flags = 4
+frames = 9
+fps = 24.0
+frame_0/texture = ExtResource( 15 )
+frame_1/texture = ExtResource( 18 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 19 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 16 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 21 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 17 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 20 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 23 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 22 )
+frame_8/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=24]
+flags = 4
+frames = 5
+fps = 24.0
+frame_0/texture = ExtResource( 24 )
+frame_1/texture = ExtResource( 25 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 26 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 37 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 37 )
+frame_4/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=25]
+flags = 4
+frames = 3
+fps = 24.0
+frame_0/texture = ExtResource( 24 )
+frame_1/texture = ExtResource( 25 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 26 )
+frame_2/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=26]
+flags = 4
+frames = 8
+fps = 24.0
+frame_0/texture = ExtResource( 43 )
+frame_1/texture = ExtResource( 45 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 29 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 46 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 32 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 31 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 40 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 39 )
+frame_7/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=27]
+flags = 4
+frames = 5
+fps = 24.0
+frame_0/texture = ExtResource( 36 )
+frame_1/texture = ExtResource( 30 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 28 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 37 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 37 )
+frame_4/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=28]
+flags = 4
+frames = 3
+fps = 24.0
+frame_0/texture = ExtResource( 36 )
+frame_1/texture = ExtResource( 30 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 28 )
+frame_2/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=29]
+flags = 4
+frames = 9
+fps = 24.0
+frame_0/texture = ExtResource( 35 )
+frame_1/texture = ExtResource( 41 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 42 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 44 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 47 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 50 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 52 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 51 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 48 )
+frame_8/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=30]
+flags = 4
+frames = 5
+fps = 24.0
+frame_0/texture = ExtResource( 38 )
+frame_1/texture = ExtResource( 33 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 49 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 37 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 37 )
+frame_4/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=31]
+flags = 4
+frames = 3
+fps = 24.0
+frame_0/texture = ExtResource( 38 )
+frame_1/texture = ExtResource( 33 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 49 )
+frame_2/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=32]
+flags = 4
+frames = 9
+fps = 24.0
+frame_0/texture = ExtResource( 4 )
+frame_1/texture = ExtResource( 7 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 6 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 8 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 9 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 5 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 27 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 34 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 13 )
+frame_8/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=33]
+flags = 4
+frames = 5
+fps = 24.0
+frame_0/texture = ExtResource( 14 )
+frame_1/texture = ExtResource( 11 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 12 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 37 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 37 )
+frame_4/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=34]
+flags = 4
+frames = 3
+fps = 24.0
+frame_0/texture = ExtResource( 14 )
+frame_1/texture = ExtResource( 11 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 12 )
+frame_2/delay_sec = 0.0
+
+[sub_resource type="Animation" id=35]
+length = 0.333333
+loop = true
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:display_colors")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.166667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "start"
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:fade_in")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.375, 0.666667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=37]
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=38]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeScalarConstant" id=39]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeScalarOp" id=40]
+default_input_values = [ 0, 0.0, 1, -1.0 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarOp" id=41]
+default_input_values = [ 0, 0.0, 1, -1.0 ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=42]
+default_input_values = [ 0, 0.0, 1, -1.0 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeCompare" id=43]
+default_input_values = [ 0, 0.0, 1, 1.0, 2, 1e-05 ]
+
+[sub_resource type="VisualShaderNodeScalarClamp" id=44]
+
+[sub_resource type="VisualShaderNodeExpression" id=45]
+size = Vector2( 418, 318.5 )
+expression = "output = b*val+1.0-a*(1.0+b);"
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=46]
+function = 28
+
+[sub_resource type="VisualShaderNodeInput" id=47]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=48]
+uniform_name = "Fade_Width"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=49]
+uniform_name = "Fade"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=50]
+uniform_name = "Fade_Color"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=51]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=52]
+operator = 1
+
+[sub_resource type="VisualShaderNodeExpression" id=53]
+size = Vector2( 418, 318.5 )
+expression = "output = (val-a)*(c-d)/(a-b)+c;"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=54]
+operator = 3
+
+[sub_resource type="VisualShader" id=55]
+code = "shader_type canvas_item;
+uniform vec4 Fade_Color : hint_color;
+uniform float Fade;
+uniform float Fade_Width;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:5
+	vec3 n_out5p0 = Fade_Color.rgb;
+	float n_out5p1 = Fade_Color.a;
+
+// Input:2
+	vec3 n_out2p0 = vec3(SCREEN_UV, 0.0);
+
+// VectorDecompose:6
+	float n_out6p0 = n_out2p0.x;
+	float n_out6p1 = n_out2p0.y;
+	float n_out6p2 = n_out2p0.z;
+
+// ScalarUniform:4
+	float n_out4p0 = Fade;
+
+// ScalarUniform:3
+	float n_out3p0 = Fade_Width;
+
+// ScalarFunc:19
+	float n_out19p0 = 1.0 / (n_out3p0);
+
+// Expression:18
+	float n_out18p0;
+	n_out18p0 = 0.0;
+	{
+		n_out18p0 = n_out19p0*n_out6p1+1.0-n_out4p0*(1.0+n_out19p0);
+	}
+
+// ScalarClamp:17
+	float n_in17p1 = 0.00000;
+	float n_in17p2 = 1.00000;
+	float n_out17p0 = clamp(n_out18p0, n_in17p1, n_in17p2);
+
+// Output:0
+	COLOR.rgb = n_out5p0;
+	COLOR.a = n_out17p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 528.319, 98.1151 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 1740, 320 )
+nodes/fragment/2/node = SubResource( 47 )
+nodes/fragment/2/position = Vector2( -100, 800 )
+nodes/fragment/3/node = SubResource( 48 )
+nodes/fragment/3/position = Vector2( 260, 640 )
+nodes/fragment/4/node = SubResource( 49 )
+nodes/fragment/4/position = Vector2( 500, 580 )
+nodes/fragment/5/node = SubResource( 50 )
+nodes/fragment/5/position = Vector2( 1500, 200 )
+nodes/fragment/6/node = SubResource( 51 )
+nodes/fragment/6/position = Vector2( 200, 760 )
+nodes/fragment/7/node = SubResource( 52 )
+nodes/fragment/7/position = Vector2( 620, 0 )
+nodes/fragment/8/node = SubResource( 53 )
+nodes/fragment/8/position = Vector2( 820, -40 )
+nodes/fragment/8/size = Vector2( 418, 318.5 )
+nodes/fragment/8/input_ports = "0,0,val;1,0,a;2,0,b;3,0,c;4,0,d;5,1,input5;"
+nodes/fragment/8/output_ports = "0,0,output;"
+nodes/fragment/8/expression = "output = (val-a)*(c-d)/(a-b)+c;"
+nodes/fragment/9/node = SubResource( 54 )
+nodes/fragment/9/position = Vector2( 340, 40 )
+nodes/fragment/10/node = SubResource( 37 )
+nodes/fragment/10/position = Vector2( 40, 380 )
+nodes/fragment/11/node = SubResource( 38 )
+nodes/fragment/11/position = Vector2( 40, 440 )
+nodes/fragment/12/node = SubResource( 39 )
+nodes/fragment/12/position = Vector2( 40, 520 )
+nodes/fragment/13/node = SubResource( 40 )
+nodes/fragment/13/position = Vector2( 260, 140 )
+nodes/fragment/14/node = SubResource( 41 )
+nodes/fragment/14/position = Vector2( 340, 420 )
+nodes/fragment/15/node = SubResource( 42 )
+nodes/fragment/15/position = Vector2( 480, 180 )
+nodes/fragment/16/node = SubResource( 43 )
+nodes/fragment/16/position = Vector2( 940, -120 )
+nodes/fragment/17/node = SubResource( 44 )
+nodes/fragment/17/position = Vector2( 1440, 380 )
+nodes/fragment/18/node = SubResource( 45 )
+nodes/fragment/18/position = Vector2( 780, 540 )
+nodes/fragment/18/size = Vector2( 418, 318.5 )
+nodes/fragment/18/input_ports = "0,0,val;1,0,a;2,0,b;"
+nodes/fragment/18/output_ports = "0,0,output;"
+nodes/fragment/18/expression = "output = b*val+1.0-a*(1.0+b);"
+nodes/fragment/19/node = SubResource( 46 )
+nodes/fragment/19/position = Vector2( 500, 640 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 6, 0, 6, 1, 9, 0, 3, 0, 9, 1, 4, 0, 8, 0, 10, 0, 8, 1, 11, 0, 8, 2, 3, 0, 13, 0, 12, 0, 14, 1, 3, 0, 14, 0, 14, 0, 8, 4, 6, 1, 7, 0, 8, 0, 7, 1, 14, 0, 15, 0, 15, 0, 8, 3, 17, 0, 16, 0, 6, 1, 18, 0, 4, 0, 18, 1, 18, 0, 17, 0, 3, 0, 19, 0, 19, 0, 18, 2, 17, 0, 0, 1, 5, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=56]
+shader = SubResource( 55 )
+shader_param/Fade_Color = null
+shader_param/Fade = 0.0
+shader_param/Fade_Width = 0.429
+
+[sub_resource type="QuadMesh" id=57]
+size = Vector2( 4000, 4000 )
+
+[node name="Game Menu" type="Node2D"]
+scale = Vector2( 1.19289, 1.04088 )
+script = ExtResource( 2 )
+display_colors = 2
+yeah = NodePath("Sprite")
+fade = NodePath("MeshInstance2D")
+follow_speed = 20.0
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 22 )
+scale = Vector2( 1.67443, 1.67443 )
+texture = ExtResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="dummy cam" type="Camera2D" parent="Position2D"]
+smoothing_enabled = true
+
+[node name="MenuButtons" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+story_node_path = NodePath("CenterContainer/VBoxContainer/Story Mode Button")
+freeplay_node_path = NodePath("CenterContainer/VBoxContainer/Freeplay Button")
+donate_node_path = NodePath("CenterContainer/VBoxContainer/Donate Button")
+options_node_path = NodePath("CenterContainer/VBoxContainer/Options Button")
+scroll_audio = NodePath("../Scroll Sound")
+confirm_audio = NodePath("../Confirm Sound")
+cancel_audio = NodePath("../Cancel Sound")
+animation_thingy = NodePath("../AnimationPlayer")
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuButtons"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuButtons/CenterContainer"]
+margin_left = 562.0
+margin_top = 188.0
+margin_right = 1358.0
+margin_bottom = 892.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Story Mode Button" type="TextureButton" parent="MenuButtons/CenterContainer/VBoxContainer"]
+margin_right = 796.0
+margin_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 796, 173 )
+focus_neighbour_top = NodePath("../Options Button")
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = SubResource( 23 )
+texture_pressed = SubResource( 24 )
+texture_hover = SubResource( 25 )
+texture_disabled = SubResource( 23 )
+texture_focused = SubResource( 25 )
+expand = true
+stretch_mode = 3
+
+[node name="Freeplay Button" type="TextureButton" parent="MenuButtons/CenterContainer/VBoxContainer"]
+margin_top = 177.0
+margin_right = 796.0
+margin_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 796, 173 )
+size_flags_vertical = 3
+texture_normal = SubResource( 26 )
+texture_pressed = SubResource( 27 )
+texture_hover = SubResource( 28 )
+texture_disabled = ExtResource( 43 )
+texture_focused = SubResource( 28 )
+expand = true
+stretch_mode = 3
+
+[node name="Donate Button" type="TextureButton" parent="MenuButtons/CenterContainer/VBoxContainer"]
+margin_top = 354.0
+margin_right = 796.0
+margin_bottom = 527.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 796, 173 )
+size_flags_vertical = 3
+texture_normal = SubResource( 29 )
+texture_pressed = SubResource( 30 )
+texture_hover = SubResource( 31 )
+texture_disabled = SubResource( 29 )
+texture_focused = SubResource( 31 )
+expand = true
+stretch_mode = 3
+
+[node name="Options Button" type="TextureButton" parent="MenuButtons/CenterContainer/VBoxContainer"]
+margin_top = 531.0
+margin_right = 796.0
+margin_bottom = 704.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 796, 173 )
+focus_neighbour_bottom = NodePath("../Story Mode Button")
+size_flags_vertical = 3
+texture_normal = SubResource( 32 )
+texture_pressed = SubResource( 33 )
+texture_hover = SubResource( 34 )
+texture_disabled = SubResource( 32 )
+texture_focused = SubResource( 34 )
+expand = true
+stretch_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/button_pressed = SubResource( 35 )
+anims/start = SubResource( 36 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Scroll Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 55 )
+
+[node name="Confirm Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 54 )
+
+[node name="Cancel Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 53 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource( 56 )
+mesh = SubResource( 57 )
+
+[connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Story Mode Button" to="MenuButtons" method="_on_Story_Mode_Button_focus_entered"]
+[connection signal="mouse_entered" from="MenuButtons/CenterContainer/VBoxContainer/Story Mode Button" to="MenuButtons" method="_on_Story_Mode_Button_mouse_entered"]
+[connection signal="mouse_exited" from="MenuButtons/CenterContainer/VBoxContainer/Story Mode Button" to="MenuButtons" method="_on_Story_Mode_Button_mouse_exited"]
+[connection signal="pressed" from="MenuButtons/CenterContainer/VBoxContainer/Story Mode Button" to="MenuButtons" method="_on_Story_Mode_Button_pressed"]
+[connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Freeplay Button" to="MenuButtons" method="_on_Freeplay_Button_focus_entered"]
+[connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Donate Button" to="MenuButtons" method="_on_Donate_Button_focus_entered"]
+[connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Options Button" to="MenuButtons" method="_on_Options_Button_focus_entered"]

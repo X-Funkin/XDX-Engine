@@ -1,0 +1,408 @@
+[gd_scene load_steps=322 format=2]
+
+[ext_resource path="res://assets/characters/boyfriend/Boyfriend.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0006.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0003.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0009.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0000.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0008.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0013.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0012.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0002.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0005.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0004.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0007.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0010.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0011.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF idle dance0001.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN0003.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN0000.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN0004.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN0001.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN0002.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0003.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0001.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0000.png" type="Texture" id=23]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0002.png" type="Texture" id=24]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0033.png" type="Texture" id=25]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0019.png" type="Texture" id=26]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0018.png" type="Texture" id=27]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0022.png" type="Texture" id=28]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0006.png" type="Texture" id=29]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0010.png" type="Texture" id=30]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0014.png" type="Texture" id=31]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0026.png" type="Texture" id=32]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0002.png" type="Texture" id=33]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0023.png" type="Texture" id=34]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0024.png" type="Texture" id=35]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0007.png" type="Texture" id=36]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0028.png" type="Texture" id=37]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0000.png" type="Texture" id=38]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0014.png" type="Texture" id=39]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT0002.png" type="Texture" id=40]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0020.png" type="Texture" id=41]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0005.png" type="Texture" id=42]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0027.png" type="Texture" id=43]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0009.png" type="Texture" id=44]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0022.png" type="Texture" id=45]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0004.png" type="Texture" id=46]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0003.png" type="Texture" id=47]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0019.png" type="Texture" id=48]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0023.png" type="Texture" id=49]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0024.png" type="Texture" id=50]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0026.png" type="Texture" id=51]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0029.png" type="Texture" id=52]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0031.png" type="Texture" id=53]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0016.png" type="Texture" id=54]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0017.png" type="Texture" id=55]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0020.png" type="Texture" id=56]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0021.png" type="Texture" id=57]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0009.png" type="Texture" id=58]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0008.png" type="Texture" id=59]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0005.png" type="Texture" id=60]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0012.png" type="Texture" id=61]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0010.png" type="Texture" id=62]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0012.png" type="Texture" id=63]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0011.png" type="Texture" id=64]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0004.png" type="Texture" id=65]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0011.png" type="Texture" id=66]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0015.png" type="Texture" id=67]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT0000.png" type="Texture" id=68]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0015.png" type="Texture" id=69]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT0001.png" type="Texture" id=70]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0013.png" type="Texture" id=71]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0001.png" type="Texture" id=72]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0008.png" type="Texture" id=73]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0025.png" type="Texture" id=74]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0017.png" type="Texture" id=75]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT0003.png" type="Texture" id=76]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0025.png" type="Texture" id=77]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT0004.png" type="Texture" id=78]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0018.png" type="Texture" id=79]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0027.png" type="Texture" id=80]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0030.png" type="Texture" id=81]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0021.png" type="Texture" id=82]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0006.png" type="Texture" id=83]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0013.png" type="Texture" id=84]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE DOWN MISS0016.png" type="Texture" id=85]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0007.png" type="Texture" id=86]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0028.png" type="Texture" id=87]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT MISS0032.png" type="Texture" id=88]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT0003.png" type="Texture" id=89]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT0000.png" type="Texture" id=90]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT0001.png" type="Texture" id=91]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT0002.png" type="Texture" id=92]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT0004.png" type="Texture" id=93]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0000.png" type="Texture" id=94]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0004.png" type="Texture" id=95]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0019.png" type="Texture" id=96]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0036.png" type="Texture" id=97]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0039.png" type="Texture" id=98]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0008.png" type="Texture" id=99]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0005.png" type="Texture" id=100]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0024.png" type="Texture" id=101]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0007.png" type="Texture" id=102]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0009.png" type="Texture" id=103]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0026.png" type="Texture" id=104]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0011.png" type="Texture" id=105]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0013.png" type="Texture" id=106]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0017.png" type="Texture" id=107]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0021.png" type="Texture" id=108]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0032.png" type="Texture" id=109]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0010.png" type="Texture" id=110]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0020.png" type="Texture" id=111]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0033.png" type="Texture" id=112]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0035.png" type="Texture" id=113]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0031.png" type="Texture" id=114]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0001.png" type="Texture" id=115]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0011.png" type="Texture" id=116]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0015.png" type="Texture" id=117]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0022.png" type="Texture" id=118]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0003.png" type="Texture" id=119]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0025.png" type="Texture" id=120]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0027.png" type="Texture" id=121]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0009.png" type="Texture" id=122]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0037.png" type="Texture" id=123]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0013.png" type="Texture" id=124]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0023.png" type="Texture" id=125]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0042.png" type="Texture" id=126]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0041.png" type="Texture" id=127]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0045.png" type="Texture" id=128]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP0001.png" type="Texture" id=129]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP0002.png" type="Texture" id=130]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP0004.png" type="Texture" id=131]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0043.png" type="Texture" id=132]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0004.png" type="Texture" id=133]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0010.png" type="Texture" id=134]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0030.png" type="Texture" id=135]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0012.png" type="Texture" id=136]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0012.png" type="Texture" id=137]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0006.png" type="Texture" id=138]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0028.png" type="Texture" id=139]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0002.png" type="Texture" id=140]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0040.png" type="Texture" id=141]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0018.png" type="Texture" id=142]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0034.png" type="Texture" id=143]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0044.png" type="Texture" id=144]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP0000.png" type="Texture" id=145]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0016.png" type="Texture" id=146]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP0003.png" type="Texture" id=147]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0005.png" type="Texture" id=148]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0014.png" type="Texture" id=149]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0029.png" type="Texture" id=150]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0038.png" type="Texture" id=151]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0000.png" type="Texture" id=152]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0001.png" type="Texture" id=153]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0002.png" type="Texture" id=154]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0003.png" type="Texture" id=155]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0006.png" type="Texture" id=156]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE RIGHT MISS0007.png" type="Texture" id=157]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0008.png" type="Texture" id=158]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0017.png" type="Texture" id=159]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0018.png" type="Texture" id=160]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0015.png" type="Texture" id=161]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0019.png" type="Texture" id=162]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0014.png" type="Texture" id=163]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0016.png" type="Texture" id=164]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0008.png" type="Texture" id=165]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0022.png" type="Texture" id=166]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0011.png" type="Texture" id=167]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0013.png" type="Texture" id=168]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0017.png" type="Texture" id=169]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0033.png" type="Texture" id=170]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0005.png" type="Texture" id=171]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0011.png" type="Texture" id=172]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0020.png" type="Texture" id=173]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0012.png" type="Texture" id=174]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0028.png" type="Texture" id=175]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0015.png" type="Texture" id=176]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0025.png" type="Texture" id=177]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0021.png" type="Texture" id=178]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0009.png" type="Texture" id=179]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0015.png" type="Texture" id=180]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0000.png" type="Texture" id=181]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0016.png" type="Texture" id=182]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0018.png" type="Texture" id=183]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0023.png" type="Texture" id=184]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0014.png" type="Texture" id=185]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0029.png" type="Texture" id=186]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0030.png" type="Texture" id=187]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0021.png" type="Texture" id=188]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0001.png" type="Texture" id=189]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0021.png" type="Texture" id=190]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0024.png" type="Texture" id=191]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0012.png" type="Texture" id=192]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0002.png" type="Texture" id=193]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0003.png" type="Texture" id=194]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0023.png" type="Texture" id=195]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0002.png" type="Texture" id=196]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0009.png" type="Texture" id=197]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0018.png" type="Texture" id=198]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0017.png" type="Texture" id=199]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0019.png" type="Texture" id=200]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0006.png" type="Texture" id=201]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0022.png" type="Texture" id=202]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0006.png" type="Texture" id=203]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0010.png" type="Texture" id=204]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0022.png" type="Texture" id=205]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0020.png" type="Texture" id=206]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0026.png" type="Texture" id=207]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0005.png" type="Texture" id=208]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0003.png" type="Texture" id=209]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0027.png" type="Texture" id=210]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0020.png" type="Texture" id=211]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0014.png" type="Texture" id=212]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0025.png" type="Texture" id=213]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0004.png" type="Texture" id=214]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0016.png" type="Texture" id=215]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0008.png" type="Texture" id=216]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0010.png" type="Texture" id=217]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0031.png" type="Texture" id=218]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0004.png" type="Texture" id=219]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0013.png" type="Texture" id=220]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0019.png" type="Texture" id=221]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0024.png" type="Texture" id=222]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0032.png" type="Texture" id=223]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP MISS0023.png" type="Texture" id=224]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF HEY!!0007.png" type="Texture" id=225]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0007.png" type="Texture" id=226]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0001.png" type="Texture" id=227]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0000.png" type="Texture" id=228]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0001.png" type="Texture" id=229]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0034.png" type="Texture" id=230]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0046.png" type="Texture" id=231]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0051.png" type="Texture" id=232]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0028.png" type="Texture" id=233]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0013.png" type="Texture" id=234]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0024.png" type="Texture" id=235]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0043.png" type="Texture" id=236]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0019.png" type="Texture" id=237]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0029.png" type="Texture" id=238]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0050.png" type="Texture" id=239]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0048.png" type="Texture" id=240]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0000.png" type="Texture" id=241]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0030.png" type="Texture" id=242]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0001.png" type="Texture" id=243]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0003.png" type="Texture" id=244]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0003.png" type="Texture" id=245]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0018.png" type="Texture" id=246]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0004.png" type="Texture" id=247]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0038.png" type="Texture" id=248]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0026.png" type="Texture" id=249]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0005.png" type="Texture" id=250]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0044.png" type="Texture" id=251]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0052.png" type="Texture" id=252]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0054.png" type="Texture" id=253]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0020.png" type="Texture" id=254]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0021.png" type="Texture" id=255]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0004.png" type="Texture" id=256]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0040.png" type="Texture" id=257]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0042.png" type="Texture" id=258]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0045.png" type="Texture" id=259]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0056.png" type="Texture" id=260]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0005.png" type="Texture" id=261]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0037.png" type="Texture" id=262]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0006.png" type="Texture" id=263]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0035.png" type="Texture" id=264]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0007.png" type="Texture" id=265]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0002.png" type="Texture" id=266]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0000.png" type="Texture" id=267]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0008.png" type="Texture" id=268]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0011.png" type="Texture" id=269]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0014.png" type="Texture" id=270]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0036.png" type="Texture" id=271]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0010.png" type="Texture" id=272]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0017.png" type="Texture" id=273]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0023.png" type="Texture" id=274]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0057.png" type="Texture" id=275]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0025.png" type="Texture" id=276]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0022.png" type="Texture" id=277]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0009.png" type="Texture" id=278]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0027.png" type="Texture" id=279]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0031.png" type="Texture" id=280]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0012.png" type="Texture" id=281]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0039.png" type="Texture" id=282]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0015.png" type="Texture" id=283]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0032.png" type="Texture" id=284]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0033.png" type="Texture" id=285]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0002.png" type="Texture" id=286]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0041.png" type="Texture" id=287]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0047.png" type="Texture" id=288]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0049.png" type="Texture" id=289]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead Loop0016.png" type="Texture" id=290]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0053.png" type="Texture" id=291]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF dies0055.png" type="Texture" id=292]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0013.png" type="Texture" id=293]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0011.png" type="Texture" id=294]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0012.png" type="Texture" id=295]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0014.png" type="Texture" id=296]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0017.png" type="Texture" id=297]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0006.png" type="Texture" id=298]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0010.png" type="Texture" id=299]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0015.png" type="Texture" id=300]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0018.png" type="Texture" id=301]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0008.png" type="Texture" id=302]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0007.png" type="Texture" id=303]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0009.png" type="Texture" id=304]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0016.png" type="Texture" id=305]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0028.png" type="Texture" id=306]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0027.png" type="Texture" id=307]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0020.png" type="Texture" id=308]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0023.png" type="Texture" id=309]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0029.png" type="Texture" id=310]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0032.png" type="Texture" id=311]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0021.png" type="Texture" id=312]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0022.png" type="Texture" id=313]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0019.png" type="Texture" id=314]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0024.png" type="Texture" id=315]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0031.png" type="Texture" id=316]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0030.png" type="Texture" id=317]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0026.png" type="Texture" id=318]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0025.png" type="Texture" id=319]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF Dead confirm0033.png" type="Texture" id=320]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 46 ), ExtResource( 42 ), ExtResource( 29 ), ExtResource( 36 ), ExtResource( 59 ), ExtResource( 58 ), ExtResource( 30 ), ExtResource( 64 ), ExtResource( 61 ), ExtResource( 84 ), ExtResource( 31 ), ExtResource( 67 ), ExtResource( 85 ), ExtResource( 55 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 28 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 74 ), ExtResource( 32 ), ExtResource( 43 ), ExtResource( 37 ) ],
+"loop": true,
+"name": "Down Miss",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 228 ), ExtResource( 227 ), ExtResource( 196 ), ExtResource( 209 ), ExtResource( 214 ), ExtResource( 171 ), ExtResource( 201 ), ExtResource( 226 ), ExtResource( 165 ), ExtResource( 197 ), ExtResource( 217 ), ExtResource( 172 ), ExtResource( 174 ), ExtResource( 168 ), ExtResource( 185 ), ExtResource( 176 ), ExtResource( 182 ), ExtResource( 169 ), ExtResource( 183 ), ExtResource( 200 ), ExtResource( 206 ), ExtResource( 178 ), ExtResource( 205 ), ExtResource( 184 ), ExtResource( 222 ), ExtResource( 177 ), ExtResource( 207 ), ExtResource( 210 ), ExtResource( 175 ), ExtResource( 186 ), ExtResource( 187 ), ExtResource( 218 ), ExtResource( 223 ), ExtResource( 170 ), ExtResource( 230 ), ExtResource( 264 ), ExtResource( 271 ), ExtResource( 262 ), ExtResource( 248 ), ExtResource( 282 ), ExtResource( 257 ), ExtResource( 287 ), ExtResource( 258 ), ExtResource( 236 ), ExtResource( 251 ), ExtResource( 259 ), ExtResource( 231 ), ExtResource( 288 ), ExtResource( 240 ), ExtResource( 289 ), ExtResource( 239 ), ExtResource( 232 ), ExtResource( 252 ), ExtResource( 291 ), ExtResource( 253 ), ExtResource( 292 ), ExtResource( 260 ), ExtResource( 275 ) ],
+"loop": true,
+"name": "Dies",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 89 ), ExtResource( 93 ) ],
+"loop": true,
+"name": "Right",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 181 ), ExtResource( 189 ), ExtResource( 193 ), ExtResource( 194 ), ExtResource( 219 ), ExtResource( 208 ), ExtResource( 203 ), ExtResource( 225 ), ExtResource( 216 ), ExtResource( 179 ), ExtResource( 204 ), ExtResource( 167 ), ExtResource( 192 ), ExtResource( 220 ), ExtResource( 212 ), ExtResource( 180 ), ExtResource( 215 ), ExtResource( 199 ), ExtResource( 198 ), ExtResource( 221 ), ExtResource( 211 ), ExtResource( 190 ), ExtResource( 202 ), ExtResource( 195 ), ExtResource( 191 ), ExtResource( 213 ) ],
+"loop": true,
+"name": "Peace!",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 241 ), ExtResource( 243 ), ExtResource( 286 ), ExtResource( 245 ), ExtResource( 247 ), ExtResource( 250 ), ExtResource( 298 ), ExtResource( 303 ), ExtResource( 302 ), ExtResource( 304 ), ExtResource( 299 ), ExtResource( 294 ), ExtResource( 295 ), ExtResource( 293 ), ExtResource( 296 ), ExtResource( 300 ), ExtResource( 305 ), ExtResource( 297 ), ExtResource( 301 ), ExtResource( 314 ), ExtResource( 308 ), ExtResource( 312 ), ExtResource( 313 ), ExtResource( 309 ), ExtResource( 315 ), ExtResource( 319 ), ExtResource( 318 ), ExtResource( 307 ), ExtResource( 306 ), ExtResource( 310 ), ExtResource( 317 ), ExtResource( 316 ), ExtResource( 311 ), ExtResource( 320 ) ],
+"loop": true,
+"name": "Death Comfirm",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Down",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 94 ), ExtResource( 115 ), ExtResource( 140 ), ExtResource( 119 ), ExtResource( 95 ), ExtResource( 148 ), ExtResource( 138 ), ExtResource( 157 ), ExtResource( 99 ), ExtResource( 122 ), ExtResource( 110 ), ExtResource( 116 ), ExtResource( 137 ), ExtResource( 124 ), ExtResource( 149 ), ExtResource( 117 ), ExtResource( 146 ), ExtResource( 107 ), ExtResource( 142 ), ExtResource( 96 ), ExtResource( 111 ), ExtResource( 108 ), ExtResource( 118 ), ExtResource( 125 ), ExtResource( 101 ), ExtResource( 120 ), ExtResource( 104 ), ExtResource( 121 ), ExtResource( 139 ), ExtResource( 150 ), ExtResource( 135 ), ExtResource( 114 ), ExtResource( 109 ), ExtResource( 112 ), ExtResource( 143 ), ExtResource( 113 ), ExtResource( 97 ), ExtResource( 123 ), ExtResource( 151 ), ExtResource( 98 ), ExtResource( 141 ), ExtResource( 127 ), ExtResource( 126 ), ExtResource( 132 ), ExtResource( 144 ), ExtResource( 128 ) ],
+"loop": true,
+"name": "Right Miss",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 145 ), ExtResource( 129 ), ExtResource( 130 ), ExtResource( 147 ), ExtResource( 131 ) ],
+"loop": true,
+"name": "Up",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 267 ), ExtResource( 229 ), ExtResource( 266 ), ExtResource( 244 ), ExtResource( 256 ), ExtResource( 261 ), ExtResource( 263 ), ExtResource( 265 ), ExtResource( 268 ), ExtResource( 278 ), ExtResource( 272 ), ExtResource( 269 ), ExtResource( 281 ), ExtResource( 234 ), ExtResource( 270 ), ExtResource( 283 ), ExtResource( 290 ), ExtResource( 273 ), ExtResource( 246 ), ExtResource( 237 ), ExtResource( 254 ), ExtResource( 255 ), ExtResource( 277 ), ExtResource( 274 ), ExtResource( 235 ), ExtResource( 276 ), ExtResource( 249 ), ExtResource( 279 ), ExtResource( 233 ), ExtResource( 238 ), ExtResource( 242 ), ExtResource( 280 ), ExtResource( 284 ), ExtResource( 285 ) ],
+"loop": true,
+"name": "Death Loop",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 152 ), ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ), ExtResource( 133 ), ExtResource( 100 ), ExtResource( 156 ), ExtResource( 102 ), ExtResource( 158 ), ExtResource( 103 ), ExtResource( 134 ), ExtResource( 105 ), ExtResource( 136 ), ExtResource( 106 ), ExtResource( 163 ), ExtResource( 161 ), ExtResource( 164 ), ExtResource( 159 ), ExtResource( 160 ), ExtResource( 162 ), ExtResource( 173 ), ExtResource( 188 ), ExtResource( 166 ), ExtResource( 224 ) ],
+"loop": true,
+"name": "Up Miss",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 72 ), ExtResource( 33 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 60 ), ExtResource( 83 ), ExtResource( 86 ), ExtResource( 73 ), ExtResource( 44 ), ExtResource( 62 ), ExtResource( 66 ), ExtResource( 63 ), ExtResource( 71 ), ExtResource( 39 ), ExtResource( 69 ), ExtResource( 54 ), ExtResource( 75 ), ExtResource( 79 ), ExtResource( 48 ), ExtResource( 41 ), ExtResource( 82 ), ExtResource( 45 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 77 ), ExtResource( 51 ), ExtResource( 80 ), ExtResource( 87 ), ExtResource( 52 ), ExtResource( 81 ), ExtResource( 53 ), ExtResource( 88 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "Left Miss",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 68 ), ExtResource( 70 ), ExtResource( 40 ), ExtResource( 76 ), ExtResource( 78 ) ],
+"loop": true,
+"name": "Left",
+"speed": 24.0
+} ]
+
+[node name="Boyfriend" type="Node2D"]
+script = ExtResource( 1 )
+character_sprite = NodePath("BF Srpite")
+player = true
+
+[node name="BF Srpite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 9
+playing = true
+offset = Vector2( 0, -196 )
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PoolVector2Array( 400, 0, 0, 0, 0, -400 )
+width = 5.178
+default_color = Color( 0.356863, 0.972549, 0.105882, 1 )

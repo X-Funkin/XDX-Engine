@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/characters/boyfriend/Boyfriend.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/characters/girlfriend/Girlfriend.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/stagecurtains.png" type="Texture" id=3]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/stagefront.png" type="Texture" id=4]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/stage_light.png" type="Texture" id=5]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/stageback.png" type="Texture" id=6]
+[ext_resource path="res://assets/weeks/tutorial/assets/music/Tutorial_Inst.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/weeks/tutorial/Tutorial.gd" type="Script" id=8]
+[ext_resource path="res://assets/scripts/Song Track.gd" type="Script" id=9]
+[ext_resource path="res://assets/scenes/notes/Note Track.tscn" type="PackedScene" id=10]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource( 8 )
+week_name = "Tutorial"
+TOP_TEXT = "Tutorial"
+song_name = "Tutorial"
+chart_file = "res://assets/weeks/tutorial/assets/charts/tutorial-hard.json"
+player_track = NodePath("Camera2D/Player Track")
+enemy_track = NodePath("Camera2D/Enemy Track")
+
+[node name="stageback" type="Sprite" parent="."]
+position = Vector2( 1.67346, -382.773 )
+texture = ExtResource( 6 )
+
+[node name="stagefront" type="Sprite" parent="."]
+position = Vector2( -4.68335, 166.028 )
+texture = ExtResource( 4 )
+
+[node name="Girlfriend" parent="." instance=ExtResource( 2 )]
+
+[node name="Boyfriend" parent="." instance=ExtResource( 1 )]
+position = Vector2( 605.811, 0 )
+
+[node name="stage_light" type="Sprite" parent="."]
+position = Vector2( -716.642, -675.185 )
+rotation = -0.0777815
+texture = ExtResource( 5 )
+
+[node name="stage_light2" type="Sprite" parent="."]
+position = Vector2( 628.876, -660.353 )
+rotation = 0.331466
+scale = Vector2( -1.12, 1 )
+texture = ExtResource( 5 )
+
+[node name="stagecurtains" type="Sprite" parent="."]
+position = Vector2( -32.2294, -304.373 )
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 321.051, -391.924 )
+current = true
+smoothing_enabled = true
+
+[node name="Player Track" parent="Camera2D" instance=ExtResource( 10 )]
+position = Vector2( 550, -400 )
+chart_format = 1
+player_track = true
+
+[node name="Enemy Track" parent="Camera2D" instance=ExtResource( 10 )]
+position = Vector2( -550, -400 )
+chart_format = 1
+
+[node name="Instrumentals" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "Player Vocals"
+script = ExtResource( 9 )
+offset_ms = -15.5

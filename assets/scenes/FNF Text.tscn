@@ -4,12 +4,10 @@
 
 [node name="FNF Text" type="Node2D"]
 script = ExtResource( 1 )
-text = "gamers
-game
-g
-yeah"
+text = "top text
+bottom text"
 alignment = 1
-visible_lines = 4
+visible_lines = -1
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0

@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/BF dies0035.png-b1524c107153b0bb4f0a2d255cce9d3c.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/characters/boyfriend/boyfriend_frames/BF dies0035.png"
+dest_files=[ "res://.import/BF dies0035.png-b1524c107153b0bb4f0a2d255cce9d3c.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

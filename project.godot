@@ -8,6 +8,136 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Arrow",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Arrow.gd"
+}, {
+"base": "Node2D",
+"class": "ArrowTrack",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Note Track.gd"
+}, {
+"base": "Character",
+"class": "Boyfriend",
+"language": "GDScript",
+"path": "res://assets/characters/boyfriend/Boyfriend.gd"
+}, {
+"base": "Node2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Character.gd"
+}, {
+"base": "Arrow",
+"class": "DownArrow",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Down Arrow.gd"
+}, {
+"base": "Note",
+"class": "DownNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Down Note.gd"
+}, {
+"base": "NoteLane",
+"class": "DownNoteLane",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Down Note Lane.gd"
+}, {
+"base": "Node2D",
+"class": "GameWeek",
+"language": "GDScript",
+"path": "res://assets/scripts/Game Week.gd"
+}, {
+"base": "Character",
+"class": "Girlfriend",
+"language": "GDScript",
+"path": "res://assets/characters/girlfriend/Girlfriend.gd"
+}, {
+"base": "Arrow",
+"class": "LeftArrow",
+"language": "GDScript",
+"path": "res://Left Arrow.gd"
+}, {
+"base": "Note",
+"class": "LeftNote",
+"language": "GDScript",
+"path": "res://Left Note.gd"
+}, {
+"base": "NoteLane",
+"class": "LeftNoteLane",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Left Note Lane.gd"
+}, {
+"base": "Node2D",
+"class": "Note",
+"language": "GDScript",
+"path": "res://Note.gd"
+}, {
+"base": "Position2D",
+"class": "NoteLane",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Note Lane.gd"
+}, {
+"base": "Arrow",
+"class": "RightArrow",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Right Arrow.gd"
+}, {
+"base": "Note",
+"class": "RightNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Right Note.gd"
+}, {
+"base": "NoteLane",
+"class": "RightNoteLane",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Right Note Lane.gd"
+}, {
+"base": "Arrow",
+"class": "UpArrow",
+"language": "GDScript",
+"path": "res://Up Arrow.gd"
+}, {
+"base": "Note",
+"class": "UpNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Up Note.gd"
+}, {
+"base": "NoteLane",
+"class": "UpNoteLane",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Up Note Lane.gd"
+}, {
+"base": "GameWeek",
+"class": "WeekSong",
+"language": "GDScript",
+"path": "res://assets/weeks/tutorial/Tutorial.gd"
+} ]
+_global_script_class_icons={
+"Arrow": "",
+"ArrowTrack": "",
+"Boyfriend": "res://assets/characters/boyfriend/Boyfriend Icon.png",
+"Character": "",
+"DownArrow": "res://assets/images/NOTE_assets/arrowDOWN0000.png",
+"DownNote": "res://assets/images/NOTE_assets/blue0000.png",
+"DownNoteLane": "",
+"GameWeek": "",
+"Girlfriend": "res://assets/characters/girlfriend/Girlfriend Icon.png",
+"LeftArrow": "res://assets/images/NOTE_assets/arrowLEFT0000.png",
+"LeftNote": "res://assets/images/NOTE_assets/purple0000.png",
+"LeftNoteLane": "",
+"Note": "",
+"NoteLane": "",
+"RightArrow": "res://assets/images/NOTE_assets/arrowRIGHT0000.png",
+"RightNote": "res://assets/images/NOTE_assets/red0000.png",
+"RightNoteLane": "",
+"UpArrow": "res://assets/images/NOTE_assets/arrowUP0000.png",
+"UpNote": "res://assets/images/NOTE_assets/green0000.png",
+"UpNoteLane": "",
+"WeekSong": ""
+}
+
 [application]
 
 config/name="XDX Engine"
@@ -17,7 +147,6 @@ config/icon="res://icon.png"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 
 [physics]
 

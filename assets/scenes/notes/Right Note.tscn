@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scenes/notes/Right Note.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/NOTE_assets/red0000.png" type="Texture" id=2]
+
+[node name="Right Note" type="Node2D"]
+script = ExtResource( 1 )
+note_type = 3
+
+[node name="Right Note Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
