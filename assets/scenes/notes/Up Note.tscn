@@ -6,6 +6,7 @@
 [node name="Up Note" type="Node2D"]
 script = ExtResource( 1 )
 note_type = 2
+scorable_group = "Scorable Up Notes"
 
 [node name="Up Note Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

@@ -2,6 +2,7 @@ extends Position2D
 class_name NoteLane
 
 export(float) var song_time = 0.0 setget set_song_time, get_song_time
+export(float) var timing_window = 120.0
 
 func set_song_time(n_time):
 	song_time = n_time

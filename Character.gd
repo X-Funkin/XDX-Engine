@@ -56,16 +56,77 @@ func _on_sprite_frame_change():
 	realign_sprite()
 	pass
 
+#func _on_sprite_animation_change():
+#	pass
+
+func play_input_animation(anim, pressed):
+	if player or true:
+		var character_node : AnimatedSprite = get_node(character_sprite)
+		if pressed:
+			if character_node.animation != anim:
+				character_node.stop()
+				character_node.play(anim)
+		elif character_node.animation == anim:
+			character_node.stop()
+			character_node.play("Idle")
+		realign_sprite()
 #Input and Receiver Functions
 
 func recieve_player_input(event : InputEvent):
 	pass
+
+func recieve_player_left_input(event : InputEvent):
+	if player:
+		play_input_animation("Left", event.is_pressed())
+
+func recieve_player_down_input(event : InputEvent):
+	if player:
+		play_input_animation("Down", event.is_pressed())
+
+func recieve_player_up_input(event : InputEvent):
+	if player:
+		play_input_animation("Up", event.is_pressed())
+
+func recieve_player_right_input(event : InputEvent):
+	if player:
+		play_input_animation("Right", event.is_pressed())
 
 func recieve_player_hit(note, hit_error):
 	pass
 
 func recieve_player_miss(note):
 	pass
+
+#func recieve_enemy_hit(note, hit_error):
+#	match note.note_type:
+#		0:
+#
+
+func recieve_enemy_input(event : InputEvent):
+	pass
+
+func recieve_enemy_left_input(event : InputEvent):
+	if !player:
+		play_input_animation("Left", event.is_pressed())
+
+func recieve_enemy_down_input(event : InputEvent):
+	if !player:
+		play_input_animation("Down", event.is_pressed())
+
+func recieve_enemy_up_input(event : InputEvent):
+	if !player:
+		play_input_animation("Up", event.is_pressed())
+
+func recieve_enemy_right_input(event : InputEvent):
+	if !player:
+		play_input_animation("Right", event.is_pressed())
+
+func recieve_enemy_hit(note, hit_error):
+	pass
+
+func recieve_enemy_miss(note):
+	pass
+
 
 func recieve_hit(note, hit_error):
 	pass

@@ -5,6 +5,7 @@
 
 [node name="Left Note" type="Node2D"]
 script = ExtResource( 1 )
+scorable_group = "Scorable Left Notes"
 
 [node name="Left Note Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

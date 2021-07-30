@@ -7,6 +7,7 @@ class_name LeftArrow, "res://assets/images/NOTE_assets/arrowLEFT0000.png"
 # var b = "text"
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

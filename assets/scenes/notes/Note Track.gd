@@ -1,11 +1,14 @@
 extends Node2D
 class_name ArrowTrack
 
+
+# Export very ables mm yes
 export(String, FILE) var chart_file
 export(int, "XDX", "FNF", "KADE") var chart_format
 export(int) var chart_channel
 export(bool) var player_track
 export(float) var scroll_speed = 1.0 setget set_scroll_speed, get_scroll_speed
+export(float) var timing_window = 120.0
 var song_time : float = 0.0
 var notes = []
 
@@ -23,6 +26,16 @@ var left_note_track : NodePath = @"Left Track/Left Arrow/Left Notes Transform/Le
 var down_note_track : NodePath = @"Down Track/Down Arrow/Down Notes Transform/Down Notes"
 var up_note_track : NodePath = @"Up Track/Up Arrow/Up Notes Transform/Up Notes"
 var right_note_track : NodePath = @"Right Track/Right Arrow/Right Notes Transform/Right Notes"
+
+var left_arrow : NodePath = @"Left Track/Left Arrow"
+var down_arrow : NodePath = @"Down Track/Down Arrow"
+var up_arrow : NodePath = @"Up Track/Up Arrow"
+var right_arrow : NodePath = @"Right Track/Right Arrow"
+
+var left_timer : NodePath = @"Left Track/Left Arrow/Auto Input Timer"
+var down_timer : NodePath = @"Down Track/Down Arrow/Auto Input Timer"
+var up_timer : NodePath = @"Up Track/Up Arrow/Auto Input Timer"
+var right_timer : NodePath = @"Right Track/Right Arrow/Auto Input Timer"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -54,11 +67,11 @@ func import_fnf_chart():
 			if note_section["mustHitSection"]:
 				for note in note_section["sectionNotes"]:
 					if note[1] < 4:
-						import_note(note)
+						import_note(note, true)
 			else:
 				for note in note_section["sectionNotes"]:
 					if note[1] > 3:
-						import_note(note)
+						import_note(note, true)
 	else:
 		for note_section in chart_data["song"]["notes"]:
 			if note_section["mustHitSection"]:
@@ -75,7 +88,7 @@ func import_kade_chart():
 	pass
 
 
-func import_note(note_data):
+func import_note(note_data, player_note=false):
 	var note : Note = null
 	var track = null
 	match int(note_data[1])%4:
@@ -98,6 +111,7 @@ func import_note(note_data):
 	get_node(track).add_child(note)
 	note.position.y = note.hit_time
 	note.scale.y = 1.0/scroll_speed
+	note.player_note = player_note
 
 func load_chart():
 	match chart_format:
@@ -130,6 +144,118 @@ func get_notes(sorted=false):
 	if sorted:
 		note_arr.sort_custom(Note.NoteSorter, "sort_hit_time")
 	return note_arr
+
+
+#funky input stuff
+func recieve_player_left_input(event : InputEvent):
+	if player_track:
+		if event.is_pressed():
+			get_node(left_arrow).play_press()
+		else:
+			get_node(left_arrow).play_default()
+		pass
+
+func recieve_player_down_input(event : InputEvent):
+	if player_track:
+		if event.is_pressed():
+			get_node(down_arrow).play_press()
+		else:
+			get_node(down_arrow).play_default()
+		pass
+
+func recieve_player_up_input(event : InputEvent):
+	if player_track:
+		if event.is_pressed():
+			get_node(up_arrow).play_press()
+		else:
+			get_node(up_arrow).play_default()
+		pass
+
+func recieve_player_right_input(event : InputEvent):
+	if player_track:
+		if event.is_pressed():
+			get_node(right_arrow).play_press()
+		else:
+			get_node(right_arrow).play_default()
+		pass
+
+func recieve_player_hit(note : Note, hit_error):
+	if player_track:
+		match note.note_type:
+			0:
+				get_node(left_arrow).play_confirm()
+			1:
+				get_node(down_arrow).play_confirm()
+			2:
+				get_node(up_arrow).play_confirm()
+			3:
+				get_node(right_arrow).play_confirm()
+			
+
+
+func recieve_enemy_left_input(event : InputEvent):
+	if !player_track:
+		if event.is_pressed():
+			get_node(left_arrow).play_press()
+		else:
+			get_node(left_arrow).play_default()
+		pass
+
+func recieve_enemy_down_input(event : InputEvent):
+	if !player_track:
+		if event.is_pressed():
+			get_node(down_arrow).play_press()
+		else:
+			get_node(down_arrow).play_default()
+		pass
+
+func recieve_enemy_up_input(event : InputEvent):
+	if !player_track:
+		if event.is_pressed():
+			get_node(up_arrow).play_press()
+		else:
+			get_node(up_arrow).play_default()
+		pass
+
+func recieve_enemy_right_input(event : InputEvent):
+	if !player_track:
+		if event.is_pressed():
+			get_node(right_arrow).play_press()
+		else:
+			get_node(right_arrow).play_default()
+		pass
+
+
+
+func recieve_enemy_hit(note : Note, hit_error):
+	if !player_track:
+		var enemy_input = InputEventAction.new()
+		enemy_input.pressed = true
+		match note.note_type:
+			0:
+				enemy_input.action = "note_left"
+				get_tree().call_group("Enemy Input Recievers", "recieve_enemy_left_input", enemy_input)
+				get_node(left_timer).start(0.3)
+				get_node(left_arrow).play_confirm()
+			1:
+				enemy_input.action = "note_down"
+				get_tree().call_group("Enemy Input Recievers", "recieve_enemy_down_input", enemy_input)
+				get_node(down_timer).start(0.3)
+				get_node(down_arrow).play_confirm()
+			2:
+				enemy_input.action = "note_up"
+				get_tree().call_group("Enemy Input Recievers", "recieve_enemy_up_input", enemy_input)
+				get_node(up_timer).start(0.3)
+				get_node(up_arrow).play_confirm()
+			3:
+				enemy_input.action = "note_right"
+				get_tree().call_group("Enemy Input Recievers", "recieve_enemy_right_input", enemy_input)
+				get_node(right_timer).start(0.3)
+				get_node(right_arrow).play_confirm()
+			
+		get_tree().call_group("Enemy Input Recievers", "recieve_enemy_input", enemy_input)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -144,3 +270,39 @@ func recieve_song_time(n_time):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Left_Input_Timer_timeout():
+	var enemy_input = InputEventAction.new()
+	enemy_input.pressed = false
+	enemy_input.action = "note_left"
+	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_left_input", enemy_input)
+	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_input", enemy_input)
+	pass # Replace with function body.
+
+
+func _on_Down_Input_Timer_timeout():
+	var enemy_input = InputEventAction.new()
+	enemy_input.pressed = false
+	enemy_input.action = "note_down"
+	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_down_input", enemy_input)
+	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_input", enemy_input)
+	pass # Replace with function body.
+
+
+func _on_Up_Input_Timer_timeout():
+	var enemy_input = InputEventAction.new()
+	enemy_input.pressed = false
+	enemy_input.action = "note_up"
+	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_up_input", enemy_input)
+	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_input", enemy_input)
+	pass # Replace with function body.
+
+
+func _on_Right_Input_Timer_timeout():
+	var enemy_input = InputEventAction.new()
+	enemy_input.pressed = false
+	enemy_input.action = "note_right"
+	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_right_input", enemy_input)
+	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_input", enemy_input)
+	pass # Replace with function body.

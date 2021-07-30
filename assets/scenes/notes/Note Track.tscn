@@ -11,6 +11,10 @@
 [ext_resource path="res://assets/scenes/notes/Right Note Lane.gd" type="Script" id=9]
 
 [node name="Note Track" type="Node2D" groups=[
+"Enemy Hit Recievers",
+"Enemy Input Recievers",
+"Player Hit Recievers",
+"Player Input Recievers",
 "Song Time Recievers",
 ]]
 script = ExtResource( 1 )
@@ -25,6 +29,9 @@ position = Vector2( -240, 0 )
 [node name="Left Notes" type="Position2D" parent="Left Track/Left Arrow/Left Notes Transform"]
 script = ExtResource( 7 )
 
+[node name="Auto Input Timer" type="Timer" parent="Left Track/Left Arrow"]
+one_shot = true
+
 [node name="Down Track" type="Position2D" parent="."]
 position = Vector2( -80, 0 )
 
@@ -34,6 +41,9 @@ position = Vector2( -80, 0 )
 
 [node name="Down Notes" type="Position2D" parent="Down Track/Down Arrow/Down Notes Transform"]
 script = ExtResource( 8 )
+
+[node name="Auto Input Timer" type="Timer" parent="Down Track/Down Arrow"]
+one_shot = true
 
 [node name="Up Track" type="Position2D" parent="."]
 position = Vector2( 80, 0 )
@@ -45,6 +55,9 @@ position = Vector2( 80, 0 )
 [node name="Up Notes" type="Position2D" parent="Up Track/Up Arrow/Up Notes Transform"]
 script = ExtResource( 6 )
 
+[node name="Auto Input Timer" type="Timer" parent="Up Track/Up Arrow"]
+one_shot = true
+
 [node name="Right Track" type="Position2D" parent="."]
 position = Vector2( 240, 0 )
 
@@ -55,4 +68,12 @@ position = Vector2( 240, 0 )
 [node name="Right Notes" type="Position2D" parent="Right Track/Right Arrow/Right Notes Transform"]
 script = ExtResource( 9 )
 
+[node name="Auto Input Timer" type="Timer" parent="Right Track/Right Arrow"]
+one_shot = true
+
 [node name="Note Track Animations" type="AnimationPlayer" parent="."]
+
+[connection signal="timeout" from="Left Track/Left Arrow/Auto Input Timer" to="." method="_on_Left_Input_Timer_timeout"]
+[connection signal="timeout" from="Down Track/Down Arrow/Auto Input Timer" to="." method="_on_Down_Input_Timer_timeout"]
+[connection signal="timeout" from="Up Track/Up Arrow/Auto Input Timer" to="." method="_on_Up_Input_Timer_timeout"]
+[connection signal="timeout" from="Right Track/Right Arrow/Auto Input Timer" to="." method="_on_Right_Input_Timer_timeout"]

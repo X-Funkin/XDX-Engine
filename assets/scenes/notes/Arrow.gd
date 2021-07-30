@@ -1,17 +1,29 @@
 extends Node2D
 class_name Arrow
 
+export(NodePath) var arrow_sprite
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
+func play_animation(anim):
+	var arrow_node : AnimatedSprite = get_node(arrow_sprite)
+	arrow_node.stop()
+	arrow_node.play(anim)
+
 func play_press():
+	var node : AnimatedSprite = get_node(arrow_sprite)
+	if node.animation != "confirm":
+		play_animation("press")
 	pass
 
 func play_confirm():
+	print("CONFIRM!!")
+	play_animation("confirm")
 	pass
 
 func play_default():
+	play_animation("default")
 	pass
 
 # Called when the node enters the scene tree for the first time.

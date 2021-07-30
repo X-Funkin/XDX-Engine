@@ -389,7 +389,9 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[node name="Boyfriend" type="Node2D"]
+[node name="Boyfriend" type="Node2D" groups=[
+"Player Input Recievers",
+]]
 script = ExtResource( 1 )
 character_sprite = NodePath("BF Srpite")
 player = true

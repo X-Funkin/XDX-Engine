@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/characters/boyfriend/Boyfriend.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/characters/girlfriend/Girlfriend.tscn" type="PackedScene" id=2]
@@ -10,8 +10,15 @@
 [ext_resource path="res://assets/weeks/tutorial/Tutorial.gd" type="Script" id=8]
 [ext_resource path="res://assets/scripts/Song Track.gd" type="Script" id=9]
 [ext_resource path="res://assets/scenes/notes/Note Track.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/fonts/coolpixelfontlol.tres" type="DynamicFontData" id=11]
 
-[node name="Tutorial" type="Node2D"]
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 11 )
+
+[node name="Tutorial" type="Node2D" groups=[
+"Player Input Recievers",
+]]
 script = ExtResource( 8 )
 week_name = "Tutorial"
 TOP_TEXT = "Tutorial"
@@ -19,6 +26,8 @@ song_name = "Tutorial"
 chart_file = "res://assets/weeks/tutorial/assets/charts/tutorial-hard.json"
 player_track = NodePath("Camera2D/Player Track")
 enemy_track = NodePath("Camera2D/Enemy Track")
+instrumentals = NodePath("Instrumentals")
+label_thingy = NodePath("Camera2D/Label")
 
 [node name="stageback" type="Sprite" parent="."]
 position = Vector2( 1.67346, -382.773 )
@@ -57,10 +66,25 @@ smoothing_enabled = true
 position = Vector2( 550, -400 )
 chart_format = 1
 player_track = true
+scroll_speed = 2.4
 
 [node name="Enemy Track" parent="Camera2D" instance=ExtResource( 10 )]
 position = Vector2( -550, -400 )
 chart_format = 1
+scroll_speed = 2.4
+
+[node name="Label" type="Label" parent="Camera2D"]
+margin_left = 424.729
+margin_top = -36.5263
+margin_right = 647.729
+margin_bottom = 0.473663
+custom_fonts/font = SubResource( 1 )
+text = "yoyoyo test
+yeah"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Instrumentals" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

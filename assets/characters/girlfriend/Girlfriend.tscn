@@ -307,13 +307,15 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[node name="Girlfriend" type="Node2D"]
+[node name="Girlfriend" type="Node2D" groups=[
+"Enemy Input Recievers",
+]]
 script = ExtResource( 1 )
 character_sprite = NodePath("GF Sprite")
 
 [node name="GF Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 25
+frame = 9
 playing = true
 offset = Vector2( 0, -320 )
