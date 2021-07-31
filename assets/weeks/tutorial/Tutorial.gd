@@ -5,9 +5,11 @@ export(String) var song_name
 export(String, FILE) var chart_file
 export(NodePath) var player_track
 export(NodePath) var enemy_track
+export(NodePath) var player_vocals
 export(NodePath) var instrumentals
+export(NodePath) var enemy_vocals
 export(NodePath) var label_thingy
-
+var player_combo = 0
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -86,6 +88,17 @@ func recieve_player_right_input(event : InputEvent):
 #		print("supposidly coring")
 		score_note("Scorable Right Notes")
 
+func recieve_player_hit(note : Note, hit_error):
+	get_node(player_vocals).volume_db = 0.0
+
+func recieve_player_miss(note_type):
+	get_node(player_vocals).volume_db = -80.0
+	$"Player Miss Sound".stop()
+	$"Player Miss Sound".play()
+
+func recieve_enemy_hit(note : Note, hit_error):
+	get_node(enemy_vocals).volume_db = 0.0
+
 func score_note(scoring_group):
 #	print("funcing callced")
 	var song_time = get_node(instrumentals).get_playback_position()+AudioServer.get_time_since_last_mix()-AudioServer.get_output_latency()
@@ -102,28 +115,40 @@ func score_note(scoring_group):
 				closest_note = note
 				hit_error = closest_note.hit_time-song_time
 		get_tree().call_group("Player Hit Recievers", "recieve_player_hit", closest_note, hit_error)
-		var text = ""
-		var col = Color("FFFFFF")
-		if abs(hit_error) <= 127.5:
-			text = "%5.4f ms\nBad"%hit_error
-			col = Color("FF0000")
-		if abs(hit_error) <= 103.5:
-			text = "%5.4f ms\nGood"%hit_error
-			col = Color("007fff")
-		if abs(hit_error) <= 73.5:
-			text = "%5.4f ms\nGreat!"%hit_error
-			col = Color("00ff00")
-		if abs(hit_error) <= 40.5:
-			text = "%5.4f ms\nPerfect!"%hit_error
-			col = Color("ffff00")
-		if abs(hit_error) <= 16.5:
-			text = "%5.4f ms\nMarvelous!"%hit_error
-			col = Color("00ffff")
-		get_node(label_thingy).text = text
-		get_node(label_thingy).modulate = col
-		
+		judge_hit(hit_error)
+		player_combo += 1
+		get_tree().call_group("Player Hit Recievers", "recieve_player_combo", player_combo)
+		get_node(label_thingy).text = "%5.4f ms"%hit_error
 		
 		closest_note.despawn()
+
+func judge_hit(hit_error):
+	var judgement = 1
+	if abs(hit_error) <= 127.5:
+		judgement = 1
+	if abs(hit_error) <= 103.5:
+		judgement = 2
+	if abs(hit_error) <= 73.5:
+		judgement = 3
+	if abs(hit_error) <= 40.5:
+		judgement = 4
+	if abs(hit_error) <= 16.5:
+		judgement = 5
+	get_tree().call_group("Player Hit Recievers", "recieve_player_judgment", judgement)
+
+func recieve_player_judgment(judgment):
+	var col = Color("FF0000")
+	match judgment:
+		5:
+			col = Color("00FFFF")
+		4:
+			col = Color("FFFFFF")
+		3:
+			col = Color("00FF00")
+		2:
+			col = Color("FF0000")
+		
+	get_node(label_thingy).modulate = col
 
 func _ready():
 	get_node(player_track).chart_file = chart_file

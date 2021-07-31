@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/scenes/Judment Particles.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/judgment text/rainbow sick.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/judgment text/good.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/judgment text/bad.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/judgment text/sick.png" type="Texture" id=6]
+
+[node name="Judgment Particles" type="Node2D"]
+script = ExtResource( 2 )
+max_judgment = ExtResource( 3 )
+sick_judgment = ExtResource( 6 )
+good_judgment = ExtResource( 4 )
+bad_judgment = ExtResource( 5 )

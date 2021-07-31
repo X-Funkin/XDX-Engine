@@ -54,6 +54,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/characters/girlfriend/Girlfriend.gd"
 }, {
+"base": "Node2D",
+"class": "HealtBar",
+"language": "GDScript",
+"path": "res://assets/scripts/Health Bar.gd"
+}, {
+"base": "Node2D",
+"class": "JudgmentParicles",
+"language": "GDScript",
+"path": "res://assets/scenes/Judment Particles.gd"
+}, {
 "base": "Arrow",
 "class": "LeftArrow",
 "language": "GDScript",
@@ -124,6 +134,8 @@ _global_script_class_icons={
 "DownNoteLane": "",
 "GameWeek": "",
 "Girlfriend": "res://assets/characters/girlfriend/Girlfriend Icon.png",
+"HealtBar": "",
+"JudgmentParicles": "",
 "LeftArrow": "res://assets/images/NOTE_assets/arrowLEFT0000.png",
 "LeftNote": "res://assets/images/NOTE_assets/purple0000.png",
 "LeftNoteLane": "",
@@ -147,6 +159,7 @@ config/icon="res://icon.png"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 
 [input]
 

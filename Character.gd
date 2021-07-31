@@ -94,7 +94,18 @@ func recieve_player_right_input(event : InputEvent):
 func recieve_player_hit(note, hit_error):
 	pass
 
-func recieve_player_miss(note):
+func recieve_player_miss(note_type):
+	if player:
+		match note_type:
+			0:
+				play_input_animation("Left Miss", true)
+			1:
+				play_input_animation("Down Miss", true)
+			2:
+				play_input_animation("Up Miss", true)
+			3:
+				play_input_animation("Right Miss", true)
+			
 	pass
 
 #func recieve_enemy_hit(note, hit_error):

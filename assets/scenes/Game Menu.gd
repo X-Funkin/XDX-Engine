@@ -79,3 +79,21 @@ func _process(delta):
 
 func _on_Freeplay_Button_focus_entered():
 	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "button_pressed":
+		$Timer.start(1.0)
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	print("ITME OUT")
+	get_tree().change_scene("res://assets/weeks/tutorial/Tutorial.tscn")
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	if anim_name == "button_pressed":
+		$Timer.start(1.0)
+	pass # Replace with function body.

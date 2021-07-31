@@ -33,6 +33,9 @@ func check_scorability():
 		if abs(hit_time-song_time) > timing_window:
 			scorable = false
 			remove_from_group(scorable_group)
+		if song_time > hit_time+timing_window:
+			get_tree().call_group("Player Miss Recievers", "recieve_player_miss", note_type)
+			despawn()
 	pass
 
 func check_auto_play():

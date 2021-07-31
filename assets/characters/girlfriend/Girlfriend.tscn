@@ -316,6 +316,6 @@ character_sprite = NodePath("GF Sprite")
 [node name="GF Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 9
+frame = 12
 playing = true
 offset = Vector2( 0, -320 )

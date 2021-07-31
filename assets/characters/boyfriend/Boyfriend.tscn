@@ -324,7 +324,7 @@
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 46 ), ExtResource( 42 ), ExtResource( 29 ), ExtResource( 36 ), ExtResource( 59 ), ExtResource( 58 ), ExtResource( 30 ), ExtResource( 64 ), ExtResource( 61 ), ExtResource( 84 ), ExtResource( 31 ), ExtResource( 67 ), ExtResource( 85 ), ExtResource( 55 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 28 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 74 ), ExtResource( 32 ), ExtResource( 43 ), ExtResource( 37 ) ],
-"loop": true,
+"loop": false,
 "name": "Down Miss",
 "speed": 24.0
 }, {
@@ -359,7 +359,7 @@ animations = [ {
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 94 ), ExtResource( 115 ), ExtResource( 140 ), ExtResource( 119 ), ExtResource( 95 ), ExtResource( 148 ), ExtResource( 138 ), ExtResource( 157 ), ExtResource( 99 ), ExtResource( 122 ), ExtResource( 110 ), ExtResource( 116 ), ExtResource( 137 ), ExtResource( 124 ), ExtResource( 149 ), ExtResource( 117 ), ExtResource( 146 ), ExtResource( 107 ), ExtResource( 142 ), ExtResource( 96 ), ExtResource( 111 ), ExtResource( 108 ), ExtResource( 118 ), ExtResource( 125 ), ExtResource( 101 ), ExtResource( 120 ), ExtResource( 104 ), ExtResource( 121 ), ExtResource( 139 ), ExtResource( 150 ), ExtResource( 135 ), ExtResource( 114 ), ExtResource( 109 ), ExtResource( 112 ), ExtResource( 143 ), ExtResource( 113 ), ExtResource( 97 ), ExtResource( 123 ), ExtResource( 151 ), ExtResource( 98 ), ExtResource( 141 ), ExtResource( 127 ), ExtResource( 126 ), ExtResource( 132 ), ExtResource( 144 ), ExtResource( 128 ) ],
-"loop": true,
+"loop": false,
 "name": "Right Miss",
 "speed": 24.0
 }, {
@@ -374,12 +374,12 @@ animations = [ {
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 152 ), ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ), ExtResource( 133 ), ExtResource( 100 ), ExtResource( 156 ), ExtResource( 102 ), ExtResource( 158 ), ExtResource( 103 ), ExtResource( 134 ), ExtResource( 105 ), ExtResource( 136 ), ExtResource( 106 ), ExtResource( 163 ), ExtResource( 161 ), ExtResource( 164 ), ExtResource( 159 ), ExtResource( 160 ), ExtResource( 162 ), ExtResource( 173 ), ExtResource( 188 ), ExtResource( 166 ), ExtResource( 224 ) ],
-"loop": true,
+"loop": false,
 "name": "Up Miss",
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 38 ), ExtResource( 72 ), ExtResource( 33 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 60 ), ExtResource( 83 ), ExtResource( 86 ), ExtResource( 73 ), ExtResource( 44 ), ExtResource( 62 ), ExtResource( 66 ), ExtResource( 63 ), ExtResource( 71 ), ExtResource( 39 ), ExtResource( 69 ), ExtResource( 54 ), ExtResource( 75 ), ExtResource( 79 ), ExtResource( 48 ), ExtResource( 41 ), ExtResource( 82 ), ExtResource( 45 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 77 ), ExtResource( 51 ), ExtResource( 80 ), ExtResource( 87 ), ExtResource( 52 ), ExtResource( 81 ), ExtResource( 53 ), ExtResource( 88 ), ExtResource( 25 ) ],
-"loop": true,
+"loop": false,
 "name": "Left Miss",
 "speed": 24.0
 }, {
@@ -399,7 +399,7 @@ player = true
 [node name="BF Srpite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 9
+frame = 7
 playing = true
 offset = Vector2( 0, -196 )
 

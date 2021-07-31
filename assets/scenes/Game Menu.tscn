@@ -743,8 +743,12 @@ stream = ExtResource( 54 )
 stream = ExtResource( 53 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 material = SubResource( 56 )
 mesh = SubResource( 57 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Story Mode Button" to="MenuButtons" method="_on_Story_Mode_Button_focus_entered"]
 [connection signal="mouse_entered" from="MenuButtons/CenterContainer/VBoxContainer/Story Mode Button" to="MenuButtons" method="_on_Story_Mode_Button_mouse_entered"]
@@ -753,3 +757,6 @@ mesh = SubResource( 57 )
 [connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Freeplay Button" to="MenuButtons" method="_on_Freeplay_Button_focus_entered"]
 [connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Donate Button" to="MenuButtons" method="_on_Donate_Button_focus_entered"]
 [connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Options Button" to="MenuButtons" method="_on_Options_Button_focus_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
