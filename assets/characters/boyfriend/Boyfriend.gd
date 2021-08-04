@@ -1,3 +1,4 @@
+#tool
 extends Character
 class_name Boyfriend, "res://assets/characters/boyfriend/Boyfriend Icon.png"
 

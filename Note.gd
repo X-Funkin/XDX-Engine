@@ -7,13 +7,16 @@ class_name Note
 
 export(float) var hit_time
 export(int, "Left", "Down", "Up", "Right") var note_type
-export(float) var hold_time
+export(bool) var hold_note
+export(float) var hold_time setget set_hold_time
 export(bool) var player_note
 export(Dictionary) var custom_data
 export(String) var scorable_group
 export(bool) var scorable
 export(bool) var active = true
 
+func set_hold_time(n_time):
+	pass # To be overwritten by the HoldNote class
 
 class NoteSorter:
 	static func sort_hit_time(a,b):

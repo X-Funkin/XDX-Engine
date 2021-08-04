@@ -328,29 +328,19 @@ animations = [ {
 "name": "Down Miss",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 24.0
-}, {
 "frames": [ ExtResource( 228 ), ExtResource( 227 ), ExtResource( 196 ), ExtResource( 209 ), ExtResource( 214 ), ExtResource( 171 ), ExtResource( 201 ), ExtResource( 226 ), ExtResource( 165 ), ExtResource( 197 ), ExtResource( 217 ), ExtResource( 172 ), ExtResource( 174 ), ExtResource( 168 ), ExtResource( 185 ), ExtResource( 176 ), ExtResource( 182 ), ExtResource( 169 ), ExtResource( 183 ), ExtResource( 200 ), ExtResource( 206 ), ExtResource( 178 ), ExtResource( 205 ), ExtResource( 184 ), ExtResource( 222 ), ExtResource( 177 ), ExtResource( 207 ), ExtResource( 210 ), ExtResource( 175 ), ExtResource( 186 ), ExtResource( 187 ), ExtResource( 218 ), ExtResource( 223 ), ExtResource( 170 ), ExtResource( 230 ), ExtResource( 264 ), ExtResource( 271 ), ExtResource( 262 ), ExtResource( 248 ), ExtResource( 282 ), ExtResource( 257 ), ExtResource( 287 ), ExtResource( 258 ), ExtResource( 236 ), ExtResource( 251 ), ExtResource( 259 ), ExtResource( 231 ), ExtResource( 288 ), ExtResource( 240 ), ExtResource( 289 ), ExtResource( 239 ), ExtResource( 232 ), ExtResource( 252 ), ExtResource( 291 ), ExtResource( 253 ), ExtResource( 292 ), ExtResource( 260 ), ExtResource( 275 ) ],
-"loop": true,
+"loop": false,
 "name": "Dies",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 89 ), ExtResource( 93 ) ],
-"loop": true,
-"name": "Right",
-"speed": 24.0
-}, {
-"frames": [ ExtResource( 181 ), ExtResource( 189 ), ExtResource( 193 ), ExtResource( 194 ), ExtResource( 219 ), ExtResource( 208 ), ExtResource( 203 ), ExtResource( 225 ), ExtResource( 216 ), ExtResource( 179 ), ExtResource( 204 ), ExtResource( 167 ), ExtResource( 192 ), ExtResource( 220 ), ExtResource( 212 ), ExtResource( 180 ), ExtResource( 215 ), ExtResource( 199 ), ExtResource( 198 ), ExtResource( 221 ), ExtResource( 211 ), ExtResource( 190 ), ExtResource( 202 ), ExtResource( 195 ), ExtResource( 191 ), ExtResource( 213 ) ],
-"loop": true,
-"name": "Peace!",
-"speed": 24.0
-}, {
 "frames": [ ExtResource( 241 ), ExtResource( 243 ), ExtResource( 286 ), ExtResource( 245 ), ExtResource( 247 ), ExtResource( 250 ), ExtResource( 298 ), ExtResource( 303 ), ExtResource( 302 ), ExtResource( 304 ), ExtResource( 299 ), ExtResource( 294 ), ExtResource( 295 ), ExtResource( 293 ), ExtResource( 296 ), ExtResource( 300 ), ExtResource( 305 ), ExtResource( 297 ), ExtResource( 301 ), ExtResource( 314 ), ExtResource( 308 ), ExtResource( 312 ), ExtResource( 313 ), ExtResource( 309 ), ExtResource( 315 ), ExtResource( 319 ), ExtResource( 318 ), ExtResource( 307 ), ExtResource( 306 ), ExtResource( 310 ), ExtResource( 317 ), ExtResource( 316 ), ExtResource( 311 ), ExtResource( 320 ) ],
-"loop": true,
+"loop": false,
 "name": "Death Comfirm",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 68 ), ExtResource( 70 ), ExtResource( 40 ), ExtResource( 76 ), ExtResource( 78 ) ],
+"loop": true,
+"name": "Left",
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 18 ) ],
@@ -368,14 +358,19 @@ animations = [ {
 "name": "Up",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 267 ), ExtResource( 229 ), ExtResource( 266 ), ExtResource( 244 ), ExtResource( 256 ), ExtResource( 261 ), ExtResource( 263 ), ExtResource( 265 ), ExtResource( 268 ), ExtResource( 278 ), ExtResource( 272 ), ExtResource( 269 ), ExtResource( 281 ), ExtResource( 234 ), ExtResource( 270 ), ExtResource( 283 ), ExtResource( 290 ), ExtResource( 273 ), ExtResource( 246 ), ExtResource( 237 ), ExtResource( 254 ), ExtResource( 255 ), ExtResource( 277 ), ExtResource( 274 ), ExtResource( 235 ), ExtResource( 276 ), ExtResource( 249 ), ExtResource( 279 ), ExtResource( 233 ), ExtResource( 238 ), ExtResource( 242 ), ExtResource( 280 ), ExtResource( 284 ), ExtResource( 285 ) ],
-"loop": true,
-"name": "Death Loop",
-"speed": 24.0
-}, {
 "frames": [ ExtResource( 152 ), ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ), ExtResource( 133 ), ExtResource( 100 ), ExtResource( 156 ), ExtResource( 102 ), ExtResource( 158 ), ExtResource( 103 ), ExtResource( 134 ), ExtResource( 105 ), ExtResource( 136 ), ExtResource( 106 ), ExtResource( 163 ), ExtResource( 161 ), ExtResource( 164 ), ExtResource( 159 ), ExtResource( 160 ), ExtResource( 162 ), ExtResource( 173 ), ExtResource( 188 ), ExtResource( 166 ), ExtResource( 224 ) ],
 "loop": false,
 "name": "Up Miss",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ), ExtResource( 89 ), ExtResource( 93 ) ],
+"loop": true,
+"name": "Right",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 38 ), ExtResource( 72 ), ExtResource( 33 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 60 ), ExtResource( 83 ), ExtResource( 86 ), ExtResource( 73 ), ExtResource( 44 ), ExtResource( 62 ), ExtResource( 66 ), ExtResource( 63 ), ExtResource( 71 ), ExtResource( 39 ), ExtResource( 69 ), ExtResource( 54 ), ExtResource( 75 ), ExtResource( 79 ), ExtResource( 48 ), ExtResource( 41 ), ExtResource( 82 ), ExtResource( 45 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 77 ), ExtResource( 51 ), ExtResource( 80 ), ExtResource( 87 ), ExtResource( 52 ), ExtResource( 81 ), ExtResource( 53 ), ExtResource( 88 ), ExtResource( 25 ) ],
@@ -383,9 +378,14 @@ animations = [ {
 "name": "Left Miss",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 68 ), ExtResource( 70 ), ExtResource( 40 ), ExtResource( 76 ), ExtResource( 78 ) ],
+"frames": [ ExtResource( 181 ), ExtResource( 189 ), ExtResource( 193 ), ExtResource( 194 ), ExtResource( 219 ), ExtResource( 208 ), ExtResource( 203 ), ExtResource( 225 ), ExtResource( 216 ), ExtResource( 179 ), ExtResource( 204 ), ExtResource( 167 ), ExtResource( 192 ), ExtResource( 220 ), ExtResource( 212 ), ExtResource( 180 ), ExtResource( 215 ), ExtResource( 199 ), ExtResource( 198 ), ExtResource( 221 ), ExtResource( 211 ), ExtResource( 190 ), ExtResource( 202 ), ExtResource( 195 ), ExtResource( 191 ), ExtResource( 213 ) ],
 "loop": true,
-"name": "Left",
+"name": "Peace!",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 267 ), ExtResource( 229 ), ExtResource( 266 ), ExtResource( 244 ), ExtResource( 256 ), ExtResource( 261 ), ExtResource( 263 ), ExtResource( 265 ), ExtResource( 268 ), ExtResource( 278 ), ExtResource( 272 ), ExtResource( 269 ), ExtResource( 281 ), ExtResource( 234 ), ExtResource( 270 ), ExtResource( 283 ), ExtResource( 290 ), ExtResource( 273 ), ExtResource( 246 ), ExtResource( 237 ), ExtResource( 254 ), ExtResource( 255 ), ExtResource( 277 ), ExtResource( 274 ), ExtResource( 235 ), ExtResource( 276 ), ExtResource( 249 ), ExtResource( 279 ), ExtResource( 233 ), ExtResource( 238 ), ExtResource( 242 ), ExtResource( 280 ), ExtResource( 284 ), ExtResource( 285 ) ],
+"loop": true,
+"name": "Death Loop",
 "speed": 24.0
 } ]
 
@@ -399,9 +399,9 @@ player = true
 [node name="BF Srpite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 7
+frame = 3
 playing = true
-offset = Vector2( 0, -196 )
+offset = Vector2( 0, -206 )
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false

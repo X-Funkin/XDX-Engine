@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scenes/notes/Down Arrow.gd"
 }, {
+"base": "HoldNote",
+"class": "DownHoldNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Down Hold Note.gd"
+}, {
 "base": "Note",
 "class": "DownNote",
 "language": "GDScript",
@@ -59,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/Health Bar.gd"
 }, {
+"base": "Note",
+"class": "HoldNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Hold Note.gd"
+}, {
 "base": "Node2D",
 "class": "JudgmentParicles",
 "language": "GDScript",
@@ -68,6 +78,11 @@ _global_script_classes=[ {
 "class": "LeftArrow",
 "language": "GDScript",
 "path": "res://Left Arrow.gd"
+}, {
+"base": "HoldNote",
+"class": "LeftHoldNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Left Hold Note.gd"
 }, {
 "base": "Note",
 "class": "LeftNote",
@@ -94,6 +109,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scenes/notes/Right Arrow.gd"
 }, {
+"base": "HoldNote",
+"class": "RightHoldNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Right Hold Note.gd"
+}, {
 "base": "Note",
 "class": "RightNote",
 "language": "GDScript",
@@ -108,6 +128,11 @@ _global_script_classes=[ {
 "class": "UpArrow",
 "language": "GDScript",
 "path": "res://Up Arrow.gd"
+}, {
+"base": "HoldNote",
+"class": "UpHoldNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Up Hold Note.gd"
 }, {
 "base": "Note",
 "class": "UpNote",
@@ -130,21 +155,26 @@ _global_script_class_icons={
 "Boyfriend": "res://assets/characters/boyfriend/Boyfriend Icon.png",
 "Character": "",
 "DownArrow": "res://assets/images/NOTE_assets/arrowDOWN0000.png",
+"DownHoldNote": "",
 "DownNote": "res://assets/images/NOTE_assets/blue0000.png",
 "DownNoteLane": "",
 "GameWeek": "",
 "Girlfriend": "res://assets/characters/girlfriend/Girlfriend Icon.png",
 "HealtBar": "",
+"HoldNote": "",
 "JudgmentParicles": "",
 "LeftArrow": "res://assets/images/NOTE_assets/arrowLEFT0000.png",
+"LeftHoldNote": "",
 "LeftNote": "res://assets/images/NOTE_assets/purple0000.png",
 "LeftNoteLane": "",
 "Note": "",
 "NoteLane": "",
 "RightArrow": "res://assets/images/NOTE_assets/arrowRIGHT0000.png",
+"RightHoldNote": "",
 "RightNote": "res://assets/images/NOTE_assets/red0000.png",
 "RightNoteLane": "",
 "UpArrow": "res://assets/images/NOTE_assets/arrowUP0000.png",
+"UpHoldNote": "",
 "UpNote": "res://assets/images/NOTE_assets/green0000.png",
 "UpNoteLane": "",
 "WeekSong": ""

@@ -29,6 +29,14 @@ func recieve_player_judgment(judgement):
 	add_child(inst)
 	inst.emitting = true
 
+func recieve_enemy_input(event : InputEvent):
+	if event.is_pressed():
+		var inst = particles_scene.instance()
+		var tex = max_judgment
+		inst.texture = tex
+		add_child(inst)
+		inst.emitting = true
+
 #func recieve_player_hit(note : Note, hit_error):
 #	var inst = particles_scene.instance()
 #	var tex = bad_judgment

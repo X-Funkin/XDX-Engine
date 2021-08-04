@@ -3,12 +3,15 @@ class_name WeekSong
 
 export(String) var song_name
 export(String, FILE) var chart_file
+export(float) var bpm = 120.0
 export(NodePath) var player_track
 export(NodePath) var enemy_track
 export(NodePath) var player_vocals
 export(NodePath) var instrumentals
 export(NodePath) var enemy_vocals
+export(NodePath) var sounds_path
 export(NodePath) var label_thingy
+export(PackedScene) var target_scene
 var player_combo = 0
 # Declare member variables here. Examples:
 # var a = 2
@@ -36,21 +39,22 @@ func _input(event):
 
 func _player_input(event : InputEvent):
 	get_tree().call_group("Player Input Recievers", "recieve_player_input", event)
-	if event.is_action("note_left"):
-		print("note left")
-		get_tree().call_group("Player Input Recievers", "recieve_player_left_input", event)
-		return 0
-	if event.is_action("note_down"):
-		get_tree().call_group("Player Input Recievers", "recieve_player_down_input", event)
-		return 0
-	if event.is_action("note_up"):
-		get_tree().call_group("Player Input Recievers", "recieve_player_up_input", event)
-		return 0
-	if event.is_action("note_right"):
-		get_tree().call_group("Player Input Recievers", "recieve_player_right_input", event)
-		return 0
-	
-	
+	if !event.is_echo():
+		if event.is_action("note_left"):
+	#		print("note left")
+			get_tree().call_group("Player Input Recievers", "recieve_player_left_input", event)
+			return 0
+		if event.is_action("note_down"):
+			get_tree().call_group("Player Input Recievers", "recieve_player_down_input", event)
+			return 0
+		if event.is_action("note_up"):
+			get_tree().call_group("Player Input Recievers", "recieve_player_up_input", event)
+			return 0
+		if event.is_action("note_right"):
+			get_tree().call_group("Player Input Recievers", "recieve_player_right_input", event)
+			return 0
+
+
 
 func _enemy_input(event : InputEvent):
 	get_tree().call_group("Enemy Input Recievers", "recieve_enemy_input")
@@ -93,8 +97,7 @@ func recieve_player_hit(note : Note, hit_error):
 
 func recieve_player_miss(note_type):
 	get_node(player_vocals).volume_db = -80.0
-	$"Player Miss Sound".stop()
-	$"Player Miss Sound".play()
+	get_node(sounds_path).play_miss()
 
 func recieve_enemy_hit(note : Note, hit_error):
 	get_node(enemy_vocals).volume_db = 0.0
@@ -119,8 +122,11 @@ func score_note(scoring_group):
 		player_combo += 1
 		get_tree().call_group("Player Hit Recievers", "recieve_player_combo", player_combo)
 		get_node(label_thingy).text = "%5.4f ms"%hit_error
-		
-		closest_note.despawn()
+		if closest_note.hold_note:
+			closest_note.holding = true
+			closest_note.playing = true
+			closest_note.score_note()
+		else: closest_note.despawn()
 
 func judge_hit(hit_error):
 	var judgement = 1
@@ -150,15 +156,37 @@ func recieve_player_judgment(judgment):
 		
 	get_node(label_thingy).modulate = col
 
+var beatthing = true
+func recieve_beat(beat_n):
+	$Camera/beat.modulate = Color("00FFFF")
+	if beatthing:
+		$Camera/beat.modulate = Color("FF0000")
+	beatthing = !beatthing
+	pass
+
 func _ready():
 	get_node(player_track).chart_file = chart_file
 	get_node(enemy_track).chart_file = chart_file
 	get_node(player_track).load_chart()
 	get_node(enemy_track).load_chart()
-	$Instrumentals.play()
+	get_node(instrumentals).connect("finished", self, "_on_song_finished")
+	get_node(instrumentals).start()
+	get_node("Camera/Count Down Sprites").sprite_speed = bpm/60.0
+	
+#	$Instrumentals.start()
+#	$Camera/AnimationPlayer.play("scroll oscollate")
 	pass # Replace with function body.
 
+func _on_song_finished():
+#	get_tree().change_scene_to(target_scene)
+#	get_tree().reload_current_scene()
+	pass
+
+func recieve_player_death():
+	get_node(instrumentals).pause_mode
+	get_node(sounds_path).play_death()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+

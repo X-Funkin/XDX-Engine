@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/characters/boyfriend/Boyfriend.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/characters/girlfriend/Girlfriend.tscn" type="PackedScene" id=2]
@@ -18,28 +18,84 @@
 [ext_resource path="res://assets/sounds/missnote1.ogg" type="AudioStream" id=16]
 [ext_resource path="res://assets/scenes/Judment Particles.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/scenes/Combo Particles.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/weeks/tutorial/Camera.gd" type="Script" id=19]
+[ext_resource path="res://assets/weeks/tutorial/Sounds.gd" type="Script" id=20]
+[ext_resource path="res://assets/sounds/intro1.ogg" type="AudioStream" id=21]
+[ext_resource path="res://assets/sounds/introGo.ogg" type="AudioStream" id=22]
+[ext_resource path="res://assets/sounds/intro2.ogg" type="AudioStream" id=23]
+[ext_resource path="res://assets/sounds/intro3.ogg" type="AudioStream" id=24]
+[ext_resource path="res://assets/scenes/Count Down Sprites.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/sounds/fnf_loss_sfx.ogg" type="AudioStream" id=26]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
 font_data = ExtResource( 11 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "scroll oscollate"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Player Track:scroll_speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 2, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Enemy Track:scroll_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 2, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
 [node name="Tutorial" type="Node2D" groups=[
 "Enemy Hit Recievers",
+"Player Death Recievers",
 "Player Hit Recievers",
 "Player Input Recievers",
 "Player Miss Recievers",
+"Song Time Recievers",
 ]]
 script = ExtResource( 8 )
 week_name = "Tutorial"
 TOP_TEXT = "Tutorial"
 song_name = "Tutorial"
-chart_file = "res://assets/weeks/tutorial/assets/charts/tutorial-hard.json"
-player_track = NodePath("Camera2D/Player Track")
-enemy_track = NodePath("Camera2D/Enemy Track")
-player_vocals = NodePath("Instrumentals")
-instrumentals = NodePath("Instrumentals")
-enemy_vocals = NodePath("Instrumentals")
-label_thingy = NodePath("Camera2D/Label")
+chart_file = "res://assets/weeks/tutorial/assets/charts/tutorial-holds.json"
+bpm = 100.0
+player_track = NodePath("Camera/Player Track")
+enemy_track = NodePath("Camera/Enemy Track")
+player_vocals = NodePath("Sounds/Music/Instrumentals")
+instrumentals = NodePath("Sounds/Music/Instrumentals")
+enemy_vocals = NodePath("Sounds/Music/Instrumentals")
+sounds_path = NodePath("Sounds")
+label_thingy = NodePath("Camera/Label")
 
 [node name="stageback" type="Sprite" parent="."]
 position = Vector2( 1.67346, -382.773 )
@@ -52,6 +108,7 @@ texture = ExtResource( 4 )
 [node name="Girlfriend" parent="." instance=ExtResource( 2 )]
 
 [node name="Boyfriend" parent="." groups=[
+"Player Death Recievers",
 "Player Miss Recievers",
 ] instance=ExtResource( 1 )]
 position = Vector2( 605.811, 0 )
@@ -71,23 +128,22 @@ texture = ExtResource( 5 )
 position = Vector2( -32.2294, -304.373 )
 texture = ExtResource( 3 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 321.051, -391.924 )
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 368.996, -388.927 )
 current = true
 smoothing_enabled = true
+script = ExtResource( 19 )
 
-[node name="Player Track" parent="Camera2D" instance=ExtResource( 10 )]
+[node name="Player Track" parent="Camera" instance=ExtResource( 10 )]
 position = Vector2( 550, -400 )
 chart_format = 1
 player_track = true
-scroll_speed = 2.4
 
-[node name="Enemy Track" parent="Camera2D" instance=ExtResource( 10 )]
+[node name="Enemy Track" parent="Camera" instance=ExtResource( 10 )]
 position = Vector2( -550, -400 )
 chart_format = 1
-scroll_speed = 2.4
 
-[node name="Label" type="Label" parent="Camera2D"]
+[node name="Label" type="Label" parent="Camera"]
 margin_left = 424.729
 margin_top = -36.5263
 margin_right = 647.729
@@ -100,35 +156,95 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Health Bar" parent="Camera2D" instance=ExtResource( 12 )]
+[node name="beat" type="Label" parent="Camera"]
+margin_left = -168.944
+margin_top = -145.843
+margin_right = 54.0562
+margin_bottom = -68.8429
+custom_fonts/font = SubResource( 1 )
+text = "beat
+beat
+beat
+beat"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health Bar" parent="Camera" instance=ExtResource( 12 )]
 position = Vector2( 0, 476.758 )
 scale = Vector2( 1.39591, 1.39591 )
-health = 50.008
-health_icons_scale = 20.0
 player_losing_icon = ExtResource( 15 )
 player_icon = ExtResource( 14 )
 player_winning_icon = ExtResource( 14 )
 enemy_losing_icon = ExtResource( 13 )
 enemy_icon = ExtResource( 13 )
 enemy_winning_icon = ExtResource( 13 )
+health_icons_scale = 0.69
 
-[node name="Judgment Particles" parent="Camera2D" groups=[
+[node name="Judgment Particles" parent="Camera" groups=[
 "Player Hit Recievers",
 "Player Input Recievers",
 ] instance=ExtResource( 17 )]
 
-[node name="Combo Particles" parent="Camera2D" groups=[
+[node name="Enemy Judgment Particles" parent="Camera" groups=[
+"Enemy Input Recievers",
+"Player Input Recievers",
+] instance=ExtResource( 17 )]
+position = Vector2( -566.764, -58.8627 )
+
+[node name="Combo Particles" parent="Camera" groups=[
 "Player Hit Recievers",
 ] instance=ExtResource( 18 )]
 position = Vector2( 0, 116 )
 scale = Vector2( 0.780879, 0.780879 )
 
-[node name="Instrumentals" type="AudioStreamPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
+"anims/scroll oscollate" = SubResource( 2 )
+
+[node name="Count Down Sprites" parent="Camera" instance=ExtResource( 25 )]
+
+[node name="Sounds" type="Node2D" parent="."]
+script = ExtResource( 20 )
+player_miss_sound = NodePath("Player Miss Sound")
+player_death_sound = NodePath("Player Death Sound")
+
+[node name="Player Miss Sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 16 )
+volume_db = -13.765
+
+[node name="Player Death Sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 26 )
+volume_db = -4.0
+
+[node name="Music" type="Node2D" parent="Sounds"]
+
+[node name="Instrumentals" type="AudioStreamPlayer" parent="Sounds/Music"]
 stream = ExtResource( 7 )
 bus = "Player Vocals"
 script = ExtResource( 9 )
 offset_ms = -15.5
+bpm = 100.0
 
-[node name="Player Miss Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 16 )
-volume_db = -13.765
+[node name="Count Down Timer" type="Timer" parent="Sounds/Music/Instrumentals"]
+one_shot = true
+
+[node name="Count Down Sounds" type="Node2D" parent="Sounds"]
+
+[node name="3" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
+stream = ExtResource( 24 )
+bus = "SFX"
+
+[node name="2" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
+stream = ExtResource( 23 )
+bus = "SFX"
+
+[node name="1" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
+stream = ExtResource( 21 )
+bus = "SFX"
+
+[node name="Go!" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
+stream = ExtResource( 22 )
+bus = "SFX"
+
+[connection signal="timeout" from="Sounds/Music/Instrumentals/Count Down Timer" to="Sounds/Music/Instrumentals" method="_on_Count_Down_Timer_timeout"]

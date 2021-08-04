@@ -132,12 +132,14 @@ nodes/fragment/connections = PoolIntArray( 4, 0, 8, 0, 8, 0, 9, 0, 9, 0, 7, 0, 3
 
 [sub_resource type="ShaderMaterial" id=12]
 shader = SubResource( 11 )
-shader_param/Health = 0.50008
+shader_param/Health = 0.5
 shader_param/Health_Color = Color( 0, 1, 0, 1 )
 shader_param/Damage_Color = Color( 1, 0, 0, 1 )
 shader_param/Healt_Bar_Texture = ExtResource( 2 )
 
 [node name="Health Bar" type="Node2D" groups=[
+"Player Damage Recievers",
+"Player Heal Recievers",
 "Player Hit Recievers",
 "Player Miss Recievers",
 ]]

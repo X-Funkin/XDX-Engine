@@ -27,6 +27,11 @@ animations = [ {
 "loop": false,
 "name": "confirm",
 "speed": 24.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "confirm_loop",
+"speed": 24.0
 } ]
 
 [node name="Left Arrow" type="Node2D"]
@@ -35,3 +40,4 @@ arrow_sprite = NodePath("Left Arrow Sprite")
 
 [node name="Left Arrow Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+playing = true

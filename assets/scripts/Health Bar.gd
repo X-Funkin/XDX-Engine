@@ -3,11 +3,6 @@ extends Node2D
 class_name HealtBar
 
 # Export Vary Bles
-export(float) var health = 50.0 setget set_health
-export(float) var winning_health = 70.0 setget set_winning_health
-export(float) var losing_health = 20.0 setget set_losing_health
-export(float) var health_icons_scale = 0.5 setget set_health_icons_scale
-#export(int, "Player", "Nobody", "Enemy") var whos_winning = 1
 
 export(bool) var flip_player_icon = true setget set_flip_player_icon
 export(float) var player_icon_offset = 50.0 setget set_player_icon_offset
@@ -22,11 +17,19 @@ export(float) var enemy_icon_scale = 1.0 setget set_enemy_icon_scale
 export(Texture) var enemy_losing_icon setget set_enemy_losing_icon
 export(Texture) var enemy_icon setget set_enemy_icon
 export(Texture) var enemy_winning_icon setget set_enemy_winning_icon
-
-#export(float) var icon_distance = 100.0
+export(float) var health_icons_scale = 0.5 setget set_health_icons_scale
 
 export(Color) var health_color = Color("00FF00") setget set_health_color
 export(Color) var damage_color = Color("FF0000") setget set_damage_color
+
+export(float, 0.0, 100.0) var health = 50.0 setget set_health
+export(float) var winning_health = 70.0 setget set_winning_health
+export(float) var losing_health = 20.0 setget set_losing_health
+export(int, "Hit Based", "Accuracy Based", "Judgment Based") var healing_mode
+export(float) var healing_multiplier = 1.0
+export(float) var damage_multiplier = 1.0
+#export(int, "Player", "Nobody", "Enemy") var whos_winning = 1
+#export(float) var icon_distance = 100.0
 
 #more vars
 
@@ -39,7 +42,8 @@ var enemy_icon_sprite : NodePath = @"Icon Sprite Position/Enemy Health Icon"
 #uuuugh teh supid settergetters i have to tyPE THEM IN MANUALLY AAAA
 
 func set_health(n_health):
-	health = min(n_health,100.0)
+	health = clamp(n_health,0.0,100.0)
+	
 	if not is_inside_tree(): yield(self, 'ready')
 	update_sprite_position()
 	update_health_bar_sprite()
@@ -181,6 +185,13 @@ func recieve_player_hit(note : Note, hit_error):
 
 func recieve_player_miss(note_type):
 	self.health -= 10
+
+func recieve_player_heal(n_heal):
+	self.health += n_heal*healing_multiplier
+
+func recieve_player_damage(n_damage):
+	self.health -= n_damage*damage_multiplier
+
 #	pass
 
 # Declare member variables here. Examples:
@@ -190,6 +201,7 @@ func recieve_player_miss(note_type):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.health = health
 	pass # Replace with function body.
 
 

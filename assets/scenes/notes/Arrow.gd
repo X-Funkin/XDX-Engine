@@ -13,7 +13,7 @@ func play_animation(anim):
 
 func play_press():
 	var node : AnimatedSprite = get_node(arrow_sprite)
-	if node.animation != "confirm":
+	if node.animation != "confirm" and node.animation != "confirm_loop":
 		play_animation("press")
 	pass
 
@@ -21,6 +21,12 @@ func play_confirm():
 	print("CONFIRM!!")
 	play_animation("confirm")
 	pass
+
+func play_confirm_loop():
+	print("CONFIRM!! LOOP")
+	play_animation("confirm_loop")
+	pass
+
 
 func play_default():
 	play_animation("default")

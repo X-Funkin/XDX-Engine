@@ -27,6 +27,11 @@ animations = [ {
 "loop": false,
 "name": "confirm",
 "speed": 24.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "confirm_loop",
+"speed": 24.0
 } ]
 
 [node name="Down Arrow" type="Node2D"]

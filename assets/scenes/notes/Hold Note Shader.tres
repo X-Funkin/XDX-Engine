@@ -1,0 +1,122 @@
+[gd_resource type="VisualShader" load_steps=11 format=2]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id=1]
+default_input_values = [ 0, 1.0, 1, 0.0, 2, 1.0 ]
+
+[sub_resource type="VisualShaderNodeVectorFunc" id=2]
+function = 20
+
+[sub_resource type="VisualShaderNodeInput" id=3]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=4]
+uniform_name = "Hold_Texture"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=5]
+uniform_name = "Played_Amount"
+
+[sub_resource type="VisualShaderNodeCompare" id=6]
+function = 3
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=7]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=8]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id=9]
+default_input_values = [ 0, Vector3( 1, 1, 1 ), 1, Vector3( 1, 1, 1 ) ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=10]
+uniform_name = "Sprite_Scale"
+
+[resource]
+code = "shader_type canvas_item;
+uniform float Sprite_Scale;
+uniform sampler2D Hold_Texture;
+uniform float Played_Amount;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ScalarUniform:9
+	float n_out9p0 = Sprite_Scale;
+
+// VectorCompose:10
+	float n_in10p0 = 1.00000;
+	float n_in10p2 = 1.00000;
+	vec3 n_out10p0 = vec3(n_in10p0, n_out9p0, n_in10p2);
+
+// Input:2
+	vec3 n_out2p0 = vec3(UV, 0.0);
+
+// VectorOp:8
+	vec3 n_out8p0 = n_out10p0 * n_out2p0;
+
+// VectorFunc:11
+	vec3 n_out11p0 = fract(n_out8p0);
+
+// TextureUniform:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 n_tex_read = texture(Hold_Texture, n_out11p0.xy);
+		n_out3p0 = n_tex_read.rgb;
+		n_out3p1 = n_tex_read.a;
+	}
+
+// VectorDecompose:6
+	float n_out6p0 = n_out2p0.x;
+	float n_out6p1 = n_out2p0.y;
+	float n_out6p2 = n_out2p0.z;
+
+// ScalarUniform:4
+	float n_out4p0 = Played_Amount;
+
+// Compare:5
+	bool n_out5p0 = n_out6p1>=n_out4p0;
+
+// ScalarOp:7
+	float n_out7p0 = n_out3p1 * (n_out5p0 ? 1.0 : 0.0);
+
+// Output:0
+	COLOR.rgb = n_out3p0;
+	COLOR.a = n_out7p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -578.97, 252.083 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 640, 380 )
+nodes/fragment/2/node = SubResource( 3 )
+nodes/fragment/2/position = Vector2( -500, 540 )
+nodes/fragment/3/node = SubResource( 4 )
+nodes/fragment/3/position = Vector2( 100, 320 )
+nodes/fragment/4/node = SubResource( 5 )
+nodes/fragment/4/position = Vector2( -220, 660 )
+nodes/fragment/5/node = SubResource( 6 )
+nodes/fragment/5/position = Vector2( 40, 560 )
+nodes/fragment/6/node = SubResource( 7 )
+nodes/fragment/6/position = Vector2( -260, 540 )
+nodes/fragment/7/node = SubResource( 8 )
+nodes/fragment/7/position = Vector2( 400, 500 )
+nodes/fragment/8/node = SubResource( 9 )
+nodes/fragment/8/position = Vector2( -300, 400 )
+nodes/fragment/9/node = SubResource( 10 )
+nodes/fragment/9/position = Vector2( -740, 420 )
+nodes/fragment/10/node = SubResource( 1 )
+nodes/fragment/10/position = Vector2( -520, 400 )
+nodes/fragment/11/node = SubResource( 2 )
+nodes/fragment/11/position = Vector2( -100, 420 )
+nodes/fragment/connections = PoolIntArray( 3, 0, 0, 0, 2, 0, 6, 0, 6, 1, 5, 0, 4, 0, 5, 1, 7, 0, 0, 1, 9, 0, 10, 1, 8, 0, 11, 0, 11, 0, 3, 0, 2, 0, 8, 1, 10, 0, 8, 0, 3, 1, 7, 0, 5, 0, 7, 1 )

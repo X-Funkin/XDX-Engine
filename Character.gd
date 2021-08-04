@@ -12,6 +12,7 @@ export(bool) var custom_alignment = false
 export(float, -1.0, 1.0) var custom_vertical_alignment = 0.0
 export(float, -1.0, 1.0) var custom_horizontal_alignment = 0.0
 export(bool) var player = false
+var sprite_realignment = true
 # Called when the node enters the scene tree for the first time.
 
 var yeahready = false #this stops the engine form going "OOO THE CHARACTER SPRITE THE SRPITE OF THE CHARATER OOO I CAN'T IT'S NOT THERE OOOO CRASH GANG CRASH GANG
@@ -21,6 +22,7 @@ func set_character_sprite(n_sprite):
 	if not is_inside_tree(): yield(self, 'ready')
 	character_sprite = n_sprite
 	get_node(n_sprite).connect("frame_changed", self, "_on_sprite_frame_change")
+	get_node(n_sprite).connect("animation_finished", self, "_on_sprite_animation_finished")
 	realign_sprite()
 
 func get_character_sprite():
@@ -30,30 +32,39 @@ func get_character_sprite():
 
 #Neato Utility funktions
 func realign_sprite(): #Realigns the sprite to the set aligment
-	var character_node : AnimatedSprite = get_node(character_sprite)
-	var sprite_frame = character_node.frames.get_frame(character_node.animation,character_node.frame)
-	var center_offset = Vector2()
-	if !custom_alignment:
-		match sprite_vertical_alignment:
-			0:
-				center_offset.y = -sprite_frame.get_size().y/2.0
-			2:
-				center_offset.y = sprite_frame.get_size().y/2.0
-		match sprite_horizontal_alignment:
-			0:
-				center_offset.x = sprite_frame.get_size().x/2.0
-			2:
-				center_offset.x = -sprite_frame.get_size().x/2.0
-	else:
-		center_offset.x = custom_horizontal_alignment*sprite_frame.get_size().x/2.0
-		center_offset.y = -custom_vertical_alignment*sprite_frame.get_size().y/2.0
-	character_node.offset = center_offset
+	if sprite_realignment:
+		var character_node : AnimatedSprite = get_node(character_sprite)
+		var sprite_frame = character_node.frames.get_frame(character_node.animation,character_node.frame)
+		var center_offset = Vector2()
+		if !custom_alignment:
+			match sprite_vertical_alignment:
+				0:
+					center_offset.y = -sprite_frame.get_size().y/2.0
+				2:
+					center_offset.y = sprite_frame.get_size().y/2.0
+			match sprite_horizontal_alignment:
+				0:
+					center_offset.x = sprite_frame.get_size().x/2.0
+				2:
+					center_offset.x = -sprite_frame.get_size().x/2.0
+		else:
+			center_offset.x = custom_horizontal_alignment*sprite_frame.get_size().x/2.0
+			center_offset.y = -custom_vertical_alignment*sprite_frame.get_size().y/2.0
+		character_node.offset = center_offset
 	pass
 
 func _on_sprite_frame_change():
 	var character_node : AnimatedSprite = get_node(character_sprite)
 #	print(character_node.frames.get_frame(character_node.animation,character_node.frame).get_size())
 	realign_sprite()
+	pass
+
+func _on_sprite_animation_finished():
+	var character_node : AnimatedSprite = get_node(character_sprite)
+	var anim = character_node.animation
+	if player:
+		if anim == "Dies":
+			character_node.play("Death Loop")
 	pass
 
 #func _on_sprite_animation_change():
@@ -144,6 +155,14 @@ func recieve_hit(note, hit_error):
 
 func recieve_miss(note):
 	pass
+
+func recieve_player_death():
+	if player:
+		var character_node : AnimatedSprite = get_node(character_sprite)
+		character_node.stop()
+		character_node.play("Dies")
+		sprite_realignment = false
+#		z_index = 4000
 
 func _ready():
 	pass
