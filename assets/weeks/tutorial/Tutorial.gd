@@ -2,7 +2,10 @@ extends GameWeek
 class_name WeekSong
 
 export(String) var song_name
-export(String, FILE) var chart_file
+export(Texture) var freeplay_icon
+export(String, FILE) var easy_chart
+export(String, FILE) var normal_chart
+export(String, FILE) var hard_chart
 export(float) var bpm = 120.0
 export(NodePath) var player_track
 export(NodePath) var enemy_track
@@ -12,6 +15,8 @@ export(NodePath) var enemy_vocals
 export(NodePath) var sounds_path
 export(NodePath) var label_thingy
 export(PackedScene) var target_scene
+export(String, FILE) var song_data_file
+var chart_file = ""
 var player_combo = 0
 # Declare member variables here. Examples:
 # var a = 2
@@ -20,7 +25,18 @@ var player_combo = 0
 
 # Called when the node enters the scene tree for the first time.
 # Inputs
+
+func pause():
+	var pause_screen = load("res://assets/scenes/Pause Menu.tscn").instance()
+	var canvas = CanvasLayer.new()
+	canvas.add_child(pause_screen)
+	add_child(canvas)
+	get_tree().paused = true
+
 func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if !get_tree().paused:
+			pause()
 	_player_input(event)
 	get_tree().call_group("Input Recievers", "recieve_input")
 	if event.is_action("note_left"):
@@ -164,7 +180,31 @@ func recieve_beat(beat_n):
 	beatthing = !beatthing
 	pass
 
+func save_song_data():
+	var file = File.new()
+	file.open(song_data_file, File.WRITE_READ)
+	var song_data = JSON.parse(file.get_as_text()).result
+	var save_data = {}
+	save_data["song_name"] = song_name
+	save_data["freeplay_icon"] = freeplay_icon.resource_path
+	print("save data", save_data)
+	print(JSON.print(save_data))
+	file.store_string(JSON.print(save_data))
+	file.close()
+#	var tex : Texture
+#	tex.resource_path
+#	if player_track:
+#		for note_section in chart_data["song"]["notes"]:
+
 func _ready():
+	save_song_data()
+	match difficulty:
+		0:
+			chart_file = easy_chart
+		1:
+			chart_file = normal_chart
+		2:
+			chart_file = hard_chart
 	get_node(player_track).chart_file = chart_file
 	get_node(enemy_track).chart_file = chart_file
 	get_node(player_track).load_chart()
@@ -185,7 +225,13 @@ func _on_song_finished():
 func recieve_player_death():
 	get_node(instrumentals).pause_mode
 	get_node(sounds_path).play_death()
-
+	for node in get_children():
+		if node is Character:
+			if node.player:
+				node.pause_mode = Node.PAUSE_MODE_PROCESS
+		if node.pause_mode != node.PAUSE_MODE_PROCESS:
+			node.modulate = Color("000000")
+	get_tree().paused = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

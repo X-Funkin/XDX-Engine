@@ -15,6 +15,7 @@ export(NodePath) var cancel_audio
 export(NodePath) var animation_thingy
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node(story_node_path).grab_focus()
 	pass # Replace with function body.
 
 

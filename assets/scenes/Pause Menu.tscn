@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Pause Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=2]
+
+[node name="Pause Menu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.034
+anchor_top = 0.358
+anchor_right = 0.3
+anchor_bottom = 0.58
+margin_right = 809.0
+margin_bottom = 394.0
+custom_constants/separation = 127
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 189.0
+margin_right = 302.0
+margin_bottom = 257.0
+text = "resume"
+
+[node name="Resume Button" type="Button" parent="VBoxContainer/Resume"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_neighbour_top = NodePath("../../Exit/Exit Button")
+focus_neighbour_bottom = NodePath("../../Restart Song/Restart Song Button")
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart Song" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 316.0
+margin_right = 624.0
+margin_bottom = 388.0
+text = "restart song"
+
+[node name="Restart Song Button" type="Button" parent="VBoxContainer/Restart Song"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_neighbour_top = NodePath("../../Resume/Resume Button")
+focus_neighbour_bottom = NodePath("../../Exit/Exit Button")
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 443.0
+margin_right = 197.0
+margin_bottom = 512.0
+text = "Exit"
+
+[node name="Exit Button" type="Button" parent="VBoxContainer/Exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_neighbour_top = NodePath("../../Restart Song/Restart Song Button")
+focus_neighbour_bottom = NodePath("../../Resume/Resume Button")
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Unpause Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="pressed" from="VBoxContainer/Resume/Resume Button" to="." method="_on_Resume_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Restart Song/Restart Song Button" to="." method="_on_Restart_Song_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit/Exit Button" to="." method="_on_Exit_Button_pressed"]
+[connection signal="timeout" from="Unpause Timer" to="." method="_on_Unpause_Timer_timeout"]

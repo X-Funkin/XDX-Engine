@@ -1,5 +1,5 @@
-#tool
-extends Node2D
+tool
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -8,20 +8,21 @@ extends Node2D
 export(String, MULTILINE) var text setget set_text, get_text
 export(int, "Left", "Center", "Right") var alignment setget set_alignment, get_alignment
 export(int) var visible_lines setget set_visible_lines, get_visible_lines
-
+export(NodePath) var textvbox
 func set_visible_lines(n_lines):
 	visible_lines = n_lines
-	if yeahready:
-		var count = 0
-		for node in $Control/CenterContainer/VBoxContainer.get_children():
-			if count < visible_lines or visible_lines == -1:
-				node.modulate.a = 1.0
-				count += 1
-				continue
-			if count >= visible_lines:
-				node.modulate.a = 0.0
-				count += 1
-				continue
+	
+	if not is_inside_tree(): yield(self, 'ready')
+	var count = 0
+	for node in get_node(textvbox).get_children():
+		if count < visible_lines or visible_lines == -1:
+			node.modulate.a = 1.0
+			count += 1
+			continue
+		if count >= visible_lines:
+			node.modulate.a = 0.0
+			count += 1
+			continue
 			
 
 func get_visible_lines():
@@ -30,11 +31,11 @@ func get_visible_lines():
 
 func set_alignment(n_alignment):
 	alignment = n_alignment
-	if yeahready:
-		update_alignment()
+	if not is_inside_tree(): yield(self, 'ready')
+	update_alignment()
 
 func update_alignment():
-	for node in $Control/CenterContainer/VBoxContainer.get_children():
+	for node in get_node(textvbox).get_children():
 		node.alignment = alignment
 
 
@@ -43,15 +44,16 @@ func get_alignment():
 
 func set_text(n_text):
 	text = n_text
-	if yeahready:
-		generate_text()
+	if not is_inside_tree(): yield(self, 'ready')
+#	if yeahready:
+	generate_text()
 
 
 func get_text():
 	return text
 
 func generate_text():
-	for node in $Control/CenterContainer/VBoxContainer.get_children():
+	for node in get_node(textvbox).get_children():
 		node.queue_free()
 	var text_lines = text.split("\n")
 	for string in text_lines:
@@ -72,8 +74,18 @@ func generate_text():
 			texrec.texture = letter
 #			var tex_inst = texrec.instance()
 			hbox.add_child(texrec)
-		$Control/CenterContainer/VBoxContainer.add_child(hbox)
+		if string != "":
+			get_node(textvbox).add_child(hbox)
+			get_node(textvbox).rect_size = Vector2(0,0)
+		get_node(textvbox).rect_size = Vector2(0,0)
+	get_node(textvbox).rect_size = Vector2(0,0)
+	update_rect()
 var yeahready = false
+
+func update_rect():
+#	rect_position = $Control/CenterContainer/VBoxContainer.rect_position/2.0
+	rect_size.y = get_node(textvbox).rect_size.y/2.0
+	rect_size.x = get_node(textvbox).rect_size.x
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yeahready = true
@@ -84,5 +96,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _process(delta):
+#	$VBoxContainer.rect_size = Vector2(0,0)
+	update_rect()
 #	pass

@@ -12,7 +12,9 @@ export(bool) var custom_alignment = false
 export(float, -1.0, 1.0) var custom_vertical_alignment = 0.0
 export(float, -1.0, 1.0) var custom_horizontal_alignment = 0.0
 export(bool) var player = false
-var sprite_realignment = true
+export(bool) var sprite_realignment = true
+var dead = false
+
 # Called when the node enters the scene tree for the first time.
 
 var yeahready = false #this stops the engine form going "OOO THE CHARACTER SPRITE THE SRPITE OF THE CHARATER OOO I CAN'T IT'S NOT THERE OOOO CRASH GANG CRASH GANG
@@ -65,10 +67,27 @@ func _on_sprite_animation_finished():
 	if player:
 		if anim == "Dies":
 			character_node.play("Death Loop")
+			get_tree().call_group("Player Death Recievers", "recieve_player_death_loop")
+		if anim == "Death Comfirm":
+			print("yeah death confirm boiiis")
+			get_tree().paused = false
+			get_tree().reload_current_scene()
 	pass
 
 #func _on_sprite_animation_change():
 #	pass
+
+func recieve_beat(beat_n):
+#	print("BF GOT THAT BEAT THOOO ", beat_n)
+	var character_node : AnimatedSprite = get_node(character_sprite)
+	var anim = character_node.animation
+#	print("ANIM ", anim)
+	if anim == "Default" or anim == "Bop":
+#		print("IT PASSES THE TEST")
+		character_node.stop()
+		character_node.frame = 0
+		character_node.play("Bop")
+	realign_sprite()
 
 func play_input_animation(anim, pressed):
 	if player or true:
@@ -79,7 +98,7 @@ func play_input_animation(anim, pressed):
 				character_node.play(anim)
 		elif character_node.animation == anim:
 			character_node.stop()
-			character_node.play("Idle")
+			character_node.play("Default")
 		realign_sprite()
 #Input and Receiver Functions
 
@@ -158,11 +177,20 @@ func recieve_miss(note):
 
 func recieve_player_death():
 	if player:
+		dead = true
 		var character_node : AnimatedSprite = get_node(character_sprite)
 		character_node.stop()
-		character_node.play("Dies")
 		sprite_realignment = false
+		pause_mode = PAUSE_MODE_PROCESS
+		character_node.play("Dies")
 #		z_index = 4000
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and dead:
+		var character_node : AnimatedSprite = get_node(character_sprite)
+		character_node.stop()
+		character_node.play("Death Comfirm")
+		get_tree().call_group("Player Death Recievers", "recieve_player_death_confirm")
 
 func _ready():
 	pass

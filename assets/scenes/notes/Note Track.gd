@@ -269,7 +269,7 @@ func recieve_player_hit(note : Note, hit_error):
 				if note.hold_note:
 					get_node(up_arrow).play_confirm_loop()
 			3:
-				get_node(right_arrow).play_confirm_loop()
+				get_node(right_arrow).play_confirm()
 				if note.hold_note:
 					get_node(right_arrow).play_confirm_loop()
 			

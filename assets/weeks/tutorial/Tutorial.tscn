@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/characters/boyfriend/Boyfriend.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/characters/girlfriend/Girlfriend.tscn" type="PackedScene" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://assets/sounds/intro3.ogg" type="AudioStream" id=24]
 [ext_resource path="res://assets/scenes/Count Down Sprites.tscn" type="PackedScene" id=25]
 [ext_resource path="res://assets/sounds/fnf_loss_sfx.ogg" type="AudioStream" id=26]
+[ext_resource path="res://assets/sounds/gameOverEnd.ogg" type="AudioStream" id=27]
+[ext_resource path="res://assets/sounds/gameOver.ogg" type="AudioStream" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -86,8 +88,12 @@ tracks/3/keys = {
 script = ExtResource( 8 )
 week_name = "Tutorial"
 TOP_TEXT = "Tutorial"
+difficulty = 2
 song_name = "Tutorial"
-chart_file = "res://assets/weeks/tutorial/assets/charts/tutorial-holds.json"
+freeplay_icon = ExtResource( 13 )
+easy_chart = "res://assets/weeks/tutorial/assets/charts/tutorial-easy.json"
+normal_chart = "res://assets/weeks/tutorial/assets/charts/tutorial.json"
+hard_chart = "res://assets/weeks/tutorial/assets/charts/tutorial-hard.json"
 bpm = 100.0
 player_track = NodePath("Camera/Player Track")
 enemy_track = NodePath("Camera/Enemy Track")
@@ -96,6 +102,7 @@ instrumentals = NodePath("Sounds/Music/Instrumentals")
 enemy_vocals = NodePath("Sounds/Music/Instrumentals")
 sounds_path = NodePath("Sounds")
 label_thingy = NodePath("Camera/Label")
+song_data_file = "res://assets/weeks/tutorial/song_data.json"
 
 [node name="stageback" type="Sprite" parent="."]
 position = Vector2( 1.67346, -382.773 )
@@ -105,11 +112,14 @@ texture = ExtResource( 6 )
 position = Vector2( -4.68335, 166.028 )
 texture = ExtResource( 4 )
 
-[node name="Girlfriend" parent="." instance=ExtResource( 2 )]
+[node name="Girlfriend" parent="." groups=[
+"Song Time Recievers",
+] instance=ExtResource( 2 )]
 
 [node name="Boyfriend" parent="." groups=[
 "Player Death Recievers",
 "Player Miss Recievers",
+"Song Time Recievers",
 ] instance=ExtResource( 1 )]
 position = Vector2( 605.811, 0 )
 
@@ -138,10 +148,12 @@ script = ExtResource( 19 )
 position = Vector2( 550, -400 )
 chart_format = 1
 player_track = true
+scroll_speed = 2.4
 
 [node name="Enemy Track" parent="Camera" instance=ExtResource( 10 )]
 position = Vector2( -550, -400 )
 chart_format = 1
+scroll_speed = 2.4
 
 [node name="Label" type="Label" parent="Camera"]
 margin_left = 424.729
@@ -204,10 +216,15 @@ scale = Vector2( 0.780879, 0.780879 )
 
 [node name="Count Down Sprites" parent="Camera" instance=ExtResource( 25 )]
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." groups=[
+"Player Death Recievers",
+]]
+pause_mode = 2
 script = ExtResource( 20 )
 player_miss_sound = NodePath("Player Miss Sound")
 player_death_sound = NodePath("Player Death Sound")
+player_death_music = NodePath("Player Death Music")
+player_death_confirm = NodePath("Player Death Confirm")
 
 [node name="Player Miss Sound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 16 )
@@ -217,7 +234,14 @@ volume_db = -13.765
 stream = ExtResource( 26 )
 volume_db = -4.0
 
+[node name="Player Death Music" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 28 )
+
+[node name="Player Death Confirm" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 27 )
+
 [node name="Music" type="Node2D" parent="Sounds"]
+pause_mode = 1
 
 [node name="Instrumentals" type="AudioStreamPlayer" parent="Sounds/Music"]
 stream = ExtResource( 7 )

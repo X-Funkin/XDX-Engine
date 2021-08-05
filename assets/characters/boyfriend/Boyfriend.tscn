@@ -387,6 +387,16 @@ animations = [ {
 "loop": true,
 "name": "Death Loop",
 "speed": 24.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "Default",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "Bop",
+"speed": 24.0
 } ]
 
 [node name="Boyfriend" type="Node2D" groups=[
@@ -398,9 +408,8 @@ player = true
 
 [node name="BF Srpite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Idle"
-frame = 3
-playing = true
+animation = "Bop"
+frame = 13
 offset = Vector2( 0, -206 )
 
 [node name="Line2D" type="Line2D" parent="."]
