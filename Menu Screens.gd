@@ -26,11 +26,23 @@ func load_menu():
 	fade_in("Up")
 
 # Called when the node enters the scene tree for the first time.
+var started = false
+func start():
+	if !started:
+		started = true
+		$"Current Menu".add_child(start_screen.instance())
+		$"Audio Animations".play("Fade In")
+		$"Background Music".play()
+func _input(event):
+	if event.is_action_pressed("note_left"):
+		start()
 func _ready():
 	$"Transistion Animations".play("Default")
-	$"Current Menu".add_child(start_screen.instance())
-	$"Audio Animations".play("Fade In")
-	$"Background Music".play()
+	
+#	$"Transistion Animations".play("Default")
+#	$"Current Menu".add_child(start_screen.instance())
+#	$"Audio Animations".play("Fade In")
+#	$"Background Music".play()
 	pass # Replace with function body.
 
 func switch_to_start():

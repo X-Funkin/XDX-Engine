@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/music/freakyMenu.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/scenes/Story Mode Menu.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=1]
 resource_name = "Fade In"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background Music:volume_db")
@@ -22,17 +22,17 @@ tracks/0/keys = {
 "values": [ -80.0, 0.0 ]
 }
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
 shader_param/Fade_Color = null
 shader_param/Fade = 1.0
 shader_param/Fade_Width = 0.295
 shader_param/Invert_Fade = 0.0
 
-[sub_resource type="QuadMesh" id=2]
+[sub_resource type="QuadMesh" id=3]
 size = Vector2( 20000, 20000 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "Default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fader:material:shader_param/Fade")
@@ -59,8 +59,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Down Fade In"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fader:material:shader_param/Invert_Fade")
 tracks/0/interp = 1
@@ -86,8 +85,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Down Fade Out"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fader:material:shader_param/Invert_Fade")
 tracks/0/interp = 1
@@ -113,8 +111,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Up Fade In"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fader:material:shader_param/Fade")
 tracks/0/interp = 1
@@ -140,8 +137,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Up Fade Out"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Fader:material:shader_param/Invert_Fade")
 tracks/0/interp = 1
@@ -180,20 +176,20 @@ stream = ExtResource( 5 )
 volume_db = -80.0
 
 [node name="Audio Animations" type="AnimationPlayer" parent="."]
-"anims/Fade In" = SubResource( 8 )
+"anims/Fade In" = SubResource( 1 )
 
 [node name="Current Menu" type="Node2D" parent="."]
 
 [node name="Fader" type="MeshInstance2D" parent="."]
-material = SubResource( 1 )
-mesh = SubResource( 2 )
+material = SubResource( 2 )
+mesh = SubResource( 3 )
 
 [node name="Transistion Animations" type="AnimationPlayer" parent="."]
 playback_speed = 3.0
-anims/Default = SubResource( 7 )
-"anims/Down Fade In" = SubResource( 3 )
-"anims/Down Fade Out" = SubResource( 4 )
-"anims/Up Fade In" = SubResource( 6 )
-"anims/Up Fade Out" = SubResource( 5 )
+anims/Default = SubResource( 4 )
+"anims/Down Fade In" = SubResource( 5 )
+"anims/Down Fade Out" = SubResource( 6 )
+"anims/Up Fade In" = SubResource( 7 )
+"anims/Up Fade Out" = SubResource( 8 )
 
 [connection signal="animation_finished" from="Transistion Animations" to="." method="_on_Transistion_Animations_animation_finished"]

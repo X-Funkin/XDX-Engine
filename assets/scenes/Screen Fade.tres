@@ -1,35 +1,35 @@
 [gd_resource type="VisualShader" load_steps=12 format=2]
 
-[sub_resource type="VisualShaderNodeScalarClamp" id=8]
+[sub_resource type="VisualShaderNodeScalarClamp" id=1]
 
-[sub_resource type="VisualShaderNodeExpression" id=9]
+[sub_resource type="VisualShaderNodeExpression" id=2]
 size = Vector2( 418, 318.5 )
 expression = "output = b*val+1.0-a*(1.0+b);"
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=10]
+[sub_resource type="VisualShaderNodeScalarFunc" id=3]
 function = 28
 
-[sub_resource type="VisualShaderNodeInput" id=11]
+[sub_resource type="VisualShaderNodeInput" id=4]
 input_name = "screen_uv"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=12]
+[sub_resource type="VisualShaderNodeScalarUniform" id=5]
 uniform_name = "Invert_Fade"
 
-[sub_resource type="VisualShaderNodeScalarInterp" id=13]
+[sub_resource type="VisualShaderNodeScalarInterp" id=6]
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=14]
+[sub_resource type="VisualShaderNodeScalarFunc" id=7]
 function = 31
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=15]
+[sub_resource type="VisualShaderNodeScalarUniform" id=8]
 uniform_name = "Fade_Width"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=16]
+[sub_resource type="VisualShaderNodeScalarUniform" id=9]
 uniform_name = "Fade"
 
-[sub_resource type="VisualShaderNodeColorUniform" id=17]
+[sub_resource type="VisualShaderNodeColorUniform" id=10]
 uniform_name = "Fade_Color"
 
-[sub_resource type="VisualShaderNodeVectorDecompose" id=18]
+[sub_resource type="VisualShaderNodeVectorDecompose" id=11]
 
 [resource]
 code = "shader_type canvas_item;
@@ -103,30 +103,30 @@ graph_offset = Vector2( -16.8773, 388.5 )
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2( 2080, 480 )
-nodes/fragment/2/node = SubResource( 11 )
+nodes/fragment/2/node = SubResource( 4 )
 nodes/fragment/2/position = Vector2( 360, 560 )
-nodes/fragment/3/node = SubResource( 15 )
+nodes/fragment/3/node = SubResource( 8 )
 nodes/fragment/3/position = Vector2( 460, 740 )
-nodes/fragment/4/node = SubResource( 16 )
+nodes/fragment/4/node = SubResource( 9 )
 nodes/fragment/4/position = Vector2( 680, 660 )
-nodes/fragment/5/node = SubResource( 17 )
+nodes/fragment/5/node = SubResource( 10 )
 nodes/fragment/5/position = Vector2( 1860, 440 )
-nodes/fragment/6/node = SubResource( 18 )
+nodes/fragment/6/node = SubResource( 11 )
 nodes/fragment/6/position = Vector2( 660, 540 )
-nodes/fragment/17/node = SubResource( 8 )
+nodes/fragment/17/node = SubResource( 1 )
 nodes/fragment/17/position = Vector2( 1460, 560 )
-nodes/fragment/18/node = SubResource( 9 )
+nodes/fragment/18/node = SubResource( 2 )
 nodes/fragment/18/position = Vector2( 920, 580 )
 nodes/fragment/18/size = Vector2( 418, 318.5 )
 nodes/fragment/18/input_ports = "0,0,val;1,0,a;2,0,b;"
 nodes/fragment/18/output_ports = "0,0,output;"
 nodes/fragment/18/expression = "output = b*val+1.0-a*(1.0+b);"
-nodes/fragment/19/node = SubResource( 10 )
+nodes/fragment/19/node = SubResource( 3 )
 nodes/fragment/19/position = Vector2( 680, 720 )
-nodes/fragment/20/node = SubResource( 12 )
+nodes/fragment/20/node = SubResource( 5 )
 nodes/fragment/20/position = Vector2( 1640, 700 )
-nodes/fragment/21/node = SubResource( 13 )
+nodes/fragment/21/node = SubResource( 6 )
 nodes/fragment/21/position = Vector2( 1880, 560 )
-nodes/fragment/22/node = SubResource( 14 )
+nodes/fragment/22/node = SubResource( 7 )
 nodes/fragment/22/position = Vector2( 1640, 620 )
 nodes/fragment/connections = PoolIntArray( 4, 0, 18, 1, 18, 0, 17, 0, 3, 0, 19, 0, 19, 0, 18, 2, 5, 0, 0, 0, 17, 0, 22, 0, 17, 0, 21, 0, 22, 0, 21, 1, 20, 0, 21, 2, 21, 0, 0, 1, 2, 0, 6, 0, 6, 1, 18, 0 )

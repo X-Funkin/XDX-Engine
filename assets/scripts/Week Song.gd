@@ -244,7 +244,7 @@ func _ready():
 	get_node(instrumentals).connect("finished", self, "_on_song_finished")
 	get_node(instrumentals).start()
 	get_node("Camera/Screen Elements/Count Down Sprites").sprite_speed = bpm/60.0
-	get_node(label_thingy_2).text = song_name+" Hard - X.E. Beta 1.0"
+	get_node(label_thingy_2).text = song_name+" Hard - X.E. Alpha 1.0.0"
 #	$Instrumentals.start()
 #	$Camera/AnimationPlayer.play("scroll oscollate")
 	pass # Replace with function body.
