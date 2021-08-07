@@ -1,0 +1,72 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://assets/characters/boyfriend/Lineart Boyfriend.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0006.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0008.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0010.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0007.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0009.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0011.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0013.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0000.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0001.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0002.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0003.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0004.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0005.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0007.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0000.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0005.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0014.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0022.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0006.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0025.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0020.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0002.png" type="Texture" id=23]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0004.png" type="Texture" id=24]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0011.png" type="Texture" id=25]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0012.png" type="Texture" id=26]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0003.png" type="Texture" id=27]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0010.png" type="Texture" id=28]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0019.png" type="Texture" id=29]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF idle dance white0012.png" type="Texture" id=30]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0015.png" type="Texture" id=31]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0001.png" type="Texture" id=32]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0013.png" type="Texture" id=33]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0023.png" type="Texture" id=34]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0016.png" type="Texture" id=35]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0009.png" type="Texture" id=36]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0024.png" type="Texture" id=37]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0021.png" type="Texture" id=38]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0017.png" type="Texture" id=39]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0018.png" type="Texture" id=40]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_lineart_frames/BF HEY!!0008.png" type="Texture" id=41]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Default",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 30 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 32 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 41 ), ExtResource( 36 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 33 ), ExtResource( 18 ), ExtResource( 31 ), ExtResource( 35 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 29 ), ExtResource( 22 ), ExtResource( 38 ), ExtResource( 19 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "HEY!",
+"speed": 24.0
+} ]
+
+[node name="LineFriendBoyArt" type="Node2D"]
+script = ExtResource( 1 )
+character_sprite = NodePath("Lineart BF Sprite")
+
+[node name="Lineart BF Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 9
+playing = true
+offset = Vector2( 0, -206 )

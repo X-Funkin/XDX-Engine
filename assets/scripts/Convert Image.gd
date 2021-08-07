@@ -96,12 +96,15 @@ func export_image_sequence(dir):
 	for sprite in sprite_sheet_data:
 		if "name" in sprite:
 			print("EXPORTING ", sprite["name"])
-			var sprite_image = Image.new()
-			sprite_image.create(sprite["width"],sprite["height"], false, base_image.get_format())
-			sprite_image.lock()
-			for x in range(sprite["width"]):
-				for y in range(sprite["height"]):
-					sprite_image.set_pixel(x,y,base_image.get_pixel(sprite["x"]+x,sprite["y"]+y))
+			var image_rect = Rect2(sprite["x"], sprite["y"], sprite["width"], sprite["height"])
+			var sprite_image = base_image.get_rect(image_rect)
+			
+			
+#			sprite_image.create(sprite["width"],sprite["height"], false, base_image.get_format())
+#			sprite_image.lock()
+#			for x in range(sprite["width"]):
+#				for y in range(sprite["height"]):
+#					sprite_image.set_pixel(x,y,base_image.get_pixel(sprite["x"]+x,sprite["y"]+y))
 			sprite_image.save_png("%s/%s.png"%[dir,sprite["name"]])
 	base_image.unlock()
 	print("EXPORTED")

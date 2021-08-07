@@ -1,0 +1,411 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://assets/weeks/week 1/Bopeebo.gd" type="Script" id=1]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/Daddy Dearest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/weeks/week 1/assets/music/Dadbattle_Voices.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/weeks/week 1/assets/music/Dadbattle_Inst.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/Daddy Dearest Icon.png" type="Texture" id=5]
+[ext_resource path="res://assets/scenes/Story Mode Menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/Screen Fade.tres" type="Shader" id=9]
+[ext_resource path="res://assets/fonts/coolvcrfontlol.tres" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/fonts/coolpixelfontlol.tres" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/scripts/Song Track.gd" type="Script" id=14]
+[ext_resource path="res://assets/scripts/Camera.gd" type="Script" id=15]
+[ext_resource path="res://assets/scripts/Sounds.gd" type="Script" id=16]
+[ext_resource path="res://assets/scripts/Follow Point.gd" type="Script" id=17]
+[ext_resource path="res://assets/sounds/introGo.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/sounds/intro2.ogg" type="AudioStream" id=20]
+[ext_resource path="res://assets/sounds/intro3.ogg" type="AudioStream" id=21]
+[ext_resource path="res://assets/sounds/intro1.ogg" type="AudioStream" id=27]
+[ext_resource path="res://assets/sounds/missnote1.ogg" type="AudioStream" id=31]
+[ext_resource path="res://assets/characters/boyfriend/Boyfriend Losing Icon.png" type="Texture" id=37]
+[ext_resource path="res://assets/characters/boyfriend/Boyfriend Icon.png" type="Texture" id=39]
+[ext_resource path="res://assets/sounds/gameOverEnd.ogg" type="AudioStream" id=41]
+[ext_resource path="res://assets/sounds/fnf_loss_sfx.ogg" type="AudioStream" id=42]
+[ext_resource path="res://assets/weeks/tutorial/ref screenshot.png" type="Texture" id=43]
+[ext_resource path="res://assets/sounds/gameOver.ogg" type="AudioStream" id=44]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/stagefront.png" type="Texture" id=45]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/stage_light.png" type="Texture" id=46]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/stagecurtains.png" type="Texture" id=48]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/stageback.png" type="Texture" id=49]
+[ext_resource path="res://assets/scenes/Judment Particles.tscn" type="PackedScene" id=50]
+[ext_resource path="res://assets/scenes/Combo Particles.tscn" type="PackedScene" id=51]
+[ext_resource path="res://assets/characters/girlfriend/Girlfriend.tscn" type="PackedScene" id=52]
+[ext_resource path="res://assets/characters/boyfriend/Boyfriend.tscn" type="PackedScene" id=53]
+[ext_resource path="res://assets/scenes/Count Down Sprites.tscn" type="PackedScene" id=54]
+[ext_resource path="res://assets/scenes/Health Bar.tscn" type="PackedScene" id=55]
+[ext_resource path="res://assets/scenes/notes/Note Track.tscn" type="PackedScene" id=56]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 13 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade In"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Screen Elements/Text UI/Screen Fade-In:material:shader_param/Fade")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Screen Elements/Player Track:scroll_speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 2, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Screen Elements/Enemy Track:scroll_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 2, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 23
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 9 )
+shader_param/Fade_Color = null
+shader_param/Fade = 0.0
+shader_param/Fade_Width = 0.406
+shader_param/Invert_Fade = null
+
+[node name="Bopeebo" type="Node2D" groups=[
+"Enemy Hit Recievers",
+"Player Death Recievers",
+"Player Hit Recievers",
+"Player Input Recievers",
+"Player Miss Recievers",
+"Song Time Recievers",
+]]
+script = ExtResource( 1 )
+week_name = "Week 1"
+TOP_TEXT = "TOP TEXT"
+difficulty = 2
+song_name = "Dad Battle"
+freeplay_icon = ExtResource( 5 )
+easy_chart = "res://assets/weeks/week 1/assets/charts/dadbattle-easy.json"
+normal_chart = "res://assets/weeks/week 1/assets/charts/dadbattle.json"
+hard_chart = "res://assets/weeks/week 1/assets/charts/dadbattle-hard.json"
+bpm = 180.0
+player_track = NodePath("Camera/Screen Elements/Player Track")
+enemy_track = NodePath("Camera/Screen Elements/Enemy Track")
+player_vocals = NodePath("Sounds/Music/Instrumentals/Player Vocals")
+instrumentals = NodePath("Sounds/Music/Instrumentals")
+enemy_vocals = NodePath("Sounds/Music/Instrumentals/Player Vocals")
+sounds_path = NodePath("Sounds")
+label_thingy = NodePath("Camera/Screen Elements/Label")
+label_thingy_2 = NodePath("Camera/Screen Elements/Text UI/Song Label")
+target_scene = ExtResource( 6 )
+song_data_file = "res://assets/weeks/week 1/song_data.json"
+
+[node name="stageback" type="Sprite" parent="."]
+position = Vector2( -40.2127, -267.617 )
+texture = ExtResource( 49 )
+
+[node name="stagefront" type="Sprite" parent="."]
+position = Vector2( 40.8921, 154.774 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 45 )
+
+[node name="Girlfriend" parent="." groups=[
+"Song Time Recievers",
+] instance=ExtResource( 52 )]
+
+[node name="Daddy Dearest" parent="." groups=[
+"Enemy Input Recievers",
+"Song Time Recievers",
+] instance=ExtResource( 2 )]
+position = Vector2( -417.085, 60.5446 )
+bop_on_beat = 2
+
+[node name="Boyfriend" parent="." groups=[
+"Player Death Recievers",
+"Player Miss Recievers",
+"Song Time Recievers",
+] instance=ExtResource( 53 )]
+position = Vector2( 236.088, 73.0537 )
+bop_on_beat = 2
+
+[node name="stage_light" type="Sprite" parent="."]
+position = Vector2( -889.176, -782.665 )
+rotation = -0.0777815
+texture = ExtResource( 46 )
+
+[node name="stage_light2" type="Sprite" parent="."]
+position = Vector2( 521.396, -773.49 )
+rotation = 0.331466
+scale = Vector2( -1.12, 1 )
+texture = ExtResource( 46 )
+
+[node name="stagecurtains" type="Sprite" parent="."]
+position = Vector2( -201.827, -527.67 )
+scale = Vector2( 0.937883, 0.937883 )
+texture = ExtResource( 48 )
+
+[node name="Position One" type="Position2D" parent="."]
+position = Vector2( 70.0379, -254.075 )
+
+[node name="Position Two" type="Position2D" parent="."]
+position = Vector2( -134.641, -431.14 )
+
+[node name="Follow Point" type="Position2D" parent="." groups=[
+"Song Time Recievers",
+]]
+position = Vector2( 70.0379, -254.075 )
+scale = Vector2( 0.707, 0.707 )
+script = ExtResource( 17 )
+position_one = NodePath("../Position One")
+zoom_one = 0.707
+position_two = NodePath("../Position Two")
+zoom_two = 0.823
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 70.0379, -254.075 )
+scale = Vector2( 0.707, 0.707 )
+current = true
+zoom = Vector2( 0.707, 0.707 )
+script = ExtResource( 15 )
+following_point = true
+following_speed = 7.0
+follow_point = NodePath("../Follow Point")
+
+[node name="Screen Elements" type="Node2D" parent="Camera"]
+
+[node name="Player Track" parent="Camera/Screen Elements" instance=ExtResource( 56 )]
+position = Vector2( 407.943, -388.992 )
+chart_format = 1
+player_track = true
+scroll_speed = 2.0
+
+[node name="Enemy Track" parent="Camera/Screen Elements" instance=ExtResource( 56 )]
+position = Vector2( -552.975, -385.124 )
+chart_format = 1
+scroll_speed = 2.0
+
+[node name="Label" type="Label" parent="Camera/Screen Elements"]
+margin_left = 424.729
+margin_top = -36.5263
+margin_right = 647.729
+margin_bottom = 40.4737
+custom_fonts/font = SubResource( 1 )
+text = "yoyoyo test
+yeah"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="beat" type="Label" parent="Camera/Screen Elements"]
+visible = false
+margin_left = -168.944
+margin_top = -145.843
+margin_right = 54.0562
+margin_bottom = 11.157
+custom_fonts/font = SubResource( 1 )
+text = "beat
+beat
+beat
+beat"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health Bar" parent="Camera/Screen Elements" instance=ExtResource( 55 )]
+position = Vector2( -1.29276, 445.603 )
+scale = Vector2( 1.5, 1.5 )
+player_losing_icon = ExtResource( 37 )
+player_icon = ExtResource( 39 )
+player_winning_icon = ExtResource( 39 )
+enemy_losing_icon = ExtResource( 5 )
+enemy_icon = ExtResource( 5 )
+enemy_winning_icon = ExtResource( 5 )
+health_icons_scale = 1.0
+
+[node name="Judgment Particles" parent="Camera/Screen Elements" groups=[
+"Player Hit Recievers",
+"Player Input Recievers",
+] instance=ExtResource( 50 )]
+
+[node name="Enemy Judgment Particles" parent="Camera/Screen Elements" groups=[
+"Enemy Input Recievers",
+"Player Input Recievers",
+] instance=ExtResource( 50 )]
+position = Vector2( -566.764, -58.8627 )
+
+[node name="Combo Particles" parent="Camera/Screen Elements" groups=[
+"Player Hit Recievers",
+] instance=ExtResource( 51 )]
+position = Vector2( 0, 116 )
+scale = Vector2( 0.780879, 0.780879 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/Screen Elements"]
+"anims/Fade In" = SubResource( 2 )
+"anims/scroll oscollate" = SubResource( 3 )
+
+[node name="Count Down Sprites" parent="Camera/Screen Elements" instance=ExtResource( 54 )]
+
+[node name="Text UI" type="Control" parent="Camera/Screen Elements"]
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Song Label" type="Label" parent="Camera/Screen Elements/Text UI"]
+anchor_left = 0.006
+anchor_top = 0.8
+anchor_right = 0.1
+anchor_bottom = 0.973
+margin_right = 185.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 4 )
+text = "Tutorial Hard - X.E. Beta 1.0"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score Label" type="Label" parent="Camera/Screen Elements/Text UI"]
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.979
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 5 )
+text = "NPS: 0 | Score:0 (0) | Combo Breaks:0 | Accuracy:0 % | N/A"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screen Fade-In" type="ColorRect" parent="Camera/Screen Elements/Text UI"]
+visible = false
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5000.0
+margin_top = -5000.0
+margin_right = 3080.0
+margin_bottom = 3920.0
+rect_min_size = Vector2( 10000, 10000 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ref screenshot" type="Sprite" parent="Camera/Screen Elements"]
+visible = false
+modulate = Color( 1, 1, 1, 0.619608 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 43 )
+
+[node name="Sounds" type="Node2D" parent="." groups=[
+"Player Death Recievers",
+]]
+pause_mode = 2
+script = ExtResource( 16 )
+player_miss_sound = NodePath("Player Miss Sound")
+player_death_sound = NodePath("Player Death Sound")
+player_death_music = NodePath("Player Death Music")
+player_death_confirm = NodePath("Player Death Confirm")
+
+[node name="Player Miss Sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 31 )
+volume_db = -13.765
+
+[node name="Player Death Sound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 42 )
+volume_db = -4.0
+
+[node name="Player Death Music" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 44 )
+
+[node name="Player Death Confirm" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 41 )
+
+[node name="Music" type="Node2D" parent="Sounds"]
+pause_mode = 1
+
+[node name="Instrumentals" type="AudioStreamPlayer" parent="Sounds/Music"]
+stream = ExtResource( 4 )
+bus = "Player Vocals"
+script = ExtResource( 14 )
+offset_ms = -15.5
+bpm = 180.0
+
+[node name="Count Down Timer" type="Timer" parent="Sounds/Music/Instrumentals"]
+one_shot = true
+
+[node name="Player Vocals" type="AudioStreamPlayer" parent="Sounds/Music/Instrumentals"]
+stream = ExtResource( 3 )
+
+[node name="Enemy Vocals" type="AudioStreamPlayer" parent="Sounds/Music/Instrumentals"]
+
+[node name="Count Down Sounds" type="Node2D" parent="Sounds"]
+
+[node name="3" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
+stream = ExtResource( 21 )
+bus = "SFX"
+
+[node name="2" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
+stream = ExtResource( 20 )
+bus = "SFX"
+
+[node name="1" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
+stream = ExtResource( 27 )
+bus = "SFX"
+
+[node name="Go!" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
+stream = ExtResource( 19 )
+bus = "SFX"
+
+[connection signal="timeout" from="Sounds/Music/Instrumentals/Count Down Timer" to="Sounds/Music/Instrumentals" method="_on_Count_Down_Timer_timeout"]

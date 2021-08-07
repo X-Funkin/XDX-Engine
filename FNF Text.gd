@@ -84,8 +84,10 @@ var yeahready = false
 
 func update_rect():
 #	rect_position = $Control/CenterContainer/VBoxContainer.rect_position/2.0
-	rect_size.y = get_node(textvbox).rect_size.y/2.0
-	rect_size.x = get_node(textvbox).rect_size.x
+	rect_min_size.y = get_node(textvbox).rect_size.y/2.0
+	rect_min_size.x = get_node(textvbox).rect_size.x
+	rect_size = rect_min_size
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	yeahready = true

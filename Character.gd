@@ -13,6 +13,8 @@ export(float, -1.0, 1.0) var custom_vertical_alignment = 0.0
 export(float, -1.0, 1.0) var custom_horizontal_alignment = 0.0
 export(bool) var player = false
 export(bool) var sprite_realignment = true
+export(int, 1, 299792458) var bop_on_beat = 1
+export(int) var bop_beat_offset = 0
 var dead = false
 
 # Called when the node enters the scene tree for the first time.
@@ -21,10 +23,14 @@ var yeahready = false #this stops the engine form going "OOO THE CHARACTER SPRIT
 
 #Setter/Getters
 func set_character_sprite(n_sprite):
-	if not is_inside_tree(): yield(self, 'ready')
 	character_sprite = n_sprite
-	get_node(n_sprite).connect("frame_changed", self, "_on_sprite_frame_change")
-	get_node(n_sprite).connect("animation_finished", self, "_on_sprite_animation_finished")
+	if not is_inside_tree(): yield(self, 'ready')
+	print("okay why thooo")
+	print(n_sprite)
+	print("yeah let's treeee")
+	print_tree_pretty()
+	get_node(character_sprite).connect("frame_changed", self, "_on_sprite_frame_change")
+	get_node(character_sprite).connect("animation_finished", self, "_on_sprite_animation_finished")
 	realign_sprite()
 
 func get_character_sprite():
@@ -61,6 +67,11 @@ func _on_sprite_frame_change():
 	realign_sprite()
 	pass
 
+func play_animation(anim):
+	var character_node : AnimatedSprite = get_node(character_sprite)
+	character_node.stop()
+	character_node.play(anim)
+
 func _on_sprite_animation_finished():
 	var character_node : AnimatedSprite = get_node(character_sprite)
 	var anim = character_node.animation
@@ -79,15 +90,16 @@ func _on_sprite_animation_finished():
 
 func recieve_beat(beat_n):
 #	print("BF GOT THAT BEAT THOOO ", beat_n)
-	var character_node : AnimatedSprite = get_node(character_sprite)
-	var anim = character_node.animation
-#	print("ANIM ", anim)
-	if anim == "Default" or anim == "Bop":
-#		print("IT PASSES THE TEST")
-		character_node.stop()
-		character_node.frame = 0
-		character_node.play("Bop")
-	realign_sprite()
+	if !(beat_n+bop_beat_offset)%bop_on_beat:
+		var character_node : AnimatedSprite = get_node(character_sprite)
+		var anim = character_node.animation
+	#	print("ANIM ", anim)
+		if anim == "Default" or anim == "Bop":
+	#		print("IT PASSES THE TEST")
+			character_node.stop()
+			character_node.frame = 0
+			character_node.play("Bop")
+		realign_sprite()
 
 func play_input_animation(anim, pressed):
 	if player or true:

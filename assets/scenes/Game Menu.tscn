@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://assets/images/menuMaxContrast.png" type="Texture" id=1]
 [ext_resource path="res://assets/scenes/Game Menu.gd" type="Script" id=2]
@@ -55,6 +55,7 @@
 [ext_resource path="res://assets/sounds/cancelMenu.ogg" type="AudioStream" id=53]
 [ext_resource path="res://assets/sounds/confirmMenu.ogg" type="AudioStream" id=54]
 [ext_resource path="res://assets/sounds/scrollMenu.ogg" type="AudioStream" id=55]
+[ext_resource path="res://assets/scenes/Screen Fade.tres" type="Shader" id=56]
 
 [sub_resource type="VisualShaderNodeVectorScalarMix" id=1]
 
@@ -427,176 +428,15 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="VisualShaderNodeScalarConstant" id=37]
-
-[sub_resource type="VisualShaderNodeScalarConstant" id=38]
-constant = 1.0
-
-[sub_resource type="VisualShaderNodeScalarConstant" id=39]
-constant = 1.0
-
-[sub_resource type="VisualShaderNodeScalarOp" id=40]
-default_input_values = [ 0, 0.0, 1, -1.0 ]
-operator = 2
-
-[sub_resource type="VisualShaderNodeScalarOp" id=41]
-default_input_values = [ 0, 0.0, 1, -1.0 ]
-
-[sub_resource type="VisualShaderNodeScalarOp" id=42]
-default_input_values = [ 0, 0.0, 1, -1.0 ]
-operator = 2
-
-[sub_resource type="VisualShaderNodeCompare" id=43]
-default_input_values = [ 0, 0.0, 1, 1.0, 2, 1e-05 ]
-
-[sub_resource type="VisualShaderNodeScalarClamp" id=44]
-
-[sub_resource type="VisualShaderNodeExpression" id=45]
-size = Vector2( 418, 318.5 )
-expression = "output = b*val+1.0-a*(1.0+b);"
-
-[sub_resource type="VisualShaderNodeScalarFunc" id=46]
-function = 28
-
-[sub_resource type="VisualShaderNodeInput" id=47]
-input_name = "screen_uv"
-
-[sub_resource type="VisualShaderNodeScalarUniform" id=48]
-uniform_name = "Fade_Width"
-
-[sub_resource type="VisualShaderNodeScalarUniform" id=49]
-uniform_name = "Fade"
-
-[sub_resource type="VisualShaderNodeColorUniform" id=50]
-uniform_name = "Fade_Color"
-
-[sub_resource type="VisualShaderNodeVectorDecompose" id=51]
-
-[sub_resource type="VisualShaderNodeScalarOp" id=52]
-operator = 1
-
-[sub_resource type="VisualShaderNodeExpression" id=53]
-size = Vector2( 418, 318.5 )
-expression = "output = (val-a)*(c-d)/(a-b)+c;"
-
-[sub_resource type="VisualShaderNodeScalarOp" id=54]
-operator = 3
-
-[sub_resource type="VisualShader" id=55]
-code = "shader_type canvas_item;
-uniform vec4 Fade_Color : hint_color;
-uniform float Fade;
-uniform float Fade_Width;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// ColorUniform:5
-	vec3 n_out5p0 = Fade_Color.rgb;
-	float n_out5p1 = Fade_Color.a;
-
-// Input:2
-	vec3 n_out2p0 = vec3(SCREEN_UV, 0.0);
-
-// VectorDecompose:6
-	float n_out6p0 = n_out2p0.x;
-	float n_out6p1 = n_out2p0.y;
-	float n_out6p2 = n_out2p0.z;
-
-// ScalarUniform:4
-	float n_out4p0 = Fade;
-
-// ScalarUniform:3
-	float n_out3p0 = Fade_Width;
-
-// ScalarFunc:19
-	float n_out19p0 = 1.0 / (n_out3p0);
-
-// Expression:18
-	float n_out18p0;
-	n_out18p0 = 0.0;
-	{
-		n_out18p0 = n_out19p0*n_out6p1+1.0-n_out4p0*(1.0+n_out19p0);
-	}
-
-// ScalarClamp:17
-	float n_in17p1 = 0.00000;
-	float n_in17p2 = 1.00000;
-	float n_out17p0 = clamp(n_out18p0, n_in17p1, n_in17p2);
-
-// Output:0
-	COLOR.rgb = n_out5p0;
-	COLOR.a = n_out17p0;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( 528.319, 98.1151 )
-mode = 1
-flags/light_only = false
-nodes/fragment/0/position = Vector2( 1740, 320 )
-nodes/fragment/2/node = SubResource( 47 )
-nodes/fragment/2/position = Vector2( -100, 800 )
-nodes/fragment/3/node = SubResource( 48 )
-nodes/fragment/3/position = Vector2( 260, 640 )
-nodes/fragment/4/node = SubResource( 49 )
-nodes/fragment/4/position = Vector2( 500, 580 )
-nodes/fragment/5/node = SubResource( 50 )
-nodes/fragment/5/position = Vector2( 1500, 200 )
-nodes/fragment/6/node = SubResource( 51 )
-nodes/fragment/6/position = Vector2( 200, 760 )
-nodes/fragment/7/node = SubResource( 52 )
-nodes/fragment/7/position = Vector2( 620, 0 )
-nodes/fragment/8/node = SubResource( 53 )
-nodes/fragment/8/position = Vector2( 820, -40 )
-nodes/fragment/8/size = Vector2( 418, 318.5 )
-nodes/fragment/8/input_ports = "0,0,val;1,0,a;2,0,b;3,0,c;4,0,d;5,1,input5;"
-nodes/fragment/8/output_ports = "0,0,output;"
-nodes/fragment/8/expression = "output = (val-a)*(c-d)/(a-b)+c;"
-nodes/fragment/9/node = SubResource( 54 )
-nodes/fragment/9/position = Vector2( 340, 40 )
-nodes/fragment/10/node = SubResource( 37 )
-nodes/fragment/10/position = Vector2( 40, 380 )
-nodes/fragment/11/node = SubResource( 38 )
-nodes/fragment/11/position = Vector2( 40, 440 )
-nodes/fragment/12/node = SubResource( 39 )
-nodes/fragment/12/position = Vector2( 40, 520 )
-nodes/fragment/13/node = SubResource( 40 )
-nodes/fragment/13/position = Vector2( 260, 140 )
-nodes/fragment/14/node = SubResource( 41 )
-nodes/fragment/14/position = Vector2( 340, 420 )
-nodes/fragment/15/node = SubResource( 42 )
-nodes/fragment/15/position = Vector2( 480, 180 )
-nodes/fragment/16/node = SubResource( 43 )
-nodes/fragment/16/position = Vector2( 940, -120 )
-nodes/fragment/17/node = SubResource( 44 )
-nodes/fragment/17/position = Vector2( 1440, 380 )
-nodes/fragment/18/node = SubResource( 45 )
-nodes/fragment/18/position = Vector2( 780, 540 )
-nodes/fragment/18/size = Vector2( 418, 318.5 )
-nodes/fragment/18/input_ports = "0,0,val;1,0,a;2,0,b;"
-nodes/fragment/18/output_ports = "0,0,output;"
-nodes/fragment/18/expression = "output = b*val+1.0-a*(1.0+b);"
-nodes/fragment/19/node = SubResource( 46 )
-nodes/fragment/19/position = Vector2( 500, 640 )
-nodes/fragment/connections = PoolIntArray( 2, 0, 6, 0, 6, 1, 9, 0, 3, 0, 9, 1, 4, 0, 8, 0, 10, 0, 8, 1, 11, 0, 8, 2, 3, 0, 13, 0, 12, 0, 14, 1, 3, 0, 14, 0, 14, 0, 8, 4, 6, 1, 7, 0, 8, 0, 7, 1, 14, 0, 15, 0, 15, 0, 8, 3, 17, 0, 16, 0, 6, 1, 18, 0, 4, 0, 18, 1, 18, 0, 17, 0, 3, 0, 19, 0, 19, 0, 18, 2, 17, 0, 0, 1, 5, 0, 0, 0 )
-
-[sub_resource type="ShaderMaterial" id=56]
-shader = SubResource( 55 )
-shader_param/Fade_Color = null
+[sub_resource type="ShaderMaterial" id=37]
+resource_local_to_scene = true
+shader = ExtResource( 56 )
+shader_param/Fade_Color = Color( 0, 0, 0, 1 )
 shader_param/Fade = 0.0
-shader_param/Fade_Width = 0.429
+shader_param/Fade_Width = 0.23
+shader_param/Invert_Fade = 0.0
 
-[sub_resource type="QuadMesh" id=57]
+[sub_resource type="QuadMesh" id=38]
 size = Vector2( 4000, 4000 )
 
 [node name="Game Menu" type="Node2D"]
@@ -744,8 +584,8 @@ stream = ExtResource( 53 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 visible = false
-material = SubResource( 56 )
-mesh = SubResource( 57 )
+material = SubResource( 37 )
+mesh = SubResource( 38 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

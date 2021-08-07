@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Fresh_Voices.ogg-67fd753edbc386ac8d30091f6912510e.oggstr"
+
+[deps]
+
+source_file="res://assets/weeks/week 1/assets/music/Fresh_Voices.ogg"
+dest_files=[ "res://.import/Fresh_Voices.ogg-67fd753edbc386ac8d30091f6912510e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

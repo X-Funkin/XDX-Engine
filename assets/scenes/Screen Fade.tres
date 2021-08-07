@@ -1,0 +1,132 @@
+[gd_resource type="VisualShader" load_steps=12 format=2]
+
+[sub_resource type="VisualShaderNodeScalarClamp" id=8]
+
+[sub_resource type="VisualShaderNodeExpression" id=9]
+size = Vector2( 418, 318.5 )
+expression = "output = b*val+1.0-a*(1.0+b);"
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=10]
+function = 28
+
+[sub_resource type="VisualShaderNodeInput" id=11]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=12]
+uniform_name = "Invert_Fade"
+
+[sub_resource type="VisualShaderNodeScalarInterp" id=13]
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=14]
+function = 31
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=15]
+uniform_name = "Fade_Width"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=16]
+uniform_name = "Fade"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=17]
+uniform_name = "Fade_Color"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=18]
+
+[resource]
+code = "shader_type canvas_item;
+uniform vec4 Fade_Color : hint_color;
+uniform float Fade;
+uniform float Fade_Width;
+uniform float Invert_Fade;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:5
+	vec3 n_out5p0 = Fade_Color.rgb;
+	float n_out5p1 = Fade_Color.a;
+
+// Input:2
+	vec3 n_out2p0 = vec3(SCREEN_UV, 0.0);
+
+// VectorDecompose:6
+	float n_out6p0 = n_out2p0.x;
+	float n_out6p1 = n_out2p0.y;
+	float n_out6p2 = n_out2p0.z;
+
+// ScalarUniform:4
+	float n_out4p0 = Fade;
+
+// ScalarUniform:3
+	float n_out3p0 = Fade_Width;
+
+// ScalarFunc:19
+	float n_out19p0 = 1.0 / (n_out3p0);
+
+// Expression:18
+	float n_out18p0;
+	n_out18p0 = 0.0;
+	{
+		n_out18p0 = n_out19p0*n_out6p1+1.0-n_out4p0*(1.0+n_out19p0);
+	}
+
+// ScalarClamp:17
+	float n_in17p1 = 0.00000;
+	float n_in17p2 = 1.00000;
+	float n_out17p0 = clamp(n_out18p0, n_in17p1, n_in17p2);
+
+// ScalarFunc:22
+	float n_out22p0 = 1.0 - n_out17p0;
+
+// ScalarUniform:20
+	float n_out20p0 = Invert_Fade;
+
+// ScalarMix:21
+	float n_out21p0 = mix(n_out17p0, n_out22p0, n_out20p0);
+
+// Output:0
+	COLOR.rgb = n_out5p0;
+	COLOR.a = n_out21p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -16.8773, 388.5 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 2080, 480 )
+nodes/fragment/2/node = SubResource( 11 )
+nodes/fragment/2/position = Vector2( 360, 560 )
+nodes/fragment/3/node = SubResource( 15 )
+nodes/fragment/3/position = Vector2( 460, 740 )
+nodes/fragment/4/node = SubResource( 16 )
+nodes/fragment/4/position = Vector2( 680, 660 )
+nodes/fragment/5/node = SubResource( 17 )
+nodes/fragment/5/position = Vector2( 1860, 440 )
+nodes/fragment/6/node = SubResource( 18 )
+nodes/fragment/6/position = Vector2( 660, 540 )
+nodes/fragment/17/node = SubResource( 8 )
+nodes/fragment/17/position = Vector2( 1460, 560 )
+nodes/fragment/18/node = SubResource( 9 )
+nodes/fragment/18/position = Vector2( 920, 580 )
+nodes/fragment/18/size = Vector2( 418, 318.5 )
+nodes/fragment/18/input_ports = "0,0,val;1,0,a;2,0,b;"
+nodes/fragment/18/output_ports = "0,0,output;"
+nodes/fragment/18/expression = "output = b*val+1.0-a*(1.0+b);"
+nodes/fragment/19/node = SubResource( 10 )
+nodes/fragment/19/position = Vector2( 680, 720 )
+nodes/fragment/20/node = SubResource( 12 )
+nodes/fragment/20/position = Vector2( 1640, 700 )
+nodes/fragment/21/node = SubResource( 13 )
+nodes/fragment/21/position = Vector2( 1880, 560 )
+nodes/fragment/22/node = SubResource( 14 )
+nodes/fragment/22/position = Vector2( 1640, 620 )
+nodes/fragment/connections = PoolIntArray( 4, 0, 18, 1, 18, 0, 17, 0, 3, 0, 19, 0, 19, 0, 18, 2, 5, 0, 0, 0, 17, 0, 22, 0, 17, 0, 21, 0, 22, 0, 21, 1, 20, 0, 21, 2, 21, 0, 0, 1, 2, 0, 6, 0, 6, 1, 18, 0 )

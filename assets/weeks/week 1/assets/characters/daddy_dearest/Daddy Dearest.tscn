@@ -1,0 +1,95 @@
+[gd_scene load_steps=48 format=2]
+
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/Daddy Dearest.gd" type="Script" id=1]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0007.png" type="Texture" id=2]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note DOWN0003.png" type="Texture" id=3]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note LEFT0000.png" type="Texture" id=4]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0012.png" type="Texture" id=5]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0014.png" type="Texture" id=6]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0016.png" type="Texture" id=7]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0017.png" type="Texture" id=8]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0018.png" type="Texture" id=9]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note UP0002.png" type="Texture" id=10]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note UP0003.png" type="Texture" id=11]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0010.png" type="Texture" id=12]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0009.png" type="Texture" id=13]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0004.png" type="Texture" id=14]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0011.png" type="Texture" id=15]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note DOWN0002.png" type="Texture" id=16]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note DOWN0005.png" type="Texture" id=17]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0002.png" type="Texture" id=18]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0004.png" type="Texture" id=19]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0007.png" type="Texture" id=20]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note DOWN0006.png" type="Texture" id=21]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0005.png" type="Texture" id=22]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0000.png" type="Texture" id=23]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0002.png" type="Texture" id=24]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0008.png" type="Texture" id=25]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0006.png" type="Texture" id=26]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0008.png" type="Texture" id=27]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0006.png" type="Texture" id=28]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note DOWN0001.png" type="Texture" id=29]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0001.png" type="Texture" id=30]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0011.png" type="Texture" id=31]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note UP0000.png" type="Texture" id=32]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note DOWN0000.png" type="Texture" id=33]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0000.png" type="Texture" id=34]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0001.png" type="Texture" id=35]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0003.png" type="Texture" id=36]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0010.png" type="Texture" id=37]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0013.png" type="Texture" id=38]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0015.png" type="Texture" id=39]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note UP0001.png" type="Texture" id=40]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note UP0004.png" type="Texture" id=41]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0003.png" type="Texture" id=42]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0012.png" type="Texture" id=43]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad idle dance0005.png" type="Texture" id=44]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note DOWN0004.png" type="Texture" id=45]
+[ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/daddy_dearest_frames/Dad Sing Note RIGHT0009.png" type="Texture" id=46]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 24 ), ExtResource( 42 ), ExtResource( 14 ), ExtResource( 44 ), ExtResource( 28 ), ExtResource( 2 ), ExtResource( 25 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 43 ) ],
+"loop": false,
+"name": "Bop",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "Left",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 30 ), ExtResource( 18 ), ExtResource( 36 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 20 ), ExtResource( 27 ), ExtResource( 46 ), ExtResource( 37 ), ExtResource( 31 ), ExtResource( 5 ), ExtResource( 38 ), ExtResource( 6 ), ExtResource( 39 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Right",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 24 ), ExtResource( 42 ), ExtResource( 14 ), ExtResource( 44 ), ExtResource( 28 ), ExtResource( 2 ), ExtResource( 25 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 43 ) ],
+"loop": false,
+"name": "Default",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 40 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 41 ) ],
+"loop": true,
+"name": "Up",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 29 ), ExtResource( 16 ), ExtResource( 3 ), ExtResource( 45 ), ExtResource( 17 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Down",
+"speed": 24.0
+} ]
+
+[node name="Daddy Dearest" type="Node2D"]
+script = ExtResource( 1 )
+character_sprite = NodePath("Daddy Dearest Sprite")
+
+[node name="Daddy Dearest Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Default"
+offset = Vector2( 0, -383.5 )

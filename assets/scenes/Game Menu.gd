@@ -53,7 +53,12 @@ func set_display_colors(n_int):
 func get_display_colors():
 	return display_colors
 
+
 # Called when the node enters the scene tree for the first time.
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().call_group("Menu Switchers", "switch_to_start")
+
 func _ready():
 	yeahready = true
 	set_display_colors(display_colors)
@@ -89,7 +94,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_Timer_timeout():
 	print("ITME OUT")
-	get_tree().change_scene("res://assets/weeks/tutorial/Tutorial.tscn")
+#	get_tree().change_scene("res://assets/weeks/tutorial/Week Screen.tscn")
+	get_tree().call_group("Menu Switchers", "switch_to_story")
+#	get_tree().change_scene("res://assets/weeks/tutorial/Tutorial.tscn")
 	pass # Replace with function body.
 
 

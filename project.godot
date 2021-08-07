@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Character.gd"
 }, {
+"base": "Character",
+"class": "DaddyDearest",
+"language": "GDScript",
+"path": "res://assets/weeks/week 1/assets/characters/daddy_dearest/Daddy Dearest.gd"
+}, {
 "base": "Arrow",
 "class": "DownArrow",
 "language": "GDScript",
@@ -95,6 +100,11 @@ _global_script_classes=[ {
 "path": "res://assets/scenes/notes/Left Note Lane.gd"
 }, {
 "base": "Node2D",
+"class": "MenuScreens",
+"language": "GDScript",
+"path": "res://Menu Screens.gd"
+}, {
+"base": "Node2D",
 "class": "Note",
 "language": "GDScript",
 "path": "res://Note.gd"
@@ -147,13 +157,14 @@ _global_script_classes=[ {
 "base": "GameWeek",
 "class": "WeekSong",
 "language": "GDScript",
-"path": "res://assets/weeks/tutorial/Tutorial.gd"
+"path": "res://assets/scripts/Week Song.gd"
 } ]
 _global_script_class_icons={
 "Arrow": "",
 "ArrowTrack": "",
 "Boyfriend": "res://assets/characters/boyfriend/Boyfriend Icon.png",
 "Character": "",
+"DaddyDearest": "res://assets/weeks/week 1/assets/characters/daddy_dearest/Daddy Dearest Icon.png",
 "DownArrow": "res://assets/images/NOTE_assets/arrowDOWN0000.png",
 "DownHoldNote": "",
 "DownNote": "res://assets/images/NOTE_assets/blue0000.png",
@@ -167,6 +178,7 @@ _global_script_class_icons={
 "LeftHoldNote": "",
 "LeftNote": "res://assets/images/NOTE_assets/purple0000.png",
 "LeftNoteLane": "",
+"MenuScreens": "",
 "Note": "",
 "NoteLane": "",
 "RightArrow": "res://assets/images/NOTE_assets/arrowRIGHT0000.png",
@@ -183,6 +195,7 @@ _global_script_class_icons={
 [application]
 
 config/name="XDX Engine"
+run/main_scene="res://assets/scenes/Menu Screens.tscn"
 config/icon="res://icon.png"
 
 [display]

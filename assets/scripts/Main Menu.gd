@@ -11,11 +11,17 @@ extends Node2D
 func start():
 	$AnimationPlayer.play("fade in")
 	$"Opening Text/AnimationPlayer".play("opening text lol")
-	$AudioStreamPlayer.play()
+#	$AudioStreamPlayer.play()
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		start()
+		get_tree().call_group("Menu Switchers", "switch_to_main")
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+#		start()
+#		get_tree().change_scene("res://assets/scenes/Game Menu.tscn")
 func _ready():
+	$Camera2D.current = true
+	start()
 	pass
 #	$AnimationPlayer.play("fade in")
 #	$"Opening Text/AnimationPlayer".play("opening text lol")

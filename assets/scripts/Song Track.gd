@@ -67,7 +67,10 @@ func _on_Count_Down_Timer_timeout():
 	count_down -= 1
 	if count_down >= 0:
 		$"Count Down Timer".start(60.0/bpm)
+		get_tree().call_group(song_time_group, "recieve_beat", -count_down)
 	else:
 		song_started = true
 		play()
+		$"Player Vocals".play()
+		$"Enemy Vocals".play()
 	pass # Replace with function body.

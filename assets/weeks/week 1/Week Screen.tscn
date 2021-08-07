@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Week Screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/campaing assets/EASY0000.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/campaing assets/NORMAL0000.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/campaing assets/HARD0000.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/campaing assets/WEEK1 select0000.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/logo bumpin/logo bumpin0000.png" type="Texture" id=6]
+[ext_resource path="res://assets/weeks/tutorial/assets/images/screenshot_8_5_2021_14-15-7.png" type="Texture" id=7]
+[ext_resource path="res://assets/scenes/notes/Right Arrow.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/fonts/coolpixelfontlol.tres" type="DynamicFontData" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "spin"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Right Arrow:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 10 )
+
+[node name="Week Screen" type="Node2D"]
+script = ExtResource( 1 )
+week_name = "Dad Week ig"
+TOP_TEXT = "CARNDOGS"
+week_menu_image = ExtResource( 5 )
+week_sprite = "res://assets/weeks/week 1/assets/characters/daddy_dearest/Lineart Daddy.tscn"
+easy_image = ExtResource( 2 )
+normal_image = ExtResource( 3 )
+hard_image = ExtResource( 4 )
+target_string = "res://assets/weeks/week 1/Bopeebo.tscn"
+song_data_file = "res://assets/weeks/week 1/song_data.json"
+week_data_file = "res://assets/weeks/week 1/week_data.json"
+
+[node name="screenshot_8_5_2021_14-15-7" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+anchor_right = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture_progress = ExtResource( 6 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FNF Text" parent="." instance=ExtResource( 9 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 70.0
+margin_top = 70.0
+margin_right = 434.0
+margin_bottom = 142.0
+rect_min_size = Vector2( 364, 72 )
+text = "Loading"
+
+[node name="Right Arrow" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1801.91, 944.847 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/spin = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 74.0825
+margin_top = 161.635
+margin_right = 218.082
+margin_bottom = 249.635
+custom_fonts/font = SubResource( 2 )
+text = "0%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
