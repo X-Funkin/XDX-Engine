@@ -1,7 +1,8 @@
-[gd_scene load_steps=108 format=2]
+[gd_scene load_steps=157 format=2]
 
 [ext_resource path="res://assets/scripts/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/Start Screen Character.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/logo bumpin/logo bumpin0003.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/logo bumpin/logo bumpin0000.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/logo bumpin/logo bumpin0001.png" type="Texture" id=6]
@@ -101,6 +102,8 @@
 [ext_resource path="res://assets/images/titleENter/Press Enter to Begin0029.png" type="Texture" id=100]
 [ext_resource path="res://assets/images/titleENter/Press Enter to Begin0033.png" type="Texture" id=101]
 [ext_resource path="res://assets/images/titleENter/Press Enter to Begin0034.png" type="Texture" id=102]
+[ext_resource path="res://assets/images/start screen ref.png" type="Texture" id=103]
+[ext_resource path="res://assets/sounds/confirmMenu.ogg" type="AudioStream" id=104]
 
 [sub_resource type="Animation" id=1]
 resource_name = "opening text lol"
@@ -191,6 +194,401 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="VisualShaderNodeVec3Uniform" id=22]
+uniform_name = "Offset_3"
+
+[sub_resource type="VisualShaderNodeExpression" id=23]
+size = Vector2( 291.001, 45 )
+expression = "vec4 tex = texture(Viewportyeah, uv.xy);
+color = tex.rgb;
+alpha = tex.a;"
+
+[sub_resource type="VisualShaderNodeExpression" id=24]
+size = Vector2( 420.001, -66 )
+expression = "vec4 tex = texture(Viewportyeah, uv.xy);
+color = tex.rgb;
+alpha = tex.a;"
+
+[sub_resource type="VisualShaderNodeVectorOp" id=25]
+
+[sub_resource type="VisualShaderNodeExpression" id=26]
+size = Vector2( 445, -4 )
+expression = "vec4 tex = texture(Viewportyeah, uv.xy);
+color = tex.rgb;
+alpha = tex.a;"
+
+[sub_resource type="VisualShaderNodeVectorOp" id=27]
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=28]
+
+[sub_resource type="VisualShaderNodeColorUniform" id=29]
+uniform_name = "Color_1"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=30]
+uniform_name = "Color_2"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=31]
+uniform_name = "Color_3"
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=32]
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=33]
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=34]
+
+[sub_resource type="VisualShaderNodeInput" id=39]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=40]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 1 ), 2, 0.0 ]
+
+[sub_resource type="VisualShaderNodeVectorClamp" id=41]
+
+[sub_resource type="VisualShaderNodeVectorClamp" id=42]
+
+[sub_resource type="VisualShaderNodeVectorClamp" id=43]
+
+[sub_resource type="VisualShaderNodeVectorClamp" id=44]
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=45]
+
+[sub_resource type="VisualShaderNodeInput" id=14]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeCompare" id=46]
+default_input_values = [ 0, 0.0, 1, 0.5, 2, 0.495 ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=47]
+default_input_values = [ 0, 0.0, 1, 1.0 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeScalarOp" id=48]
+operator = 2
+
+[sub_resource type="VisualShaderNodeCompare" id=49]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ), 2, 1e-05 ]
+type = 1
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=50]
+
+[sub_resource type="VisualShaderNodeCompare" id=51]
+default_input_values = [ 0, 0.0, 1, 0.5, 2, 0.495 ]
+
+[sub_resource type="VisualShaderNodeCompare" id=52]
+default_input_values = [ 0, 0.0, 1, 0.5, 2, 0.495 ]
+
+[sub_resource type="VisualShaderNodeCompare" id=53]
+default_input_values = [ 0, 0.0, 1, 0.5, 2, 0.495 ]
+
+[sub_resource type="VisualShaderNodeScalarOp" id=54]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id=19]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=55]
+default_input_values = [ 0, 0.0, 1, 1.0 ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id=20]
+
+[sub_resource type="VisualShaderNodeGlobalExpression" id=21]
+size = Vector2( 447, 220 )
+expression = "uniform sampler2D Viewportyeah;"
+
+[sub_resource type="VisualShaderNodeExpression" id=35]
+size = Vector2( 102, 10 )
+expression = "vec4 tex = texture(Viewportyeah, uv.xy);
+color = tex.rgb;
+alpha = tex.a;"
+
+[sub_resource type="VisualShaderNodeVec3Uniform" id=36]
+uniform_name = "Offset_1"
+
+[sub_resource type="VisualShaderNodeVec3Uniform" id=37]
+uniform_name = "Offset_2"
+
+[sub_resource type="VisualShader" id=15]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform vec4 Color_3 : hint_color;
+uniform vec3 Offset_3;
+uniform vec4 Color_2 : hint_color;
+uniform vec3 Offset_2;
+uniform vec4 Color_1 : hint_color;
+uniform vec3 Offset_1;
+
+
+// GlobalExpression:0
+	uniform sampler2D Viewportyeah;
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:19
+	vec3 n_out19p0 = Color_3.rgb;
+	float n_out19p1 = Color_3.a;
+
+// Input:23
+	vec3 n_out23p0 = vec3(UV, 0.0);
+
+// Input:3
+	vec3 n_out3p0 = vec3(SCREEN_UV, 0.0);
+
+// VectorScalarMix:24
+	float n_in24p2 = 0.00000;
+	vec3 n_out24p0 = mix(n_out23p0, n_out3p0, n_in24p2);
+
+// VectorUniform:10
+	vec3 n_out10p0 = Offset_3;
+
+// VectorOp:15
+	vec3 n_out15p0 = n_out24p0 + n_out10p0;
+
+// VectorClamp:28
+	vec3 n_in28p1 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in28p2 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out28p0 = clamp(n_out15p0, n_in28p1, n_in28p2);
+
+// Expression:14
+	vec3 n_out14p0;
+	float n_out14p1;
+	n_out14p0 = vec3(0.0, 0.0, 0.0);
+	n_out14p1 = 0.0;
+	{
+		vec4 tex = texture(Viewportyeah, n_out28p0.xy);
+		n_out14p0 = tex.rgb;
+		n_out14p1 = tex.a;
+	}
+
+// ScalarOp:31
+	float n_in31p1 = 1.00000;
+	float n_out31p0 = n_out14p1 * n_in31p1;
+
+// VectorScalarMix:22
+	vec3 n_in22p0 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_out22p0 = mix(n_in22p0, n_out19p0, n_out31p0);
+
+// ColorUniform:18
+	vec3 n_out18p0 = Color_2.rgb;
+	float n_out18p1 = Color_2.a;
+
+// VectorUniform:9
+	vec3 n_out9p0 = Offset_2;
+
+// VectorOp:13
+	vec3 n_out13p0 = n_out24p0 + n_out9p0;
+
+// VectorClamp:27
+	vec3 n_in27p1 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in27p2 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out27p0 = clamp(n_out13p0, n_in27p1, n_in27p2);
+
+// Expression:12
+	vec3 n_out12p0;
+	float n_out12p1;
+	n_out12p0 = vec3(0.0, 0.0, 0.0);
+	n_out12p1 = 0.0;
+	{
+		vec4 tex = texture(Viewportyeah, n_out27p0.xy);
+		n_out12p0 = tex.rgb;
+		n_out12p1 = tex.a;
+	}
+
+// ScalarOp:40
+	float n_in40p1 = 1.00000;
+	float n_out40p0 = n_out12p1 * n_in40p1;
+
+// VectorScalarMix:21
+	vec3 n_out21p0 = mix(n_out22p0, n_out18p0, n_out40p0);
+
+// ColorUniform:17
+	vec3 n_out17p0 = Color_1.rgb;
+	float n_out17p1 = Color_1.a;
+
+// VectorUniform:8
+	vec3 n_out8p0 = Offset_1;
+
+// VectorOp:5
+	vec3 n_out5p0 = n_out24p0 + n_out8p0;
+
+// VectorClamp:26
+	vec3 n_in26p1 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in26p2 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out26p0 = clamp(n_out5p0, n_in26p1, n_in26p2);
+
+// Expression:11
+	vec3 n_out11p0;
+	float n_out11p1;
+	n_out11p0 = vec3(0.0, 0.0, 0.0);
+	n_out11p1 = 0.0;
+	{
+		vec4 tex = texture(Viewportyeah, n_out26p0.xy);
+		n_out11p0 = tex.rgb;
+		n_out11p1 = tex.a;
+	}
+
+// VectorScalarMix:20
+	vec3 n_out20p0 = mix(n_out21p0, n_out17p0, n_out11p1);
+
+// VectorClamp:25
+	vec3 n_in25p1 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in25p2 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out25p0 = clamp(n_out24p0, n_in25p1, n_in25p2);
+
+// Expression:7
+	vec3 n_out7p0;
+	float n_out7p1;
+	n_out7p0 = vec3(0.0, 0.0, 0.0);
+	n_out7p1 = 0.0;
+	{
+		vec4 tex = texture(Viewportyeah, n_out25p0.xy);
+		n_out7p0 = tex.rgb;
+		n_out7p1 = tex.a;
+	}
+
+// VectorScalarMix:16
+	vec3 n_out16p0 = mix(n_out20p0, n_out7p0, n_out7p1);
+
+// Output:0
+	COLOR.rgb = n_out16p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -466.24, 563.389 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 1180, -60 )
+nodes/fragment/3/node = SubResource( 14 )
+nodes/fragment/3/position = Vector2( -1200, 220 )
+nodes/fragment/4/node = SubResource( 19 )
+nodes/fragment/4/position = Vector2( -640, 640 )
+nodes/fragment/5/node = SubResource( 20 )
+nodes/fragment/5/position = Vector2( -640, 280 )
+nodes/fragment/6/node = SubResource( 21 )
+nodes/fragment/6/position = Vector2( -1820, 20 )
+nodes/fragment/6/size = Vector2( 447, 220 )
+nodes/fragment/6/input_ports = ""
+nodes/fragment/6/output_ports = ""
+nodes/fragment/6/expression = "uniform sampler2D Viewportyeah;"
+nodes/fragment/7/node = SubResource( 35 )
+nodes/fragment/7/position = Vector2( -280, 80 )
+nodes/fragment/7/size = Vector2( 102, 10 )
+nodes/fragment/7/input_ports = "0,1,uv;"
+nodes/fragment/7/output_ports = "0,1,color;1,0,alpha;"
+nodes/fragment/7/expression = "vec4 tex = texture(Viewportyeah, uv.xy);
+color = tex.rgb;
+alpha = tex.a;"
+nodes/fragment/8/node = SubResource( 36 )
+nodes/fragment/8/position = Vector2( -880, 340 )
+nodes/fragment/9/node = SubResource( 37 )
+nodes/fragment/9/position = Vector2( -880, 400 )
+nodes/fragment/10/node = SubResource( 22 )
+nodes/fragment/10/position = Vector2( -880, 460 )
+nodes/fragment/11/node = SubResource( 23 )
+nodes/fragment/11/position = Vector2( -280, 240 )
+nodes/fragment/11/size = Vector2( 291.001, 45 )
+nodes/fragment/11/input_ports = "0,1,uv;"
+nodes/fragment/11/output_ports = "0,1,color;1,0,alpha;"
+nodes/fragment/11/expression = "vec4 tex = texture(Viewportyeah, uv.xy);
+color = tex.rgb;
+alpha = tex.a;"
+nodes/fragment/12/node = SubResource( 24 )
+nodes/fragment/12/position = Vector2( -280, 380 )
+nodes/fragment/12/size = Vector2( 420.001, -66 )
+nodes/fragment/12/input_ports = "0,1,uv;"
+nodes/fragment/12/output_ports = "0,1,color;1,0,alpha;"
+nodes/fragment/12/expression = "vec4 tex = texture(Viewportyeah, uv.xy);
+color = tex.rgb;
+alpha = tex.a;"
+nodes/fragment/13/node = SubResource( 25 )
+nodes/fragment/13/position = Vector2( -620, 400 )
+nodes/fragment/14/node = SubResource( 26 )
+nodes/fragment/14/position = Vector2( -260, 780 )
+nodes/fragment/14/size = Vector2( 445, -4 )
+nodes/fragment/14/input_ports = "0,1,uv;"
+nodes/fragment/14/output_ports = "0,1,color;1,0,alpha;"
+nodes/fragment/14/expression = "vec4 tex = texture(Viewportyeah, uv.xy);
+color = tex.rgb;
+alpha = tex.a;"
+nodes/fragment/15/node = SubResource( 27 )
+nodes/fragment/15/position = Vector2( -620, 520 )
+nodes/fragment/16/node = SubResource( 28 )
+nodes/fragment/16/position = Vector2( 940, -60 )
+nodes/fragment/17/node = SubResource( 29 )
+nodes/fragment/17/position = Vector2( 520, 160 )
+nodes/fragment/18/node = SubResource( 30 )
+nodes/fragment/18/position = Vector2( 260, 280 )
+nodes/fragment/19/node = SubResource( 31 )
+nodes/fragment/19/position = Vector2( 240, 620 )
+nodes/fragment/20/node = SubResource( 32 )
+nodes/fragment/20/position = Vector2( 720, 160 )
+nodes/fragment/21/node = SubResource( 33 )
+nodes/fragment/21/position = Vector2( 600, 280 )
+nodes/fragment/22/node = SubResource( 34 )
+nodes/fragment/22/position = Vector2( 540, 460 )
+nodes/fragment/23/node = SubResource( 39 )
+nodes/fragment/23/position = Vector2( -1080, 160 )
+nodes/fragment/24/node = SubResource( 40 )
+nodes/fragment/24/position = Vector2( -860, 200 )
+nodes/fragment/25/node = SubResource( 41 )
+nodes/fragment/25/position = Vector2( -580, 140 )
+nodes/fragment/26/node = SubResource( 42 )
+nodes/fragment/26/position = Vector2( -460, 280 )
+nodes/fragment/27/node = SubResource( 43 )
+nodes/fragment/27/position = Vector2( -460, 400 )
+nodes/fragment/28/node = SubResource( 44 )
+nodes/fragment/28/position = Vector2( -540, 740 )
+nodes/fragment/29/node = SubResource( 45 )
+nodes/fragment/29/position = Vector2( -340, 960 )
+nodes/fragment/30/node = SubResource( 46 )
+nodes/fragment/30/position = Vector2( -60, 980 )
+nodes/fragment/31/node = SubResource( 47 )
+nodes/fragment/31/position = Vector2( 340, 760 )
+nodes/fragment/33/node = SubResource( 48 )
+nodes/fragment/33/position = Vector2( 180, 1000 )
+nodes/fragment/34/node = SubResource( 49 )
+nodes/fragment/34/position = Vector2( 720, 500 )
+nodes/fragment/35/node = SubResource( 50 )
+nodes/fragment/35/position = Vector2( -240, 540 )
+nodes/fragment/36/node = SubResource( 51 )
+nodes/fragment/36/position = Vector2( 20, 500 )
+nodes/fragment/37/node = SubResource( 52 )
+nodes/fragment/37/position = Vector2( -40, 1160 )
+nodes/fragment/38/node = SubResource( 53 )
+nodes/fragment/38/position = Vector2( 20, 600 )
+nodes/fragment/39/node = SubResource( 54 )
+nodes/fragment/39/position = Vector2( 320, 480 )
+nodes/fragment/40/node = SubResource( 55 )
+nodes/fragment/40/position = Vector2( 440, 340 )
+nodes/fragment/connections = PoolIntArray( 8, 0, 5, 1, 9, 0, 13, 1, 10, 0, 15, 1, 7, 1, 16, 2, 11, 1, 20, 2, 17, 0, 20, 1, 21, 0, 20, 0, 22, 0, 21, 0, 18, 0, 21, 1, 19, 0, 22, 1, 3, 0, 24, 1, 23, 0, 24, 0, 24, 0, 5, 0, 24, 0, 13, 0, 24, 0, 15, 0, 20, 0, 16, 0, 7, 0, 16, 1, 24, 0, 25, 0, 25, 0, 7, 0, 5, 0, 26, 0, 26, 0, 11, 0, 13, 0, 27, 0, 27, 0, 12, 0, 15, 0, 28, 0, 28, 0, 14, 0, 28, 0, 29, 0, 29, 0, 30, 0, 14, 1, 31, 0, 31, 0, 22, 2, 27, 0, 35, 0, 29, 1, 37, 0, 37, 0, 33, 1, 30, 0, 33, 0, 35, 0, 36, 0, 35, 1, 38, 0, 36, 0, 39, 0, 12, 1, 40, 0, 40, 0, 21, 2, 38, 0, 39, 1, 16, 0, 0, 0 )
+
+[sub_resource type="ViewportTexture" id=38]
+flags = 2
+viewport_path = NodePath("Start Menu/Viewport")
+
+[sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
+shader = SubResource( 15 )
+shader_param/Color_3 = Color( 0.219608, 0.254902, 0.733333, 1 )
+shader_param/Offset_3 = Vector3( 0.016, 0.02, 0 )
+shader_param/Color_2 = null
+shader_param/Offset_2 = Vector3( 0.011, 0.026, 0 )
+shader_param/Color_1 = Color( 1, 0.247059, 0.67451, 1 )
+shader_param/Offset_1 = Vector3( -0.003, 0.019, 0 )
+shader_param/Viewportyeah = SubResource( 38 )
+
+[sub_resource type="QuadMesh" id=18]
+size = Vector2( 1920, 1080 )
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 72 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 17 ), ExtResource( 41 ) ],
@@ -219,6 +617,54 @@ animations = [ {
 "name": "confirm",
 "speed": 24.0
 } ]
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=7]
+uniform_name = "TextureUniform"
+
+[sub_resource type="VisualShaderNodeInput" id=8]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeColorConstant" id=12]
+
+[sub_resource type="VisualShader" id=9]
+code = "shader_type canvas_item;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Color:4
+	vec3 n_out4p0 = vec3(1.000000, 1.000000, 1.000000);
+	float n_out4p1 = 1.000000;
+
+// Output:0
+	COLOR.rgb = n_out4p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -97.0762, 0 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 7 )
+nodes/fragment/2/position = Vector2( 100, 100 )
+nodes/fragment/3/node = SubResource( 8 )
+nodes/fragment/3/position = Vector2( -200, 140 )
+nodes/fragment/4/node = SubResource( 12 )
+nodes/fragment/4/position = Vector2( 120, 0 )
+nodes/fragment/connections = PoolIntArray( 3, 0, 2, 0, 4, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = SubResource( 9 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "start menu lol"
@@ -291,14 +737,16 @@ tracks/5/keys = {
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource( 1 )
+character = NodePath("Start Menu/Viewport/Start Screen Character/Girlfriend")
+enter_animation = "Cheer"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1804.69
-margin_top = -947.65
-margin_right = 2035.31
-margin_bottom = 1212.35
+margin_left = -1920.0
+margin_top = -1080.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -313,7 +761,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Opening Text"]
+[node name="Opening Text Animations" type="AnimationPlayer" parent="Opening Text"]
 "anims/opening text lol" = SubResource( 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="Opening Text"]
@@ -370,29 +818,39 @@ visible_lines = 0
 [node name="Start Menu" type="Node2D" parent="."]
 visible = false
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Start Menu"]
+material = SubResource( 17 )
+mesh = SubResource( 18 )
+
 [node name="logo" type="AnimatedSprite" parent="Start Menu"]
-position = Vector2( -447.139, -179.011 )
-scale = Vector2( 1.46115, 1.46115 )
+position = Vector2( -480.749, -164.383 )
+scale = Vector2( 1.50789, 1.50789 )
 frames = SubResource( 2 )
-frame = 10
+frame = 5
+playing = true
 
 [node name="gf" type="AnimatedSprite" parent="Start Menu"]
-position = Vector2( 462.029, 75.1701 )
+visible = false
+modulate = Color( 1, 1, 1, 0.780392 )
+position = Vector2( 383.541, 54.9536 )
 scale = Vector2( 1.27826, 1.27826 )
 frames = SubResource( 3 )
 frame = 10
 
 [node name="Enter" type="AnimatedSprite" parent="Start Menu"]
-position = Vector2( -119.865, 380.57 )
+position = Vector2( 310.957, 394.41 )
+scale = Vector2( 1.50811, 1.50811 )
 frames = SubResource( 4 )
-animation = "confirm"
+frame = 9
+playing = true
 
 [node name="ColorRect" type="ColorRect" parent="Start Menu"]
-margin_left = -1810.19
-margin_top = -1023.89
-margin_right = 2029.81
-margin_bottom = 1136.11
-color = Color( 1, 1, 1, 0 )
+material = SubResource( 11 )
+margin_left = -1920.0
+margin_top = -1080.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 3840, 2160 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -400,10 +858,34 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Start Menu"]
 "anims/start menu lol" = SubResource( 5 )
 
+[node name="Viewport" type="Viewport" parent="Start Menu"]
+size = Vector2( 1920, 1080 )
+transparent_bg = true
+usage = 0
+render_target_update_mode = 3
+
+[node name="Start Screen Character" parent="Start Menu/Viewport" instance=ExtResource( 3 )]
+
+[node name="start screen ref" type="Sprite" parent="Start Menu"]
+visible = false
+modulate = Color( 1, 1, 1, 0.427451 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 103 )
+
+[node name="Enter Timer" type="Timer" parent="Start Menu"]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Start Menu"]
+stream = ExtResource( 104 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/fade in" = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[connection signal="animation_finished" from="Opening Text/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Opening Text/Opening Text Animations" to="." method="_on_Opening_Text_Animations_animation_finished"]
+[connection signal="animation_finished" from="Start Menu/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Start Menu/Enter Timer" to="." method="_on_Enter_Timer_timeout"]
+
+[editable path="Start Menu/Viewport/Start Screen Character"]

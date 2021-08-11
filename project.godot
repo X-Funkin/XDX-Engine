@@ -196,6 +196,7 @@ _global_script_class_icons={
 
 config/name="XDX Engine"
 run/main_scene="res://assets/scenes/Menu Screens.tscn"
+boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
 config/icon="res://icon.png"
 
 [display]
@@ -233,5 +234,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

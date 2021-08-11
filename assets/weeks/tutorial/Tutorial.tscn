@@ -32,7 +32,7 @@
 [ext_resource path="res://assets/weeks/tutorial/ref screenshot.png" type="Texture" id=30]
 [ext_resource path="res://assets/fonts/coolvcrfontlol.tres" type="DynamicFontData" id=31]
 [ext_resource path="res://assets/scripts/Follow Point.gd" type="Script" id=32]
-[ext_resource path="res://assets/scenes/Story Mode Menu.tscn" type="PackedScene" id=33]
+[ext_resource path="res://assets/scenes/Menu Screens.tscn" type="PackedScene" id=33]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -206,14 +206,12 @@ follow_point = NodePath("../Follow Point")
 
 [node name="Player Track" parent="Camera/Screen Elements" instance=ExtResource( 10 )]
 position = Vector2( 407.943, -388.992 )
-scale = Vector2( 1, 1 )
 chart_format = 1
 player_track = true
 scroll_speed = 2.0
 
 [node name="Enemy Track" parent="Camera/Screen Elements" instance=ExtResource( 10 )]
 position = Vector2( -552.975, -385.124 )
-scale = Vector2( 1, 1 )
 chart_format = 1
 scroll_speed = 2.0
 
@@ -261,14 +259,12 @@ health_icons_scale = 1.0
 "Player Hit Recievers",
 "Player Input Recievers",
 ] instance=ExtResource( 17 )]
-scale = Vector2( 1, 1 )
 
 [node name="Enemy Judgment Particles" parent="Camera/Screen Elements" groups=[
 "Enemy Input Recievers",
 "Player Input Recievers",
 ] instance=ExtResource( 17 )]
 position = Vector2( -566.764, -58.8627 )
-scale = Vector2( 1, 1 )
 
 [node name="Combo Particles" parent="Camera/Screen Elements" groups=[
 "Player Hit Recievers",
@@ -281,7 +277,6 @@ scale = Vector2( 0.780879, 0.780879 )
 "anims/scroll oscollate" = SubResource( 3 )
 
 [node name="Count Down Sprites" parent="Camera/Screen Elements" instance=ExtResource( 25 )]
-scale = Vector2( 1, 1 )
 
 [node name="Text UI" type="Control" parent="Camera/Screen Elements"]
 margin_left = -960.0

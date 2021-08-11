@@ -47,6 +47,7 @@ func check_auto_play():
 		get_tree().call_group("Enemy Hit Recievers", "recieve_enemy_hit", self, 0.0)
 		despawn()
 
+
 func check_active():
 	var song_time = get_parent().song_time
 	var timing_window = get_parent().timing_window
@@ -76,6 +77,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+#	check_active()
 	if active:
 		if player_note:
 #			print("adjfd")

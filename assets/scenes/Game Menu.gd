@@ -19,6 +19,8 @@ export(NodePath) var yeah
 export(NodePath) var fade
 var focus_pos : Vector2 setget set_focus_pos, get_focus_pos
 
+var target_string : String = "switch_to_story"
+
 func set_fade_in(n_fade):
 	if yeahready:
 		fade_in = n_fade
@@ -95,7 +97,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_Timer_timeout():
 	print("ITME OUT")
 #	get_tree().change_scene("res://assets/weeks/tutorial/Week Screen.tscn")
-	get_tree().call_group("Menu Switchers", "switch_to_story")
+	get_tree().call_group("Menu Switchers", target_string)
 #	get_tree().change_scene("res://assets/weeks/tutorial/Tutorial.tscn")
 	pass # Replace with function body.
 
@@ -103,4 +105,14 @@ func _on_Timer_timeout():
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "button_pressed":
 		$Timer.start(1.0)
+	pass # Replace with function body.
+
+
+func _on_Options_Button_pressed():
+	target_string = "switch_to_options"
+	pass # Replace with function body.
+
+
+func _on_Story_Mode_Button_pressed():
+	target_string = "switch_to_story"
 	pass # Replace with function body.

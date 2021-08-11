@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/240 BPM Metronome.ogg-efbddd792c5111f29f559f2cfa36037a.oggstr"
+
+[deps]
+
+source_file="res://assets/music/240 BPM Metronome.ogg"
+dest_files=[ "res://.import/240 BPM Metronome.ogg-efbddd792c5111f29f559f2cfa36037a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

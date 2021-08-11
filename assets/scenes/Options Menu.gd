@@ -1,0 +1,52 @@
+extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+var settings_data = {}
+var default_settings = {}
+
+export(PackedScene) var main_options
+export(PackedScene) var gameplay_options
+var target_scene : PackedScene
+
+# Called when the node enters the scene tree for the first time.
+
+func load_options_menu():
+	save_settings()
+	print("yeah switchchhc options")
+	print(settings_data)
+	for node in $"Current Options Menu".get_children():
+		node.queue_free()
+	$"Current Options Menu".add_child(target_scene.instance())
+	
+
+func switch_to_main_options():
+	target_scene = main_options
+	load_options_menu()
+
+func switch_to_gameplay_options():
+	target_scene = gameplay_options
+	load_options_menu()
+
+func save_settings():
+	print("saving settings")
+	var file = File.new()
+	var err = file.open("user://Game_Data.json", File.WRITE)
+	print("err ", err)
+	print("OK ", OK)
+	file.store_string(JSON.print(settings_data))
+	file.close()
+
+func recieve_setting(setting, value):
+	settings_data[setting] = value
+
+func _ready():
+	$Camera2D.current = true
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass

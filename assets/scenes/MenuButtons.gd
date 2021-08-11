@@ -49,6 +49,13 @@ func _on_Story_Mode_Button_pressed():
 	pass # Replace with function body.
 
 
+func _on_Options_Button_pressed():
+	defocus_buttons()
+	get_node(animation_thingy).play("button_pressed")
+	get_node(confirm_audio).play()
+	pass # Replace with function body.
+
+
 func _on_Story_Mode_Button_mouse_entered():
 	pass # Replace with function body.
 

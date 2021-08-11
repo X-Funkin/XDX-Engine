@@ -25,7 +25,12 @@ func get_song_time(delta):
 	if t > 1.0:
 		t = 0.0
 		print(current_time)
+	
 	if current_time < prev_time:
+		if delta != 0:
+			if abs((current_time-prev_time)/delta) > 10.0:
+				prev_time = 0.0
+				emit_signal("finished")
 		current_time = prev_time + delta*pitch_scale
 	get_tree().call_group(song_time_group, "recieve_song_time", current_time*1000.0+offset_ms)
 	if floor((current_time*1000.0+offset_ms)/(1000.0*60.0/bpm)) != floor((prev_time*1000.0+offset_ms)/(1000.0*60.0/bpm)):
@@ -73,4 +78,5 @@ func _on_Count_Down_Timer_timeout():
 		play()
 		$"Player Vocals".play()
 		$"Enemy Vocals".play()
+		
 	pass # Replace with function body.

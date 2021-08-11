@@ -1,0 +1,78 @@
+[gd_resource type="VisualShader" load_steps=6 format=2]
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=10]
+uniform_name = "Texture"
+
+[sub_resource type="VisualShaderNodeInput" id=16]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=17]
+
+[sub_resource type="VisualShaderNodeColorUniform" id=18]
+uniform_name = "Line_Color"
+
+[sub_resource type="VisualShaderNodeColorUniform" id=19]
+uniform_name = "Base_Color"
+
+[resource]
+code = "shader_type canvas_item;
+uniform vec4 Line_Color : hint_color;
+uniform vec4 Base_Color : hint_color;
+uniform sampler2D Texture;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:7
+	vec3 n_out7p0 = Line_Color.rgb;
+	float n_out7p1 = Line_Color.a;
+
+// ColorUniform:8
+	vec3 n_out8p0 = Base_Color.rgb;
+	float n_out8p1 = Base_Color.a;
+
+// Input:3
+	vec3 n_out3p0 = vec3(UV, 0.0);
+
+// TextureUniform:2
+	vec3 n_out2p0;
+	float n_out2p1;
+	{
+		vec4 n_tex_read = texture(Texture, n_out3p0.xy);
+		n_out2p0 = n_tex_read.rgb;
+		n_out2p1 = n_tex_read.a;
+	}
+
+// VectorScalarMix:6
+	vec3 n_out6p0 = mix(n_out7p0, n_out8p0, dot(n_out2p0, vec3(0.333333, 0.333333, 0.333333)));
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -559.057, -367.835 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 260, 100 )
+nodes/fragment/2/node = SubResource( 10 )
+nodes/fragment/2/position = Vector2( -200, 180 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -380, 280 )
+nodes/fragment/6/node = SubResource( 17 )
+nodes/fragment/6/position = Vector2( 20, 120 )
+nodes/fragment/7/node = SubResource( 18 )
+nodes/fragment/7/position = Vector2( -180, -80 )
+nodes/fragment/8/node = SubResource( 19 )
+nodes/fragment/8/position = Vector2( -200, 40 )
+nodes/fragment/connections = PoolIntArray( 7, 0, 6, 0, 8, 0, 6, 1, 2, 0, 6, 2, 6, 0, 0, 0, 3, 0, 2, 0 )
