@@ -85,6 +85,13 @@ func switch_to_options():
 	target_scene = options_menu
 	fade_out("Up")
 
+func fade_out_background_track():
+	$"Audio Animations".play("Fade Out")
+
+func fade_in_background_track():
+	$"Audio Animations".play("Fade In")
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

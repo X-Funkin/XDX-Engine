@@ -198,6 +198,7 @@ func get_notes(sorted=false):
 	return note_arr
 
 
+
 #funky input stuff
 func recieve_player_left_input(event : InputEvent):
 	if player_track:
@@ -352,6 +353,10 @@ func recieve_enemy_hit(note : Note, hit_error):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if GameData.data:
+		scroll_speed = GameData.data.settings.scroll_speed
+		if sign(GameData.data.settings.scroll_direction) != 0:
+			scroll_speed *= sign(GameData.data.settings.scroll_direction)
 	self.scroll_speed = scroll_speed
 	pass # Replace with function body.
 

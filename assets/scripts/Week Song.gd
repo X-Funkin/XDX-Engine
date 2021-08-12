@@ -241,6 +241,10 @@ func _ready():
 	get_node(enemy_track).chart_file = chart_file
 	get_node(player_track).load_chart()
 	get_node(enemy_track).load_chart()
+	if sign(GameData.data.settings.scroll_direction) != 0:
+		get_node(player_track).position.y *= sign(GameData.data.settings.scroll_direction)
+		get_node(enemy_track).position.y *= sign(GameData.data.settings.scroll_direction)
+		get_node("Camera/Screen Elements/Health Bar").position.y *= sign(GameData.data.settings.scroll_direction)
 	get_node(instrumentals).connect("finished", self, "_on_song_finished")
 	get_node(instrumentals).start()
 	get_node("Camera/Screen Elements/Count Down Sprites").sprite_speed = bpm/60.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Menu Screens.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Main Menu.tscn" type="PackedScene" id=2]
@@ -21,6 +21,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -80.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Fade Out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
 }
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -180,6 +195,7 @@ volume_db = -80.0
 
 [node name="Audio Animations" type="AnimationPlayer" parent="."]
 "anims/Fade In" = SubResource( 1 )
+"anims/Fade Out" = SubResource( 9 )
 
 [node name="Current Menu" type="Node2D" parent="."]
 

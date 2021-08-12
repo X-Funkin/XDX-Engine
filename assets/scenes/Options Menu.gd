@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var settings_data = {}
+var settings_data = GameData.data.settings
 var default_settings = {}
 
 export(PackedScene) var main_options
@@ -31,18 +31,14 @@ func switch_to_gameplay_options():
 	load_options_menu()
 
 func save_settings():
-	print("saving settings")
-	var file = File.new()
-	var err = file.open("user://Game_Data.json", File.WRITE)
-	print("err ", err)
-	print("OK ", OK)
-	file.store_string(JSON.print(settings_data))
-	file.close()
+	GameData.data.settings = settings_data
+	GameData.save_game_data()
 
 func recieve_setting(setting, value):
 	settings_data[setting] = value
 
 func _ready():
+	GameData.data.settings = settings_data
 	$Camera2D.current = true
 	pass # Replace with function body.
 

@@ -199,6 +199,10 @@ run/main_scene="res://assets/scenes/Menu Screens.tscn"
 boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
 config/icon="res://icon.png"
 
+[autoload]
+
+GameData="*res://assets/data/Game Data.gd"
+
 [display]
 
 window/size/width=1920

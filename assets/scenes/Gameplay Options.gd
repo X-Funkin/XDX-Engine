@@ -107,8 +107,14 @@ func update_settings():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().call_group("Menu Switchers", "fade_out_background_track")
+	$AnimationPlayer.play("metronome fade in")
 	generate_metronome_track()
 	get_node(note_track).load_chart()
+	if GameData.data:
+		self.scroll_speed = GameData.data.settings.scroll_speed
+		self.offset = GameData.data.settings.offset_ms
+		self.scroll_direction = int(sign(GameData.data.settings.scroll_direction)<0)
 	pass # Replace with function body.
 
 func recieve_enemy_hit(note, hit_error):
@@ -162,6 +168,7 @@ func _input(event):
 			changing_speed = 1
 	
 	if event.is_action_pressed("ui_cancel"):
+		get_tree().call_group("Menu Switchers", "fade_in_background_track")
 		update_settings()
 		get_tree().call_group("Options Menu Switchers", "switch_to_main_options")
 	
@@ -172,7 +179,7 @@ func _process(delta):
 		print("NOT ZERO")
 		self.scroll_speed = clamp(scroll_speed+changing_scroll_speed*changing_speed*delta,0.1,10.0)
 	if changing_offset_speed != 0:
-		self.offset = offset + changing_offset_speed*changing_speed*delta
+		self.offset = offset + changing_offset_speed*changing_speed*delta*10.0
 	pass
 #	pass
 
