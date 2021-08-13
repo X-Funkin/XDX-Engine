@@ -1,17 +1,17 @@
 [gd_resource type="VisualShader" load_steps=6 format=2]
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=10]
+[sub_resource type="VisualShaderNodeTextureUniform" id=1]
 uniform_name = "Texture"
 
-[sub_resource type="VisualShaderNodeInput" id=16]
+[sub_resource type="VisualShaderNodeInput" id=2]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeVectorScalarMix" id=17]
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=3]
 
-[sub_resource type="VisualShaderNodeColorUniform" id=18]
+[sub_resource type="VisualShaderNodeColorUniform" id=4]
 uniform_name = "Line_Color"
 
-[sub_resource type="VisualShaderNodeColorUniform" id=19]
+[sub_resource type="VisualShaderNodeColorUniform" id=5]
 uniform_name = "Base_Color"
 
 [resource]
@@ -65,14 +65,14 @@ graph_offset = Vector2( -559.057, -367.835 )
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2( 260, 100 )
-nodes/fragment/2/node = SubResource( 10 )
+nodes/fragment/2/node = SubResource( 1 )
 nodes/fragment/2/position = Vector2( -200, 180 )
-nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/node = SubResource( 2 )
 nodes/fragment/3/position = Vector2( -380, 280 )
-nodes/fragment/6/node = SubResource( 17 )
+nodes/fragment/6/node = SubResource( 3 )
 nodes/fragment/6/position = Vector2( 20, 120 )
-nodes/fragment/7/node = SubResource( 18 )
+nodes/fragment/7/node = SubResource( 4 )
 nodes/fragment/7/position = Vector2( -180, -80 )
-nodes/fragment/8/node = SubResource( 19 )
+nodes/fragment/8/node = SubResource( 5 )
 nodes/fragment/8/position = Vector2( -200, 40 )
 nodes/fragment/connections = PoolIntArray( 7, 0, 6, 0, 8, 0, 6, 1, 2, 0, 6, 2, 6, 0, 0, 0, 3, 0, 2, 0 )
