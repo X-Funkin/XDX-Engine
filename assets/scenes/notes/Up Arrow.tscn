@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Up Arrow.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/Up Arrow.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/NOTE_assets/arrowUP0000.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/NOTE_assets/up press0003.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/NOTE_assets/up press0000.png" type="Texture" id=4]

@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Character",
 "language": "GDScript",
-"path": "res://Character.gd"
+"path": "res://assets/scripts/Character.gd"
 }, {
 "base": "Character",
 "class": "DaddyDearest",
@@ -82,7 +82,7 @@ _global_script_classes=[ {
 "base": "Arrow",
 "class": "LeftArrow",
 "language": "GDScript",
-"path": "res://Left Arrow.gd"
+"path": "res://assets/scripts/Left Arrow.gd"
 }, {
 "base": "HoldNote",
 "class": "LeftHoldNote",
@@ -92,7 +92,7 @@ _global_script_classes=[ {
 "base": "Note",
 "class": "LeftNote",
 "language": "GDScript",
-"path": "res://Left Note.gd"
+"path": "res://assets/scripts/Left Note.gd"
 }, {
 "base": "NoteLane",
 "class": "LeftNoteLane",
@@ -102,12 +102,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "MenuScreens",
 "language": "GDScript",
-"path": "res://Menu Screens.gd"
+"path": "res://assets/scripts/Menu Screens.gd"
 }, {
 "base": "Node2D",
 "class": "Note",
 "language": "GDScript",
-"path": "res://Note.gd"
+"path": "res://assets/scripts/Note.gd"
 }, {
 "base": "Position2D",
 "class": "NoteLane",
@@ -137,7 +137,7 @@ _global_script_classes=[ {
 "base": "Arrow",
 "class": "UpArrow",
 "language": "GDScript",
-"path": "res://Up Arrow.gd"
+"path": "res://assets/scripts/Up Arrow.gd"
 }, {
 "base": "HoldNote",
 "class": "UpHoldNote",
@@ -208,6 +208,8 @@ GameData="*res://assets/data/Game Data.gd"
 window/size/width=1920
 window/size/height=1080
 window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 

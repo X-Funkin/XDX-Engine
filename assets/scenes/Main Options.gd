@@ -8,7 +8,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"VBoxContainer/FNF Text/Gameplay Options Button".grab_focus()
+#	$"VBoxContainer/FNF Text/Gameplay Options Button".grab_focus()
 	pass # Replace with function body.
 
 
@@ -22,4 +22,9 @@ func _input(event):
 func _on_Gameplay_Options_Button_pressed():
 	get_tree().call_group("Options Menu Switchers", "switch_to_gameplay_options")
 	
+	pass # Replace with function body.
+
+
+func _on_Video_Options_Button_pressed():
+	get_tree().call_group("Options Menu Switchers", "switch_to_video_options")
 	pass # Replace with function body.

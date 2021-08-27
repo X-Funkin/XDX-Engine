@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/scenes/Main Options.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/FNF Button Scroller.gd" type="Script" id=3]
+[ext_resource path="res://assets/scenes/FNF Button.tscn" type="PackedScene" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -11,24 +13,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="FNF Button Scroller" type="VBoxContainer" parent="."]
 margin_left = 130.206
 margin_top = 284.811
 margin_right = 704.206
 margin_bottom = 752.811
 rect_scale = Vector2( 1.4, 1.4 )
 custom_constants/separation = 99
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+first_option = NodePath("Gameplay Options Button")
 
-[node name="FNF Text" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="Gameplay Options Button" parent="FNF Button Scroller" instance=ExtResource( 4 )]
 margin_right = 430.0
-margin_bottom = 109.0
-rect_min_size = Vector2( 430, 109 )
+margin_bottom = 70.0
+rect_min_size = Vector2( 430, 70 )
+text = "gameplay"
+
+[node name="Video Options Button" parent="FNF Button Scroller" instance=ExtResource( 4 )]
+margin_top = 169.0
+margin_right = 259.0
+margin_bottom = 238.0
+rect_min_size = Vector2( 259, 69 )
+text = "video"
+
+[node name="FNF Text" parent="FNF Button Scroller" instance=ExtResource( 2 )]
+visible = false
+margin_right = 430.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 430, 70 )
 text = "GAMEPLAY"
 
-[node name="Gameplay Options Button" type="Button" parent="VBoxContainer/FNF Text"]
+[node name="Gameplay Options Button" type="Button" parent="FNF Button Scroller/FNF Text"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 flat = true
@@ -36,15 +54,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FNF Text2" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="FNF Text2" parent="FNF Button Scroller" instance=ExtResource( 2 )]
 visible = false
-margin_top = 208.0
-margin_right = 523.0
-margin_bottom = 317.0
-rect_min_size = Vector2( 523, 109 )
-text = "appearance"
+margin_right = 259.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 259, 69 )
+text = "video"
 
-[node name="Button" type="Button" parent="VBoxContainer/FNF Text2"]
+[node name="Button" type="Button" parent="FNF Button Scroller/FNF Text2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 flat = true
@@ -52,15 +69,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FNF Text3" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="FNF Text3" parent="FNF Button Scroller" instance=ExtResource( 2 )]
 visible = false
-margin_top = 208.0
-margin_right = 215.0
-margin_bottom = 311.0
-rect_min_size = Vector2( 215, 103 )
-text = "misc"
+margin_right = 257.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 257, 69 )
+text = "sound"
 
-[node name="Button" type="Button" parent="VBoxContainer/FNF Text3"]
+[node name="Button" type="Button" parent="FNF Button Scroller/FNF Text3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 flat = true
@@ -68,4 +84,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="VBoxContainer/FNF Text/Gameplay Options Button" to="." method="_on_Gameplay_Options_Button_pressed"]
+[connection signal="pressed" from="FNF Button Scroller/Gameplay Options Button" to="." method="_on_Gameplay_Options_Button_pressed"]
+[connection signal="pressed" from="FNF Button Scroller/Video Options Button" to="." method="_on_Video_Options_Button_pressed"]
+[connection signal="pressed" from="FNF Button Scroller/FNF Text/Gameplay Options Button" to="." method="_on_Gameplay_Options_Button_pressed"]

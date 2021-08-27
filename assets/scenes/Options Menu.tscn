@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scenes/Options Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/BG Image.tres" type="Shader" id=2]
 [ext_resource path="res://assets/images/menuMaxContrast.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/options menu ref.png" type="Texture" id=4]
 [ext_resource path="res://assets/scenes/Main Options.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/scenes/Gameplay Options.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/Scrolling and Offset Options.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/Control Options.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/Gameplay Options.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/scenes/Video Options.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -19,7 +22,10 @@ shader_param/Texture = ExtResource( 3 )
 ]]
 script = ExtResource( 1 )
 main_options = ExtResource( 5 )
-gameplay_options = ExtResource( 6 )
+gameplay_options = ExtResource( 8 )
+scrolling_options = ExtResource( 6 )
+control_options = ExtResource( 7 )
+video_options = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )

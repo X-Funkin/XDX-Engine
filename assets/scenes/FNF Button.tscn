@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scenes/FNF Button.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=2]
+
+[node name="FNF Button" type="Control"]
+modulate = Color( 1, 1, 1, 0.5 )
+focus_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FNF Text" parent="." instance=ExtResource( 2 )]
+input_pass_on_modal_close_click = false
+
+[node name="Button" type="Button" parent="."]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+border_color = Color( 0, 0, 1, 1 )
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_entered" from="." to="." method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="." to="." method="_on_FNF_Button_gui_input"]
+[connection signal="resized" from="." to="." method="_on_FNF_Button_resized"]
+[connection signal="item_rect_changed" from="FNF Text" to="." method="_on_FNF_Text_item_rect_changed"]
+[connection signal="text_changed" from="FNF Text" to="." method="_on_FNF_Text_text_changed"]

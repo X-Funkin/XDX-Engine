@@ -9,6 +9,9 @@ var default_settings = {}
 
 export(PackedScene) var main_options
 export(PackedScene) var gameplay_options
+export(PackedScene) var scrolling_options
+export(PackedScene) var control_options
+export(PackedScene) var video_options
 var target_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +31,18 @@ func switch_to_main_options():
 
 func switch_to_gameplay_options():
 	target_scene = gameplay_options
+	load_options_menu()
+
+func switch_to_scrolling_options():
+	target_scene = scrolling_options
+	load_options_menu()
+
+func switch_to_control_options():
+	target_scene = control_options
+	load_options_menu()
+
+func switch_to_video_options():
+	target_scene = video_options
 	load_options_menu()
 
 func save_settings():

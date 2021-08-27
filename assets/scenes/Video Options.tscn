@@ -1,0 +1,341 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/scenes/Window Mode Options.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/Resolution Button.gd" type="Script" id=2]
+[ext_resource path="res://assets/scenes/Video Options.gd" type="Script" id=3]
+[ext_resource path="res://assets/scenes/FNF Button Scroller.gd" type="Script" id=4]
+[ext_resource path="res://assets/scenes/Framerate Button.gd" type="Script" id=5]
+[ext_resource path="res://assets/scenes/Framerate Overlay Button.gd" type="Script" id=6]
+[ext_resource path="res://assets/scenes/VSyng Button.gd" type="Script" id=7]
+[ext_resource path="res://assets/scenes/Memory Usage Overlay Button.gd" type="Script" id=8]
+[ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/fonts/coolpixelfontlol.tres" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/scenes/FNF Button.tscn" type="PackedScene" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_size = 7
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 10 )
+
+[node name="Video Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FNF Button Scroller" type="VBoxContainer" parent="."]
+margin_left = 130.206
+margin_top = 284.811
+margin_right = 704.206
+margin_bottom = 752.811
+rect_scale = Vector2( 1.4, 1.4 )
+custom_constants/separation = 99
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+first_option = NodePath("Window Mode Options/FNF Button")
+
+[node name="Window Mode Options" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_right = 1100.0
+margin_bottom = 69.0
+script = ExtResource( 1 )
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Window Mode Options" instance=ExtResource( 11 )]
+margin_right = 603.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 603, 69 )
+focus_neighbour_top = NodePath("../../Memory Usage Overlay Button/FNF Button")
+text = "window mode"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Window Mode Options"]
+margin_left = 607.0
+margin_top = 1.0
+margin_right = 1033.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = ":  Fullscreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Window Mode Options/Label"]
+margin_left = -602.585
+margin_top = 78.1835
+margin_right = 383.415
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Change the window mode between Fullscreen, Windowed, and Windowed Boarderless"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resolution Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 168.0
+margin_right = 1100.0
+margin_bottom = 237.0
+script = ExtResource( 2 )
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Resolution Button" instance=ExtResource( 11 )]
+margin_right = 492.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 492, 69 )
+text = "resolution"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Resolution Button"]
+margin_left = 496.0
+margin_top = 1.0
+margin_right = 928.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = ":  1920x1080"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Resolution Button/Label"]
+margin_left = -493.611
+margin_top = 78.1835
+margin_right = 492.389
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Change the resolution of the game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Framerate Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 336.0
+margin_right = 1100.0
+margin_bottom = 403.0
+script = ExtResource( 5 )
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Framerate Button" instance=ExtResource( 11 )]
+margin_right = 463.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 463, 67 )
+text = "framerate"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Framerate Button"]
+margin_left = 467.0
+margin_right = 827.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 1 )
+text = ":  Max FPS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Framerate Button/Label"]
+margin_left = -464.855
+margin_top = 78.1835
+margin_right = 521.145
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Change the framerate of the game. \"Max\" will use the highest FPS it can"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSyng Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 502.0
+margin_right = 1100.0
+margin_bottom = 571.0
+script = ExtResource( 7 )
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/VSyng Button" instance=ExtResource( 11 )]
+margin_right = 273.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 273, 69 )
+text = "vsync"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/VSyng Button"]
+margin_left = 277.0
+margin_top = 1.0
+margin_right = 445.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = ":  ON"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/VSyng Button/Label"]
+margin_left = -277.178
+margin_top = 78.1835
+margin_right = 708.822
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Enable and Disable VSync. Disable and use Max FPS for uncapped framerates"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Framerate Overlay Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 670.0
+margin_right = 1100.0
+margin_bottom = 739.0
+script = ExtResource( 6 )
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Framerate Overlay Button" instance=ExtResource( 11 )]
+margin_right = 892.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 892, 69 )
+text = "framerate overlay"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Framerate Overlay Button"]
+margin_left = 896.0
+margin_top = 1.0
+margin_right = 1100.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = ":  OFF"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Framerate Overlay Button/Label"]
+margin_left = -891.325
+margin_top = 78.1835
+margin_right = 94.6747
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Enable and Disable Framerate Overlay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Memory Usage Overlay Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 838.0
+margin_right = 1100.0
+margin_bottom = 907.0
+script = ExtResource( 8 )
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Memory Usage Overlay Button" instance=ExtResource( 11 )]
+margin_right = 755.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 755, 69 )
+focus_neighbour_bottom = NodePath("../../Window Mode Options/FNF Button")
+text = "memory overlay"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Memory Usage Overlay Button"]
+margin_left = 759.0
+margin_top = 1.0
+margin_right = 963.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = ":  OFF"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Memory Usage Overlay Button/Label"]
+margin_left = -757.841
+margin_top = 78.1835
+margin_right = 228.159
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Enable and Disable Memory Usage Overlay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="FNF Button Scroller"]
+visible = false
+margin_top = 502.0
+margin_right = 603.0
+margin_bottom = 502.0
+
+[node name="FNF Text" parent="FNF Button Scroller" instance=ExtResource( 9 )]
+visible = false
+margin_right = 487.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 487, 67 )
+text = "fullscreen"
+
+[node name="Gameplay Options Button" type="Button" parent="FNF Button Scroller/FNF Text"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FNF Text2" parent="FNF Button Scroller" instance=ExtResource( 9 )]
+visible = false
+margin_right = 492.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 492, 69 )
+text = "resolution"
+
+[node name="Button" type="Button" parent="FNF Button Scroller/FNF Text2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FNF Text3" parent="FNF Button Scroller" instance=ExtResource( 9 )]
+visible = false
+margin_right = 463.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 463, 67 )
+text = "framerate"
+
+[node name="Button" type="Button" parent="FNF Button Scroller/FNF Text3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FNF Text4" parent="FNF Button Scroller" instance=ExtResource( 9 )]
+visible = false
+
+[node name="Button" type="Button" parent="FNF Button Scroller/FNF Text4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Revert Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="focus_entered" from="FNF Button Scroller/Window Mode Options/FNF Button" to="FNF Button Scroller/Window Mode Options" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Window Mode Options/FNF Button" to="FNF Button Scroller/Window Mode Options" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Window Mode Options/FNF Button" to="FNF Button Scroller/Window Mode Options" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/Resolution Button/FNF Button" to="FNF Button Scroller/Resolution Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Resolution Button/FNF Button" to="FNF Button Scroller/Resolution Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Resolution Button/FNF Button" to="FNF Button Scroller/Resolution Button" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/Framerate Button/FNF Button" to="FNF Button Scroller/Framerate Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Framerate Button/FNF Button" to="FNF Button Scroller/Framerate Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Framerate Button/FNF Button" to="FNF Button Scroller/Framerate Button" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/VSyng Button/FNF Button" to="FNF Button Scroller/VSyng Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/VSyng Button/FNF Button" to="FNF Button Scroller/VSyng Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/VSyng Button/FNF Button" to="FNF Button Scroller/VSyng Button" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/Framerate Overlay Button/FNF Button" to="FNF Button Scroller/Framerate Overlay Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Framerate Overlay Button/FNF Button" to="FNF Button Scroller/Framerate Overlay Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Framerate Overlay Button/FNF Button" to="FNF Button Scroller/Framerate Overlay Button" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/Memory Usage Overlay Button/FNF Button" to="FNF Button Scroller/Memory Usage Overlay Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Memory Usage Overlay Button/FNF Button" to="FNF Button Scroller/Memory Usage Overlay Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Memory Usage Overlay Button/FNF Button" to="FNF Button Scroller/Memory Usage Overlay Button" method="_on_FNF_Button_gui_input"]
+[connection signal="timeout" from="Revert Timer" to="." method="_on_Revert_Timer_timeout"]

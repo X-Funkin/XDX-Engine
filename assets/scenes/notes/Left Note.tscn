@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Left Note.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/Left Note.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/NOTE_assets/purple0000.png" type="Texture" id=2]
 
 [node name="Left Note" type="Node2D"]

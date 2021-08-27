@@ -1,10 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://FNF Text.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/FNF Text.gd" type="Script" id=1]
 
 [node name="FNF Text" type="Control"]
-margin_right = 110.0
-margin_bottom = 33.5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -30,6 +28,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 488.5
 margin_bottom = -2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+editor_only = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

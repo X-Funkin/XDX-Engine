@@ -353,7 +353,7 @@ func recieve_enemy_hit(note : Note, hit_error):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if GameData.data:
+	if "scroll_speed" in GameData.data.settings:
 		scroll_speed = GameData.data.settings.scroll_speed
 		if sign(GameData.data.settings.scroll_direction) != 0:
 			scroll_speed *= sign(GameData.data.settings.scroll_direction)

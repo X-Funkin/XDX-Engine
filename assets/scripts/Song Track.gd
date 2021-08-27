@@ -12,7 +12,7 @@ export(int) var count_down = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if GameData.data:
+	if "offset_ms" in GameData.data.settings:
 		offset_ms = GameData.data.settings.offset_ms
 	$"Count Down Timer".wait_time = 60.0/bpm
 	pass # Replace with function body.

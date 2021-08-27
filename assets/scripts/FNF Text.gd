@@ -52,8 +52,10 @@ func set_text(n_text):
 func get_text():
 	return text
 
+signal text_changed
 func generate_text():
 	for node in get_node(textvbox).get_children():
+		node.visible = false
 		node.queue_free()
 	var text_lines = text.split("\n")
 	for string in text_lines:
@@ -80,11 +82,12 @@ func generate_text():
 		get_node(textvbox).rect_size = Vector2(0,0)
 	get_node(textvbox).rect_size = Vector2(0,0)
 	update_rect()
+	emit_signal("text_changed")
 var yeahready = false
 
 func update_rect():
 #	rect_position = $Control/CenterContainer/VBoxContainer.rect_position/2.0
-	rect_min_size.y = get_node(textvbox).rect_size.y/2.0
+	rect_min_size.y = get_node(textvbox).rect_size.y
 	rect_min_size.x = get_node(textvbox).rect_size.x
 	rect_size = rect_min_size
 	
