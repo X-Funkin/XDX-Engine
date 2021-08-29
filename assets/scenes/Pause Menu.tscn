@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/scripts/Pause Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/FNF Button Scroller.gd" type="Script" id=3]
+[ext_resource path="res://assets/scenes/FNF Button.tscn" type="PackedScene" id=4]
 
 [node name="Pause Menu" type="Control"]
 pause_mode = 2
@@ -20,27 +22,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.034
-anchor_top = 0.358
-anchor_right = 0.3
-anchor_bottom = 0.58
-margin_right = 809.0
-margin_bottom = 394.0
+[node name="Button Scroller" type="VBoxContainer" parent="."]
+margin_left = 121.226
+margin_top = 511.843
+margin_right = 745.226
+margin_bottom = 968.843
 custom_constants/separation = 127
 alignment = 1
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+first_option = NodePath("Resume Button")
 
-[node name="Resume" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 85.0
+[node name="Resume Button" parent="Button Scroller" instance=ExtResource( 4 )]
 margin_right = 302.0
-margin_bottom = 153.0
-rect_min_size = Vector2( 302, 68 )
+margin_bottom = 66.0
+rect_min_size = Vector2( 302, 66 )
 text = "resume"
 
-[node name="Resume Button" type="Button" parent="VBoxContainer/Resume"]
+[node name="Restart Song Button" parent="Button Scroller" instance=ExtResource( 4 )]
+margin_top = 193.0
+margin_right = 624.0
+margin_bottom = 263.0
+rect_min_size = Vector2( 624, 70 )
+text = "restart song"
+
+[node name="Exit Button" parent="Button Scroller" instance=ExtResource( 4 )]
+margin_top = 390.0
+margin_right = 197.0
+margin_bottom = 457.0
+rect_min_size = Vector2( 197, 67 )
+text = "exit"
+
+[node name="Resume" parent="Button Scroller" instance=ExtResource( 2 )]
+visible = false
+margin_top = 88.0
+margin_right = 302.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 302, 66 )
+text = "resume"
+
+[node name="Resume Button" type="Button" parent="Button Scroller/Resume"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_neighbour_top = NodePath("../../Exit/Exit Button")
@@ -50,14 +73,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Restart Song" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 280.0
+[node name="Restart Song" parent="Button Scroller" instance=ExtResource( 2 )]
+visible = false
+margin_top = 184.0
 margin_right = 624.0
-margin_bottom = 352.0
-rect_min_size = Vector2( 624, 72 )
+margin_bottom = 254.0
+rect_min_size = Vector2( 624, 70 )
 text = "restart song"
 
-[node name="Restart Song Button" type="Button" parent="VBoxContainer/Restart Song"]
+[node name="Restart Song Button" type="Button" parent="Button Scroller/Restart Song"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_neighbour_top = NodePath("../../Resume/Resume Button")
@@ -67,14 +91,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 479.0
+[node name="Exit" parent="Button Scroller" instance=ExtResource( 2 )]
+visible = false
+margin_top = 283.0
 margin_right = 197.0
-margin_bottom = 548.0
-rect_min_size = Vector2( 197, 69 )
+margin_bottom = 350.0
+rect_min_size = Vector2( 197, 67 )
 text = "Exit"
 
-[node name="Exit Button" type="Button" parent="VBoxContainer/Exit"]
+[node name="Exit Button" type="Button" parent="Button Scroller/Exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_neighbour_top = NodePath("../../Restart Song/Restart Song Button")
@@ -88,7 +113,10 @@ __meta__ = {
 wait_time = 0.3
 one_shot = true
 
-[connection signal="pressed" from="VBoxContainer/Resume/Resume Button" to="." method="_on_Resume_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Restart Song/Restart Song Button" to="." method="_on_Restart_Song_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit/Exit Button" to="." method="_on_Exit_Button_pressed"]
+[connection signal="pressed" from="Button Scroller/Resume Button" to="." method="_on_Resume_Button_pressed"]
+[connection signal="pressed" from="Button Scroller/Restart Song Button" to="." method="_on_Restart_Song_Button_pressed"]
+[connection signal="pressed" from="Button Scroller/Exit Button" to="." method="_on_Exit_Button_pressed"]
+[connection signal="pressed" from="Button Scroller/Resume/Resume Button" to="." method="_on_Resume_Button_pressed"]
+[connection signal="pressed" from="Button Scroller/Restart Song/Restart Song Button" to="." method="_on_Restart_Song_Button_pressed"]
+[connection signal="pressed" from="Button Scroller/Exit/Exit Button" to="." method="_on_Exit_Button_pressed"]
 [connection signal="timeout" from="Unpause Timer" to="." method="_on_Unpause_Timer_timeout"]

@@ -39,6 +39,13 @@ margin_bottom = 238.0
 rect_min_size = Vector2( 259, 69 )
 text = "video"
 
+[node name="Sound Options Button" parent="FNF Button Scroller" instance=ExtResource( 4 )]
+margin_top = 337.0
+margin_right = 257.0
+margin_bottom = 406.0
+rect_min_size = Vector2( 257, 69 )
+text = "sound"
+
 [node name="FNF Text" parent="FNF Button Scroller" instance=ExtResource( 2 )]
 visible = false
 margin_right = 430.0
@@ -86,4 +93,5 @@ __meta__ = {
 
 [connection signal="pressed" from="FNF Button Scroller/Gameplay Options Button" to="." method="_on_Gameplay_Options_Button_pressed"]
 [connection signal="pressed" from="FNF Button Scroller/Video Options Button" to="." method="_on_Video_Options_Button_pressed"]
+[connection signal="pressed" from="FNF Button Scroller/Sound Options Button" to="." method="_on_Sound_Options_Button_pressed"]
 [connection signal="pressed" from="FNF Button Scroller/FNF Text/Gameplay Options Button" to="." method="_on_Gameplay_Options_Button_pressed"]

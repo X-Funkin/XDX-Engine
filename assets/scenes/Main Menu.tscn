@@ -194,121 +194,121 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="VisualShaderNodeVec3Uniform" id=22]
+[sub_resource type="VisualShaderNodeVec3Uniform" id=2]
 uniform_name = "Offset_3"
 
-[sub_resource type="VisualShaderNodeExpression" id=23]
+[sub_resource type="VisualShaderNodeExpression" id=3]
 size = Vector2( 291.001, 45 )
 expression = "vec4 tex = texture(Viewportyeah, uv.xy);
 color = tex.rgb;
 alpha = tex.a;"
 
-[sub_resource type="VisualShaderNodeExpression" id=24]
+[sub_resource type="VisualShaderNodeExpression" id=4]
 size = Vector2( 420.001, -66 )
 expression = "vec4 tex = texture(Viewportyeah, uv.xy);
 color = tex.rgb;
 alpha = tex.a;"
 
-[sub_resource type="VisualShaderNodeVectorOp" id=25]
+[sub_resource type="VisualShaderNodeVectorOp" id=5]
 
-[sub_resource type="VisualShaderNodeExpression" id=26]
+[sub_resource type="VisualShaderNodeExpression" id=6]
 size = Vector2( 445, -4 )
 expression = "vec4 tex = texture(Viewportyeah, uv.xy);
 color = tex.rgb;
 alpha = tex.a;"
 
-[sub_resource type="VisualShaderNodeVectorOp" id=27]
+[sub_resource type="VisualShaderNodeVectorOp" id=7]
 
-[sub_resource type="VisualShaderNodeVectorScalarMix" id=28]
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=8]
 
-[sub_resource type="VisualShaderNodeColorUniform" id=29]
+[sub_resource type="VisualShaderNodeColorUniform" id=9]
 uniform_name = "Color_1"
 
-[sub_resource type="VisualShaderNodeColorUniform" id=30]
+[sub_resource type="VisualShaderNodeColorUniform" id=10]
 uniform_name = "Color_2"
 
-[sub_resource type="VisualShaderNodeColorUniform" id=31]
+[sub_resource type="VisualShaderNodeColorUniform" id=11]
 uniform_name = "Color_3"
 
-[sub_resource type="VisualShaderNodeVectorScalarMix" id=32]
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=12]
 
-[sub_resource type="VisualShaderNodeVectorScalarMix" id=33]
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=13]
 
-[sub_resource type="VisualShaderNodeVectorScalarMix" id=34]
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=14]
 
-[sub_resource type="VisualShaderNodeInput" id=39]
+[sub_resource type="VisualShaderNodeInput" id=15]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeVectorScalarMix" id=40]
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=16]
 default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 1 ), 2, 0.0 ]
 
-[sub_resource type="VisualShaderNodeVectorClamp" id=41]
+[sub_resource type="VisualShaderNodeVectorClamp" id=17]
 
-[sub_resource type="VisualShaderNodeVectorClamp" id=42]
+[sub_resource type="VisualShaderNodeVectorClamp" id=18]
 
-[sub_resource type="VisualShaderNodeVectorClamp" id=43]
+[sub_resource type="VisualShaderNodeVectorClamp" id=19]
 
-[sub_resource type="VisualShaderNodeVectorClamp" id=44]
+[sub_resource type="VisualShaderNodeVectorClamp" id=20]
 
-[sub_resource type="VisualShaderNodeVectorDecompose" id=45]
+[sub_resource type="VisualShaderNodeVectorDecompose" id=21]
 
-[sub_resource type="VisualShaderNodeInput" id=14]
+[sub_resource type="VisualShaderNodeInput" id=22]
 input_name = "screen_uv"
 
-[sub_resource type="VisualShaderNodeCompare" id=46]
+[sub_resource type="VisualShaderNodeCompare" id=23]
 default_input_values = [ 0, 0.0, 1, 0.5, 2, 0.495 ]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=47]
+[sub_resource type="VisualShaderNodeScalarOp" id=24]
 default_input_values = [ 0, 0.0, 1, 1.0 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarOp" id=48]
+[sub_resource type="VisualShaderNodeScalarOp" id=25]
 operator = 2
 
-[sub_resource type="VisualShaderNodeCompare" id=49]
+[sub_resource type="VisualShaderNodeCompare" id=26]
 default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 0 ), 2, 1e-05 ]
 type = 1
 
-[sub_resource type="VisualShaderNodeVectorDecompose" id=50]
+[sub_resource type="VisualShaderNodeVectorDecompose" id=27]
 
-[sub_resource type="VisualShaderNodeCompare" id=51]
+[sub_resource type="VisualShaderNodeCompare" id=28]
 default_input_values = [ 0, 0.0, 1, 0.5, 2, 0.495 ]
 
-[sub_resource type="VisualShaderNodeCompare" id=52]
+[sub_resource type="VisualShaderNodeCompare" id=29]
 default_input_values = [ 0, 0.0, 1, 0.5, 2, 0.495 ]
 
-[sub_resource type="VisualShaderNodeCompare" id=53]
+[sub_resource type="VisualShaderNodeCompare" id=30]
 default_input_values = [ 0, 0.0, 1, 0.5, 2, 0.495 ]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=54]
+[sub_resource type="VisualShaderNodeScalarOp" id=31]
 operator = 2
 
-[sub_resource type="VisualShaderNodeInput" id=19]
+[sub_resource type="VisualShaderNodeInput" id=32]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeScalarOp" id=55]
+[sub_resource type="VisualShaderNodeScalarOp" id=33]
 default_input_values = [ 0, 0.0, 1, 1.0 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeVectorOp" id=20]
+[sub_resource type="VisualShaderNodeVectorOp" id=34]
 
-[sub_resource type="VisualShaderNodeGlobalExpression" id=21]
+[sub_resource type="VisualShaderNodeGlobalExpression" id=35]
 size = Vector2( 447, 220 )
 expression = "uniform sampler2D Viewportyeah;"
 
-[sub_resource type="VisualShaderNodeExpression" id=35]
+[sub_resource type="VisualShaderNodeExpression" id=36]
 size = Vector2( 102, 10 )
 expression = "vec4 tex = texture(Viewportyeah, uv.xy);
 color = tex.rgb;
 alpha = tex.a;"
 
-[sub_resource type="VisualShaderNodeVec3Uniform" id=36]
+[sub_resource type="VisualShaderNodeVec3Uniform" id=37]
 uniform_name = "Offset_1"
 
-[sub_resource type="VisualShaderNodeVec3Uniform" id=37]
+[sub_resource type="VisualShaderNodeVec3Uniform" id=38]
 uniform_name = "Offset_2"
 
-[sub_resource type="VisualShader" id=15]
+[sub_resource type="VisualShader" id=39]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 uniform vec4 Color_3 : hint_color;
@@ -467,19 +467,19 @@ graph_offset = Vector2( -466.24, 563.389 )
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2( 1180, -60 )
-nodes/fragment/3/node = SubResource( 14 )
+nodes/fragment/3/node = SubResource( 22 )
 nodes/fragment/3/position = Vector2( -1200, 220 )
-nodes/fragment/4/node = SubResource( 19 )
+nodes/fragment/4/node = SubResource( 32 )
 nodes/fragment/4/position = Vector2( -640, 640 )
-nodes/fragment/5/node = SubResource( 20 )
+nodes/fragment/5/node = SubResource( 34 )
 nodes/fragment/5/position = Vector2( -640, 280 )
-nodes/fragment/6/node = SubResource( 21 )
+nodes/fragment/6/node = SubResource( 35 )
 nodes/fragment/6/position = Vector2( -1820, 20 )
 nodes/fragment/6/size = Vector2( 447, 220 )
 nodes/fragment/6/input_ports = ""
 nodes/fragment/6/output_ports = ""
 nodes/fragment/6/expression = "uniform sampler2D Viewportyeah;"
-nodes/fragment/7/node = SubResource( 35 )
+nodes/fragment/7/node = SubResource( 36 )
 nodes/fragment/7/position = Vector2( -280, 80 )
 nodes/fragment/7/size = Vector2( 102, 10 )
 nodes/fragment/7/input_ports = "0,1,uv;"
@@ -487,13 +487,13 @@ nodes/fragment/7/output_ports = "0,1,color;1,0,alpha;"
 nodes/fragment/7/expression = "vec4 tex = texture(Viewportyeah, uv.xy);
 color = tex.rgb;
 alpha = tex.a;"
-nodes/fragment/8/node = SubResource( 36 )
+nodes/fragment/8/node = SubResource( 37 )
 nodes/fragment/8/position = Vector2( -880, 340 )
-nodes/fragment/9/node = SubResource( 37 )
+nodes/fragment/9/node = SubResource( 38 )
 nodes/fragment/9/position = Vector2( -880, 400 )
-nodes/fragment/10/node = SubResource( 22 )
+nodes/fragment/10/node = SubResource( 2 )
 nodes/fragment/10/position = Vector2( -880, 460 )
-nodes/fragment/11/node = SubResource( 23 )
+nodes/fragment/11/node = SubResource( 3 )
 nodes/fragment/11/position = Vector2( -280, 240 )
 nodes/fragment/11/size = Vector2( 291.001, 45 )
 nodes/fragment/11/input_ports = "0,1,uv;"
@@ -501,7 +501,7 @@ nodes/fragment/11/output_ports = "0,1,color;1,0,alpha;"
 nodes/fragment/11/expression = "vec4 tex = texture(Viewportyeah, uv.xy);
 color = tex.rgb;
 alpha = tex.a;"
-nodes/fragment/12/node = SubResource( 24 )
+nodes/fragment/12/node = SubResource( 4 )
 nodes/fragment/12/position = Vector2( -280, 380 )
 nodes/fragment/12/size = Vector2( 420.001, -66 )
 nodes/fragment/12/input_ports = "0,1,uv;"
@@ -509,9 +509,9 @@ nodes/fragment/12/output_ports = "0,1,color;1,0,alpha;"
 nodes/fragment/12/expression = "vec4 tex = texture(Viewportyeah, uv.xy);
 color = tex.rgb;
 alpha = tex.a;"
-nodes/fragment/13/node = SubResource( 25 )
+nodes/fragment/13/node = SubResource( 5 )
 nodes/fragment/13/position = Vector2( -620, 400 )
-nodes/fragment/14/node = SubResource( 26 )
+nodes/fragment/14/node = SubResource( 6 )
 nodes/fragment/14/position = Vector2( -260, 780 )
 nodes/fragment/14/size = Vector2( 445, -4 )
 nodes/fragment/14/input_ports = "0,1,uv;"
@@ -519,77 +519,77 @@ nodes/fragment/14/output_ports = "0,1,color;1,0,alpha;"
 nodes/fragment/14/expression = "vec4 tex = texture(Viewportyeah, uv.xy);
 color = tex.rgb;
 alpha = tex.a;"
-nodes/fragment/15/node = SubResource( 27 )
+nodes/fragment/15/node = SubResource( 7 )
 nodes/fragment/15/position = Vector2( -620, 520 )
-nodes/fragment/16/node = SubResource( 28 )
+nodes/fragment/16/node = SubResource( 8 )
 nodes/fragment/16/position = Vector2( 940, -60 )
-nodes/fragment/17/node = SubResource( 29 )
+nodes/fragment/17/node = SubResource( 9 )
 nodes/fragment/17/position = Vector2( 520, 160 )
-nodes/fragment/18/node = SubResource( 30 )
+nodes/fragment/18/node = SubResource( 10 )
 nodes/fragment/18/position = Vector2( 260, 280 )
-nodes/fragment/19/node = SubResource( 31 )
+nodes/fragment/19/node = SubResource( 11 )
 nodes/fragment/19/position = Vector2( 240, 620 )
-nodes/fragment/20/node = SubResource( 32 )
+nodes/fragment/20/node = SubResource( 12 )
 nodes/fragment/20/position = Vector2( 720, 160 )
-nodes/fragment/21/node = SubResource( 33 )
+nodes/fragment/21/node = SubResource( 13 )
 nodes/fragment/21/position = Vector2( 600, 280 )
-nodes/fragment/22/node = SubResource( 34 )
+nodes/fragment/22/node = SubResource( 14 )
 nodes/fragment/22/position = Vector2( 540, 460 )
-nodes/fragment/23/node = SubResource( 39 )
+nodes/fragment/23/node = SubResource( 15 )
 nodes/fragment/23/position = Vector2( -1080, 160 )
-nodes/fragment/24/node = SubResource( 40 )
+nodes/fragment/24/node = SubResource( 16 )
 nodes/fragment/24/position = Vector2( -860, 200 )
-nodes/fragment/25/node = SubResource( 41 )
+nodes/fragment/25/node = SubResource( 17 )
 nodes/fragment/25/position = Vector2( -580, 140 )
-nodes/fragment/26/node = SubResource( 42 )
+nodes/fragment/26/node = SubResource( 18 )
 nodes/fragment/26/position = Vector2( -460, 280 )
-nodes/fragment/27/node = SubResource( 43 )
+nodes/fragment/27/node = SubResource( 19 )
 nodes/fragment/27/position = Vector2( -460, 400 )
-nodes/fragment/28/node = SubResource( 44 )
+nodes/fragment/28/node = SubResource( 20 )
 nodes/fragment/28/position = Vector2( -540, 740 )
-nodes/fragment/29/node = SubResource( 45 )
+nodes/fragment/29/node = SubResource( 21 )
 nodes/fragment/29/position = Vector2( -340, 960 )
-nodes/fragment/30/node = SubResource( 46 )
+nodes/fragment/30/node = SubResource( 23 )
 nodes/fragment/30/position = Vector2( -60, 980 )
-nodes/fragment/31/node = SubResource( 47 )
+nodes/fragment/31/node = SubResource( 24 )
 nodes/fragment/31/position = Vector2( 340, 760 )
-nodes/fragment/33/node = SubResource( 48 )
+nodes/fragment/33/node = SubResource( 25 )
 nodes/fragment/33/position = Vector2( 180, 1000 )
-nodes/fragment/34/node = SubResource( 49 )
+nodes/fragment/34/node = SubResource( 26 )
 nodes/fragment/34/position = Vector2( 720, 500 )
-nodes/fragment/35/node = SubResource( 50 )
+nodes/fragment/35/node = SubResource( 27 )
 nodes/fragment/35/position = Vector2( -240, 540 )
-nodes/fragment/36/node = SubResource( 51 )
+nodes/fragment/36/node = SubResource( 28 )
 nodes/fragment/36/position = Vector2( 20, 500 )
-nodes/fragment/37/node = SubResource( 52 )
+nodes/fragment/37/node = SubResource( 29 )
 nodes/fragment/37/position = Vector2( -40, 1160 )
-nodes/fragment/38/node = SubResource( 53 )
+nodes/fragment/38/node = SubResource( 30 )
 nodes/fragment/38/position = Vector2( 20, 600 )
-nodes/fragment/39/node = SubResource( 54 )
+nodes/fragment/39/node = SubResource( 31 )
 nodes/fragment/39/position = Vector2( 320, 480 )
-nodes/fragment/40/node = SubResource( 55 )
+nodes/fragment/40/node = SubResource( 33 )
 nodes/fragment/40/position = Vector2( 440, 340 )
 nodes/fragment/connections = PoolIntArray( 8, 0, 5, 1, 9, 0, 13, 1, 10, 0, 15, 1, 7, 1, 16, 2, 11, 1, 20, 2, 17, 0, 20, 1, 21, 0, 20, 0, 22, 0, 21, 0, 18, 0, 21, 1, 19, 0, 22, 1, 3, 0, 24, 1, 23, 0, 24, 0, 24, 0, 5, 0, 24, 0, 13, 0, 24, 0, 15, 0, 20, 0, 16, 0, 7, 0, 16, 1, 24, 0, 25, 0, 25, 0, 7, 0, 5, 0, 26, 0, 26, 0, 11, 0, 13, 0, 27, 0, 27, 0, 12, 0, 15, 0, 28, 0, 28, 0, 14, 0, 28, 0, 29, 0, 29, 0, 30, 0, 14, 1, 31, 0, 31, 0, 22, 2, 27, 0, 35, 0, 29, 1, 37, 0, 37, 0, 33, 1, 30, 0, 33, 0, 35, 0, 36, 0, 35, 1, 38, 0, 36, 0, 39, 0, 12, 1, 40, 0, 40, 0, 21, 2, 38, 0, 39, 1, 16, 0, 0, 0 )
 
-[sub_resource type="ViewportTexture" id=38]
+[sub_resource type="ViewportTexture" id=40]
 flags = 2
 viewport_path = NodePath("Start Menu/Viewport")
 
-[sub_resource type="ShaderMaterial" id=17]
+[sub_resource type="ShaderMaterial" id=41]
 resource_local_to_scene = true
-shader = SubResource( 15 )
+shader = SubResource( 39 )
 shader_param/Color_3 = Color( 0.219608, 0.254902, 0.733333, 1 )
 shader_param/Offset_3 = Vector3( 0.016, 0.02, 0 )
 shader_param/Color_2 = null
 shader_param/Offset_2 = Vector3( 0.011, 0.026, 0 )
 shader_param/Color_1 = Color( 1, 0.247059, 0.67451, 1 )
 shader_param/Offset_1 = Vector3( -0.003, 0.019, 0 )
-shader_param/Viewportyeah = SubResource( 38 )
+shader_param/Viewportyeah = SubResource( 40 )
 
-[sub_resource type="QuadMesh" id=18]
+[sub_resource type="QuadMesh" id=42]
 size = Vector2( 1920, 1080 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=43]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 72 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 17 ), ExtResource( 41 ) ],
 "loop": true,
@@ -597,7 +597,7 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=44]
 animations = [ {
 "frames": [ ExtResource( 56 ), ExtResource( 67 ), ExtResource( 49 ), ExtResource( 15 ), ExtResource( 50 ), ExtResource( 58 ), ExtResource( 45 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 32 ), ExtResource( 40 ), ExtResource( 20 ), ExtResource( 66 ), ExtResource( 33 ), ExtResource( 57 ), ExtResource( 51 ), ExtResource( 59 ), ExtResource( 25 ), ExtResource( 60 ), ExtResource( 73 ), ExtResource( 43 ), ExtResource( 64 ), ExtResource( 70 ), ExtResource( 52 ), ExtResource( 26 ), ExtResource( 54 ), ExtResource( 16 ) ],
 "loop": true,
@@ -605,7 +605,7 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=45]
 animations = [ {
 "frames": [ ExtResource( 76 ), ExtResource( 21 ), ExtResource( 37 ), ExtResource( 23 ), ExtResource( 48 ), ExtResource( 69 ), ExtResource( 24 ), ExtResource( 46 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 55 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 71 ), ExtResource( 38 ), ExtResource( 14 ), ExtResource( 39 ), ExtResource( 42 ), ExtResource( 81 ), ExtResource( 80 ), ExtResource( 82 ), ExtResource( 77 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 86 ), ExtResource( 97 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 100 ), ExtResource( 96 ), ExtResource( 83 ), ExtResource( 91 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 92 ), ExtResource( 98 ), ExtResource( 94 ), ExtResource( 93 ), ExtResource( 85 ), ExtResource( 84 ), ExtResource( 95 ), ExtResource( 87 ), ExtResource( 99 ), ExtResource( 88 ) ],
 "loop": true,
@@ -618,15 +618,15 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=7]
+[sub_resource type="VisualShaderNodeTextureUniform" id=46]
 uniform_name = "TextureUniform"
 
-[sub_resource type="VisualShaderNodeInput" id=8]
+[sub_resource type="VisualShaderNodeInput" id=47]
 input_name = "screen_uv"
 
-[sub_resource type="VisualShaderNodeColorConstant" id=12]
+[sub_resource type="VisualShaderNodeColorConstant" id=48]
 
-[sub_resource type="VisualShader" id=9]
+[sub_resource type="VisualShader" id=49]
 code = "shader_type canvas_item;
 
 
@@ -654,20 +654,19 @@ void light() {
 graph_offset = Vector2( -97.0762, 0 )
 mode = 1
 flags/light_only = false
-nodes/fragment/2/node = SubResource( 7 )
+nodes/fragment/2/node = SubResource( 46 )
 nodes/fragment/2/position = Vector2( 100, 100 )
-nodes/fragment/3/node = SubResource( 8 )
+nodes/fragment/3/node = SubResource( 47 )
 nodes/fragment/3/position = Vector2( -200, 140 )
-nodes/fragment/4/node = SubResource( 12 )
+nodes/fragment/4/node = SubResource( 48 )
 nodes/fragment/4/position = Vector2( 120, 0 )
 nodes/fragment/connections = PoolIntArray( 3, 0, 2, 0, 4, 0, 0, 0 )
 
-[sub_resource type="ShaderMaterial" id=11]
+[sub_resource type="ShaderMaterial" id=50]
 resource_local_to_scene = true
-shader = SubResource( 9 )
+shader = SubResource( 49 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "start menu lol"
+[sub_resource type="Animation" id=51]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -733,7 +732,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=52]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource( 1 )
@@ -774,12 +773,12 @@ __meta__ = {
 [node name="FNF Text" parent="Opening Text/CenterContainer" instance=ExtResource( 2 )]
 visible = false
 margin_left = 697.0
-margin_top = 467.0
+margin_top = 468.0
 margin_right = 1223.0
-margin_bottom = 613.0
+margin_bottom = 612.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 526, 146 )
+rect_min_size = Vector2( 526, 144 )
 text = "xdx engine
 by xfunkin"
 visible_lines = 0
@@ -795,10 +794,10 @@ rect_min_size = Vector2( 500, 500 )
 [node name="FNF Text2" parent="Opening Text/CenterContainer" instance=ExtResource( 2 )]
 visible = false
 margin_left = 533.0
-margin_top = 467.0
+margin_top = 468.0
 margin_right = 1386.0
-margin_bottom = 613.0
-rect_min_size = Vector2( 853, 146 )
+margin_bottom = 612.0
+rect_min_size = Vector2( 853, 144 )
 text = "new engine
 new possibilities"
 visible_lines = 0
@@ -806,10 +805,10 @@ visible_lines = 0
 [node name="FNF Text3" parent="Opening Text/CenterContainer" instance=ExtResource( 2 )]
 visible = false
 margin_left = 803.0
-margin_top = 431.0
+margin_top = 432.0
 margin_right = 1117.0
-margin_bottom = 649.0
-rect_min_size = Vector2( 314, 218 )
+margin_bottom = 648.0
+rect_min_size = Vector2( 314, 216 )
 text = "friday
 night
 funkin"
@@ -819,14 +818,14 @@ visible_lines = 0
 visible = false
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Start Menu"]
-material = SubResource( 17 )
-mesh = SubResource( 18 )
+material = SubResource( 41 )
+mesh = SubResource( 42 )
 
 [node name="logo" type="AnimatedSprite" parent="Start Menu"]
 position = Vector2( -480.749, -164.383 )
 scale = Vector2( 1.50789, 1.50789 )
-frames = SubResource( 2 )
-frame = 5
+frames = SubResource( 43 )
+frame = 3
 playing = true
 
 [node name="gf" type="AnimatedSprite" parent="Start Menu"]
@@ -834,18 +833,18 @@ visible = false
 modulate = Color( 1, 1, 1, 0.780392 )
 position = Vector2( 383.541, 54.9536 )
 scale = Vector2( 1.27826, 1.27826 )
-frames = SubResource( 3 )
+frames = SubResource( 44 )
 frame = 10
 
 [node name="Enter" type="AnimatedSprite" parent="Start Menu"]
 position = Vector2( 310.957, 394.41 )
 scale = Vector2( 1.50811, 1.50811 )
-frames = SubResource( 4 )
-frame = 9
+frames = SubResource( 45 )
+frame = 7
 playing = true
 
 [node name="ColorRect" type="ColorRect" parent="Start Menu"]
-material = SubResource( 11 )
+material = SubResource( 50 )
 margin_left = -1920.0
 margin_top = -1080.0
 margin_right = 1920.0
@@ -856,7 +855,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Start Menu"]
-"anims/start menu lol" = SubResource( 5 )
+"anims/start menu lol" = SubResource( 51 )
 
 [node name="Viewport" type="Viewport" parent="Start Menu"]
 size = Vector2( 1920, 1080 )
@@ -877,9 +876,10 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Start Menu"]
 stream = ExtResource( 104 )
+bus = "Sound Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/fade in" = SubResource( 6 )
+"anims/fade in" = SubResource( 52 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

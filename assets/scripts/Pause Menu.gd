@@ -8,7 +8,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"VBoxContainer/Resume/Resume Button".grab_focus()
+#	$"VBoxContainer/Resume/Resume Button".grab_focus()
 	pass # Replace with function body.
 
 
@@ -24,7 +24,9 @@ func _input(event):
 #		resume()
 
 func exit():
-	get_tree().quit()
+#	get_tree().quit()
+	get_tree().paused = false
+	get_tree().change_scene("res://assets/scenes/Menu Screens.tscn")
 
 func resume():
 	print("resuming")

@@ -1,0 +1,265 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/fonts/coolpixelfontlol.tres" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/scenes/FNF Button Scroller.gd" type="Script" id=2]
+[ext_resource path="res://assets/scenes/Sound Options.gd" type="Script" id=3]
+[ext_resource path="res://assets/scenes/Volume Button.gd" type="Script" id=4]
+[ext_resource path="res://assets/scenes/FNF Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sounds/breakfast.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/volume blip.wav" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_size = 7
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Sound Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FNF Button Scroller" type="VBoxContainer" parent="."]
+margin_left = 130.206
+margin_top = 284.811
+margin_right = 813.206
+margin_bottom = 353.811
+custom_constants/separation = 99
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+first_option = NodePath("Master Volume Button/FNF Button")
+
+[node name="Master Volume Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_right = 946.0
+margin_bottom = 69.0
+rect_pivot_offset = Vector2( -1445.41, -353.266 )
+script = ExtResource( 4 )
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Master Volume Button" instance=ExtResource( 5 )]
+margin_right = 683.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 683, 69 )
+text = "master volume"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Master Volume Button"]
+margin_left = 687.0
+margin_top = 1.0
+margin_right = 939.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = ":  100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Master Volume Button/Label"]
+visible = false
+margin_left = -602.585
+margin_top = 78.1835
+margin_right = 383.415
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Change the window mode between Fullscreen, Windowed, and Windowed Boarderless"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume Blip" type="AudioStreamPlayer" parent="FNF Button Scroller/Master Volume Button"]
+stream = ExtResource( 7 )
+
+[node name="Player Volume Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 168.0
+margin_right = 946.0
+margin_bottom = 238.0
+rect_pivot_offset = Vector2( -1445.41, -353.266 )
+script = ExtResource( 4 )
+audio_bus = "Player Vocals"
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Player Volume Button" instance=ExtResource( 5 )]
+margin_right = 690.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 690, 70 )
+text = "player vocals"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Player Volume Button"]
+margin_left = 694.0
+margin_top = 2.0
+margin_right = 946.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = ":  100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Player Volume Button/Label"]
+visible = false
+margin_left = -602.585
+margin_top = 78.1835
+margin_right = 383.415
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Change the window mode between Fullscreen, Windowed, and Windowed Boarderless"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume Blip" type="AudioStreamPlayer" parent="FNF Button Scroller/Player Volume Button"]
+stream = ExtResource( 7 )
+bus = "Player Vocals"
+
+[node name="Instrumentals Volume Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 337.0
+margin_right = 946.0
+margin_bottom = 404.0
+rect_pivot_offset = Vector2( -1445.41, -353.266 )
+script = ExtResource( 4 )
+audio_bus = "Instrumentals"
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Instrumentals Volume Button" instance=ExtResource( 5 )]
+margin_right = 652.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 652, 67 )
+text = "instrumentals"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Instrumentals Volume Button"]
+margin_left = 656.0
+margin_right = 908.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 1 )
+text = ":  100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Instrumentals Volume Button/Label"]
+visible = false
+margin_left = -602.585
+margin_top = 78.1835
+margin_right = 383.415
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Change the window mode between Fullscreen, Windowed, and Windowed Boarderless"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume Blip" type="AudioStreamPlayer" parent="FNF Button Scroller/Instrumentals Volume Button"]
+stream = ExtResource( 7 )
+bus = "Instrumentals"
+
+[node name="Enemy Volume Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 503.0
+margin_right = 946.0
+margin_bottom = 572.0
+rect_pivot_offset = Vector2( -1445.41, -353.266 )
+script = ExtResource( 4 )
+audio_bus = "Enemy Vocals"
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Enemy Volume Button" instance=ExtResource( 5 )]
+margin_right = 642.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 642, 69 )
+text = "Enemy vocals"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Enemy Volume Button"]
+margin_left = 646.0
+margin_top = 1.0
+margin_right = 898.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = ":  100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Enemy Volume Button/Label"]
+visible = false
+margin_left = -602.585
+margin_top = 78.1835
+margin_right = 383.415
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Change the window mode between Fullscreen, Windowed, and Windowed Boarderless"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume Blip" type="AudioStreamPlayer" parent="FNF Button Scroller/Enemy Volume Button"]
+stream = ExtResource( 7 )
+bus = "Enemy Vocals"
+
+[node name="Sound Effects Volume Button" type="HBoxContainer" parent="FNF Button Scroller"]
+margin_top = 671.0
+margin_right = 946.0
+margin_bottom = 740.0
+rect_pivot_offset = Vector2( -1445.41, -353.266 )
+script = ExtResource( 4 )
+audio_bus = "Sound Effects"
+fnf_button_node = NodePath("FNF Button")
+
+[node name="FNF Button" parent="FNF Button Scroller/Sound Effects Volume Button" instance=ExtResource( 5 )]
+margin_right = 663.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 663, 69 )
+text = "sound effects"
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Sound Effects Volume Button"]
+margin_left = 667.0
+margin_top = 1.0
+margin_right = 919.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = ":  100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FNF Button Scroller/Sound Effects Volume Button/Label"]
+visible = false
+margin_left = -602.585
+margin_top = 78.1835
+margin_right = 383.415
+margin_bottom = 100.183
+custom_fonts/font = SubResource( 2 )
+text = "Change the window mode between Fullscreen, Windowed, and Windowed Boarderless"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume Blip" type="AudioStreamPlayer" parent="FNF Button Scroller/Sound Effects Volume Button"]
+stream = ExtResource( 7 )
+bus = "Sound Effects"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[connection signal="focus_entered" from="FNF Button Scroller/Master Volume Button/FNF Button" to="FNF Button Scroller/Master Volume Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Master Volume Button/FNF Button" to="FNF Button Scroller/Master Volume Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Master Volume Button/FNF Button" to="FNF Button Scroller/Master Volume Button" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/Player Volume Button/FNF Button" to="FNF Button Scroller/Player Volume Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Player Volume Button/FNF Button" to="FNF Button Scroller/Player Volume Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Player Volume Button/FNF Button" to="FNF Button Scroller/Player Volume Button" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/Instrumentals Volume Button/FNF Button" to="FNF Button Scroller/Instrumentals Volume Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Instrumentals Volume Button/FNF Button" to="FNF Button Scroller/Instrumentals Volume Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Instrumentals Volume Button/FNF Button" to="FNF Button Scroller/Instrumentals Volume Button" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/Enemy Volume Button/FNF Button" to="FNF Button Scroller/Enemy Volume Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Enemy Volume Button/FNF Button" to="FNF Button Scroller/Enemy Volume Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Enemy Volume Button/FNF Button" to="FNF Button Scroller/Enemy Volume Button" method="_on_FNF_Button_gui_input"]
+[connection signal="focus_entered" from="FNF Button Scroller/Sound Effects Volume Button/FNF Button" to="FNF Button Scroller/Sound Effects Volume Button" method="_on_FNF_Button_focus_entered"]
+[connection signal="focus_exited" from="FNF Button Scroller/Sound Effects Volume Button/FNF Button" to="FNF Button Scroller/Sound Effects Volume Button" method="_on_FNF_Button_focus_exited"]
+[connection signal="gui_input" from="FNF Button Scroller/Sound Effects Volume Button/FNF Button" to="FNF Button Scroller/Sound Effects Volume Button" method="_on_FNF_Button_gui_input"]

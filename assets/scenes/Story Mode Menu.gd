@@ -19,13 +19,13 @@ func dir_contents(path, return_full_path = true):
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Found directory: " + file_name)
+#				print("Found directory: " + file_name)
 				if return_full_path:
 					contents["Folders"].append(path+file_name+"/")
 				else:
 					contents["Folders"].append(file_name)
 			else:
-				print("Found file: " + file_name)
+#				print("Found file: " + file_name)
 				if return_full_path:
 					contents["Files"].append(path+file_name)
 				else:
@@ -37,7 +37,7 @@ func dir_contents(path, return_full_path = true):
 
 func get_all_week_data():
 	var weeks_data = []
-	print(dir_contents("res://assets/weeks/"))
+#	print(dir_contents("res://assets/weeks/"))
 	var weeks_folder_contents = dir_contents("res://assets/weeks/")
 	for folder in weeks_folder_contents["Folders"]:
 		var week_contents = dir_contents(folder, false)

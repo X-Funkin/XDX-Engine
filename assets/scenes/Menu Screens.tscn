@@ -191,6 +191,7 @@ menu_data_file = "res://assets/data/menu_data.json"
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -80.0
+bus = "Instrumentals"
 
 [node name="Audio Animations" type="AnimationPlayer" parent="."]
 "anims/Fade In" = SubResource( 1 )

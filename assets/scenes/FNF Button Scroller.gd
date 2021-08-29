@@ -3,7 +3,7 @@ extends VBoxContainer
 export(float) var focus_pos = 0.0 setget set_focus_pos
 export(float) var scrolling_speed = 10.0
 export(NodePath) var first_option
-var start_pos
+onready var start_pos = rect_position
 
 
 func set_focus_pos(n_pos):
@@ -20,7 +20,10 @@ func refocus():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_pos = rect_position
+#	get_tree().paused = true
+#	print("rest ", rect_position)
+#	start_pos = rect_position
+#	print("pos ", start_pos)
 #	get_child(0).grab_focus()
 #	$"FNF Button".grab_focus()
 	get_node(first_option).grab_focus()

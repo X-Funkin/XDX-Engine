@@ -28,3 +28,8 @@ func _on_Gameplay_Options_Button_pressed():
 func _on_Video_Options_Button_pressed():
 	get_tree().call_group("Options Menu Switchers", "switch_to_video_options")
 	pass # Replace with function body.
+
+
+func _on_Sound_Options_Button_pressed():
+	get_tree().call_group("Options Menu Switchers", "switch_to_sound_options")
+	pass # Replace with function body.

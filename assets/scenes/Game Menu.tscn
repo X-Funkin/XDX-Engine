@@ -426,12 +426,15 @@ anims/start = SubResource( 15 )
 
 [node name="Scroll Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 55 )
+bus = "Sound Effects"
 
 [node name="Confirm Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 54 )
+bus = "Sound Effects"
 
 [node name="Cancel Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 53 )
+bus = "Sound Effects"
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 visible = false

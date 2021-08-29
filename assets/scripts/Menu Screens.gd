@@ -58,6 +58,7 @@ func start():
 #	if event.is_action_pressed("note_left"):
 #		start()
 func _ready():
+#	GameData.load_volume()
 	$"Transistion Animations".play("Default")
 	$"Current Menu".add_child(start_screen.instance())
 	$"Audio Animations".play("Fade In")

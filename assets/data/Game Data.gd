@@ -6,7 +6,7 @@ extends Node
 # var b = "text"
 
 var data = {"settings":{},"default_settings":{},
-"controls":{"note_left":[68],"note_down":[70],"note_up":[74],"note_right":[75]}, "volume":100, "photosensitivity":0,
+"controls":{"note_left":[68],"note_down":[70],"note_up":[74],"note_right":[75]}, "volume":{"Master":100}, "photosensitivity":0,
 "video_settings":{"window_mode": 0, "resolution": [1920,1080], "framerate": 60, "framerate_max": true, "vsync": true, "fps_overlay": false, "mem_overlay": false}} #
 
 #var window = {"mode": 0, "fullscreen": true, "windowed": false, "windowed_boarderless": false, "resolution":{0:1920,1:1080,"x":1920,"y":1080}}
@@ -139,25 +139,34 @@ func change_volume(volume):
 #	load_volume()
 
 func load_volume():
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), data.volume/100.0)
+	for bus in data.volume:
+		print("laoding volume ", bus, " ", data.volume[bus])
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear2db(data.volume[bus]/100.0))
+		print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus)))
+		pass
+#	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), data.volume.Master/100.0)
 
 func _input(event):
 	if event is InputEventKey:
 		if event.scancode == KEY_F12 and event.pressed and !event.is_echo():
 			screenshot()
 		if event.scancode == KEY_EQUAL and event.pressed:
-			data.volume = clamp(data.volume+10.0, 0, 100)
-			change_volume(data.volume)
+			data.volume.Master = clamp(data.volume.Master+10.0, 0, 100)
+			change_volume(data.volume.Master)
 		if event.scancode == KEY_MINUS and event.pressed:
-			data.volume = clamp(data.volume-10.0, 0, 100)
-			change_volume(data.volume)
+			data.volume.Master = clamp(data.volume.Master-10.0, 0, 100)
+			change_volume(data.volume.Master)
+		if event.scancode == KEY_F11 and event.pressed:
+			load_volume()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	OS.set_window_title("XDX Engine Alpha 1.4.0")
 	load_game_data()
 	load_controls()
 	load_video_settings()
+	load_volume()
 #	load_volume()
 #	self.volume = data.volume
 	pass # Replace with function body.
