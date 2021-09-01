@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/scenes/FNF Text.tscn" type="PackedScene" id=2]
 
 [node name="Freeplay Button" type="Button"]
+modulate = Color( 1, 1, 1, 0.5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1510.0
@@ -16,6 +17,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+song_data = {
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 410.0
@@ -25,17 +28,15 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-margin_right = 406.0
 margin_bottom = 35.0
 
 [node name="FNF Text" parent="HBoxContainer/CenterContainer" instance=ExtResource( 2 )]
-margin_right = 406.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 406, 35 )
+margin_top = 17.0
+margin_bottom = 17.0
 
 [node name="Freeplay Icon" type="TextureRect" parent="HBoxContainer"]
-margin_left = 410.0
-margin_right = 410.0
+margin_left = 4.0
+margin_right = 4.0
 margin_bottom = 35.0
 
 [connection signal="focus_entered" from="." to="." method="_on_Freeplay_Button_focus_entered"]

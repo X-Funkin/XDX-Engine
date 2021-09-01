@@ -9,24 +9,53 @@ var data = {"settings":{},"default_settings":{},
 "controls":{"note_left":[68],"note_down":[70],"note_up":[74],"note_right":[75]}, "volume":{"Master":100}, "photosensitivity":0,
 "video_settings":{"window_mode": 0, "resolution": [1920,1080], "framerate": 60, "framerate_max": true, "vsync": true, "fps_overlay": false, "mem_overlay": false}} #
 
+var state = {"playstate": 0, "story": true, "freeplay": false}
 #var window = {"mode": 0, "fullscreen": true, "windowed": false, "windowed_boarderless": false, "resolution":{0:1920,1:1080,"x":1920,"y":1080}}
 #var settings = {}
 #var default_settings = {}
 
 #var volume = 100.0 setget set_volume
 
-var game_data_file = "user://../XDX Engine/Game_Data.json"
+var version = ["Alpha", 1, 4, 5]
+var game_data_file = "user://../XDX Engine/Game_Data_%s-%s.%s.%s.json"%version
+
+#func load_data_file(path)
 
 func load_game_data():
 	var file = File.new()
-	file.open(game_data_file, File.READ)
-	var new_data = JSON.parse(file.get_as_text()).result
-	if not data is Dictionary:
-		data = {"settings":{},"default_settings":{}}
-	if new_data is Dictionary:
-		for thing in new_data:
-			data[thing] = new_data[thing]
-	pass
+	if file.file_exists(game_data_file):
+		file.open(game_data_file, File.READ)
+		var new_data = JSON.parse(file.get_as_text()).result
+		if not data is Dictionary:
+			data = {"settings":{},"default_settings":{}}
+		if new_data is Dictionary:
+			for thing in new_data:
+				data[thing] = new_data[thing]
+		pass
+	else:
+		var dir = Directory.new()
+		var files = []
+		if dir.open("user://../XDX Engine/") == OK:
+			dir.list_dir_begin(true)
+			var file_name = dir.get_next()
+			while file_name != "":
+				if !dir.current_is_dir():
+					if file_name.split(".")[-1] == "json":
+						files.append(file_name)
+		if files != []:
+			var newest_file = ["", 0]
+			for data_file in files:
+#				file.open(data_file, File.READ)
+				var modify_time = file.get_modified_time(data_file)
+				if modify_time > newest_file[1]:
+					newest_file = [data_file, modify_time]
+			if newest_file != ["", 0]:
+				file.open(newest_file)
+				var new_data = JSON.parse(file.get_as_text()).result
+				if new_data is Dictionary:
+					for thing in new_data:
+						if typeof(data[thing]) == typeof(new_data[thing]):
+							data[thing] = new_data[thing]
 
 func save_game_data():
 	var file = File.new()
@@ -162,7 +191,7 @@ func _input(event):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
-	OS.set_window_title("XDX Engine Alpha 1.4.0")
+	OS.set_window_title("XDX Engine %s %s.%s.%s"%version)
 	load_game_data()
 	load_controls()
 	load_video_settings()

@@ -142,6 +142,7 @@ sounds_path = NodePath("Sounds")
 label_thingy = NodePath("Camera/Screen Elements/Label")
 label_thingy_2 = NodePath("Camera/Screen Elements/Text UI/Song Label")
 target_scene = ExtResource( 6 )
+freeplay_screen = "res://assets/weeks/week 1/Week Screen.tscn"
 song_data_file = "res://assets/weeks/week 1/song_data.json"
 
 [node name="stageback" type="Sprite" parent="."]
@@ -394,18 +395,14 @@ stream = ExtResource( 3 )
 
 [node name="3" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
 stream = ExtResource( 21 )
-bus = "SFX"
 
 [node name="2" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
 stream = ExtResource( 20 )
-bus = "SFX"
 
 [node name="1" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
 stream = ExtResource( 27 )
-bus = "SFX"
 
 [node name="Go!" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
 stream = ExtResource( 19 )
-bus = "SFX"
 
 [connection signal="timeout" from="Sounds/Music/Instrumentals/Count Down Timer" to="Sounds/Music/Instrumentals" method="_on_Count_Down_Timer_timeout"]

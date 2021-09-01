@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/scripts/Menu Screens.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Main Menu.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/music/freakyMenu.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/scenes/Story Mode Menu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/scenes/Options Menu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/Freeplay Menu.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fade In"
@@ -185,6 +186,7 @@ script = ExtResource( 1 )
 start_screen = ExtResource( 2 )
 main_menu = ExtResource( 4 )
 story_mode_menu = ExtResource( 6 )
+freeplay_menu = ExtResource( 8 )
 options_menu = ExtResource( 7 )
 menu_data_file = "res://assets/data/menu_data.json"
 

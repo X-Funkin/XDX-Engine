@@ -15,7 +15,7 @@ func dir_contents(path, return_full_path = true):
 	var contents = {"Files":[],"Folders":[]}
 	var dir = Directory.new()
 	if dir.open(path) == OK:
-		dir.list_dir_begin()
+		dir.list_dir_begin(true)
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():

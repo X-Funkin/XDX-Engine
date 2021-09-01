@@ -116,3 +116,8 @@ func _on_Options_Button_pressed():
 func _on_Story_Mode_Button_pressed():
 	target_string = "switch_to_story"
 	pass # Replace with function body.
+
+
+func _on_Freeplay_Button_pressed():
+	target_string = "switch_to_freeplay"
+	pass # Replace with function body.

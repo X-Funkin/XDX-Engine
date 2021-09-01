@@ -65,8 +65,8 @@ anchor_bottom = 1.0
 margin_left = 70.0
 margin_top = 70.0
 margin_right = 434.0
-margin_bottom = 142.0
-rect_min_size = Vector2( 364, 72 )
+margin_bottom = 140.0
+rect_min_size = Vector2( 364, 70 )
 text = "Loading"
 
 [node name="Right Arrow" parent="." instance=ExtResource( 8 )]

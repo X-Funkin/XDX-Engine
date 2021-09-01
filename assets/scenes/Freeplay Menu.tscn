@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/scenes/BG Image.tres" type="Shader" id=1]
 [ext_resource path="res://assets/scripts/Freeplay Menu.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/characters/girlfriend/Girlfriend Icon.png" type="Texture" id=5]
 [ext_resource path="res://assets/weeks/week 1/assets/characters/daddy_dearest/Daddy Dearest Icon.png" type="Texture" id=6]
 [ext_resource path="res://assets/scenes/Freeplay Button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/FNF Button Scroller.gd" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -15,8 +16,12 @@ shader_param/Line_Color = Color( 0.160784, 0.278431, 0.866667, 1 )
 shader_param/Base_Color = Color( 0.572549, 0.443137, 0.992157, 1 )
 shader_param/Texture = ExtResource( 3 )
 
-[node name="Freeplay Menu" type="Node2D"]
+[node name="Freeplay Menu" type="Node2D" groups=[
+"Song Data Recievers",
+]]
 script = ExtResource( 2 )
+button_container = NodePath("Control/scroller")
+freeplay_button = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
@@ -24,6 +29,7 @@ scale = Vector2( 1.49942, 1.49942 )
 texture = ExtResource( 3 )
 
 [node name="freeplay menu ref" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 4 )
 
@@ -39,7 +45,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="scroller" type="VBoxContainer" parent="Control"]
 anchor_left = 0.042
 anchor_right = 0.084
 margin_left = 53.5956
@@ -48,11 +54,13 @@ margin_right = 521.956
 margin_bottom = 620.106
 rect_scale = Vector2( 1.429, 1.429 )
 custom_constants/separation = 20
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+first_option = NodePath("Freeplay Button")
 
-[node name="Freeplay Button" parent="Control/VBoxContainer" instance=ExtResource( 7 )]
+[node name="Freeplay Button" parent="Control/scroller" instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 549.0
@@ -61,8 +69,10 @@ rect_min_size = Vector2( 549, 150 )
 text = "tutorial"
 text = "tutorial"
 freeplay_icon = ExtResource( 5 )
+song_data = {
+}
 
-[node name="Freeplay Button2" parent="Control/VBoxContainer" instance=ExtResource( 7 )]
+[node name="Freeplay Button2" parent="Control/scroller" instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 47.0
@@ -73,3 +83,5 @@ rect_min_size = Vector2( 502, 150 )
 text = "bopeebo"
 text = "bopeebo"
 freeplay_icon = ExtResource( 6 )
+song_data = {
+}

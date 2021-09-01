@@ -5,6 +5,9 @@ export(String) var text setget set_text
 export(Texture) var freeplay_icon setget set_freeplay_icon
 export(Color) var focused_color = Color(1,1,1,1)
 export(Color) var unfocused_color = Color(1,1,1,0.5)
+export(String, FILE) var song_file
+export(Dictionary) var song_data
+#export(St)
 
 var fnf_text : NodePath = @"HBoxContainer/CenterContainer/FNF Text"
 var freeplay_texture : NodePath = @"HBoxContainer/Freeplay Icon"
@@ -34,6 +37,7 @@ func set_freeplay_icon(n_icon):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	modulate = unfocused_color
 	pass # Replace with function body.
 
 
@@ -45,6 +49,9 @@ func _ready():
 
 func _on_Freeplay_Button_focus_entered():
 	modulate = focused_color
+	get_tree().call_group("Song Data Recievers", "recieve_song_data", song_data)
+	if get_parent().has_method("refocus"):
+		get_parent().focus_pos = rect_position.y
 	pass # Replace with function body.
 
 

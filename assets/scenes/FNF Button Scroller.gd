@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 export(float) var focus_pos = 0.0 setget set_focus_pos
-export(float) var scrolling_speed = 10.0
+export(float) var scrolling_speed = 30.0
 export(NodePath) var first_option
 onready var start_pos = rect_position
 
@@ -32,5 +32,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rect_position = rect_position.linear_interpolate(start_pos-Vector2(0,focus_pos), scrolling_speed*delta)
+	rect_position = rect_position.linear_interpolate(start_pos-Vector2(0,focus_pos*rect_scale.y), scrolling_speed*delta)
 #	pass

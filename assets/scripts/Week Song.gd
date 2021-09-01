@@ -16,6 +16,7 @@ export(NodePath) var sounds_path
 export(NodePath) var label_thingy
 export(NodePath) var label_thingy_2
 export(PackedScene) var target_scene
+export(String, FILE) var freeplay_screen
 export(String, FILE) var song_data_file
 var chart_file = ""
 var player_combo = 0
@@ -212,6 +213,7 @@ func save_song_data():
 	save_data["song_name"] = song_name
 	save_data["freeplay_icon"] = freeplay_icon.resource_path
 	save_data["instrumentals"] = get_node(instrumentals).stream.resource_path
+	save_data["freeplay_screen"] = freeplay_screen
 	
 	if not file_name in song_data["songs"]:
 		for song in song_data["songs"]:

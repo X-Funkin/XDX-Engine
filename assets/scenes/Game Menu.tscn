@@ -450,6 +450,8 @@ one_shot = true
 [connection signal="pressed" from="MenuButtons/CenterContainer/VBoxContainer/Story Mode Button" to="." method="_on_Story_Mode_Button_pressed"]
 [connection signal="pressed" from="MenuButtons/CenterContainer/VBoxContainer/Story Mode Button" to="MenuButtons" method="_on_Story_Mode_Button_pressed"]
 [connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Freeplay Button" to="MenuButtons" method="_on_Freeplay_Button_focus_entered"]
+[connection signal="pressed" from="MenuButtons/CenterContainer/VBoxContainer/Freeplay Button" to="." method="_on_Freeplay_Button_pressed"]
+[connection signal="pressed" from="MenuButtons/CenterContainer/VBoxContainer/Freeplay Button" to="MenuButtons" method="_on_Freeplay_Button_pressed"]
 [connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Donate Button" to="MenuButtons" method="_on_Donate_Button_focus_entered"]
 [connection signal="focus_entered" from="MenuButtons/CenterContainer/VBoxContainer/Options Button" to="MenuButtons" method="_on_Options_Button_focus_entered"]
 [connection signal="pressed" from="MenuButtons/CenterContainer/VBoxContainer/Options Button" to="." method="_on_Options_Button_pressed"]

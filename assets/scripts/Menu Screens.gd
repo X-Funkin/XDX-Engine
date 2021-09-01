@@ -4,6 +4,7 @@ class_name MenuScreens
 export(PackedScene) var start_screen
 export(PackedScene) var main_menu
 export(PackedScene) var story_mode_menu
+export(PackedScene) var freeplay_menu
 export(PackedScene) var options_menu
 export(String, FILE) var menu_data_file
 
@@ -82,6 +83,10 @@ func switch_to_story():
 	target_scene = story_mode_menu
 	fade_out("Up")
 
+func switch_to_freeplay():
+	target_scene = freeplay_menu
+	fade_out("Up")
+
 func switch_to_options():
 	target_scene = options_menu
 	fade_out("Up")
@@ -89,9 +94,18 @@ func switch_to_options():
 func fade_out_background_track():
 	$"Audio Animations".play("Fade Out")
 
-func fade_in_background_track():
+func fade_in_background_track(speed = 1.0):
+	$"Audio Animations".playback_speed = speed
 	$"Audio Animations".play("Fade In")
 	pass
+
+func change_background_track(n_track):
+	var n_stream = load(n_track)
+	if n_stream is AudioStream:
+		fade_in_background_track(3.0)
+		$"Background Music".stop()
+		$"Background Music".stream = n_stream
+		$"Background Music".play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -87,3 +87,10 @@ func _on_Options_Button_focus_entered():
 	refocus(get_node(options_node_path))
 	get_node(scroll_audio).play()
 	pass # Replace with function body.
+
+
+func _on_Freeplay_Button_pressed():
+	defocus_buttons()
+	get_node(animation_thingy).play("button_pressed")
+	get_node(confirm_audio).play()
+	pass # Replace with function body.
