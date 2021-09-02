@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/characters/boyfriend/Boyfriend.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/characters/girlfriend/Girlfriend.tscn" type="PackedScene" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://assets/fonts/coolvcrfontlol.tres" type="DynamicFontData" id=31]
 [ext_resource path="res://assets/scripts/Follow Point.gd" type="Script" id=32]
 [ext_resource path="res://assets/scenes/Menu Screens.tscn" type="PackedScene" id=33]
+[ext_resource path="res://assets/weeks/tutorial/assets/scenes/Tutorial Dialogue.tscn" type="PackedScene" id=34]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -142,6 +143,7 @@ label_thingy_2 = NodePath("Camera/Screen Elements/Text UI/Song Label")
 target_scene = ExtResource( 33 )
 freeplay_screen = "res://assets/weeks/tutorial/Week Screen.tscn"
 song_data_file = "res://assets/weeks/tutorial/song_data.json"
+dialogue_node = NodePath("CanvasLayer/Tutorial Dialogue")
 
 [node name="stageback" type="Sprite" parent="."]
 position = Vector2( -40.2127, -267.617 )
@@ -391,4 +393,9 @@ stream = ExtResource( 21 )
 [node name="Go!" type="AudioStreamPlayer" parent="Sounds/Count Down Sounds"]
 stream = ExtResource( 22 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Tutorial Dialogue" parent="CanvasLayer" instance=ExtResource( 34 )]
+
 [connection signal="timeout" from="Sounds/Music/Instrumentals/Count Down Timer" to="Sounds/Music/Instrumentals" method="_on_Count_Down_Timer_timeout"]
+[connection signal="dialogue_ended" from="CanvasLayer/Tutorial Dialogue" to="." method="_on_Tutorial_Dialogue_dialogue_ended"]

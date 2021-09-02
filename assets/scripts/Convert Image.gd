@@ -10,6 +10,7 @@ export(int, "XML Convert", "Contrast Max") var mode
 func _ready():
 	$Control/OptionButton.add_item("Convert XML Sprite Sheet", 0)
 	$Control/OptionButton.add_item("maximise contrast", 1)
+	get_tree().paused = false
 #	$Control/OptionButton.add_item("yoowyas3")
 	pass # Replace with function body.
 

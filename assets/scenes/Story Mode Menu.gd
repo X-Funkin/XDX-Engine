@@ -109,6 +109,9 @@ func _ready():
 	var data = get_all_week_data()
 	print("okay did it work tho?")
 	print(data)
+	GameData.state.playstate = 0
+	GameData.state.freeplay = false
+	GameData.state.story = true
 	add_week_buttons()
 #	get_node(week_button_container).get_child(0).grab_focus()
 	pass # Replace with function body.

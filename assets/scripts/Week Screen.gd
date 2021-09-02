@@ -69,6 +69,8 @@ func load_scene():
 func _ready():
 	save_week_data()
 	$AnimationPlayer.play("spin")
+	if GameData.state.freeplay:
+		target_string = GameData.state.song_path
 	load_scene()
 	pass # Replace with function body.
 #

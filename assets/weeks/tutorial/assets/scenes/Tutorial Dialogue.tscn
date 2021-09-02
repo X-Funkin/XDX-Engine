@@ -1,0 +1,374 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/fonts/coolpixelfontlol.tres" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/scenes/Dialogue Node.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/weeks/tutorial/assets/scenes/Tutorial Dialogue.gd" type="Script" id=3]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0016.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/GF Cheer0020.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/speech bubbles/speech bubble normal0019.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT0014.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP0014.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/GF Dancing Beat0029.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 23
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 35
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Start Dialogue"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BF NOTE LEFT0015:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[node name="Tutorial Dialogue" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+first_dialogue = NodePath("GF Hey!")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.69 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialogue Node" parent="." instance=ExtResource( 2 )]
+visible = false
+target_node = NodePath("yeeaahaha hackel")
+text_label = NodePath("yeeaahaha hackel")
+
+[node name="yeeaahaha hackel" type="Label" parent="Dialogue Node"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "wooowhahadhad yeah man yeah man yeah man
+haskel when haskel haskel functional programing langruage"
+
+[node name="Dialogue Node2" parent="Dialogue Node" instance=ExtResource( 2 )]
+target_node = NodePath("yeeaahaha 2")
+text_label = NodePath("yeeaahaha 2")
+
+[node name="yeeaahaha 2" type="Label" parent="Dialogue Node/Dialogue Node2"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "parrrrt 2222"
+
+[node name="Dialogue Node3" parent="Dialogue Node/Dialogue Node2" instance=ExtResource( 2 )]
+target_node = NodePath("yeeaahaha third")
+text_label = NodePath("yeeaahaha third")
+
+[node name="yeeaahaha third" type="Label" parent="Dialogue Node/Dialogue Node2/Dialogue Node3"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "thiiriiririririirdd"
+
+[node name="Dialogue Node4" parent="Dialogue Node/Dialogue Node2/Dialogue Node3" instance=ExtResource( 2 )]
+target_node = NodePath("yeeaahaha vsauce")
+text_label = NodePath("yeeaahaha vsauce")
+
+[node name="yeeaahaha vsauce" type="Label" parent="Dialogue Node/Dialogue Node2/Dialogue Node3/Dialogue Node4"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "hey vsauce michael here in 2003 reaserchers did the measurements
+ and found that kansas is in fact litereally flater than a pankaete ofcoruce the earth is not flat
+thle earth is rounc otherwise tracelers would be falling off the edge all the time write rong if the earth was not a
+ball
+shape but was instead a disk like this plate"
+
+[node name="GF Hey!" parent="." instance=ExtResource( 2 )]
+target_node = NodePath("Node2D")
+text_label = NodePath("Node2D/Label")
+
+[node name="Node2D" type="Node2D" parent="GF Hey!"]
+visible = false
+
+[node name="GF Cheer0020" type="Sprite" parent="GF Hey!/Node2D"]
+position = Vector2( 345.862, 656.427 )
+scale = Vector2( 1.4596, 1.4596 )
+texture = ExtResource( 5 )
+
+[node name="speech bubble normal0019" type="Sprite" parent="GF Hey!/Node2D"]
+position = Vector2( 898.113, 818.062 )
+scale = Vector2( -1.16, 1 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="GF Hey!/Node2D"]
+margin_left = 318.779
+margin_top = 778.989
+margin_right = 652.779
+margin_bottom = 800.989
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Hey BF I have dialogue now!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BF Chicken" parent="GF Hey!" instance=ExtResource( 2 )]
+target_node = NodePath("Node2D")
+text_label = NodePath("Node2D/Label")
+
+[node name="Node2D" type="Node2D" parent="GF Hey!/BF Chicken"]
+visible = false
+
+[node name="GF Cheer0020" type="Sprite" parent="GF Hey!/BF Chicken/Node2D"]
+visible = false
+position = Vector2( 345.862, 656.427 )
+scale = Vector2( 1.4596, 1.4596 )
+texture = ExtResource( 5 )
+
+[node name="BF NOTE LEFT0014" type="Sprite" parent="GF Hey!/BF Chicken/Node2D"]
+position = Vector2( 1383.78, 614.95 )
+scale = Vector2( 1.46508, 1.46508 )
+texture = ExtResource( 7 )
+
+[node name="speech bubble normal0019" type="Sprite" parent="GF Hey!/BF Chicken/Node2D"]
+position = Vector2( 898.113, 818.062 )
+scale = Vector2( 1.16, 1 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="GF Hey!/BF Chicken/Node2D"]
+margin_left = 318.779
+margin_top = 778.989
+margin_right = 652.779
+margin_bottom = 800.989
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Chiiickeen-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GF Please Don\'t" parent="GF Hey!/BF Chicken" instance=ExtResource( 2 )]
+target_node = NodePath("Node2D")
+text_label = NodePath("Node2D/Label")
+
+[node name="Node2D" type="Node2D" parent="GF Hey!/BF Chicken/GF Please Don\'t"]
+visible = false
+
+[node name="GF Cheer0020" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/Node2D"]
+visible = false
+position = Vector2( 345.862, 656.427 )
+scale = Vector2( 1.4596, 1.4596 )
+texture = ExtResource( 5 )
+
+[node name="BF NOTE LEFT0014" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/Node2D"]
+visible = false
+position = Vector2( 1383.78, 614.95 )
+scale = Vector2( 1.46508, 1.46508 )
+texture = ExtResource( 7 )
+
+[node name="GF Dancing Beat0029" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/Node2D"]
+position = Vector2( 394.358, 683.924 )
+scale = Vector2( 1.32993, 1.32993 )
+texture = ExtResource( 9 )
+
+[node name="speech bubble normal0019" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/Node2D"]
+position = Vector2( 898.113, 818.062 )
+scale = Vector2( -1.16, 1 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="GF Hey!/BF Chicken/GF Please Don\'t/Node2D"]
+margin_left = 318.779
+margin_top = 778.989
+margin_right = 652.779
+margin_bottom = 800.989
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Please don't-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BF Nugget Biscut" parent="GF Hey!/BF Chicken/GF Please Don\'t" instance=ExtResource( 2 )]
+target_node = NodePath("Node2D")
+text_label = NodePath("Node2D/Label")
+
+[node name="Node2D" type="Node2D" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut"]
+visible = false
+
+[node name="GF Cheer0020" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/Node2D"]
+visible = false
+position = Vector2( 345.862, 656.427 )
+scale = Vector2( 1.4596, 1.4596 )
+texture = ExtResource( 5 )
+
+[node name="BF NOTE LEFT0014" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/Node2D"]
+visible = false
+position = Vector2( 1383.78, 614.95 )
+scale = Vector2( 1.46508, 1.46508 )
+texture = ExtResource( 7 )
+
+[node name="BF NOTE UP0014" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/Node2D"]
+position = Vector2( 1412.32, 622.086 )
+scale = Vector2( 1.6514, 1.6514 )
+texture = ExtResource( 8 )
+
+[node name="GF Dancing Beat0029" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/Node2D"]
+visible = false
+position = Vector2( 394.358, 683.924 )
+scale = Vector2( 1.32993, 1.32993 )
+texture = ExtResource( 9 )
+
+[node name="speech bubble normal0019" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/Node2D"]
+position = Vector2( 898.113, 818.062 )
+scale = Vector2( 1.16, 1 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/Node2D"]
+margin_left = 318.779
+margin_top = 778.989
+margin_right = 652.779
+margin_bottom = 800.989
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "-Nugget Biscut Nugget in a Biscut
+Nugget Biscut Nugget in a BISCUT
+Nugget Biscut Nugget in a Biscut-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GF My Parents were right about you" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut" instance=ExtResource( 2 )]
+target_node = NodePath("Node2D")
+text_label = NodePath("Node2D/Label")
+
+[node name="Node2D" type="Node2D" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you"]
+visible = false
+
+[node name="GF Cheer0020" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+visible = false
+position = Vector2( 345.862, 656.427 )
+scale = Vector2( 1.4596, 1.4596 )
+texture = ExtResource( 5 )
+
+[node name="BF NOTE LEFT0014" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+visible = false
+position = Vector2( 1383.78, 614.95 )
+scale = Vector2( 1.46508, 1.46508 )
+texture = ExtResource( 7 )
+
+[node name="BF NOTE UP0014" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+visible = false
+position = Vector2( 1412.32, 622.086 )
+scale = Vector2( 1.6514, 1.6514 )
+texture = ExtResource( 8 )
+
+[node name="GF Dancing Beat0029" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+visible = false
+position = Vector2( 394.358, 683.924 )
+scale = Vector2( 1.32993, 1.32993 )
+texture = ExtResource( 9 )
+
+[node name="gf sad0016" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+position = Vector2( 363.439, 624.464 )
+scale = Vector2( 1.51199, 1.51199 )
+texture = ExtResource( 4 )
+
+[node name="speech bubble normal0019" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+position = Vector2( 898.113, 818.062 )
+scale = Vector2( -1.16, 1 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+margin_left = 318.779
+margin_top = 778.989
+margin_right = 652.779
+margin_bottom = 800.989
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "My parents were right about you-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BF DIP IT ALL IN MASHED POTATOES" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you" instance=ExtResource( 2 )]
+target_node = NodePath("Node2D")
+text_label = NodePath("Node2D/Label")
+animation_node = NodePath("Node2D/AnimationPlayer")
+
+[node name="Node2D" type="Node2D" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES"]
+
+[node name="GF Cheer0020" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+visible = false
+position = Vector2( 345.862, 656.427 )
+scale = Vector2( 1.4596, 1.4596 )
+texture = ExtResource( 5 )
+
+[node name="BF NOTE LEFT0014" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+visible = false
+position = Vector2( 1383.78, 614.95 )
+scale = Vector2( 1.46508, 1.46508 )
+texture = ExtResource( 7 )
+
+[node name="BF NOTE UP0014" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+visible = false
+position = Vector2( 1412.32, 622.086 )
+scale = Vector2( 1.6514, 1.6514 )
+texture = ExtResource( 8 )
+
+[node name="GF Dancing Beat0029" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+visible = false
+position = Vector2( 394.358, 683.924 )
+scale = Vector2( 1.32993, 1.32993 )
+texture = ExtResource( 9 )
+
+[node name="BF NOTE LEFT0015" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+position = Vector2( 1369.51, 636.356 )
+rotation = 6.28319
+scale = Vector2( 1.49605, 1.49605 )
+texture = ExtResource( 7 )
+
+[node name="gf sad0016" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+visible = false
+position = Vector2( 363.439, 624.464 )
+scale = Vector2( 1.51199, 1.51199 )
+texture = ExtResource( 4 )
+
+[node name="speech bubble normal0019" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+position = Vector2( 898.113, 818.062 )
+scale = Vector2( 1.16, 1 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+margin_left = 318.779
+margin_top = 778.989
+margin_right = 652.779
+margin_bottom = 800.989
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "DIP IT ALL IN MASHED POTATOES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES/Node2D"]
+playback_speed = 10.0
+"anims/Start Dialogue" = SubResource( 3 )
+
+[connection signal="dialogue_ended" from="GF Hey!/BF Chicken/GF Please Don't/BF Nugget Biscut/GF My Parents were right about you/BF DIP IT ALL IN MASHED POTATOES" to="." method="_on_BF_DIP_IT_ALL_IN_MASHED_POTATOES_dialogue_ended"]

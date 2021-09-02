@@ -18,6 +18,7 @@ export(NodePath) var label_thingy_2
 export(PackedScene) var target_scene
 export(String, FILE) var freeplay_screen
 export(String, FILE) var song_data_file
+export(NodePath) var dialogue_node
 var chart_file = ""
 var player_combo = 0
 # Declare member variables here. Examples:
@@ -248,9 +249,14 @@ func _ready():
 		get_node(enemy_track).position.y *= sign(GameData.data.settings.scroll_direction)
 		get_node("Camera/Screen Elements/Health Bar").position.y *= sign(GameData.data.settings.scroll_direction)
 	get_node(instrumentals).connect("finished", self, "_on_song_finished")
-	get_node(instrumentals).start()
+	if GameData.state.story:
+		pass
 	get_node("Camera/Screen Elements/Count Down Sprites").sprite_speed = bpm/60.0
 	get_node(label_thingy_2).text = song_name+" Hard - X.E. Alpha 1.0.0"
+	if GameData.state.freeplay:
+		get_node(dialogue_node).visible = false
+		target_scene = preload("res://assets/scenes/Menu Screens.tscn")
+		get_node(instrumentals).start()
 #	$Instrumentals.start()
 #	$Camera/AnimationPlayer.play("scroll oscollate")
 	pass # Replace with function body.
@@ -274,3 +280,9 @@ func recieve_player_death():
 #func _process(delta):
 #	pass
 
+
+
+func _on_Tutorial_Dialogue_dialogue_ended():
+	get_node(dialogue_node).visible = false
+	get_node(instrumentals).start()
+	pass # Replace with function body.

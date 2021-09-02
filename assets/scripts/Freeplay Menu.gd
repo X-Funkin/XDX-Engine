@@ -85,6 +85,12 @@ func add_week_buttons():
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		print(current_song_data)
+#		print(current_song_data.freeplay_screen)
+		if "freeplay_screen" in current_song_data:
+			var freeplay_screen = load(current_song_data.freeplay_screen)
+			GameData.state.song_path = current_song_data.song_path
+			get_tree().change_scene_to(freeplay_screen)
+#			freeplay_screen.target_string = current_song_data.song_path
 		pass
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().call_group("Menu Switchers", "switch_to_main")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/Dialoug Node.gd" type="Script" id=1]
+
+[node name="Dialogue Node" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialogue Start Sound" type="AudioStreamPlayer" parent="."]
+bus = "Sound Effects"
+
+[node name="Dialogue Sound" type="AudioStreamPlayer" parent="."]
+bus = "Sound Effects"
+
+[node name="Dialogue Finish Sound" type="AudioStreamPlayer" parent="."]
+bus = "Sound Effects"
+
+[node name="Dialogue Next Sound" type="AudioStreamPlayer" parent="."]
+
+[node name="Dialogue Previous Sound" type="AudioStreamPlayer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+text = "testestestestes
+testests
+etestest
+estset
+ests
+etsetsetsets
+et
+tesfffdddddddddddddddddddd
+tes"
+
+[connection signal="focus_entered" from="." to="." method="_on_Dialogue_Node_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_Dialogue_Node_focus_exited"]
+[connection signal="gui_input" from="." to="." method="_on_Dialogue_Node_gui_input"]

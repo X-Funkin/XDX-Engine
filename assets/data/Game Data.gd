@@ -9,7 +9,7 @@ var data = {"settings":{},"default_settings":{},
 "controls":{"note_left":[68],"note_down":[70],"note_up":[74],"note_right":[75]}, "volume":{"Master":100}, "photosensitivity":0,
 "video_settings":{"window_mode": 0, "resolution": [1920,1080], "framerate": 60, "framerate_max": true, "vsync": true, "fps_overlay": false, "mem_overlay": false}} #
 
-var state = {"playstate": 0, "story": true, "freeplay": false}
+var state = {"playstate": 0, "story": true, "freeplay": false, "song_path": ""}
 #var window = {"mode": 0, "fullscreen": true, "windowed": false, "windowed_boarderless": false, "resolution":{0:1920,1:1080,"x":1920,"y":1080}}
 #var settings = {}
 #var default_settings = {}
@@ -141,6 +141,11 @@ func load_video_settings():
 	update_fps_overlay()
 	update_mem_overlay()
 	pass
+
+func reset_gamestate():
+	var default_state = {"playstate": 0, "story": true, "freeplay": false, "song_path": ""}
+	for thing in default_state:
+		state["thing"] = default_state["thing"]
 
 func screenshot():
 	var image = get_viewport().get_texture().get_data()
