@@ -99,6 +99,7 @@ tracks/7/keys = {
 "Enemy Input Recievers",
 "Player Hit Recievers",
 "Player Input Recievers",
+"Setting Recievers",
 "Song Time Recievers",
 ]]
 script = ExtResource( 1 )

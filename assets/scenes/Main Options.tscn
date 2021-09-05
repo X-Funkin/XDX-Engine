@@ -30,6 +30,7 @@ first_option = NodePath("Gameplay Options Button")
 margin_right = 430.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 430, 70 )
+focus_neighbour_top = NodePath("../Sound Options Button")
 text = "gameplay"
 
 [node name="Video Options Button" parent="FNF Button Scroller" instance=ExtResource( 4 )]
@@ -44,6 +45,7 @@ margin_top = 337.0
 margin_right = 257.0
 margin_bottom = 406.0
 rect_min_size = Vector2( 257, 69 )
+focus_neighbour_bottom = NodePath("../Gameplay Options Button")
 text = "sound"
 
 [node name="FNF Text" parent="FNF Button Scroller" instance=ExtResource( 2 )]

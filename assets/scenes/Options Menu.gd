@@ -1,4 +1,5 @@
-extends Node2D
+#extends Node2D
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -59,7 +60,11 @@ func recieve_setting(setting, value):
 
 func _ready():
 	GameData.data.settings = settings_data
-	$Camera2D.current = true
+	if !get_tree().paused:
+		pass
+#		$Camera2D.current = true
+	if get_tree().paused:
+		$Sprite.visible = false
 	pass # Replace with function body.
 
 

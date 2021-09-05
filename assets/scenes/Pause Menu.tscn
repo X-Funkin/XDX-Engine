@@ -5,7 +5,9 @@
 [ext_resource path="res://assets/scenes/FNF Button Scroller.gd" type="Script" id=3]
 [ext_resource path="res://assets/scenes/FNF Button.tscn" type="PackedScene" id=4]
 
-[node name="Pause Menu" type="Control"]
+[node name="Pause Menu" type="Control" groups=[
+"Menu Switchers",
+]]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,9 +17,18 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = -1.0
+anchor_top = -1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options Menu Node" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,6 +50,7 @@ first_option = NodePath("Resume Button")
 margin_right = 302.0
 margin_bottom = 66.0
 rect_min_size = Vector2( 302, 66 )
+focus_neighbour_top = NodePath("../Exit Button")
 text = "resume"
 
 [node name="Restart Song Button" parent="Button Scroller" instance=ExtResource( 4 )]
@@ -48,11 +60,19 @@ margin_bottom = 263.0
 rect_min_size = Vector2( 624, 70 )
 text = "restart song"
 
-[node name="Exit Button" parent="Button Scroller" instance=ExtResource( 4 )]
+[node name="Options Button" parent="Button Scroller" instance=ExtResource( 4 )]
 margin_top = 390.0
+margin_right = 351.0
+margin_bottom = 460.0
+rect_min_size = Vector2( 351, 70 )
+text = "options"
+
+[node name="Exit Button" parent="Button Scroller" instance=ExtResource( 4 )]
+margin_top = 587.0
 margin_right = 197.0
-margin_bottom = 457.0
+margin_bottom = 654.0
 rect_min_size = Vector2( 197, 67 )
+focus_neighbour_bottom = NodePath("../Resume Button")
 text = "exit"
 
 [node name="Resume" parent="Button Scroller" instance=ExtResource( 2 )]
@@ -115,6 +135,7 @@ one_shot = true
 
 [connection signal="pressed" from="Button Scroller/Resume Button" to="." method="_on_Resume_Button_pressed"]
 [connection signal="pressed" from="Button Scroller/Restart Song Button" to="." method="_on_Restart_Song_Button_pressed"]
+[connection signal="pressed" from="Button Scroller/Options Button" to="." method="_on_Options_Button_pressed"]
 [connection signal="pressed" from="Button Scroller/Exit Button" to="." method="_on_Exit_Button_pressed"]
 [connection signal="pressed" from="Button Scroller/Resume/Resume Button" to="." method="_on_Resume_Button_pressed"]
 [connection signal="pressed" from="Button Scroller/Restart Song/Restart Song Button" to="." method="_on_Restart_Song_Button_pressed"]

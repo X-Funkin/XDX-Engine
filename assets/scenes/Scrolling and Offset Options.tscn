@@ -141,7 +141,9 @@ __meta__ = {
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 960, 540 )
 
-[node name="Note Track" parent="Position2D" instance=ExtResource( 7 )]
+[node name="Note Track" parent="Position2D" groups=[
+"Menu Song Time Recievers",
+] instance=ExtResource( 7 )]
 position = Vector2( 407.943, -388.992 )
 chart_file = "res://assets/data/metronome_chart.json"
 chart_format = 1
@@ -246,6 +248,7 @@ indicate = 3
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 script = ExtResource( 1 )
+song_time_group = "Menu Song Time Recievers"
 bpm = 240.0
 
 [node name="Count Down Timer" type="Timer" parent="AudioStreamPlayer"]

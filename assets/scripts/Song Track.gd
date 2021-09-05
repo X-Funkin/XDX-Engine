@@ -69,6 +69,11 @@ func recieve_player_death():
 #	set_process(false)
 	live = false
 
+func recieve_setting(setting, value):
+	match setting:
+		"offset_ms":
+			offset_ms = value
+
 func _on_Count_Down_Timer_timeout():
 	get_tree().call_group("Count Down Recievers", "recieve_count_down", count_down)
 	count_down -= 1

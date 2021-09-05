@@ -17,6 +17,8 @@ func refocus():
 # var a = 2
 # var b = "text"
 
+func focus_first():
+	get_node(first_option).grab_focus()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +28,7 @@ func _ready():
 #	print("pos ", start_pos)
 #	get_child(0).grab_focus()
 #	$"FNF Button".grab_focus()
-	get_node(first_option).grab_focus()
+	focus_first()
 	pass # Replace with function body.
 
 

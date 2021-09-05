@@ -825,7 +825,7 @@ mesh = SubResource( 42 )
 position = Vector2( -480.749, -164.383 )
 scale = Vector2( 1.50789, 1.50789 )
 frames = SubResource( 43 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="gf" type="AnimatedSprite" parent="Start Menu"]
@@ -840,7 +840,7 @@ frame = 10
 position = Vector2( 310.957, 394.41 )
 scale = Vector2( 1.50811, 1.50811 )
 frames = SubResource( 45 )
-frame = 7
+frame = 6
 playing = true
 
 [node name="ColorRect" type="ColorRect" parent="Start Menu"]

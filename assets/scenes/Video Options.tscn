@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scenes/Window Mode Options.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Resolution Button.gd" type="Script" id=2]
@@ -20,6 +20,12 @@ font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=2]
 outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 10 )
 
@@ -319,6 +325,20 @@ __meta__ = {
 [node name="Revert Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1353.61
+margin_top = 36.2697
+margin_right = 2009.61
+margin_bottom = 169.27
+custom_fonts/font = SubResource( 3 )
+text = "Select Setting: Up/Down
+Change Setting: Left/Right
+Apply Settings: Enter
+Video Settings will not save automatically"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="focus_entered" from="FNF Button Scroller/Window Mode Options/FNF Button" to="FNF Button Scroller/Window Mode Options" method="_on_FNF_Button_focus_entered"]
 [connection signal="focus_exited" from="FNF Button Scroller/Window Mode Options/FNF Button" to="FNF Button Scroller/Window Mode Options" method="_on_FNF_Button_focus_exited"]

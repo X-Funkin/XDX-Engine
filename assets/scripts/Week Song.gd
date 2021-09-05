@@ -280,6 +280,16 @@ func recieve_player_death():
 #func _process(delta):
 #	pass
 
+func recieve_setting(setting, value):
+	match setting:
+		"scroll_direction":
+			if sign(GameData.data.settings.scroll_direction) != 0:
+				get_node(player_track).position.y *= sign(GameData.data.settings.scroll_direction)
+				get_node(enemy_track).position.y *= sign(GameData.data.settings.scroll_direction)
+				get_node("Camera/Screen Elements/Health Bar").position.y *= sign(GameData.data.settings.scroll_direction)
+#				get_node(player_track).scroll_speed *= sign(GameData.data.settings.scroll_direction)
+#				get_node(enemy_track).scroll_speed *= sign(GameData.data.settings.scroll_direction)
+			pass
 
 
 func _on_Tutorial_Dialogue_dialogue_ended():

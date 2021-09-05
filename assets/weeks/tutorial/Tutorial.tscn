@@ -120,6 +120,7 @@ shader_param/Invert_Fade = null
 "Player Hit Recievers",
 "Player Input Recievers",
 "Player Miss Recievers",
+"Setting Recievers",
 "Song Time Recievers",
 ]]
 script = ExtResource( 8 )
@@ -365,7 +366,9 @@ stream = ExtResource( 27 )
 [node name="Music" type="Node2D" parent="Sounds"]
 pause_mode = 1
 
-[node name="Instrumentals" type="AudioStreamPlayer" parent="Sounds/Music"]
+[node name="Instrumentals" type="AudioStreamPlayer" parent="Sounds/Music" groups=[
+"Setting Recievers",
+]]
 stream = ExtResource( 7 )
 bus = "Player Vocals"
 script = ExtResource( 9 )

@@ -371,6 +371,15 @@ func recieve_song_time(n_time):
 #func _process(delta):
 #	pass
 
+func recieve_setting(setting, value):
+	match setting:
+		"scroll_speed":
+			self.scroll_speed = value
+		"scroll_direction":
+			self.scroll_speed *= value
+			pass
+	pass
+
 
 func _on_Left_Input_Timer_timeout():
 	var enemy_input = InputEventAction.new()

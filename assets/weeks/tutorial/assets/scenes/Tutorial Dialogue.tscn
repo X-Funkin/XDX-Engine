@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://assets/fonts/coolpixelfontlol.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/scenes/Dialogue Node.tscn" type="PackedScene" id=2]
@@ -9,6 +9,85 @@
 [ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE LEFT0014.png" type="Texture" id=7]
 [ext_resource path="res://assets/characters/boyfriend/boyfriend_frames/BF NOTE UP0014.png" type="Texture" id=8]
 [ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/GF Dancing Beat0029.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0044.png" type="Texture" id=10]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0049.png" type="Texture" id=11]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0002.png" type="Texture" id=12]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0029.png" type="Texture" id=13]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0059.png" type="Texture" id=14]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0018.png" type="Texture" id=15]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0061.png" type="Texture" id=16]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0039.png" type="Texture" id=17]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0057.png" type="Texture" id=18]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0037.png" type="Texture" id=19]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0014.png" type="Texture" id=20]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0079.png" type="Texture" id=21]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0035.png" type="Texture" id=22]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0003.png" type="Texture" id=23]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0028.png" type="Texture" id=24]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0060.png" type="Texture" id=25]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0020.png" type="Texture" id=26]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0036.png" type="Texture" id=27]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0052.png" type="Texture" id=28]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0042.png" type="Texture" id=29]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0004.png" type="Texture" id=30]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0055.png" type="Texture" id=31]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0032.png" type="Texture" id=32]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0040.png" type="Texture" id=33]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0005.png" type="Texture" id=34]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0023.png" type="Texture" id=35]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0022.png" type="Texture" id=36]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0048.png" type="Texture" id=37]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0008.png" type="Texture" id=38]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0027.png" type="Texture" id=39]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0051.png" type="Texture" id=40]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0025.png" type="Texture" id=41]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0046.png" type="Texture" id=42]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0007.png" type="Texture" id=43]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0006.png" type="Texture" id=44]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0010.png" type="Texture" id=45]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0000.png" type="Texture" id=46]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0019.png" type="Texture" id=47]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0034.png" type="Texture" id=48]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0015.png" type="Texture" id=49]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0054.png" type="Texture" id=50]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0033.png" type="Texture" id=51]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0041.png" type="Texture" id=52]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0012.png" type="Texture" id=53]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0021.png" type="Texture" id=54]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0011.png" type="Texture" id=55]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0001.png" type="Texture" id=56]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0013.png" type="Texture" id=57]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0031.png" type="Texture" id=58]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0045.png" type="Texture" id=59]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0053.png" type="Texture" id=60]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0026.png" type="Texture" id=61]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0024.png" type="Texture" id=62]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0030.png" type="Texture" id=63]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0043.png" type="Texture" id=64]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0047.png" type="Texture" id=65]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0038.png" type="Texture" id=66]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0009.png" type="Texture" id=67]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0017.png" type="Texture" id=68]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0076.png" type="Texture" id=69]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0077.png" type="Texture" id=70]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0075.png" type="Texture" id=71]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0078.png" type="Texture" id=72]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0050.png" type="Texture" id=73]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0071.png" type="Texture" id=74]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0058.png" type="Texture" id=75]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0063.png" type="Texture" id=76]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0070.png" type="Texture" id=77]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0074.png" type="Texture" id=78]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0062.png" type="Texture" id=79]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0065.png" type="Texture" id=80]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0056.png" type="Texture" id=81]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0068.png" type="Texture" id=82]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0066.png" type="Texture" id=83]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0069.png" type="Texture" id=84]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0067.png" type="Texture" id=85]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0073.png" type="Texture" id=86]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0064.png" type="Texture" id=87]
+[ext_resource path="res://assets/characters/girlfriend/girlfriend-frames/gf sad0072.png" type="Texture" id=88]
 
 [sub_resource type="DynamicFont" id=1]
 size = 23
@@ -20,6 +99,14 @@ font_data = ExtResource( 1 )
 size = 35
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 46 ), ExtResource( 56 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 30 ), ExtResource( 34 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 38 ), ExtResource( 67 ), ExtResource( 45 ), ExtResource( 55 ), ExtResource( 53 ), ExtResource( 57 ), ExtResource( 20 ), ExtResource( 49 ), ExtResource( 4 ), ExtResource( 68 ), ExtResource( 15 ), ExtResource( 47 ), ExtResource( 26 ), ExtResource( 54 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 62 ), ExtResource( 41 ), ExtResource( 61 ), ExtResource( 39 ), ExtResource( 24 ), ExtResource( 13 ), ExtResource( 63 ), ExtResource( 58 ), ExtResource( 32 ), ExtResource( 51 ), ExtResource( 48 ), ExtResource( 22 ), ExtResource( 27 ), ExtResource( 19 ), ExtResource( 66 ), ExtResource( 17 ), ExtResource( 33 ), ExtResource( 52 ), ExtResource( 29 ), ExtResource( 64 ), ExtResource( 10 ), ExtResource( 59 ), ExtResource( 42 ), ExtResource( 65 ), ExtResource( 37 ), ExtResource( 11 ), ExtResource( 73 ), ExtResource( 40 ), ExtResource( 28 ), ExtResource( 60 ), ExtResource( 50 ), ExtResource( 31 ), ExtResource( 81 ), ExtResource( 18 ), ExtResource( 75 ), ExtResource( 14 ), ExtResource( 25 ), ExtResource( 16 ), ExtResource( 79 ), ExtResource( 76 ), ExtResource( 87 ), ExtResource( 80 ), ExtResource( 83 ), ExtResource( 85 ), ExtResource( 82 ), ExtResource( 84 ), ExtResource( 77 ), ExtResource( 74 ), ExtResource( 88 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 71 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 72 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "sad",
+"speed": 24.0
+} ]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Start Dialogue"
@@ -285,7 +372,16 @@ position = Vector2( 394.358, 683.924 )
 scale = Vector2( 1.32993, 1.32993 )
 texture = ExtResource( 9 )
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+position = Vector2( 338.984, 677.967 )
+scale = Vector2( 1.36605, 1.36605 )
+frames = SubResource( 4 )
+animation = "sad"
+frame = 44
+playing = true
+
 [node name="gf sad0016" type="Sprite" parent="GF Hey!/BF Chicken/GF Please Don\'t/BF Nugget Biscut/GF My Parents were right about you/Node2D"]
+visible = false
 position = Vector2( 363.439, 624.464 )
 scale = Vector2( 1.51199, 1.51199 )
 texture = ExtResource( 4 )
