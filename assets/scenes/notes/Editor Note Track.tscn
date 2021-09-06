@@ -1,0 +1,157 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/scenes/notes/Right Note Lane.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/notes/Down Note Lane.gd" type="Script" id=2]
+[ext_resource path="res://assets/scenes/notes/Left Note Lane.gd" type="Script" id=3]
+[ext_resource path="res://assets/scenes/notes/Up Note Lane.gd" type="Script" id=4]
+[ext_resource path="res://assets/scenes/notes/Down Arrow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scenes/notes/Left Arrow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/notes/Up Arrow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/notes/Right Arrow.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Editor Note Track.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "yeah_yeah"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Left Track:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -240, -0.25, 0, 0.25, 0, -240, -0.25, 0, 0.25, 0, -240, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Left Track:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 40, -0.25, 0, 0.25, 0, -40, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Down Track:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -80, -0.25, 0, 0.25, 0, -80, -0.25, 0, 0.25, 0, -80, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Down Track:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -40, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0, -40, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Up Track:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 80, -0.25, 0, 0.25, 0, 80, -0.25, 0, 0.25, 0, 80, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Up Track:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 40, -0.25, 0, 0.25, 0, -40, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Right Track:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 240, -0.25, 0, 0.25, 0, 240, -0.25, 0, 0.25, 0, 240, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Right Track:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( -40, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0, -40, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[node name="Editor Note Track" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="Left Track" type="Position2D" parent="."]
+position = Vector2( -240, 0 )
+
+[node name="Left Arrow" parent="Left Track" instance=ExtResource( 6 )]
+
+[node name="Left Notes Transform" type="Position2D" parent="Left Track/Left Arrow"]
+
+[node name="Left Notes" type="Position2D" parent="Left Track/Left Arrow/Left Notes Transform"]
+script = ExtResource( 3 )
+
+[node name="Auto Input Timer" type="Timer" parent="Left Track/Left Arrow"]
+one_shot = true
+
+[node name="Down Track" type="Position2D" parent="."]
+position = Vector2( -80, 0 )
+
+[node name="Down Arrow" parent="Down Track" instance=ExtResource( 5 )]
+
+[node name="Down Notes Transform" type="Position2D" parent="Down Track/Down Arrow"]
+
+[node name="Down Notes" type="Position2D" parent="Down Track/Down Arrow/Down Notes Transform"]
+script = ExtResource( 2 )
+lane_type = 1
+
+[node name="Auto Input Timer" type="Timer" parent="Down Track/Down Arrow"]
+one_shot = true
+
+[node name="Up Track" type="Position2D" parent="."]
+position = Vector2( 80, 0 )
+
+[node name="Up Arrow" parent="Up Track" instance=ExtResource( 7 )]
+
+[node name="Up Notes Transform" type="Position2D" parent="Up Track/Up Arrow"]
+
+[node name="Up Notes" type="Position2D" parent="Up Track/Up Arrow/Up Notes Transform"]
+script = ExtResource( 4 )
+lane_type = 2
+
+[node name="Auto Input Timer" type="Timer" parent="Up Track/Up Arrow"]
+one_shot = true
+
+[node name="Right Track" type="Position2D" parent="."]
+position = Vector2( 240, 0 )
+
+[node name="Right Arrow" parent="Right Track" instance=ExtResource( 8 )]
+
+[node name="Right Notes Transform" type="Position2D" parent="Right Track/Right Arrow"]
+
+[node name="Right Notes" type="Position2D" parent="Right Track/Right Arrow/Right Notes Transform"]
+script = ExtResource( 1 )
+lane_type = 3
+
+[node name="Auto Input Timer" type="Timer" parent="Right Track/Right Arrow"]
+one_shot = true
+
+[node name="Note Track Animations" type="AnimationPlayer" parent="."]
+playback_speed = 0.13
+anims/yeah_yeah = SubResource( 1 )

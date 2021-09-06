@@ -1,5 +1,5 @@
 extends Node2D
-class_name ArrowTrack
+class_name NoteTrack
 
 
 # Export very ables mm yes

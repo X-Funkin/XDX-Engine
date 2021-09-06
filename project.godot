@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scenes/notes/Arrow.gd"
 }, {
-"base": "Node2D",
-"class": "ArrowTrack",
-"language": "GDScript",
-"path": "res://assets/scenes/notes/Note Track.gd"
-}, {
 "base": "Character",
 "class": "Boyfriend",
 "language": "GDScript",
@@ -28,6 +23,11 @@ _global_script_classes=[ {
 "class": "Character",
 "language": "GDScript",
 "path": "res://assets/scripts/Character.gd"
+}, {
+"base": "Node2D",
+"class": "ChartEditor",
+"language": "GDScript",
+"path": "res://assets/scenes/Chart Editor.gd"
 }, {
 "base": "Character",
 "class": "DaddyDearest",
@@ -58,6 +58,16 @@ _global_script_classes=[ {
 "class": "DownNoteLane",
 "language": "GDScript",
 "path": "res://assets/scenes/notes/Down Note Lane.gd"
+}, {
+"base": "HoldNote",
+"class": "EditorHoldNote",
+"language": "GDScript",
+"path": "res://Editor Hold Note.gd"
+}, {
+"base": "Note",
+"class": "EditorNote",
+"language": "GDScript",
+"path": "res://Editor Note.gd"
 }, {
 "base": "Node2D",
 "class": "GameWeek",
@@ -119,6 +129,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scenes/notes/Note Lane.gd"
 }, {
+"base": "Node2D",
+"class": "NoteTrack",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Note Track.gd"
+}, {
 "base": "Arrow",
 "class": "RightArrow",
 "language": "GDScript",
@@ -166,15 +181,17 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Arrow": "",
-"ArrowTrack": "",
 "Boyfriend": "res://assets/characters/boyfriend/Boyfriend Icon.png",
 "Character": "",
+"ChartEditor": "",
 "DaddyDearest": "res://assets/weeks/week 1/assets/characters/daddy_dearest/Daddy Dearest Icon.png",
 "DialogueNode": "",
 "DownArrow": "res://assets/images/NOTE_assets/arrowDOWN0000.png",
 "DownHoldNote": "",
 "DownNote": "res://assets/images/NOTE_assets/blue0000.png",
 "DownNoteLane": "",
+"EditorHoldNote": "",
+"EditorNote": "",
 "GameWeek": "",
 "Girlfriend": "res://assets/characters/girlfriend/Girlfriend Icon.png",
 "HealtBar": "",
@@ -187,6 +204,7 @@ _global_script_class_icons={
 "MenuScreens": "",
 "Note": "",
 "NoteLane": "",
+"NoteTrack": "",
 "RightArrow": "res://assets/images/NOTE_assets/arrowRIGHT0000.png",
 "RightHoldNote": "",
 "RightNote": "res://assets/images/NOTE_assets/red0000.png",
