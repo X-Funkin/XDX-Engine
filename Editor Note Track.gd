@@ -1,4 +1,5 @@
 extends NoteTrack
+class_name EditorNoteTrack
 
 
 # Declare member variables here. Examples:
