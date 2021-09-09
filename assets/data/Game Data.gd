@@ -208,6 +208,7 @@ func _ready():
 func _notification(what):
 	match what:
 		NOTIFICATION_EXIT_TREE:
+			print("EXITING_SCENE_TREE")
 			save_game_data()
 #		NOTIFICATION_READY:
 #			load_volume()

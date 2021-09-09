@@ -5,11 +5,13 @@ class_name ChartEditor
 
 export(String, FILE, GLOBAL) var test_file
 
+var audio_data : PoolVector2Array
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 func get_mono_samples(byte_array : PoolByteArray, bit_depth = 16):
+	print("get_mono_samples")
 	var data_buffer = StreamPeerBuffer.new()
 	data_buffer.data_array = byte_array
 	var samples : PoolRealArray
@@ -30,7 +32,14 @@ func get_stereo_samples(byte_array : PoolByteArray, bit_depth = 16):
 	data_buffer.data_array = byte_array
 	var samples : PoolVector2Array
 	print(data_buffer.data_array.size())
-	for i in range(10000):
+	var loop_range = byte_array.size()/(2*bit_depth/8)
+	for i in range(loop_range):
+#		print("LOOPING")
+#		if i%1000 == 0:
+#			print("yeah yeha ", i, " or ", 100.0*float(i)/loop_range)
+		if data_buffer.data_array.empty():
+			print("BUFFER'S EMPTY ", i)
+			break
 #		print(data_buffer.data_array.size())
 #		print(data_buffer.get_16())
 		if bit_depth == 16:
@@ -132,17 +141,56 @@ func _ready():
 	var thingy = load_wav_file(test_file)
 	$AudioStreamPlayer.stream = thingy
 	$AudioStreamPlayer.play()
+	var startime = OS.get_ticks_usec()
 	print("okay getting samples")
 	var samples = get_stream_samples(thingy)
-	print("got samples ", samples)
+	print("got samples ", samples.size())
+	var endtime = OS.get_ticks_usec()
+	print("took ", float(endtime-startime)/1e+6, " seconds or")
+	print(samples.size()/(float(endtime-startime)/1e+6), " samples per second lol")
+	audio_data = samples
 	pass # Replace with function body.
 
 func _draw():
-	return 0
+#	return 0
 	print("drawing")
 	var thingy = load_wav_file(test_file)
 	print("loaded file ", thingy)
-	var samples = get_stream_samples(thingy)
+	var startime = OS.get_ticks_usec()
+	
+	var samples = audio_data
+#	var samples = get_stream_samples(thingy)
+#	var byte_array = thingy.data
+#	var bit_depth = 16
+#	print("get_stereo_samples")
+#	var data_buffer = StreamPeerBuffer.new()
+#	data_buffer.data_array = byte_array
+#	var samples : PoolVector2Array
+#	print(data_buffer.data_array.size())
+#	var loop_range = byte_array.size()/(2*bit_depth/8)
+#	for i in range(loop_range):
+##		print("LOOPING")
+##		if i%1000 == 0:
+##			print("yeah yeha ", i, " or ", 100.0*float(i)/loop_range)
+#		if data_buffer.data_array.empty():
+#			print("BUFFER'S EMPTY ", i)
+#			break
+##		print(data_buffer.data_array.size())
+##		print(data_buffer.get_16())
+#		if bit_depth == 16:
+#
+#			var x = data_buffer.get_16()/32767.0
+#			var y = data_buffer.get_16()/32767.0
+#			samples.append(Vector2(x,y))
+#		elif bit_depth == 8:
+#			var x = data_buffer.get_8()/127.0
+#			var y = data_buffer.get_8()/127.0
+#			samples.append(Vector2(x,y))
+#		else:
+#			return null
+#		pass
+
+
 #	var bit_depth = 16
 #	var data_buffer = StreamPeerBuffer.new()
 #	data_buffer.data_array = thingy.data
@@ -159,7 +207,11 @@ func _draw():
 #		else:
 #			return null
 #		pass
-	print("got samples ", samples)
+	print("got samples ", samples.size())
+	var endtime = OS.get_ticks_usec()
+	print("took ", float(endtime-startime)/1e+6, " seconds or")
+	startime = endtime
+#	print(samples.size()/(float(endtime-startime)/1e+6), " samples per second lol")
 	var sample_rate = thingy.mix_rate
 	print("loopoing now lol ")
 	if samples != null:
@@ -168,11 +220,13 @@ func _draw():
 		print("yup all good rn time to for loop")
 		for sample in samples:
 			var new_point = sample
-			draw_line(Vector2(current_point.x,current_sample/sample_rate),Vector2(new_point.x,current_sample/sample_rate), Color(1,1,1))
+			draw_line(1000.0*Vector2(current_point.x,float(current_sample-1)/sample_rate),1000.0*Vector2(new_point.x,float(current_sample)/sample_rate), Color(1,1,1))
 			current_point = new_point
 			current_sample += 1
-			if current_sample %1000 == 0:
-				print(current_sample, " drawn so far!")
+#			if current_sample%1000 == 0:
+#				print(current_sample, " drawn so far!")
+	endtime = OS.get_ticks_usec()
+	print("took ", float(endtime-startime)/1e+6, " seconds or")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

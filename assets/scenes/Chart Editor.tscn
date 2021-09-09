@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/scenes/Chart Editor.gd" type="Script" id=1]
 
 [node name="Chart Editor" type="Node2D"]
+scale = Vector2( 1, 73.842 )
 script = ExtResource( 1 )
 test_file = "E:/godot/vs zappity/vs-Zappity-3DX/assets/weeks/zappity/zappity theme yay-02 zappity vocals.wav"
 
