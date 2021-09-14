@@ -179,6 +179,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scenes/notes/Up Note Lane.gd"
 }, {
+"base": "Node2D",
+"class": "WaveformChunk",
+"language": "GDScript",
+"path": "res://assets/scripts/Waveform Chunk.gd"
+}, {
+"base": "Node2D",
+"class": "WaveformVisualizer",
+"language": "GDScript",
+"path": "res://assets/scenes/Waveform Visualizer.gd"
+}, {
 "base": "GameWeek",
 "class": "WeekSong",
 "language": "GDScript",
@@ -219,6 +229,8 @@ _global_script_class_icons={
 "UpHoldNote": "",
 "UpNote": "res://assets/images/NOTE_assets/green0000.png",
 "UpNoteLane": "",
+"WaveformChunk": "",
+"WaveformVisualizer": "",
 "WeekSong": ""
 }
 

@@ -15,7 +15,14 @@ func get_mono_samples(byte_array : PoolByteArray, bit_depth = 16):
 	var data_buffer = StreamPeerBuffer.new()
 	data_buffer.data_array = byte_array
 	var samples : PoolRealArray
-	while !data_buffer.data_array.empty():
+	var loop_range = byte_array.size()/(2*bit_depth/8)
+	for i in range(loop_range):
+#		print("LOOPING")
+#		if i%1000 == 0:
+#			print("yeah yeha ", i, " or ", 100.0*float(i)/loop_range)
+		if data_buffer.data_array.empty():
+			print("BUFFER'S EMPTY ", i)
+			break
 		if bit_depth == 16:
 			var sample = data_buffer.get_16()/32767.0
 			samples.append(sample)
@@ -121,7 +128,11 @@ func parse_wav_data(file : File):
 	pass
 
 func load_wav_file(path):
+	print("\nloading ", path)
+#	print(path[-4]+path[-3]+path[-2]+path[-1])
 	var thing = load(path)
+#	if not thing is AudioStreamSample:
+#		thing = null
 	print(thing)
 	print(typeof(thing))
 	if thing == null:
@@ -129,15 +140,15 @@ func load_wav_file(path):
 		var file = File.new()
 		file.open(path, File.READ)
 		var parsed_wav = parse_wav_data(file)
+		print(parsed_wav)
 		print(len(parsed_wav.data))
 		thing = generate_audio_stream_sample(parsed_wav)
+		return thing
 #		var thingy = file.get_buffer()
 	return thing
 	pass
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	print("\n\nyeahuyeayayeha\n")
+func do_the_thing():
 	var thingy = load_wav_file(test_file)
 	$AudioStreamPlayer.stream = thingy
 	$AudioStreamPlayer.play()
@@ -149,6 +160,12 @@ func _ready():
 	print("took ", float(endtime-startime)/1e+6, " seconds or")
 	print(samples.size()/(float(endtime-startime)/1e+6), " samples per second lol")
 	audio_data = samples
+	update()
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print("\n\nyeahuyeayayeha\n")
+	$Control/FileDialog.popup()
 	pass # Replace with function body.
 
 func _draw():
@@ -215,19 +232,30 @@ func _draw():
 	var sample_rate = thingy.mix_rate
 	print("loopoing now lol ")
 	if samples != null:
-		var current_point = samples[0]
-		var current_sample = 0
-		print("yup all good rn time to for loop")
-		for sample in samples:
-			var new_point = sample
-			draw_line(1000.0*Vector2(current_point.x,float(current_sample-1)/sample_rate),1000.0*Vector2(new_point.x,float(current_sample)/sample_rate), Color(1,1,1))
-			current_point = new_point
-			current_sample += 1
-#			if current_sample%1000 == 0:
-#				print(current_sample, " drawn so far!")
+		if samples.size() > 0:
+			var current_point = samples[0]
+			var current_sample = 0
+			print("yup all good rn time to for loop")
+			for sample in samples:
+				var new_point = sample
+				draw_line(1000.0*Vector2(current_point.x,float(current_sample-1)/sample_rate),1000.0*Vector2(new_point.x,float(current_sample)/sample_rate), Color(1,1,1))
+				current_point = new_point
+				current_sample += 1
+	#			if current_sample%1000 == 0:
+	#				print(current_sample, " drawn so far!")
 	endtime = OS.get_ticks_usec()
 	print("took ", float(endtime-startime)/1e+6, " seconds or")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _input(event):
+	if event is InputEventKey:
+		if event.scancode == KEY_PRINT:
+			$Control/FileDialog.popup()
+
+func _on_FileDialog_file_selected(path):
+	test_file = path
+	do_the_thing()
+	pass # Replace with function body.

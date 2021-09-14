@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/scenes/Waveform Visualizer.gd" type="Script" id=1]
+
+[node name="Waveform Visualizer" type="Node2D"]
+script = ExtResource( 1 )
+wav_file = "E:/Godot/vs zappity/vs-Zappity-3DX/assets/sounds/Bruh Sound Effect #2.wav"
+wav_file_2 = "res://assets/sounds/volume blip.wav"
