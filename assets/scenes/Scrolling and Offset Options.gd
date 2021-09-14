@@ -185,7 +185,7 @@ func _process(delta):
 
 
 func _on_AudioStreamPlayer_finished():
-	var thingy_track : ArrowTrack = get_node(note_track)
+	var thingy_track : NoteTrack = get_node(note_track)
 	for note in thingy_track.get_notes():
 		note.spawn()
 	pass # Replace with function body.

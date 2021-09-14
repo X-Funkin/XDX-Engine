@@ -180,6 +180,19 @@ func load_volume():
 		pass
 #	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), data.volume.Master/100.0)
 
+func print_debug_info():
+#	print_debug()
+	print("\n\n\n","#".repeat(20),"\n","DEBUG PRINT STATEMENT\n","#".repeat(20),"\n")
+	print("MEMORY USAGE (BYTES): ", Performance.get_monitor(Performance.MEMORY_STATIC))
+	print("FRAME RATE (FPS): ", Performance.get_monitor(Performance.TIME_FPS))
+	print("OBJECTS: ", Performance.get_monitor(Performance.OBJECT_COUNT))
+	print("NODES: ", Performance.get_monitor(Performance.OBJECT_NODE_COUNT))
+	print("ORPHAN NODES: ", Performance.get_monitor(Performance.OBJECT_ORPHAN_NODE_COUNT))
+	print("RESOURCES: ", Performance.get_monitor(Performance.OBJECT_RESOURCE_COUNT))
+	print("DRAW CALLS: ", Performance.get_monitor(Performance.RENDER_DRAW_CALLS_IN_FRAME))
+	print("VIDEO MEMORY USAGE: ", Performance.get_monitor(Performance.RENDER_USAGE_VIDEO_MEM_TOTAL))
+	print("\n\n\n")
+
 func _input(event):
 	if event is InputEventKey:
 		if event.scancode == KEY_F12 and event.pressed and !event.is_echo():
@@ -191,7 +204,8 @@ func _input(event):
 			data.volume.Master = clamp(data.volume.Master-10.0, 0, 100)
 			change_volume(data.volume.Master)
 		if event.scancode == KEY_F11 and event.pressed:
-			load_volume()
+#			load_volume()
+			print_debug_info()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

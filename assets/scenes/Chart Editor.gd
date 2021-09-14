@@ -1,9 +1,11 @@
-tool
+#tool
 extends Node2D
 class_name ChartEditor
 
 
-export(String, FILE, GLOBAL) var test_file
+export(String, FILE) var test_file
+export(NodePath) var wave_vis_node
+export(Array, int) var test_sample_sizes
 
 var audio_data : PoolVector2Array
 # Declare member variables here. Examples:
@@ -123,7 +125,7 @@ func parse_wav_data(file : File):
 #	while !file.eof_reached():
 #		byte_array.append_array(file.get_buffer(1))
 	wav_data["data"] = file.get_buffer(wav_data["file_size"])
-	print(wav_data)
+#	print(wav_data)
 	return wav_data
 	pass
 
@@ -136,12 +138,12 @@ func load_wav_file(path):
 	print(thing)
 	print(typeof(thing))
 	if thing == null:
-		print("ooops")
+#		print("ooops")
 		var file = File.new()
 		file.open(path, File.READ)
 		var parsed_wav = parse_wav_data(file)
-		print(parsed_wav)
-		print(len(parsed_wav.data))
+#		print(parsed_wav)
+#		print(len(parsed_wav.data))
 		thing = generate_audio_stream_sample(parsed_wav)
 		return thing
 #		var thingy = file.get_buffer()
@@ -162,13 +164,42 @@ func do_the_thing():
 	audio_data = samples
 	update()
 
+func do_the_other_thing():
+	var thingy = load_wav_file(test_file)
+	get_node(wave_vis_node).t0 = 0
+	get_node(wave_vis_node).t1 = 0
+	get_node(wave_vis_node).drawing = false
+	get_node(wave_vis_node).clear_waveforms()
+	get_node(wave_vis_node).audio_stream = thingy
+	get_node(wave_vis_node).draw_waveform()
+
+func print_results():
+	print("printing results")
+	var x1 = []
+	var y1 = []
+	for thing in results:
+		x1.append(thing[0])
+		y1.append(thing[1])
+	print(x1)
+	print(y1)
+
+var current_index = 0
+func do_the_thrid_thing():
+	if current_index < test_sample_sizes.size():
+		get_node(wave_vis_node).chunk_size = test_sample_sizes[current_index]
+		do_the_other_thing()
+		current_index += 1
+	else:
+		print_results()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("\n\nyeahuyeayayeha\n")
 	$Control/FileDialog.popup()
+	$red0000/AnimationPlayer.play("spiiin")
 	pass # Replace with function body.
 
-func _draw():
+func _drawb():
 #	return 0
 	print("drawing")
 	var thingy = load_wav_file(test_file)
@@ -257,5 +288,20 @@ func _input(event):
 
 func _on_FileDialog_file_selected(path):
 	test_file = path
-	do_the_thing()
+#	do_the_thing()
+#	do_the_other_thing()
+	do_the_thrid_thing()
+	pass # Replace with function body.
+
+var results = []
+
+func _on_Waveform_Visualizer_debug_array(array):
+	results.append(array)
+	GameData.print_debug_info()
+	$Timer.start()
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	do_the_thrid_thing()
 	pass # Replace with function body.

@@ -4,5 +4,3 @@
 
 [node name="Waveform Visualizer" type="Node2D"]
 script = ExtResource( 1 )
-wav_file = "E:/Godot/vs zappity/vs-Zappity-3DX/assets/sounds/Bruh Sound Effect #2.wav"
-wav_file_2 = "res://assets/sounds/volume blip.wav"
