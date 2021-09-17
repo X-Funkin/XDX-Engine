@@ -171,7 +171,10 @@ func do_the_other_thing():
 	get_node(wave_vis_node).drawing = false
 	get_node(wave_vis_node).clear_waveforms()
 	get_node(wave_vis_node).audio_stream = thingy
-	get_node(wave_vis_node).draw_waveform()
+	var thread = Thread.new()
+#	thread.start(get_node(wave_vis_node), "draw_waveform")
+#	thread.wait_to_finish()
+	get_node(wave_vis_node).draw_waveform(false)
 
 func print_results():
 	print("printing results")
@@ -289,8 +292,8 @@ func _input(event):
 func _on_FileDialog_file_selected(path):
 	test_file = path
 #	do_the_thing()
-#	do_the_other_thing()
-	do_the_thrid_thing()
+	do_the_other_thing()
+#	do_the_thrid_thing()
 	pass # Replace with function body.
 
 var results = []
@@ -303,5 +306,5 @@ func _on_Waveform_Visualizer_debug_array(array):
 
 
 func _on_Timer_timeout():
-	do_the_thrid_thing()
+#	do_the_thrid_thing()
 	pass # Replace with function body.

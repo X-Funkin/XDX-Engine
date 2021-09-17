@@ -4,6 +4,8 @@ class_name WaveformChunk
 export(int) var starting_sample = 0
 export(int) var ending_sample = 44100
 export(AudioStreamSample) var audio_stream : AudioStreamSample
+export(bool) var multi_threading = false
+var draw = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,8 +16,20 @@ export(AudioStreamSample) var audio_stream : AudioStreamSample
 func _ready():
 	pass # Replace with function body.
 
+signal draw_start
+signal draw_complete
+
+func multithread_draw(yeah):
+#	_draw()
+	draw = true
+	update()
+	return 1
 
 func _draw(): #Function calling is like 3 times slower than direct computation, that's why there aren't any get_sample() functions here
+	emit_signal("draw_start")
+	if multi_threading:
+		if !draw:
+			return 0
 	var bytes_per_sample = 1
 	match int(audio_stream.stereo)+audio_stream.format:
 		0:
@@ -70,6 +84,7 @@ func _draw(): #Function calling is like 3 times slower than direct computation, 
 				point = new_point
 	for sample in range(ending_sample-starting_sample):
 		pass
+	emit_signal("draw_complete")
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

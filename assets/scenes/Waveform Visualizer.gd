@@ -32,7 +32,7 @@ func _process(delta):
 	frame_alt = not frame_alt
 #	pass
 
-func draw_waveform():
+func draw_waveform(multi_threading = false):
 	print("\n\n\nSTARTING WAVEFORM DRAW")
 	print("CHUNK SIZE: ", chunk_size)
 	t0 = OS.get_ticks_usec()
@@ -55,13 +55,23 @@ func draw_waveform():
 			waveinst.ending_sample = new_sample
 			waveinst.audio_stream = audio_stream
 			waveinst.position.y = 1000.0*float(current_sample)/float(audio_stream.mix_rate)
+			if multi_threading:
+				waveinst.multi_threading = true
 			add_child(waveinst)
 			current_sample = new_sample
 	drawing = true
 	
+	if multi_threading:
+		for node in get_children():
+			yield(get_tree(), "idle_frame")
+			var thread = Thread.new()
+			thread.start(node, "multithread_draw")
+#			thread.wait_to_finish()
+	
 #	t1 = OS.get_ticks_usec()
 	print("WAVE DRAWING DONE")
 #	print("Took ", t1-t0, " Microseconds")
+	return 1
 	pass
 
 func clear_waveforms():
