@@ -1,4 +1,5 @@
-extends Node2D
+extends EditorNote
+class_name EditorLeftNote
 
 
 # Declare member variables here. Examples:

@@ -3,9 +3,6 @@ extends Node2D
 class_name ChartEditor
 
 
-export(String, FILE) var test_file
-export(NodePath) var wave_vis_node
-export(Array, int) var test_sample_sizes
 
 var audio_data : PoolVector2Array
 # Declare member variables here. Examples:
@@ -150,161 +147,17 @@ func load_wav_file(path):
 	return thing
 	pass
 
-func do_the_thing():
-	var thingy = load_wav_file(test_file)
-	$AudioStreamPlayer.stream = thingy
-	$AudioStreamPlayer.play()
-	var startime = OS.get_ticks_usec()
-	print("okay getting samples")
-	var samples = get_stream_samples(thingy)
-	print("got samples ", samples.size())
-	var endtime = OS.get_ticks_usec()
-	print("took ", float(endtime-startime)/1e+6, " seconds or")
-	print(samples.size()/(float(endtime-startime)/1e+6), " samples per second lol")
-	audio_data = samples
-	update()
 
-func do_the_other_thing():
-	var thingy = load_wav_file(test_file)
-	get_node(wave_vis_node).t0 = 0
-	get_node(wave_vis_node).t1 = 0
-	get_node(wave_vis_node).drawing = false
-	get_node(wave_vis_node).clear_waveforms()
-	get_node(wave_vis_node).audio_stream = thingy
-	var thread = Thread.new()
-#	thread.start(get_node(wave_vis_node), "draw_waveform")
-#	thread.wait_to_finish()
-	get_node(wave_vis_node).draw_waveform(false)
 
-func print_results():
-	print("printing results")
-	var x1 = []
-	var y1 = []
-	for thing in results:
-		x1.append(thing[0])
-		y1.append(thing[1])
-	print(x1)
-	print(y1)
 
-var current_index = 0
-func do_the_thrid_thing():
-	if current_index < test_sample_sizes.size():
-		get_node(wave_vis_node).chunk_size = test_sample_sizes[current_index]
-		do_the_other_thing()
-		current_index += 1
-	else:
-		print_results()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("\n\nyeahuyeayayeha\n")
-	$Control/FileDialog.popup()
-	$red0000/AnimationPlayer.play("spiiin")
 	pass # Replace with function body.
 
-func _drawb():
-#	return 0
-	print("drawing")
-	var thingy = load_wav_file(test_file)
-	print("loaded file ", thingy)
-	var startime = OS.get_ticks_usec()
-	
-	var samples = audio_data
-#	var samples = get_stream_samples(thingy)
-#	var byte_array = thingy.data
-#	var bit_depth = 16
-#	print("get_stereo_samples")
-#	var data_buffer = StreamPeerBuffer.new()
-#	data_buffer.data_array = byte_array
-#	var samples : PoolVector2Array
-#	print(data_buffer.data_array.size())
-#	var loop_range = byte_array.size()/(2*bit_depth/8)
-#	for i in range(loop_range):
-##		print("LOOPING")
-##		if i%1000 == 0:
-##			print("yeah yeha ", i, " or ", 100.0*float(i)/loop_range)
-#		if data_buffer.data_array.empty():
-#			print("BUFFER'S EMPTY ", i)
-#			break
-##		print(data_buffer.data_array.size())
-##		print(data_buffer.get_16())
-#		if bit_depth == 16:
-#
-#			var x = data_buffer.get_16()/32767.0
-#			var y = data_buffer.get_16()/32767.0
-#			samples.append(Vector2(x,y))
-#		elif bit_depth == 8:
-#			var x = data_buffer.get_8()/127.0
-#			var y = data_buffer.get_8()/127.0
-#			samples.append(Vector2(x,y))
-#		else:
-#			return null
-#		pass
-
-
-#	var bit_depth = 16
-#	var data_buffer = StreamPeerBuffer.new()
-#	data_buffer.data_array = thingy.data
-#	var samples : PoolVector2Array
-#	while !data_buffer.data_array.empty():
-#		if bit_depth == 16:
-#			var x = data_buffer.get_16()/32767.0
-#			var y = data_buffer.get_16()/32767.0
-#			samples.append(Vector2(x,y))
-#		elif bit_depth == 8:
-#			var x = data_buffer.get_8()/127.0
-#			var y = data_buffer.get_8()/127.0
-#			samples.append(Vector2(x,y))
-#		else:
-#			return null
-#		pass
-	print("got samples ", samples.size())
-	var endtime = OS.get_ticks_usec()
-	print("took ", float(endtime-startime)/1e+6, " seconds or")
-	startime = endtime
-#	print(samples.size()/(float(endtime-startime)/1e+6), " samples per second lol")
-	var sample_rate = thingy.mix_rate
-	print("loopoing now lol ")
-	if samples != null:
-		if samples.size() > 0:
-			var current_point = samples[0]
-			var current_sample = 0
-			print("yup all good rn time to for loop")
-			for sample in samples:
-				var new_point = sample
-				draw_line(1000.0*Vector2(current_point.x,float(current_sample-1)/sample_rate),1000.0*Vector2(new_point.x,float(current_sample)/sample_rate), Color(1,1,1))
-				current_point = new_point
-				current_sample += 1
-	#			if current_sample%1000 == 0:
-	#				print(current_sample, " drawn so far!")
-	endtime = OS.get_ticks_usec()
-	print("took ", float(endtime-startime)/1e+6, " seconds or")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-func _input(event):
-	if event is InputEventKey:
-		if event.scancode == KEY_PRINT:
-			$Control/FileDialog.popup()
-
-func _on_FileDialog_file_selected(path):
-	test_file = path
-#	do_the_thing()
-	do_the_other_thing()
-#	do_the_thrid_thing()
-	pass # Replace with function body.
-
-var results = []
-
-func _on_Waveform_Visualizer_debug_array(array):
-	results.append(array)
-	GameData.print_debug_info()
-	$Timer.start()
-	pass # Replace with function body.
-
-
-func _on_Timer_timeout():
-#	do_the_thrid_thing()
-	pass # Replace with function body.

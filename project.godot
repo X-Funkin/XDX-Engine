@@ -59,10 +59,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scenes/notes/Down Note Lane.gd"
 }, {
+"base": "EditorNote",
+"class": "EditorDownNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Editor Down Note.gd"
+}, {
 "base": "HoldNote",
 "class": "EditorHoldNote",
 "language": "GDScript",
 "path": "res://Editor Hold Note.gd"
+}, {
+"base": "EditorNote",
+"class": "EditorLeftNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Editor Left Note.gd"
 }, {
 "base": "Note",
 "class": "EditorNote",
@@ -73,6 +83,16 @@ _global_script_classes=[ {
 "class": "EditorNoteTrack",
 "language": "GDScript",
 "path": "res://Editor Note Track.gd"
+}, {
+"base": "EditorNote",
+"class": "EditorRightNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Editor Right Note.gd"
+}, {
+"base": "EditorNote",
+"class": "EditorUpNote",
+"language": "GDScript",
+"path": "res://assets/scenes/notes/Editor Up Note.gd"
 }, {
 "base": "Node2D",
 "class": "GameWeek",
@@ -128,6 +148,11 @@ _global_script_classes=[ {
 "class": "Note",
 "language": "GDScript",
 "path": "res://assets/scripts/Note.gd"
+}, {
+"base": "Control",
+"class": "NoteEditor",
+"language": "GDScript",
+"path": "res://assets/scenes/Note Editor.gd"
 }, {
 "base": "Position2D",
 "class": "NoteLane",
@@ -205,9 +230,13 @@ _global_script_class_icons={
 "DownHoldNote": "",
 "DownNote": "res://assets/images/NOTE_assets/blue0000.png",
 "DownNoteLane": "",
+"EditorDownNote": "",
 "EditorHoldNote": "",
+"EditorLeftNote": "",
 "EditorNote": "",
 "EditorNoteTrack": "",
+"EditorRightNote": "",
+"EditorUpNote": "",
 "GameWeek": "",
 "Girlfriend": "res://assets/characters/girlfriend/Girlfriend Icon.png",
 "HealtBar": "",
@@ -219,6 +248,7 @@ _global_script_class_icons={
 "LeftNoteLane": "",
 "MenuScreens": "",
 "Note": "",
+"NoteEditor": "",
 "NoteLane": "",
 "NoteTrack": "",
 "RightArrow": "res://assets/images/NOTE_assets/arrowRIGHT0000.png",

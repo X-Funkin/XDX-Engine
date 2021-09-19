@@ -4,7 +4,7 @@ class_name NoteTrack
 
 # Export very ables mm yes
 export(String, FILE) var chart_file
-export(int, "XDX", "FNF", "KADE") var chart_format
+export(int, "XDX", "FNF") var chart_format
 export(int) var chart_channel
 export(bool) var player_track
 export(float) var scroll_speed = 1.0 setget set_scroll_speed, get_scroll_speed
@@ -107,8 +107,8 @@ func import_fnf_chart():
 							import_note(note)
 	notes = get_notes(true)
 
-func import_kade_chart():
-	pass
+#func import_kade_chart():
+#	pass
 
 
 func import_note(note_data, player_note=false):
@@ -131,7 +131,7 @@ func import_note(note_data, player_note=false):
 	note.hold_note = (note_data[2] > 0.0)
 	note.hold_time = note_data[2]
 	if len(note_data) > 3:
-		note.custom_data = note_data[3]
+		note.custom_data = note_data[-1]
 	get_node(track).add_child(note)
 	note.position.y = note.hit_time
 	note.scale.y = 1.0/scroll_speed
@@ -171,8 +171,8 @@ func load_chart():
 			import_chart()
 		1:
 			import_fnf_chart()
-		2:
-			import_kade_chart()
+#		2:
+#			import_kade_chart()
 
 #Note Getterrrs
 func get_left_notes():

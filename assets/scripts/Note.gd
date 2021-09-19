@@ -18,6 +18,12 @@ export(bool) var active = true
 func set_hold_time(n_time):
 	pass # To be overwritten by the HoldNote class
 
+func get_data():
+	var data_array = [hit_time, note_type, hold_time]
+	if !custom_data.empty():
+		data_array.append(custom_data)
+	return data_array
+
 class NoteSorter:
 	static func sort_hit_time(a,b):
 		return a.hit_time < b.hit_time
