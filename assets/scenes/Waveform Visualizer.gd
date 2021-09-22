@@ -4,6 +4,10 @@ class_name WaveformVisualizer
 
 export(String, FILE, "*.wav") var wav_file
 export(AudioStreamSample) var audio_stream
+export(float) var start_time = 0.0
+export(float) var end_time = 1000.0
+export(int) var draw_samples = 1000
+export(int) var draw_sub_samples = 4
 export(int) var chunk_size = 44100
 var t0 = 0
 var t1 = 0
@@ -33,6 +37,8 @@ func _process(delta):
 #	pass
 
 func draw_waveform(multi_threading = false):
+	update()
+	return 0
 	print("\n\n\nSTARTING WAVEFORM DRAW")
 	print("CHUNK SIZE: ", chunk_size)
 	t0 = OS.get_ticks_usec()
@@ -80,6 +86,8 @@ func clear_waveforms():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var thingy = ChartEditor.new()
+	audio_stream = thingy.load_wav_file(wav_file)
 #	print("\n\n\nyeha here we go\n")
 #	var ydhda = ChartEditor.new()
 #
@@ -112,5 +120,47 @@ func _ready():
 #	audio_player.play()
 	pass # Replace with function body.
 
+func _draw():
+	if audio_stream != null:
+		var bytes_per_sample = 1
+		match int(audio_stream.stereo)+audio_stream.format:
+			0:
+				bytes_per_sample = 1
+			1:
+				bytes_per_sample = 2
+			2:
+				bytes_per_sample = 4
+	#			bytes2var()
+		var sample_data = StreamPeerBuffer.new()
+		var starting_sample = int(start_time/1000.0*audio_stream.mix_rate)
+		var ending_sample = int(end_time/1000.0*audio_stream.mix_rate)
+		sample_data.data_array = audio_stream.data.subarray(max(0,starting_sample*bytes_per_sample),min(ending_sample*bytes_per_sample,audio_stream.data.size()-1))
+		var sub_sample_data = StreamPeerBuffer.new()
+		sub_sample_data.data_array = sample_data.data_array
+		var sample_count = sample_data.data_array.size()/bytes_per_sample
+		var current_sample = 0
+		var point : Vector2
+		var audio_stream_format = audio_stream.format
+		if audio_stream_format == 1:
+			point = Vector2(1000.0*sub_sample_data.get_16()/32767.0,start_time)
+		else:
+			point = Vector2(1000.0*sub_sample_data.get_8()/127.0,start_time)
+		for draw_sample in range(draw_samples*draw_sub_samples):
+			var draw_sample_time = range_lerp(draw_sample,0,draw_samples*draw_sub_samples,start_time,end_time)
+			
+			var new_sample = int(sample_count*float(draw_sample)/float(draw_samples*draw_sub_samples))
+			if new_sample == current_sample:
+				continue
+			if new_sample > sample_count+1:
+				break
+			sub_sample_data.data_array = sample_data.data_array.subarray(new_sample*bytes_per_sample,sample_count*bytes_per_sample-1)
+			var new_point : Vector2
+			if audio_stream_format == 1:
+				new_point = Vector2(1000.0*sub_sample_data.get_16()/32767.0,draw_sample_time)
+			else:
+				new_point = Vector2(1000.0*sub_sample_data.get_8()/127.0,draw_sample_time)
+			draw_line(point,new_point, Color(1,1,1))
+			point = new_point
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

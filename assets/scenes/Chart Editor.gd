@@ -137,7 +137,10 @@ func load_wav_file(path):
 	if thing == null:
 #		print("ooops")
 		var file = File.new()
-		file.open(path, File.READ)
+		var err = file.open(path, File.READ)
+		if err != OK:
+			print("There was an error opening the file ", path)
+			return null
 		var parsed_wav = parse_wav_data(file)
 #		print(parsed_wav)
 #		print(len(parsed_wav.data))

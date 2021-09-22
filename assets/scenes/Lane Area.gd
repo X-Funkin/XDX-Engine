@@ -14,19 +14,19 @@ func _ready():
 	pass # Replace with function body.
 
 func move_yeah():
-	$noteyah.global_position.y = get_global_mouse_position().y
+#	$noteyah.global_position.y = get_global_mouse_position().y
 	pass
 
 func mouse_move():
 	move_yeah()
 
 func mouse_entered():
-	$noteyah.visible = true
+#	$noteyah.visible = true
 	move_yeah()
 	pass
 
 func mouse_exited():
-	$noteyah.visible = false
+#	$noteyah.visible = false
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

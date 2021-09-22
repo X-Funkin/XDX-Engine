@@ -37,5 +37,5 @@ func print_gui_input(event):
 
 
 func _on_GUI_Input_Area_input_event(viewport, event, shape_idx):
-	print_gui_input(event)
+#	print_gui_input(event)
 	pass # Replace with function body.

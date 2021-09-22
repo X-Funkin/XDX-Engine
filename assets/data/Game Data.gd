@@ -22,8 +22,10 @@ var game_data_file = "user://../XDX Engine/Game_Data_%s-%s.%s.%s.json"%version
 #func load_data_file(path)
 
 func load_game_data():
+	print("Loading Game Data...")
 	var file = File.new()
 	if file.file_exists(game_data_file):
+		print("File Exists")
 		file.open(game_data_file, File.READ)
 		var new_data = JSON.parse(file.get_as_text()).result
 		if not data is Dictionary:
@@ -33,16 +35,21 @@ func load_game_data():
 				data[thing] = new_data[thing]
 		pass
 	else:
+		print("File Doesn't Exist")
 		var dir = Directory.new()
 		var files = []
 		if dir.open("user://../XDX Engine/") == OK:
+			print("dir.open == okayyy")
 			dir.list_dir_begin(true)
 			var file_name = dir.get_next()
 			while file_name != "":
 				if !dir.current_is_dir():
 					if file_name.split(".")[-1] == "json":
 						files.append(file_name)
+						print(file_name)
+				file_name = dir.get_next()
 		if files != []:
+			print("files != []")
 			var newest_file = ["", 0]
 			for data_file in files:
 #				file.open(data_file, File.READ)
@@ -64,6 +71,7 @@ func save_game_data():
 	file.close()
 
 func load_controls():
+	print("Loading Controls")
 	for control in data.controls:
 		print(control)
 		var input_events = InputMap.get_action_list(control)
@@ -134,6 +142,7 @@ func update_mem_overlay():
 #	print(overlay_node.visible)
 
 func load_video_settings():
+	print("Loading Video Settings...")
 	update_window_mode()
 	update_resolution()
 	update_framerate()
@@ -173,6 +182,7 @@ func change_volume(volume):
 #	load_volume()
 
 func load_volume():
+	print("Loading Volumes...")
 	for bus in data.volume:
 		print("laoding volume ", bus, " ", data.volume[bus])
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear2db(data.volume[bus]/100.0))
@@ -209,6 +219,7 @@ func _input(event):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Starting...l")
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	OS.set_window_title("XDX Engine %s %s.%s.%s"%version)
 	load_game_data()

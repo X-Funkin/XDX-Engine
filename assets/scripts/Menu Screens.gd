@@ -111,6 +111,10 @@ func change_background_track(n_track):
 #func _process(delta):
 #	pass
 
+func _notification(what):
+	match what:
+		NOTIFICATION_INSTANCED:
+			print("yeahyeahyeahhhhh")
 
 func _on_Transistion_Animations_animation_finished(anim_name):
 	if anim_name == "Down Fade Out" or anim_name == "Up Fade Out":
