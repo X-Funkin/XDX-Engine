@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/scenes/Player Bar.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/pl ayyyy button.png" type="Texture" id=2]
+[ext_resource path="res://assets/scenes/HSlider.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/pawsbutton yea.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_bottom = 60
+border_color = Color( 0, 0, 0, 0.509804 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.439216, 0.905882, 0.972549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.807843, 0.807843, 0.807843, 1 )
+
+[node name="Player Bar" type="Control" groups=[
+"Song Time Recievers",
+]]
+anchor_right = 1.0
+anchor_bottom = 0.133
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+play_icon = ExtResource( 2 )
+pause_icon = ExtResource( 4 )
+
+[node name="Player Button" type="Control" parent="."]
+anchor_right = 0.071
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="Player Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Player Button/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Player Head" type="Control" parent="."]
+anchor_left = 0.079
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="Player Head" groups=[
+"Song Time Recievers",
+]]
+anchor_right = 0.987
+anchor_bottom = 1.0
+size_flags_vertical = 1
+custom_styles/slider = SubResource( 2 )
+custom_styles/grabber_area_highlight = SubResource( 3 )
+custom_styles/grabber_area = SubResource( 4 )
+step = 0.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Player Button/Button" to="." method="_on_Button_pressed"]
+[connection signal="gui_input" from="Player Head/HSlider" to="." method="_on_HSlider_gui_input"]

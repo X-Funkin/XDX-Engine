@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scenes/Waveform Visualizer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/scenes/Waveform teststesd.gd" type="Script" id=2]
+
+[node name="Waveform teststesd" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="."]
+visible = true
+margin_left = 519.0
+margin_top = 329.0
+margin_right = 1141.0
+margin_bottom = 690.0
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.wav" )
+current_dir = "/Godot/XDX Engine/XDX-Engine"
+current_path = "/Godot/XDX Engine/XDX-Engine/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Waveform Visualizer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 960, 0 )
+scale = Vector2( 0.515, 98.552 )
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]

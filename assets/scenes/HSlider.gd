@@ -1,5 +1,4 @@
-extends EditorNote
-class_name EditorDownNote
+extends HSlider
 
 
 # Declare member variables here. Examples:
@@ -11,3 +10,10 @@ class_name EditorDownNote
 func _ready():
 	pass # Replace with function body.
 
+func recieve_song_time(song_time):
+#	pass
+	value = song_time
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass

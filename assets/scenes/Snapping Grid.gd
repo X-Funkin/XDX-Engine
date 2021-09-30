@@ -1,5 +1,10 @@
-extends EditorNote
-class_name EditorLeftNote
+extends Control
+
+
+export(float) var bpm = 120.0
+export(float) var snapping_offset = 0.0
+export(float) var song_time = 0.0
+export(float) var zoom = 1.0
 
 
 # Declare member variables here. Examples:
@@ -15,7 +20,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-#func input_event(viewport, event, shape_idx):
-#	pass # Replace with function body.

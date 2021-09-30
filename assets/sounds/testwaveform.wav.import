@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/testwaveform.wav-9e9e66741d13dec153e9a08dad0df143.sample"
+
+[deps]
+
+source_file="res://assets/sounds/testwaveform.wav"
+dest_files=[ "res://.import/testwaveform.wav-9e9e66741d13dec153e9a08dad0df143.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -37,8 +37,8 @@ func _process(delta):
 #	pass
 
 func draw_waveform(multi_threading = false):
-	update()
-	return 0
+#	update()
+#	return 0
 	print("\n\n\nSTARTING WAVEFORM DRAW")
 	print("CHUNK SIZE: ", chunk_size)
 	t0 = OS.get_ticks_usec()
@@ -120,8 +120,16 @@ func _ready():
 #	audio_player.play()
 	pass # Replace with function body.
 
-func _draw():
+func _drawb():
+	print("\nDRAWING...")
+	draw_line(Vector2(-1000.0,max(0,start_time)),Vector2(1000.0,max(0,start_time)), Color(1,0,0))
+	draw_line(Vector2(-1000.0,end_time),Vector2(1000.0,end_time), Color(0,1,0))
+	
 	if audio_stream != null:
+		print("YUP STREAM")
+		print("AUDIO STREAM FORAMT ", audio_stream.format)
+		print("AUDIO STREAM STEREO ", audio_stream.stereo)
+		print("AUDIO STREAM SAMPLE RATE ", audio_stream.mix_rate)
 		var bytes_per_sample = 1
 		match int(audio_stream.stereo)+audio_stream.format:
 			0:
@@ -131,9 +139,20 @@ func _draw():
 			2:
 				bytes_per_sample = 4
 	#			bytes2var()
+		print("BYTES PER SAMPLE ", bytes_per_sample)
+		var stream_length = 1000.0*(audio_stream.data.size()/bytes_per_sample)/float(audio_stream.mix_rate)
+		print("SAMPLE COUNT ",audio_stream.data.size()/bytes_per_sample)
+		print("STREAM LENGTH ", stream_length)
 		var sample_data = StreamPeerBuffer.new()
 		var starting_sample = int(start_time/1000.0*audio_stream.mix_rate)
 		var ending_sample = int(end_time/1000.0*audio_stream.mix_rate)
+		print("START TIME ", start_time)
+		print("END TIME ", end_time)
+		print("STARTING SAMPLE ", starting_sample)
+		print("ENDING SAMPLE ", ending_sample)
+		print("AUDIO STREAM DATA SIZE ", audio_stream.data.size())
+		print("BEGIN BYTE ", max(0,starting_sample*bytes_per_sample))
+		print("END BYTE ", min(ending_sample*bytes_per_sample,audio_stream.data.size()-1))
 		sample_data.data_array = audio_stream.data.subarray(max(0,starting_sample*bytes_per_sample),min(ending_sample*bytes_per_sample,audio_stream.data.size()-1))
 		var sub_sample_data = StreamPeerBuffer.new()
 		sub_sample_data.data_array = sample_data.data_array
@@ -141,26 +160,52 @@ func _draw():
 		var current_sample = 0
 		var point : Vector2
 		var audio_stream_format = audio_stream.format
+		var audio_stream_stereo = audio_stream.stereo
 		if audio_stream_format == 1:
-			point = Vector2(1000.0*sub_sample_data.get_16()/32767.0,start_time)
+			point = Vector2(1000.0*sub_sample_data.get_16()/32767.0,max(0,start_time))
+			
+#			sub_sample_data.get_16()
 		else:
-			point = Vector2(1000.0*sub_sample_data.get_8()/127.0,start_time)
+			point = Vector2(1000.0*sub_sample_data.get_8()/127.0,max(0,start_time))
+			
+#		point = Vector2(1000.0*sin(start_time), start_time)
 		for draw_sample in range(draw_samples*draw_sub_samples):
-			var draw_sample_time = range_lerp(draw_sample,0,draw_samples*draw_sub_samples,start_time,end_time)
+			var draw_sample_time = range_lerp(draw_sample,0,draw_samples*draw_sub_samples,max(0,start_time),min(end_time,stream_length))
+			
+			var completionthingy = range_lerp(draw_sample,0,draw_samples*draw_sub_samples,0.0,1.0)
+			
+#			if draw_sample*draw_sub_samples != 0:
+#				completionthingy = draw_sample/float(draw_sample*draw_sub_samples)
 			
 			var new_sample = int(sample_count*float(draw_sample)/float(draw_samples*draw_sub_samples))
 			if new_sample == current_sample:
 				continue
 			if new_sample > sample_count+1:
 				break
-			sub_sample_data.data_array = sample_data.data_array.subarray(new_sample*bytes_per_sample,sample_count*bytes_per_sample-1)
+			if new_sample-current_sample > 1:
+#				var yeah = sub_sample_data.get_data((new_sample-current_sample)*bytes_per_sample)
+				var yeah = sub_sample_data.get_partial_data((new_sample-current_sample-1)*bytes_per_sample)
+				pass
+#			sub_sample_data.data_array = sample_data.data_array.subarray(new_sample*bytes_per_sample,sample_count*bytes_per_sample-1)
 			var new_point : Vector2
 			if audio_stream_format == 1:
 				new_point = Vector2(1000.0*sub_sample_data.get_16()/32767.0,draw_sample_time)
+				if audio_stream_stereo:
+					var yeah = sub_sample_data.get_16()
 			else:
 				new_point = Vector2(1000.0*sub_sample_data.get_8()/127.0,draw_sample_time)
+				if audio_stream_stereo:
+					var yeah = sub_sample_data.get_8()
+			
+#			new_point = Vector2(1000.0*sin(draw_sample_time),draw_sample_time)
+			
 			draw_line(point,new_point, Color(1,1,1))
 			point = new_point
+			current_sample = new_sample
 	pass
 
+
+func _drawc():
+	draw_line(Vector2(-1000.0,start_time),Vector2(1000.0,start_time), Color(1,0,0))
+	draw_line(Vector2(-1000.0,end_time),Vector2(1000.0,end_time), Color(0,1,0))
 # Called every frame. 'delta' is the elapsed time since the previous frame.

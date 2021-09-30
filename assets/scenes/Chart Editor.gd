@@ -3,6 +3,8 @@ extends Node2D
 class_name ChartEditor
 
 
+export(float) var song_time
+export(bool) var song_playing = false
 
 var audio_data : PoolVector2Array
 # Declare member variables here. Examples:
@@ -151,10 +153,50 @@ func load_wav_file(path):
 	pass
 
 
+func play_audio(from_time):
+	var start_time = from_time/1000.0
+	$"Enemy Vocals".play(start_time)
+	$Instumentals.play(start_time)
+	$"Player Vocals".play(start_time)
+
+func pause_audio(pause_state):
+	$"Enemy Vocals".playing = !pause_state
+	$Instumentals.playing = !pause_state
+	$"Player Vocals".playing = !pause_state
+#	$"Enemy Vocals".stream_paused = pause_state
+#	$Instumentals.stream_paused = pause_state
+#	$"Player Vocals".stream_paused = pause_state
 
 
+func seek_audio(seek_time):
+	var time = seek_time/1000.0
+	$"Enemy Vocals".seek(time)
+	$Instumentals.seek(time)
+	$"Player Vocals".seek(time)
 
 
+func seek_song_time(time):
+	seek_audio(time)
+
+func recieve_enemy_audio_stream(stream):
+	$Instumentals.stream = stream
+	get_tree().call_group("Song Time Recievers", "recieve_song_length", $Instumentals.stream.get_length()*1000.0)
+
+func recieve_song_playing(playing):
+	song_playing = playing
+	if song_playing:
+		play_audio(song_time)
+	else:
+		pause_audio(true)
+
+func recieve_song_time(time):
+	song_time = time
+
+func _input(event):
+	if event is InputEventKey:
+		if event.scancode == KEY_SPACE and event.pressed:
+#			play_audio(0.0)
+			get_tree().call_group("Song Time Recievers", "recieve_song_playing", !song_playing)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

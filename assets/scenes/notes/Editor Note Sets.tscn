@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/images/NOTE_assets/blue0000.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/NOTE_assets/purple0000.png" type="Texture" id=2]
+[ext_resource path="res://assets/scenes/Editor Note Sets.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/NOTE_assets/green0000.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/NOTE_assets/red0000.png" type="Texture" id=5]
+
+[node name="Editor Note Sets" type="Position2D" groups=[
+"Cursor Recievers",
+"Track Input Recievers",
+]]
+script = ExtResource( 3 )
+
+[node name="Default Note Set" type="Position2D" parent="."]
+
+[node name="Left Note" type="Sprite" parent="Default Note Set"]
+visible = false
+position = Vector2( -240, 0 )
+texture = ExtResource( 2 )
+
+[node name="Down Note" type="Sprite" parent="Default Note Set"]
+visible = false
+position = Vector2( -80, 0 )
+texture = ExtResource( 1 )
+
+[node name="Up Note" type="Sprite" parent="Default Note Set"]
+visible = false
+position = Vector2( 80, 0 )
+texture = ExtResource( 4 )
+
+[node name="Right Note" type="Sprite" parent="Default Note Set"]
+visible = false
+position = Vector2( 240, 0 )
+texture = ExtResource( 5 )

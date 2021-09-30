@@ -1,5 +1,4 @@
-extends EditorNote
-class_name EditorLeftNote
+extends Line2D
 
 
 # Declare member variables here. Examples:
@@ -12,10 +11,21 @@ func _ready():
 	pass # Replace with function body.
 
 
+func recieve_track_mouse_entered(track_type, lane_type):
+	visible = (track_type != 3)
+	match lane_type:
+		0:
+			default_color = Color.magenta
+		1:
+			default_color = Color.cyan
+		2:
+			default_color = Color.green
+		3:
+			default_color = Color.red
+	
+	pass
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-#func input_event(viewport, event, shape_idx):
-#	pass # Replace with function body.

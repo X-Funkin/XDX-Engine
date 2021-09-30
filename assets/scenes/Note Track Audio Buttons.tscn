@@ -43,6 +43,9 @@ __meta__ = {
 anchor_left = 0.1
 anchor_right = 0.95
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="Control/Button4"]
 anchor_right = 1.0
