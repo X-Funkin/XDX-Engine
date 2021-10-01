@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scenes/Chart Editor.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Editor Song Track.gd" type="Script" id=2]
 [ext_resource path="res://assets/scenes/Player Bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/scenes/Note Editor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/scenes/Export Editor.tscn" type="PackedScene" id=5]
 
 [node name="Chart Editor" type="Node2D" groups=[
 "Audio Stream Recievers",
 "Song Time Recievers",
+"Track Note Recievers",
 ]]
 script = ExtResource( 1 )
 
@@ -35,8 +37,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Note Editor" parent="Control" instance=ExtResource( 4 )]
+[node name="Control" type="Control" parent="Control"]
 anchor_top = 0.063
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Note Editor" parent="Control/Control" instance=ExtResource( 4 )]
+
+[node name="Export Editor" parent="Control/Control" instance=ExtResource( 5 )]
+visible = false
 
 [node name="Player Bar" parent="Control" instance=ExtResource( 3 )]
 anchor_bottom = 0.06

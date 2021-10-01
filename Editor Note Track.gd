@@ -12,6 +12,44 @@ var editor_up_note : PackedScene = preload("res://assets/scenes/notes/Editor Up 
 var editor_right_note : PackedScene = preload("res://assets/scenes/notes/Editor Right Note.tscn")
 
 
+var editor_left_hold_note : PackedScene = preload("res://assets/scenes/notes/Editor Left Hold Note.tscn")
+var editor_down_hold_note : PackedScene = preload("res://assets/scenes/notes/Editor Down Hold Note.tscn")
+var editor_up_hold_note : PackedScene = preload("res://assets/scenes/notes/Editor Up Hold Note.tscn")
+var editor_right_hold_note : PackedScene = preload("res://assets/scenes/notes/Editor Right Hold Note.tscn")
+
+
+
+
+func import_hold_note(note_data, player_note = false):
+	var note : EditorHoldNote = null
+	var track = null
+	match int(note_data[1])%4:
+		0:
+			note = editor_left_hold_note.instance()
+			track = left_note_track
+		1:
+			note = editor_down_hold_note.instance()
+			track = down_note_track
+		2:
+			note = editor_up_hold_note.instance()
+			track = up_note_track
+		3:
+			note = editor_right_hold_note.instance()
+			track = right_note_track
+	note.hit_time = note_data[0]
+	note.hold_note = (note_data[2] > 0.0)
+	note.hold_time = note_data[2]
+	if len(note_data) > 3:
+		note.custom_data = note_data[3]
+	get_node(track).add_child(note)
+	note.position.y = note.hit_time
+	note.scale.y = 1.0/scroll_speed
+	note.player_note = (player_note and false)
+	note.update_scale()
+	notes = get_notes()
+	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
+	
+
 func import_note(note_data, player_note=false):
 	var note : EditorNote = null
 	var track = null
@@ -36,13 +74,17 @@ func import_note(note_data, player_note=false):
 	get_node(track).add_child(note)
 	note.position.y = note.hit_time
 	note.scale.y = 1.0/scroll_speed
-	note.player_note = player_note
+	note.player_note = (player_note and false)
 	notes = get_notes()
+	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
+func recieve_chart_file(path):
+	chart_file = path
+	import_fnf_chart()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -56,6 +56,12 @@ func set_scroll_speed(n_speed):
 	get_node(up_note_track).get_parent().scale.y = scroll_speed
 	get_node(right_note_track).get_parent().scale.y = scroll_speed
 	for note in notes:
+#		print(typeof(note))
+		
+		if note == null or !is_instance_valid(note):
+			print("NULL NOTE")
+			notes.erase(note)
+			continue
 		note.scale.y = 1.0/scroll_speed
 		if note.hold_note:
 			note.update_scale()

@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/scenes/notes/Hold Note Shader.tres" type="Shader" id=1]
+[ext_resource path="res://assets/images/NOTE_assets/green0000.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/NOTE_assets/green hold piece0000.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/NOTE_assets/green hold end0000.png" type="Texture" id=4]
+[ext_resource path="res://assets/scenes/notes/Editor Up Hold Note.gd" type="Script" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/Sprite_Scale = 1.0
+shader_param/Played_Amount = null
+shader_param/Hold_Texture = ExtResource( 3 )
+
+[node name="Editor Up Hold Note" type="Node2D"]
+script = ExtResource( 5 )
+note_type = 2
+hold_note = true
+scorable_group = "Scorable Up Notes"
+hold_note_start = NodePath("Up Note Sprite")
+hold_note_body = NodePath("Up Note Hold")
+hold_note_end = NodePath("Up Note Hold/Up Note Hold End")
+
+[node name="Up Note Hold" type="Sprite" parent="."]
+material = SubResource( 1 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, 22 )
+
+[node name="Up Note Hold End" type="Sprite" parent="Up Note Hold"]
+position = Vector2( 0, 44 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, 32 )
+
+[node name="Up Note Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )

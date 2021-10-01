@@ -192,11 +192,16 @@ func recieve_song_playing(playing):
 func recieve_song_time(time):
 	song_time = time
 
+var thing = true
 func _input(event):
 	if event is InputEventKey:
 		if event.scancode == KEY_SPACE and event.pressed:
 #			play_audio(0.0)
 			get_tree().call_group("Song Time Recievers", "recieve_song_playing", !song_playing)
+		if event.scancode == KEY_TAB and event.pressed:
+			$"Control/Control/Export Editor".visible = thing
+			$"Control/Control/Note Editor".modulate = Color(1,1,1,1)*float(!thing)
+			thing = !thing
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

@@ -174,3 +174,13 @@ func _on_FileDialog_file_selected(path):
 func _on_Instumental_Track_Input_Area_mouse_exited():
 	transform_mode = 0
 	pass # Replace with function body.
+
+
+func _on_Import_Chart_Button_pressed():
+	$"Popups/Import Chart Dialouge".popup()
+	pass # Replace with function body.
+
+
+func _on_Import_Chart_Dialouge_file_selected(path):
+	get_tree().call_group("Chart File Recievers", "recieve_chart_file", path)
+	pass # Replace with function body.
