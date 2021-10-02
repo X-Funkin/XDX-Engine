@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/scenes/notes/Hold Note Shader.tres" type="Shader" id=1]
 [ext_resource path="res://assets/images/NOTE_assets/green0000.png" type="Texture" id=2]
@@ -13,6 +13,9 @@ shader_param/Sprite_Scale = 1.0
 shader_param/Played_Amount = null
 shader_param/Hold_Texture = ExtResource( 3 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 80, 80 )
+
 [node name="Editor Up Hold Note" type="Node2D"]
 script = ExtResource( 5 )
 note_type = 2
@@ -21,6 +24,7 @@ scorable_group = "Scorable Up Notes"
 hold_note_start = NodePath("Up Note Sprite")
 hold_note_body = NodePath("Up Note Hold")
 hold_note_end = NodePath("Up Note Hold/Up Note Hold End")
+hold_note_input_area = NodePath("Up Note Sprite/Area2D")
 
 [node name="Up Note Hold" type="Sprite" parent="."]
 material = SubResource( 1 )
@@ -34,3 +38,8 @@ offset = Vector2( 0, 32 )
 
 [node name="Up Note Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Up Note Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up Note Sprite/Area2D"]
+shape = SubResource( 2 )

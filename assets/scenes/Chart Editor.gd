@@ -5,6 +5,8 @@ class_name ChartEditor
 
 export(float) var song_time
 export(bool) var song_playing = false
+export(String) var chart_file
+var chart_data = {}
 
 var audio_data : PoolVector2Array
 # Declare member variables here. Examples:

@@ -387,6 +387,61 @@ texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 
+[node name="Shapping Button" type="CheckBox" parent="Main UI/Left Buttons"]
+anchor_top = 0.287
+anchor_right = 1.0
+anchor_bottom = 0.287
+pressed = true
+text = "Snapping"
+
+[node name="Control" type="Control" parent="Main UI/Left Buttons"]
+anchor_top = 0.318
+anchor_right = 1.0
+anchor_bottom = 0.36
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BPM Edit" type="LineEdit" parent="Main UI/Left Buttons/Control"]
+anchor_top = 0.45
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "120.0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main UI/Left Buttons/Control"]
+anchor_right = 1.0
+anchor_bottom = 0.45
+text = "BPM"
+align = 1
+
+[node name="Control2" type="Control" parent="Main UI/Left Buttons"]
+anchor_top = 0.366
+anchor_right = 1.0
+anchor_bottom = 0.413
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Snapping Offset Edit" type="LineEdit" parent="Main UI/Left Buttons/Control2"]
+anchor_top = 0.45
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0.0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main UI/Left Buttons/Control2"]
+anchor_right = 1.0
+anchor_bottom = 0.45
+text = "Snap Offset"
+align = 1
+
 [node name="Bottom Buttons" type="Control" parent="." groups=[
 "Mouse Input Pass",
 ]]
@@ -478,7 +533,7 @@ margin_left = 673.058
 margin_top = 309.543
 margin_right = 1077.06
 margin_bottom = 674.543
-window_title = "Import Chart File"
+window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
@@ -496,6 +551,9 @@ current_path = "/Godot/XDX Engine/XDX-Engine/"
 [connection signal="mouse_entered" from="Main UI/Track UI/Track Input Areas/Intrumental Track Area/Instumental Track Input Area" to="." method="_on_Instumental_Track_Input_Area_mouse_entered"]
 [connection signal="mouse_exited" from="Main UI/Track UI/Track Input Areas/Intrumental Track Area/Instumental Track Input Area" to="." method="_on_Instumental_Track_Input_Area_mouse_exited"]
 [connection signal="pressed" from="Main UI/Left Buttons/Import Chart Button" to="." method="_on_Import_Chart_Button_pressed"]
+[connection signal="toggled" from="Main UI/Left Buttons/Shapping Button" to="." method="_on_Shapping_Button_toggled"]
+[connection signal="text_entered" from="Main UI/Left Buttons/Control/BPM Edit" to="." method="_on_BPM_Edit_text_entered"]
+[connection signal="text_entered" from="Main UI/Left Buttons/Control2/Snapping Offset Edit" to="." method="_on_Snapping_Offset_Edit_text_entered"]
 [connection signal="pressed" from="Bottom Buttons/Control/Control/Note Track Audio Buttons/Control/Button4" to="." method="_on_Button4_pressed"]
 [connection signal="file_selected" from="Popups/FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="file_selected" from="Popups/Import Chart Dialouge" to="." method="_on_Import_Chart_Dialouge_file_selected"]

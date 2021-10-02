@@ -8,6 +8,7 @@
 
 [node name="Chart Editor" type="Node2D" groups=[
 "Audio Stream Recievers",
+"Chart File Recievers",
 "Song Time Recievers",
 "Track Note Recievers",
 ]]
@@ -48,7 +49,9 @@ __meta__ = {
 
 [node name="Note Editor" parent="Control/Control" instance=ExtResource( 4 )]
 
-[node name="Export Editor" parent="Control/Control" instance=ExtResource( 5 )]
+[node name="Export Editor" parent="Control/Control" groups=[
+"Chart File Recievers",
+] instance=ExtResource( 5 )]
 visible = false
 
 [node name="Player Bar" parent="Control" instance=ExtResource( 3 )]

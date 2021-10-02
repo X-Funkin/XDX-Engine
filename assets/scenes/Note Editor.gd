@@ -184,3 +184,20 @@ func _on_Import_Chart_Button_pressed():
 func _on_Import_Chart_Dialouge_file_selected(path):
 	get_tree().call_group("Chart File Recievers", "recieve_chart_file", path)
 	pass # Replace with function body.
+
+
+func _on_Shapping_Button_toggled(button_pressed):
+	snapping = button_pressed
+	pass # Replace with function body.
+
+
+func _on_BPM_Edit_text_entered(new_text):
+	if new_text.is_valid_float():
+		bpm = float(new_text)
+	pass # Replace with function body.
+
+
+func _on_Snapping_Offset_Edit_text_entered(new_text):
+	if new_text.is_valid_float():
+		snapping_offset = float(new_text)
+	pass # Replace with function body.

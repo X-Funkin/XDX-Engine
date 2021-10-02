@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/chart data fiiiile bro.png" type="Texture" id=1]
 [ext_resource path="res://assets/scenes/Export Editor.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/Consola.tres" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/images/note import buttton homie.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
@@ -27,7 +28,7 @@ __meta__ = {
 }
 
 [node name="TextEdit" type="TextEdit" parent="Control"]
-anchor_top = 0.05
+anchor_top = 0.065
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
@@ -47,20 +48,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label2" type="Label" parent="Control"]
+anchor_top = 0.05
+anchor_bottom = 0.05
+text = "Chart Data"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control/Label2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="LineEdit" type="LineEdit" parent="Control"]
+anchor_top = 0.015
 anchor_right = 1.0
 anchor_bottom = 0.05
 custom_fonts/font = SubResource( 2 )
-text = "\"song\":\"notes\""
+text = "song:notes"
 placeholder_text = "Note Array Target"
 caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="Control"]
+text = "Note Array Target"
+
+[node name="Panel" type="Panel" parent="Control/Label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="Import Chart Data Button" type="Button" parent="."]
-anchor_right = 0.134
-anchor_bottom = 0.203
+anchor_left = 0.684
+anchor_right = 0.718
+anchor_bottom = 0.045
 margin_right = 12.0
 margin_bottom = 20.0
 __meta__ = {
@@ -74,13 +98,31 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
+[node name="Export Chart" type="Button" parent="."]
+anchor_left = 0.684
+anchor_top = 0.079
+anchor_right = 0.718
+anchor_bottom = 0.144
+margin_right = 12.0
+margin_bottom = 20.0
+hint_tooltip = "Export Chart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Export Chart"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
 [node name="FileDialog" type="FileDialog" parent="."]
-visible = true
 margin_left = 214.0
 margin_top = 212.0
 margin_right = 693.0
 margin_bottom = 627.0
-window_title = "Open a File"
+window_title = "Import Chart Data"
 resizable = true
 mode = 0
 access = 2
@@ -88,5 +130,21 @@ filters = PoolStringArray( "*.json" )
 current_dir = "/Godot/XDX Engine/XDX-Engine"
 current_path = "/Godot/XDX Engine/XDX-Engine/"
 
+[node name="Export Chart Box" type="FileDialog" parent="."]
+visible = true
+margin_left = 214.0
+margin_top = 212.0
+margin_right = 693.0
+margin_bottom = 627.0
+window_title = "Export Chart File"
+resizable = true
+access = 2
+filters = PoolStringArray( "*.json" )
+current_dir = "/Godot/XDX Engine/XDX-Engine"
+current_path = "/Godot/XDX Engine/XDX-Engine/"
+
+[connection signal="text_changed" from="Control/TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="text_entered" from="Control/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="Import Chart Data Button" to="." method="_on_Import_Chart_Data_Button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="file_selected" from="Export Chart Box" to="." method="_on_Export_Chart_Box_file_selected"]

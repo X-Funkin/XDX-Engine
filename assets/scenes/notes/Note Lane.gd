@@ -11,7 +11,10 @@ func set_song_time(n_time):
 	song_time = n_time
 	position.y = -song_time
 	if held_note:
-		held_note.check_holding()
+		if !is_instance_valid(held_note):
+			held_note = null
+		else:
+			held_note.check_holding()
 
 func get_song_time():
 	return song_time
