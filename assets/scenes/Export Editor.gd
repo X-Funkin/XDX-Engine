@@ -3,6 +3,10 @@ extends Control
 var chart_data : Dictionary
 var preview_data : Dictionary
 var note_array_keys = []
+var player_note_array = []
+var enemy_note_array = []
+var note_data_array = []
+var note_section_data = []
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -19,21 +23,39 @@ func get_keys_from_string(string : String, seperator:String = ":"):
 	var str_arr = string.split(seperator, false)
 	note_array_keys = str_arr
 
+func change_nested_key(dict, key_arr, new_thing):
+	var temp_dict = dict
+	var final_key
+	for key in key_arr:
+		final_key = key
+		if temp_dict.has(key):
+			if temp_dict[key] is Dictionary:
+				temp_dict = temp_dict[key]
+			else:
+				break
+		else:
+			break
+	temp_dict[final_key] = new_thing
+
+func get_nested_value(dict, key_arr):
+	var temp_dict = dict
+	var final_key
+	for key in key_arr:
+		final_key = key
+		if temp_dict.has(key):
+			if temp_dict[key] is Dictionary:
+				temp_dict = temp_dict[key]
+			else:
+				break
+		else:
+			break
+	if temp_dict.has(final_key):
+		return temp_dict[final_key]
+
 func preview_array_setup():
 	if !note_array_keys.empty():
 		preview_data = chart_data.duplicate(true)
-		var sub_thing = preview_data
-		var final_key
-		for key in note_array_keys:
-			final_key = key
-			if sub_thing.has(key):
-				if sub_thing[key] is Dictionary:# or sub_thing[key] is Array:
-					sub_thing = sub_thing[key]
-				else:
-					break
-			else:
-				break
-		sub_thing[final_key] = ["NOTES WILL GO HERE"]
+		change_nested_key(preview_data, note_array_keys, ["NOTES WILL GO HERE"])
 		$Control/TextEdit.text = JSON.print(preview_data, "\t")
 	else:
 		preview_data = chart_data.duplicate(true)
@@ -42,7 +64,48 @@ func preview_array_setup():
 #func _process(delta):
 #	pass
 
+class NoteDataSorter:
+	static func sort_hit_times(a,b):
+		return a[0]<b[0]
 
+func fill_note_data_array():
+	note_data_array = []
+	for note in player_note_array:
+		var data = note.get_data()
+		data[1] += 4
+		note_data_array.append(data)
+	for note in enemy_note_array:
+		var data = note.get_data()
+		note_data_array.append(data)
+	note_data_array.sort_custom(NoteDataSorter, "sort_hit_times")
+	pass
+
+func fill_note_section_array(bpm=120):
+	note_section_data = []
+	var section_length = 1000.0*8*60.0/bpm
+	var section_count = 0
+	if note_data_array != []:
+		var end_time = note_data_array[-1][0]
+		section_count = int(ceil(end_time/section_length)+1)
+	for i in range(section_count):
+		note_section_data.append({"sectionNotes":[],"lengthInSteps":16,"typeOfSection":0,"mustHitSection":false})
+	for note in note_data_array:
+		var note_time = note[0]
+		var section_index = int(floor(note_time/section_length))
+		note_section_data[section_index]["sectionNotes"].append(note)
+#		note_section_data[int(floor())
+	pass
+
+func export_chart(path):
+	fill_note_data_array()
+	if "bpm" in chart_data["song"]:
+		fill_note_section_array(chart_data["song"]["bpm"])
+		change_nested_key(chart_data, note_array_keys, note_section_data)
+		var file = File.new()
+		file.open(path, File.WRITE)
+		file.store_string(JSON.print(chart_data))
+		file.close()
+	pass
 
 func recieve_chart_file(path):
 	var file = File.new()
@@ -50,6 +113,19 @@ func recieve_chart_file(path):
 	chart_data = JSON.parse(file.get_as_text()).result
 	preview_data = chart_data.duplicate(true)
 	$Control/TextEdit.text = JSON.print(chart_data, "\t")
+
+func recieve_json_parse_error(json_parse:JSONParseResult):
+	if json_parse.error != OK:
+		$"JSON Parse Error Button".visible = true
+	else:
+		$"JSON Parse Error Button".visible = false
+
+func recieve_track_notes(track : EditorNoteTrack, notes):
+	if track.player_track:
+		player_note_array = notes
+	else:
+		enemy_note_array = notes
+	pass
 
 func _on_Import_Chart_Data_Button_pressed():
 	$FileDialog.popup()
@@ -86,12 +162,21 @@ func _on_TextEdit_text_changed():
 	var thing = JSON.parse($Control/TextEdit.text)
 	if thing.error == OK:
 		print("GOOD")
-		chart_data = thing.result
+		var thing_dict = thing.result
+		var yeah = get_nested_value(chart_data, note_array_keys)
+		change_nested_key(thing_dict, note_array_keys, yeah)
+		chart_data = thing_dict
 	else:
 		print("JSON PARSE ERROOOROROR")
+	get_tree().call_group("JSON Parse Error Recievers", "recieve_json_parse_error", thing)
 	pass # Replace with function body.
 
 
 func _on_Export_Chart_Box_file_selected(path):
-	
+	export_chart(path)
+	pass # Replace with function body.
+
+
+func _on_JSON_Parse_Error_Button_pressed():
+	$"JSON Parse Error Dialog".popup()
 	pass # Replace with function body.

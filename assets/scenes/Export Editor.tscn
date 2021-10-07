@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/chart data fiiiile bro.png" type="Texture" id=1]
 [ext_resource path="res://assets/scenes/Export Editor.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/Consola.tres" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/images/note import buttton homie.png" type="Texture" id=4]
+[ext_resource path="res://assets/scenes/JSON Parse Error Dialog.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
@@ -11,7 +12,14 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 3 )
 
-[node name="Export Editor" type="Control"]
+[sub_resource type="DynamicFont" id=3]
+size = 15
+font_data = ExtResource( 3 )
+
+[node name="Export Editor" type="Control" groups=[
+"JSON Parse Error Recievers",
+"Track Note Recievers",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -118,11 +126,12 @@ expand = true
 stretch_mode = 6
 
 [node name="FileDialog" type="FileDialog" parent="."]
+visible = true
 margin_left = 214.0
 margin_top = 212.0
 margin_right = 693.0
 margin_bottom = 627.0
-window_title = "Import Chart Data"
+window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
@@ -143,8 +152,51 @@ filters = PoolStringArray( "*.json" )
 current_dir = "/Godot/XDX Engine/XDX-Engine"
 current_path = "/Godot/XDX Engine/XDX-Engine/"
 
+[node name="Control2" type="Control" parent="."]
+visible = false
+anchor_left = 0.702
+anchor_top = 0.167
+anchor_right = 0.721
+anchor_bottom = 0.206
+
+[node name="JSON Parse Error Button" type="Button" parent="."]
+anchor_left = 0.639
+anchor_top = 0.17
+anchor_right = 0.724
+anchor_bottom = 0.193
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "JSON Parse Error"
+
+[node name="JSON Parse Error Dialog" type="AcceptDialog" parent="." groups=[
+"JSON Parse Error Recievers",
+]]
+margin_left = 1221.18
+margin_top = 294.101
+margin_right = 1406.18
+margin_bottom = 444.101
+window_title = "JSON Parse Error"
+resizable = true
+script = ExtResource( 5 )
+no_error_text = "There are no JSON Parse Errors!"
+error_text = "
+Error on Line {error_line}:
+\"{error_string}\""
+
+[node name="Error Text" type="Label" parent="JSON Parse Error Dialog"]
+anchor_right = 1.0
+anchor_bottom = 0.75
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 1.5
+autowrap = true
+clip_text = true
+
 [connection signal="text_changed" from="Control/TextEdit" to="." method="_on_TextEdit_text_changed"]
 [connection signal="text_entered" from="Control/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="Import Chart Data Button" to="." method="_on_Import_Chart_Data_Button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="file_selected" from="Export Chart Box" to="." method="_on_Export_Chart_Box_file_selected"]
+[connection signal="pressed" from="JSON Parse Error Button" to="." method="_on_JSON_Parse_Error_Button_pressed"]

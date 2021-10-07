@@ -8,6 +8,7 @@ extents = Vector2( 80, 80 )
 
 [node name="Editor Up Note" type="Node2D"]
 script = ExtResource( 2 )
+note_type = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
