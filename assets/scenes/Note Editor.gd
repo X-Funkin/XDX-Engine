@@ -10,8 +10,8 @@ export(float) var scrolling_speed = 0.0
 export(float) var scrolling_damp = 1000.0
 export(int) var scrolling_direction = 1
 export(bool) var snapping = true
-export(float) var bpm = 120.0
-export(float) var snapping_offset = 0.0
+export(float) var bpm = 120.0 setget set_bpm
+export(float) var snapping_offset = 0.0 setget set_snapping_offset
 export(float) var song_time_cursor = 0.0
 export(Vector2) var editor_cursor
 export(NodePath) var waveform
@@ -37,6 +37,16 @@ func set_transform_mode(n_mode):
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
+func set_bpm(n_bpm):
+	bpm=n_bpm
+	if not is_inside_tree(): yield(self,"ready")
+	get_tree().call_group("Song Time Recievers", "recieve_bpm", bpm)
+
+func set_snapping_offset(n_offset):
+	snapping_offset = n_offset
+	if not is_inside_tree(): yield(self, "ready")
+	get_tree().call_group("Song Time Recievers", "recieve_snapping_offset", snapping_offset)
 
 func song_time_transform(pos_y):
 	return (get_node(waveform).global_transform.affine_inverse()*Vector2(0,pos_y)).y
@@ -192,12 +202,17 @@ func _on_Shapping_Button_toggled(button_pressed):
 
 
 func _on_BPM_Edit_text_entered(new_text):
-	if new_text.is_valid_float():
-		bpm = float(new_text)
+	if new_text.is_valid_float() and float(new_text) > 0.0:
+		self.bpm = float(new_text)
 	pass # Replace with function body.
 
 
 func _on_Snapping_Offset_Edit_text_entered(new_text):
 	if new_text.is_valid_float():
-		snapping_offset = float(new_text)
+		self.snapping_offset = float(new_text)
+	pass # Replace with function body.
+
+
+func _on_Grid_Button_toggled(button_pressed):
+	$"Main UI/Track UI/Snapping Grid".visible = button_pressed
 	pass # Replace with function body.

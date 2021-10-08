@@ -360,12 +360,29 @@ modulate = Color( 1, 1, 1, 0.498039 )
 points = PoolVector2Array( -1000, 0, 1000, 0 )
 script = ExtResource( 13 )
 
-[node name="Snapping Grid" type="Control" parent="Main UI/Track UI"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+[node name="Snapping Grid" type="Control" parent="Main UI/Track UI" groups=[
+"Song Time Recievers",
+"Zoom Recievers",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+grid_line_color = Color( 0.862745, 0.862745, 0.862745, 1 )
+sub_grid_line_color = Color( 0.603922, 0.603922, 0.603922, 1 )
+note_editor_node = NodePath("../../..")
+
+[node name="Grid Start" type="Control" parent="Main UI/Track UI/Snapping Grid"]
+anchor_left = 0.5
+anchor_right = 0.5
+
+[node name="Grid End" type="Control" parent="Main UI/Track UI/Snapping Grid"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 
 [node name="Left Buttons" type="Control" parent="Main UI" groups=[
 "Mouse Input Pass",
@@ -394,10 +411,17 @@ anchor_bottom = 0.287
 pressed = true
 text = "Snapping"
 
-[node name="Control" type="Control" parent="Main UI/Left Buttons"]
-anchor_top = 0.318
+[node name="Grid Button" type="CheckBox" parent="Main UI/Left Buttons"]
+anchor_top = 0.317
 anchor_right = 1.0
-anchor_bottom = 0.36
+anchor_bottom = 0.347
+pressed = true
+text = "Grid"
+
+[node name="Control" type="Control" parent="Main UI/Left Buttons"]
+anchor_top = 0.352
+anchor_right = 1.0
+anchor_bottom = 0.394
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -419,9 +443,9 @@ text = "BPM"
 align = 1
 
 [node name="Control2" type="Control" parent="Main UI/Left Buttons"]
-anchor_top = 0.366
+anchor_top = 0.406
 anchor_right = 1.0
-anchor_bottom = 0.413
+anchor_bottom = 0.444
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -552,6 +576,7 @@ current_path = "/Godot/XDX Engine/XDX-Engine/"
 [connection signal="mouse_exited" from="Main UI/Track UI/Track Input Areas/Intrumental Track Area/Instumental Track Input Area" to="." method="_on_Instumental_Track_Input_Area_mouse_exited"]
 [connection signal="pressed" from="Main UI/Left Buttons/Import Chart Button" to="." method="_on_Import_Chart_Button_pressed"]
 [connection signal="toggled" from="Main UI/Left Buttons/Shapping Button" to="." method="_on_Shapping_Button_toggled"]
+[connection signal="toggled" from="Main UI/Left Buttons/Grid Button" to="." method="_on_Grid_Button_toggled"]
 [connection signal="text_entered" from="Main UI/Left Buttons/Control/BPM Edit" to="." method="_on_BPM_Edit_text_entered"]
 [connection signal="text_entered" from="Main UI/Left Buttons/Control2/Snapping Offset Edit" to="." method="_on_Snapping_Offset_Edit_text_entered"]
 [connection signal="pressed" from="Bottom Buttons/Control/Control/Note Track Audio Buttons/Control/Button4" to="." method="_on_Button4_pressed"]
