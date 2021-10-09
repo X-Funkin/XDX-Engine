@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/images/NOTE_assets/arrowRIGHT0000.png" type="Texture" id=1]
 [ext_resource path="res://assets/scenes/notes/Editor Note Track.tscn" type="PackedScene" id=2]
@@ -14,8 +14,21 @@
 [ext_resource path="res://assets/scenes/notes/Editor Note Sets.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/scenes/Cursor Line.gd" type="Script" id=13]
 [ext_resource path="res://assets/images/note import buttton homie.png" type="Texture" id=14]
+[ext_resource path="res://assets/fonts/Consola.tres" type="DynamicFontData" id=15]
+[ext_resource path="res://assets/images/exit button duuude.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/questions boiiis.png" type="Texture" id=17]
+[ext_resource path="res://assets/scenes/Help Popups.gd" type="Script" id=18]
 
-[node name="Note Editor" type="Control"]
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 15 )
+
+[node name="Note Editor" type="Control" groups=[
+"Song Time Recievers",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -100,6 +113,72 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Audio Waveforms" type="Control" parent="Main UI/Track UI/Arrow Track Control" groups=[
+"Audio Stream Recievers",
+"Song Time Recievers",
+"Zoom Recievers",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+size = 550.0
+
+[node name="Enemy Vocals" type="Control" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Enemy Vocals"]
+
+[node name="Waveform Visualizer" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Enemy Vocals/Position2D" instance=ExtResource( 7 )]
+scale = Vector2( 0.329, 1 )
+
+[node name="debug_texture" type="Sprite" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Enemy Vocals/Position2D/Waveform Visualizer"]
+visible = false
+show_behind_parent = true
+scale = Vector2( 1, 0.129 )
+texture = ExtResource( 9 )
+
+[node name="debug_texture" type="Sprite" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Enemy Vocals/Position2D"]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="Instrumentals" type="Control" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms"]
+anchor_left = 0.5
+anchor_right = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Instrumentals"]
+
+[node name="debug_texture" type="Sprite" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Instrumentals/Position2D"]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="Waveform Visualizer" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Instrumentals/Position2D" instance=ExtResource( 7 )]
+scale = Vector2( 0.218, 1 )
+
+[node name="Player Vocals" type="Control" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms"]
+anchor_left = 1.0
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Player Vocals"]
+
+[node name="Waveform Visualizer" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Player Vocals/Position2D" instance=ExtResource( 7 )]
+scale = Vector2( 0.329, 1 )
+
+[node name="debug_texture" type="Sprite" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms"]
+visible = false
+scale = Vector2( 1, 0.202 )
+texture = ExtResource( 9 )
+
 [node name="Enemy Track" type="Control" parent="Main UI/Track UI/Arrow Track Control"]
 __meta__ = {
 "_edit_use_anchors_": false
@@ -147,61 +226,6 @@ player_track = true
 [node name="Editor Note Sets" parent="Main UI/Track UI/Arrow Track Control/Player Track" instance=ExtResource( 12 )]
 modulate = Color( 1, 1, 1, 0.498039 )
 note_set_type = 1
-
-[node name="Audio Waveforms" type="Control" parent="Main UI/Track UI/Arrow Track Control" groups=[
-"Audio Stream Recievers",
-"Song Time Recievers",
-"Zoom Recievers",
-]]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-size = 550.0
-
-[node name="Enemy Vocals" type="Control" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms"]
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Position2D" type="Position2D" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Enemy Vocals"]
-
-[node name="Waveform Visualizer" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Enemy Vocals/Position2D" instance=ExtResource( 7 )]
-scale = Vector2( 0.329, 1 )
-
-[node name="debug_texture" type="Sprite" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Enemy Vocals/Position2D/Waveform Visualizer"]
-visible = false
-show_behind_parent = true
-scale = Vector2( 1, 0.129 )
-texture = ExtResource( 9 )
-
-[node name="debug_texture" type="Sprite" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Enemy Vocals/Position2D"]
-visible = false
-texture = ExtResource( 9 )
-
-[node name="Instrumentals" type="Control" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms"]
-anchor_left = 0.5
-anchor_right = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Position2D" type="Position2D" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Instrumentals"]
-
-[node name="debug_texture" type="Sprite" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms/Instrumentals/Position2D"]
-visible = false
-texture = ExtResource( 9 )
-
-[node name="Player Vocals" type="Control" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms"]
-anchor_left = 1.0
-anchor_right = 1.0
-
-[node name="debug_texture" type="Sprite" parent="Main UI/Track UI/Arrow Track Control/Audio Waveforms"]
-visible = false
-scale = Vector2( 1, 0.202 )
-texture = ExtResource( 9 )
 
 [node name="Track Input Areas" type="Control" parent="Main UI/Track UI"]
 anchor_right = 1.0
@@ -418,6 +442,17 @@ anchor_bottom = 0.347
 pressed = true
 text = "Grid"
 
+[node name="Hide During Playback Button" type="CheckBox" parent="Main UI/Left Buttons"]
+visible = false
+anchor_top = 0.473568
+anchor_right = 1.0
+anchor_bottom = 0.503568
+pressed = true
+text = "Hide Durin"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="Control" type="Control" parent="Main UI/Left Buttons"]
 anchor_top = 0.352
 anchor_right = 1.0
@@ -466,6 +501,48 @@ anchor_bottom = 0.45
 text = "Snap Offset"
 align = 1
 
+[node name="Right Buttons" type="Control" parent="Main UI" groups=[
+"Mouse Input Pass",
+]]
+anchor_left = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit Button" type="Button" parent="Main UI/Right Buttons"]
+anchor_left = 0.2
+anchor_top = 0.01
+anchor_right = 0.8
+anchor_bottom = 0.083
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Main UI/Right Buttons/Exit Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help Button" type="Button" parent="Main UI/Right Buttons"]
+anchor_left = 0.1
+anchor_top = 0.122
+anchor_right = 0.9
+anchor_bottom = 0.204
+
+[node name="TextureRect" type="TextureRect" parent="Main UI/Right Buttons/Help Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
 [node name="Bottom Buttons" type="Control" parent="." groups=[
 "Mouse Input Pass",
 ]]
@@ -513,7 +590,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FileDialog" type="FileDialog" parent="Popups" groups=[
+[node name="Enemy Vocals File Dialog" type="FileDialog" parent="Popups" groups=[
+"Mouse Input Pass",
+]]
+margin_left = 739.687
+margin_top = 337.735
+margin_right = 1168.69
+margin_bottom = 745.735
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.wav" )
+current_dir = "/Godot/XDX Engine/XDX-Engine"
+current_path = "/Godot/XDX Engine/XDX-Engine/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instrumentals File Dialog" type="FileDialog" parent="Popups" groups=[
+"Mouse Input Pass",
+]]
+margin_left = 739.687
+margin_top = 337.735
+margin_right = 1168.69
+margin_bottom = 745.735
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.wav" )
+current_dir = "/Godot/XDX Engine/XDX-Engine"
+current_path = "/Godot/XDX Engine/XDX-Engine/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player Vocals File Dialog" type="FileDialog" parent="Popups" groups=[
 "Mouse Input Pass",
 ]]
 margin_left = 739.687
@@ -565,6 +678,235 @@ filters = PoolStringArray( "*.json" )
 current_dir = "/Godot/XDX Engine/XDX-Engine"
 current_path = "/Godot/XDX Engine/XDX-Engine/"
 
+[node name="Enemy Volume Popup" type="PopupPanel" parent="Popups"]
+visible = true
+anchor_left = 0.2
+anchor_top = 0.84
+anchor_right = 0.38
+anchor_bottom = 0.88
+
+[node name="Label" type="Label" parent="Popups/Enemy Volume Popup"]
+anchor_left = 0.04
+anchor_top = 0.1
+anchor_right = 0.09
+anchor_bottom = 0.1
+margin_left = -9.824
+margin_top = -0.320007
+margin_right = 310.496
+margin_bottom = 34.8801
+text = "Enemy Vocals Volume"
+
+[node name="Enemy Volume Slider" type="HSlider" parent="Popups/Enemy Volume Popup"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -17.6
+margin_right = -4.0
+margin_bottom = -4.0
+step = 0.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instrumentals Volume Popup" type="PopupPanel" parent="Popups"]
+visible = true
+anchor_left = 0.419283
+anchor_top = 0.84
+anchor_right = 0.599283
+anchor_bottom = 0.88
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Popups/Instrumentals Volume Popup"]
+anchor_left = 0.04
+anchor_top = 0.1
+anchor_right = 0.09
+anchor_bottom = 0.1
+margin_left = -9.824
+margin_top = -0.320007
+margin_right = 310.496
+margin_bottom = 34.8801
+text = "Instrumentals Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instrumentals Volume Slider" type="HSlider" parent="Popups/Instrumentals Volume Popup"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -17.6
+margin_right = -4.0
+margin_bottom = -4.0
+step = 0.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player Volume Popup" type="PopupPanel" parent="Popups"]
+visible = true
+anchor_left = 0.754179
+anchor_top = 0.84
+anchor_right = 0.934179
+anchor_bottom = 0.88
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Popups/Player Volume Popup"]
+anchor_left = 0.04
+anchor_top = 0.1
+anchor_right = 0.09
+anchor_bottom = 0.1
+margin_left = -9.824
+margin_top = -0.320007
+margin_right = 310.496
+margin_bottom = 34.8801
+text = "Player Vocals Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player Volume Slider" type="HSlider" parent="Popups/Player Volume Popup"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -17.6
+margin_right = -4.0
+margin_bottom = -4.0
+step = 0.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Help Popups" type="Control" parent="Popups" groups=[
+"Mouse Input Ignore",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="WindowDialog" parent="Popups/Help Popups"]
+margin_left = 815.0
+margin_top = 267.0
+margin_right = 1239.0
+margin_bottom = 385.0
+popup_exclusive = true
+window_title = "Help"
+resizable = true
+
+[node name="Control" type="Control" parent="Popups/Help Popups/Help"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Popups/Help Popups/Help/Control"]
+anchor_right = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "This editor is in Alpha 1.0.0
+Alot of it probably doesn't work or isn't here yet
+There is no undo"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls Button" type="Button" parent="Popups/Help Popups/Help/Control"]
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Controls"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="How To Button" type="Button" parent="Popups/Help Popups/Help/Control"]
+anchor_left = 0.526813
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "How To"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Controls" type="WindowDialog" parent="Popups/Help Popups"]
+margin_left = 314.0
+margin_top = 190.0
+margin_right = 752.0
+margin_bottom = 417.0
+popup_exclusive = true
+window_title = "Controls"
+resizable = true
+
+[node name="Label" type="Label" parent="Popups/Help Popups/Controls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "-Add Notes: Left Click
+-Remove Notes: Right Click
+-Add Hold Notes: Shift+Left Click
+-Play Audio: Space
+-Scroll: Left-Click drag on center track
+-Zoom: Shift+Left-Click drag on center track
+-Switch to Export Editor: Tab
+
+There is no undo"
+autowrap = true
+clip_text = true
+
+[node name="How To" type="WindowDialog" parent="Popups/Help Popups"]
+margin_left = 314.0
+margin_top = 190.0
+margin_right = 752.0
+margin_bottom = 417.0
+popup_exclusive = true
+window_title = "How To"
+resizable = true
+
+[node name="Label" type="Label" parent="Popups/Help Popups/How To"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "-Import a chart using the button on the left.
+-Import audio .wav files using the buttons on the bottom
+-Add/Remove Notes
+-Press \"Tab\" to go into the export editor
+-Make sure all the data looks good ig
+-export using button in the export editor
+yeah
+ig
+dun"
+autowrap = true
+clip_text = true
+
+[node name="Exit Confirm" type="ConfirmationDialog" parent="Popups"]
+margin_left = 773.127
+margin_top = 356.597
+margin_right = 1248.13
+margin_bottom = 431.597
+window_title = "dog u sure tho?"
+resizable = true
+dialog_text = "There isn't any auto-saving yet so make sure it's all good before leaving,
+anything not exported to a chart file will be gone foreva
+do you want to exit??"
+
 [connection signal="input_event" from="Main UI/Track UI/Track Input Areas/Enemy Track Area/Up Lane Area/GUI Input Area" to="Main UI/Track UI/Track Input Areas/Enemy Track Area/Up Lane Area" method="_on_GUI_Input_Area_input_event"]
 [connection signal="mouse_entered" from="Main UI/Track UI/Track Input Areas/Enemy Track Area/Up Lane Area/GUI Input Area" to="Main UI/Track UI/Track Input Areas/Enemy Track Area/Up Lane Area" method="_on_GUI_Input_Area_mouse_entered"]
 [connection signal="mouse_exited" from="Main UI/Track UI/Track Input Areas/Enemy Track Area/Up Lane Area/GUI Input Area" to="Main UI/Track UI/Track Input Areas/Enemy Track Area/Up Lane Area" method="_on_GUI_Input_Area_mouse_exited"]
@@ -579,8 +921,28 @@ current_path = "/Godot/XDX Engine/XDX-Engine/"
 [connection signal="toggled" from="Main UI/Left Buttons/Grid Button" to="." method="_on_Grid_Button_toggled"]
 [connection signal="text_entered" from="Main UI/Left Buttons/Control/BPM Edit" to="." method="_on_BPM_Edit_text_entered"]
 [connection signal="text_entered" from="Main UI/Left Buttons/Control2/Snapping Offset Edit" to="." method="_on_Snapping_Offset_Edit_text_entered"]
+[connection signal="pressed" from="Main UI/Right Buttons/Exit Button" to="." method="_on_Exit_Button_pressed"]
+[connection signal="pressed" from="Main UI/Right Buttons/Help Button" to="Popups/Help Popups" method="_on_Help_Button_pressed"]
 [connection signal="pressed" from="Bottom Buttons/Control/Control/Note Track Audio Buttons/Control/Button4" to="." method="_on_Button4_pressed"]
-[connection signal="file_selected" from="Popups/FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="pressed" from="Bottom Buttons/Control/Control/Note Track Audio Buttons/Control2/Button2" to="." method="_on_enemy_waveform_hide"]
+[connection signal="pressed" from="Bottom Buttons/Control/Control/Note Track Audio Buttons/Control3/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Bottom Buttons/Control/Control2/Note Track Audio Buttons/Control/Button4" to="." method="_on_load_instrumentals"]
+[connection signal="pressed" from="Bottom Buttons/Control/Control2/Note Track Audio Buttons/Control2/Button2" to="." method="_on_instrumentals_waveform_hide"]
+[connection signal="pressed" from="Bottom Buttons/Control/Control2/Note Track Audio Buttons/Control3/Button3" to="." method="_on_instrumentals_volume_button_pressed"]
+[connection signal="pressed" from="Bottom Buttons/Control/Control3/Note Track Audio Buttons/Control/Button4" to="." method="_on_load_player_vocals_button_pressed"]
+[connection signal="pressed" from="Bottom Buttons/Control/Control3/Note Track Audio Buttons/Control2/Button2" to="." method="_on_player_waveform_hide"]
+[connection signal="pressed" from="Bottom Buttons/Control/Control3/Note Track Audio Buttons/Control3/Button3" to="." method="_on_player_volume_button_pressed"]
+[connection signal="file_selected" from="Popups/Enemy Vocals File Dialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="file_selected" from="Popups/Instrumentals File Dialog" to="." method="_on_Instrumentals_File_Dialog_file_selected"]
+[connection signal="file_selected" from="Popups/Player Vocals File Dialog" to="." method="_on_Player_Vocals_File_Dialog_file_selected"]
 [connection signal="file_selected" from="Popups/Import Chart Dialouge" to="." method="_on_Import_Chart_Dialouge_file_selected"]
+[connection signal="value_changed" from="Popups/Enemy Volume Popup/Enemy Volume Slider" to="." method="_on_Enemy_Volume_Slider_value_changed"]
+[connection signal="value_changed" from="Popups/Instrumentals Volume Popup/Instrumentals Volume Slider" to="." method="_on_Instrumentals_Volume_Slider_value_changed"]
+[connection signal="value_changed" from="Popups/Player Volume Popup/Player Volume Slider" to="." method="_on_Player_Volume_Slider_value_changed"]
+[connection signal="pressed" from="Popups/Help Popups/Help/Control/Controls Button" to="Popups/Help Popups" method="_on_Controls_Button_pressed"]
+[connection signal="pressed" from="Popups/Help Popups/Help/Control/How To Button" to="Popups/Help Popups" method="_on_How_To_Button_pressed"]
+[connection signal="confirmed" from="Popups/Exit Confirm" to="." method="_on_Exit_Confirm_confirmed"]
 
 [editable path="Bottom Buttons/Control/Control/Note Track Audio Buttons"]
+[editable path="Bottom Buttons/Control/Control2/Note Track Audio Buttons"]
+[editable path="Bottom Buttons/Control/Control3/Note Track Audio Buttons"]

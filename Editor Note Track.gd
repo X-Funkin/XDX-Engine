@@ -90,6 +90,34 @@ func recieve_chart_file(path):
 func _ready():
 	pass # Replace with function body.
 
+func add_hold_note(song_time, lane_type):
+	var notes = []
+	match lane_type:
+		0:
+			notes = get_left_notes()
+		1:
+			notes = get_down_notes()
+		2:
+			notes = get_up_notes()
+		3:
+			notes = get_right_notes()
+	if notes != []:
+		var closest_note = notes[0]
+		for note in notes:
+			if note.hit_time < song_time and note.hit_time > closest_note.hit_time:
+				closest_note = note
+				pass
+			pass
+		if closest_note.hit_time < song_time:
+			if closest_note.hold_note:
+				closest_note.hold_time = abs(closest_note.hit_time - song_time)
+				closest_note.update_scale()
+			else:
+				var note_data = closest_note.get_data()
+				closest_note.queue_free()
+				note_data[2] = abs(closest_note.hit_time - song_time)
+				import_hold_note(note_data)
+
 func recieve_song_time_cursor(time):
 	song_cursor = time
 
@@ -98,7 +126,10 @@ func recieve_zoom(zoom):
 
 func recieve_track_input(track_type, lane_type, event):
 	if event is InputEventMouseButton:
-		if event.is_pressed() and event.button_index == BUTTON_LEFT:
+		if event.is_pressed() and event.button_index == BUTTON_LEFT and Input.is_key_pressed(KEY_SHIFT):
+			if int(player_track) == track_type:
+				add_hold_note(song_cursor,lane_type)
+		elif event.is_pressed() and event.button_index == BUTTON_LEFT:
 			if int(player_track) == track_type:
 				import_note([song_cursor,lane_type,0])
 				pass

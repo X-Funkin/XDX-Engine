@@ -31,7 +31,7 @@ func recieve_song_time(time):
 	pass
 
 func _on_HSlider_value_changed(value):
-	get_tree().call_group("Song Time Recievers", "seek_song_time", value)
+#	get_tree().call_group("Song Time Recievers", "seek_song_time", value)
 	pass # Replace with function body.
 
 
@@ -44,7 +44,9 @@ func _on_HSlider_gui_input(event):
 			song_time = $"Player Head/HSlider".value
 			if playing:
 				get_tree().call_group("Song Time Recievers", "seek_song_time", song_time)
+				pass
 			else:
+				pass
 				get_tree().call_group("Song Time Recievers", "recieve_song_time", song_time)
 	pass # Replace with function body.
 

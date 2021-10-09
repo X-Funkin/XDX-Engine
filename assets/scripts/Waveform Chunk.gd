@@ -40,7 +40,7 @@ func _draw(): #Function calling is like 3 times slower than direct computation, 
 			bytes_per_sample = 4
 #			bytes2var()
 	var sample_data = StreamPeerBuffer.new()
-	sample_data.data_array = audio_stream.data.subarray(starting_sample*bytes_per_sample,min(ending_sample*bytes_per_sample,audio_stream.data.size()))
+	sample_data.data_array = audio_stream.data.subarray(starting_sample*bytes_per_sample,min(ending_sample*bytes_per_sample,audio_stream.data.size()-1))
 	var sample_rate = audio_stream.mix_rate
 #	var sample_data = audio_stream.data.subarray(starting_sample*bytes_per_sample,ending_sample*bytes_per_sample)
 	var point : Vector2 = Vector2(0,0)

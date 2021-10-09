@@ -68,7 +68,7 @@ func _draw():
 	var snap_length = 60.0/(bpm*4.0*max(1.0,floor(zoom)))
 	var time_diff = end_time-start_time
 	var line_count = int(ceil(time_diff/(1000.0*snap_length)))
-	var line_start_time = stepify(start_time, snap_length*1000.0)+snapping_offset
+	var line_start_time = stepify(start_time-snapping_offset, snap_length*1000.0)+snapping_offset
 	var yeah : NoteEditor = get_node(note_editor_node)
 	for line in line_count:
 		var song_y = line_start_time+line*snap_length*1000.0
@@ -77,7 +77,7 @@ func _draw():
 		draw_line(Vector2(-2000,local_y),Vector2(2000,local_y),sub_grid_line_color,sub_grid_line_width)
 	var beat_snap_length = 60.0/(bpm*4.0)
 	var major_line_count = int(ceil(time_diff/(1000.0*beat_snap_length)))
-	var major_line_start = stepify(start_time,beat_snap_length*1000.0)+snapping_offset
+	var major_line_start = stepify(start_time-snapping_offset,beat_snap_length*1000.0)+snapping_offset
 	for major_line in major_line_count:
 		var song_y = major_line_start+major_line*beat_snap_length*1000.0
 		var global_y = yeah.inv_song_time_transform(song_y)

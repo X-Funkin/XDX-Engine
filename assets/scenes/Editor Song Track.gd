@@ -20,6 +20,7 @@ func _ready():
 
 var t = 0.0
 var prev_time = 0.0
+var old_song_time = 0.0
 func get_song_time(delta):
 	var current_time = get_playback_position()+AudioServer.get_time_since_last_mix()-AudioServer.get_output_latency()
 	t += delta
@@ -34,11 +35,23 @@ func get_song_time(delta):
 				emit_signal("finished")
 		current_time = prev_time + delta*pitch_scale
 	get_tree().call_group(song_time_group, "recieve_song_time", current_time*1000.0+offset_ms)
+	var new_song_time = current_time*1000.0+offset_ms
+	if old_song_time > new_song_time:
+		print("YEAH SOMETHING WENT WRONG IN THE INTRUEMANTALS FUNCITON ")
+		print(old_song_time)
+		print(new_song_time)
+		print(old_song_time-new_song_time)
+	old_song_time = new_song_time
+	prev_time = current_time
 
 func seek_song_time(seek_time):
 	prev_time = 0.0
 
+var song_playing = false
 func _process(delta):
 	if playing:
 		get_song_time(delta)
+	if song_playing != playing:
+		song_playing = playing
+#		get_tree().call_group("yeah","yeah")
 #	pass

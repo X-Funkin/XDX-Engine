@@ -25,8 +25,11 @@ func recieve_song_time(song_time):
 #	$Instrumentals.rect_position.y = song_time
 	visibility_begin = song_time
 	visibility_end = visibility_begin+visible_length
-	$Instrumentals/Position2D/debug_texture.position.y = -song_time
+#	$.position.y = -song_time
 	$"Enemy Vocals/Position2D/Waveform Visualizer".position.y = -song_time
+	$"Instrumentals/Position2D/Waveform Visualizer".position.y = -song_time
+	$"Player Vocals/Position2D/Waveform Visualizer".position.y = -song_time
+	
 	redraw_waveforms()
 
 func recieve_zoom(zoom):
@@ -34,12 +37,43 @@ func recieve_zoom(zoom):
 #	rect_scale.y = zoom
 	$Instrumentals/Position2D.scale.y = zoom
 	$"Enemy Vocals/Position2D".scale.y = zoom
+	$"Player Vocals/Position2D".scale.y = zoom
 	redraw_waveforms()
 
 func recieve_enemy_audio_stream(stream):
 	$"Enemy Vocals/Position2D/Waveform Visualizer".audio_stream = stream
 	$"Enemy Vocals/Position2D/Waveform Visualizer".clear_waveforms()
 	$"Enemy Vocals/Position2D/Waveform Visualizer".draw_waveform()
+
+func recieve_instrumentals_audio_stream(stream):
+	$"Instrumentals/Position2D/Waveform Visualizer".audio_stream = stream
+	$"Instrumentals/Position2D/Waveform Visualizer".clear_waveforms()
+	$"Instrumentals/Position2D/Waveform Visualizer".draw_waveform()
+
+func recieve_player_audio_stream(stream):
+	$"Player Vocals/Position2D/Waveform Visualizer".audio_stream = stream
+	$"Player Vocals/Position2D/Waveform Visualizer".clear_waveforms()
+	$"Player Vocals/Position2D/Waveform Visualizer".draw_waveform()
+	pass
+
+func recieve_enemy_waveform_hide(hidden):
+	if hidden:
+		$"Enemy Vocals".modulate = Color.transparent
+	else:
+		$"Enemy Vocals".modulate = Color.white
+
+func recieve_instrumentals_waveform_hide(hidden):
+	print("inst hide ", hidden)
+	if hidden:
+		$Instrumentals.modulate = Color.transparent
+	else:
+		$Instrumentals.modulate = Color.white
+
+func recieve_player_waveform_hide(hidden):
+	if hidden:
+		$"Player Vocals".modulate = Color.transparent
+	else:
+		$"Player Vocals".modulate = Color.white
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

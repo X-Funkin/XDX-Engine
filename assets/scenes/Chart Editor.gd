@@ -181,8 +181,24 @@ func seek_song_time(time):
 	seek_audio(time)
 
 func recieve_enemy_audio_stream(stream):
+	$"Enemy Vocals".stream = stream
+#	get_tree().call_group("Song Time Recievers", "recieve_song_length", $Instumentals.stream.get_length()*1000.0)
+
+func recieve_instrumentals_audio_stream(stream):
 	$Instumentals.stream = stream
 	get_tree().call_group("Song Time Recievers", "recieve_song_length", $Instumentals.stream.get_length()*1000.0)
+
+func recieve_player_audio_stream(stream):
+	$"Player Vocals".stream = stream
+
+func recieve_enemy_volume(volume):
+	$"Enemy Vocals".volume_db = linear2db(volume/100.0)
+
+func recieve_instrumentals_volume(volume):
+	$Instumentals.volume_db = linear2db(volume/100.0)
+
+func recieve_player_volume(volume):
+	$"Player Vocals".volume_db = linear2db(volume/100.0)
 
 func recieve_song_playing(playing):
 	song_playing = playing
@@ -192,7 +208,11 @@ func recieve_song_playing(playing):
 		pause_audio(true)
 
 func recieve_song_time(time):
+#	if song_time > time:
+#		print("JUMP BACK ", song_time-time, " BRUHHH ", song_time, " ", time)
 	song_time = time
+
+
 
 var thing = true
 func _input(event):

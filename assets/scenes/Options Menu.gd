@@ -14,6 +14,7 @@ export(PackedScene) var scrolling_options
 export(PackedScene) var control_options
 export(PackedScene) var video_options
 export(PackedScene) var sound_options
+export(PackedScene) var modding_options
 var target_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
@@ -49,6 +50,10 @@ func switch_to_video_options():
 
 func switch_to_sound_options():
 	target_scene = sound_options
+	load_options_menu()
+
+func switch_to_modding_options():
+	target_scene = modding_options
 	load_options_menu()
 
 func save_settings():

@@ -33,6 +33,13 @@ func set_song_time(n_song_time):
 
 func set_transform_mode(n_mode):
 	transform_mode = n_mode
+	if not is_inside_tree(): yield(self,"ready")
+	if transform_mode == 3:
+		$"Main UI/Track UI/Snapping Grid".modulate = Color.transparent
+		$"Main UI/Track UI/Arrow Track Control/Audio Waveforms".modulate = Color.transparent
+	else:
+		$"Main UI/Track UI/Snapping Grid".modulate = Color.white
+		$"Main UI/Track UI/Arrow Track Control/Audio Waveforms".modulate = Color.white
 	pass
 # Declare member variables here. Examples:
 # var a = 2
@@ -48,6 +55,8 @@ func set_snapping_offset(n_offset):
 	if not is_inside_tree(): yield(self, "ready")
 	get_tree().call_group("Song Time Recievers", "recieve_snapping_offset", snapping_offset)
 
+
+
 func song_time_transform(pos_y):
 	return (get_node(waveform).global_transform.affine_inverse()*Vector2(0,pos_y)).y
 
@@ -58,7 +67,7 @@ func inv_song_time_transform(song_time):
 func update_song_time_cursor():
 	if snapping:
 		var snap_length = 60.0/(bpm*4.0*max(1.0,floor(zoom)))
-		var snapped_song_time = stepify(song_time_transform(get_global_mouse_position().y),snap_length*1000.0)+snapping_offset
+		var snapped_song_time = stepify(song_time_transform(get_global_mouse_position().y)-snapping_offset,snap_length*1000.0)+snapping_offset
 		song_time_cursor = snapped_song_time
 	else:
 		song_time_cursor = song_time_transform(get_global_mouse_position().y)
@@ -92,6 +101,8 @@ func re_mouse_input_ig():
 	for node in get_tree().get_nodes_in_group("Mouse Input Pass"):
 		for child in get_control_children(node):
 			child.mouse_filter = MOUSE_FILTER_PASS
+	for node in get_tree().get_nodes_in_group("Mouse Input Ignore"):
+		node.mouse_filter = MOUSE_FILTER_IGNORE
 
 
 func connect_all_control_signals(connect_signal, connect_function):
@@ -138,6 +149,14 @@ func _process(delta):
 #	print(get_global_mouse_position())
 #	pass
 
+func recieve_song_time(time):
+	song_time = time
+
+func recieve_song_playing(playing):
+	if playing:
+		self.transform_mode = 3
+	else:
+		self.transform_mode = 0
 
 func _on_Instumental_Track_Input_Area_input_event(viewport, event, shape_idx):
 #	print("eyaidhf event ", event)
@@ -170,7 +189,8 @@ func _on_Instumental_Track_Input_Area_mouse_entered():
 
 
 func _on_Button4_pressed():
-	$Popups/FileDialog.popup()
+#	$Popups/FileDialog.popup()
+	$"Popups/Enemy Vocals File Dialog".popup()
 	pass # Replace with function body.
 
 
@@ -215,4 +235,91 @@ func _on_Snapping_Offset_Edit_text_entered(new_text):
 
 func _on_Grid_Button_toggled(button_pressed):
 	$"Main UI/Track UI/Snapping Grid".visible = button_pressed
+	pass # Replace with function body.
+
+var hide_enemy_waveform = false
+func _on_enemy_waveform_hide():
+	hide_enemy_waveform = !hide_enemy_waveform
+	get_tree().call_group("Audio Stream Recievers", "recieve_enemy_waveform_hide", hide_enemy_waveform)
+	pass # Replace with function body.
+
+
+func _on_Button3_pressed():
+	$"Popups/Enemy Volume Popup".popup()
+	pass # Replace with function body.
+
+
+func _on_Enemy_Volume_Slider_value_changed(value):
+	get_tree().call_group("Audio Stream Recievers", "recieve_enemy_volume", value)
+	pass # Replace with function body.
+
+
+func _on_Instrumentals_File_Dialog_file_selected(path):
+	var thingy = ChartEditor.new()
+	var stream = thingy.load_wav_file(path)
+	get_tree().call_group("Audio Stream Recievers", "recieve_instrumentals_audio_stream", stream)
+	pass # Replace with function body.
+
+
+func _on_Player_Vocals_File_Dialog_file_selected(path):
+	var thingy = ChartEditor.new()
+	var stream = thingy.load_wav_file(path)
+	get_tree().call_group("Audio Stream Recievers", "recieve_player_audio_stream", stream)
+	pass
+	pass # Replace with function body.
+
+
+func _on_load_instrumentals():
+	$"Popups/Instrumentals File Dialog".popup()
+	pass # Replace with function body.
+
+var hide_instrumentals_waveform = false
+func _on_instrumentals_waveform_hide():
+	hide_instrumentals_waveform = !hide_instrumentals_waveform
+	get_tree().call_group("Audio Stream Recievers", "recieve_instrumentals_waveform_hide", hide_instrumentals_waveform)
+	pass # Replace with function body.
+
+
+func _on_Instrumentals_Volume_Slider_value_changed(value):
+	get_tree().call_group("Audio Stream Recievers", "recieve_instrumentals_volume", value)
+	pass # Replace with function body.
+
+
+func _on_instrumentals_volume_button_pressed():
+	$"Popups/Instrumentals Volume Popup".popup()
+	pass # Replace with function body.
+
+
+func _on_load_player_vocals_button_pressed():
+	$"Popups/Player Vocals File Dialog".popup()
+	pass # Replace with function body.
+
+
+#func _on_player_waveform_hide_pressed():
+#	pass # Replace with function body.
+
+var hide_player_waveform = false
+func _on_player_waveform_hide():
+	hide_player_waveform = !hide_player_waveform
+	get_tree().call_group("Audio Stream Recievers", "recieve_player_waveform_hide", hide_player_waveform)
+	pass # Replace with function body.
+
+
+func _on_Player_Volume_Slider_value_changed(value):
+	get_tree().call_group("Audio Stream Recievers", "recieve_player_volume", value)
+	pass # Replace with function body.
+
+
+func _on_player_volume_button_pressed():
+	$"Popups/Player Volume Popup".popup()
+	pass # Replace with function body.
+
+
+func _on_Exit_Button_pressed():
+	$"Popups/Exit Confirm".popup()
+	pass # Replace with function body.
+
+
+func _on_Exit_Confirm_confirmed():
+	get_tree().change_scene("res://assets/scenes/Menu Screens.tscn")
 	pass # Replace with function body.
