@@ -342,3 +342,8 @@ func _on_Player_Input_Area_mouse_entered():
 	in_player_track = true
 	in_enemy_track = false
 	pass # Replace with function body.
+
+
+func _on_LinkButton_pressed():
+	OS.shell_open("https://www.youtube.com/watch?v=x_dP_EWLANI")
+	pass # Replace with function body.

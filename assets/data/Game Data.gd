@@ -16,7 +16,7 @@ var state = {"playstate": 0, "story": true, "freeplay": false, "song_path": ""}
 
 #var volume = 100.0 setget set_volume
 
-var version = ["Alpha", 1, 4, 5]
+var version = ["Alpha", 1, 4, 7]
 var game_data_file = "user://../XDX Engine/Game_Data_%s-%s.%s.%s.json"%version
 
 #func load_data_file(path)

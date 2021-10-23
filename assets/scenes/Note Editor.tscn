@@ -826,7 +826,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Popups/Help Popups/Help/Control"]
 anchor_right = 1.0
 custom_fonts/font = SubResource( 1 )
-text = "This editor is in Alpha 1.0.0
+text = "This editor is in Alpha 1.1.0
 Alot of it probably doesn't work or isn't here yet
 There is no undo"
 autowrap = true
@@ -863,6 +863,7 @@ window_title = "Controls"
 resizable = true
 
 [node name="Label" type="Label" parent="Popups/Help Popups/Controls"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
@@ -870,6 +871,7 @@ text = "-Add Notes: Left Click
 -Remove Notes: Right Click
 -Add Hold Notes: Shift+Left Click
 -Play Audio: Space
+-Scrub Audio: Ctrl+Move mouse over audio track
 -Scroll: Left-Click drag on center track
 -Zoom: Shift+Left-Click drag on center track
 -Switch to Export Editor: Tab
@@ -879,6 +881,7 @@ autowrap = true
 clip_text = true
 
 [node name="How To" type="WindowDialog" parent="Popups/Help Popups"]
+visible = true
 margin_left = 314.0
 margin_top = 190.0
 margin_right = 752.0
@@ -902,6 +905,18 @@ ig
 dun"
 autowrap = true
 clip_text = true
+
+[node name="LinkButton" type="LinkButton" parent="Popups/Help Popups/How To"]
+anchor_top = 0.871
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.52588e-05
+margin_bottom = -1.52588e-05
+custom_fonts/font = SubResource( 2 )
+text = "just go to the video tutorials its way better"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Exit Confirm" type="ConfirmationDialog" parent="Popups"]
 margin_left = 773.127
@@ -950,6 +965,7 @@ do you want to exit??"
 [connection signal="value_changed" from="Popups/Player Volume Popup/Player Volume Slider" to="." method="_on_Player_Volume_Slider_value_changed"]
 [connection signal="pressed" from="Popups/Help Popups/Help/Control/Controls Button" to="Popups/Help Popups" method="_on_Controls_Button_pressed"]
 [connection signal="pressed" from="Popups/Help Popups/Help/Control/How To Button" to="Popups/Help Popups" method="_on_How_To_Button_pressed"]
+[connection signal="pressed" from="Popups/Help Popups/How To/LinkButton" to="." method="_on_LinkButton_pressed"]
 [connection signal="confirmed" from="Popups/Exit Confirm" to="." method="_on_Exit_Confirm_confirmed"]
 
 [editable path="Bottom Buttons/Control/Control/Note Track Audio Buttons"]
