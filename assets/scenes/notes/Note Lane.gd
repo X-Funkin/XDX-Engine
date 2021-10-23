@@ -7,6 +7,7 @@ export(int, "Left", "Down", "Up", "Right") var lane_type
 export(bool) var holding_note setget set_holding_note
 var held_note : HoldNote setget set_held_note
 
+signal song_time_set
 func set_song_time(n_time):
 	song_time = n_time
 	position.y = -song_time
@@ -15,6 +16,7 @@ func set_song_time(n_time):
 			held_note = null
 		else:
 			held_note.check_holding()
+	emit_signal("song_time_set")
 
 func get_song_time():
 	return song_time

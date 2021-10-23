@@ -122,6 +122,7 @@ func _ready():
 #	connect_all_control_signals("gui_input", "print_gui_input")
 	un_mouse_input_lol()
 	re_mouse_input_ig()
+	$"Popups/Help Popups/Help".popup()
 	get_tree().call_group("Zoom Recievers", "recieve_zoom", zoom)
 	pass # Replace with function body.
 
@@ -134,6 +135,12 @@ func print_gui_input(event):
 func _input(event):
 	if event is InputEventMouseButton:
 		print(song_time_cursor)
+	if event is InputEventMouseMotion and Input.is_key_pressed(KEY_CONTROL):
+		if in_enemy_track:
+			get_tree().call_group("Audio Stream Recievers", "scrub_enemy_audio", song_time_transform(get_global_mouse_position().y))
+		if in_player_track:
+			get_tree().call_group("Audio Stream Recievers", "scrub_player_audio", song_time_transform(get_global_mouse_position().y))
+		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -322,4 +329,16 @@ func _on_Exit_Button_pressed():
 
 func _on_Exit_Confirm_confirmed():
 	get_tree().change_scene("res://assets/scenes/Menu Screens.tscn")
+	pass # Replace with function body.
+
+var in_enemy_track = false
+func _on_Enemy_Input_Area_mouse_entered():
+	in_enemy_track = true
+	in_player_track = false
+	pass # Replace with function body.
+
+var in_player_track = false
+func _on_Player_Input_Area_mouse_entered():
+	in_player_track = true
+	in_enemy_track = false
 	pass # Replace with function body.

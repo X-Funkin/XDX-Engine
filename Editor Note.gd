@@ -6,6 +6,7 @@ class_name EditorNote
 # var a = 2
 # var b = "text"
 
+export(int, "Enemy Note", "Player Note") var editor_note_type
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,8 +65,14 @@ func input_event(viewport, event, shape_idx):
 			queue_free()
 	pass # Replace with function body.
 
-
+var yielding = false
 func _process(delta):
+#	can_process()
+	if yielding:
+		return 0
+	yielding = true
+	yield(get_parent(),"song_time_set")
+	yielding = false
 #	check_active()
 	if active:
 		if player_note:

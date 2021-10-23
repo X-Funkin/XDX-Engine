@@ -82,13 +82,13 @@ func fill_note_data_array():
 
 func fill_note_section_array(bpm=120):
 	note_section_data = []
-	var section_length = 1000.0*8*60.0/bpm
+	var section_length = 0.5*1000.0*8*60.0/bpm
 	var section_count = 0
 	if note_data_array != []:
 		var end_time = note_data_array[-1][0]
 		section_count = int(ceil(end_time/section_length)+1)
 	for i in range(section_count):
-		note_section_data.append({"sectionNotes":[],"lengthInSteps":16,"typeOfSection":0,"mustHitSection":false})
+		note_section_data.append({"mustHitSection":false,"typeOfSection":0,"lengthInSteps":16,"sectionNotes":[]})
 	for note in note_data_array:
 		var note_time = note[0]
 		var section_index = int(floor(note_time/section_length))
@@ -103,7 +103,7 @@ func export_chart(path):
 		change_nested_key(chart_data, note_array_keys, note_section_data)
 		var file = File.new()
 		file.open(path, File.WRITE)
-		file.store_string(JSON.print(chart_data))
+		file.store_string(JSON.print(chart_data, "\t"))
 		file.close()
 	pass
 
@@ -179,4 +179,9 @@ func _on_Export_Chart_Box_file_selected(path):
 
 func _on_JSON_Parse_Error_Button_pressed():
 	$"JSON Parse Error Dialog".popup()
+	pass # Replace with function body.
+
+
+func _on_Export_Chart_pressed():
+	$"Export Chart Box".popup()
 	pass # Replace with function body.

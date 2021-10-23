@@ -75,6 +75,7 @@ func import_note(note_data, player_note=false):
 	note.position.y = note.hit_time
 	note.scale.y = 1.0/scroll_speed
 	note.player_note = (player_note and false)
+	note.editor_note_type = int(player_note)
 	notes = get_notes()
 	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
 
@@ -131,10 +132,25 @@ func recieve_track_input(track_type, lane_type, event):
 				add_hold_note(song_cursor,lane_type)
 		elif event.is_pressed() and event.button_index == BUTTON_LEFT:
 			if int(player_track) == track_type:
-				import_note([song_cursor,lane_type,0])
+				import_note([song_cursor,lane_type,0], player_track)
 				pass
 		pass
 	if int(player_track) == track_type:
+		pass
+	pass
+
+func recieve_enemy_hit(note, hit_error):
+	if int(player_track) == note.editor_note_type:
+		print("yeah baoybe ", player_track, " ", note.editor_note_type, " ", note.note_type)
+		match note.note_type:
+			0:
+				get_node(left_arrow).play_confirm_tap()
+			1:
+				get_node(down_arrow).play_confirm_tap()
+			2:
+				get_node(up_arrow).play_confirm_tap()
+			3:
+				get_node(right_arrow).play_confirm_tap()
 		pass
 	pass
 

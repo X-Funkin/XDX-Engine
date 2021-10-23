@@ -23,14 +23,19 @@ animations = [ {
 "name": "press",
 "speed": 24.0
 }, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "confirm_loop",
+"speed": 24.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": false,
 "name": "confirm",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "confirm_loop",
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "confirm_tap",
 "speed": 24.0
 } ]
 
@@ -40,4 +45,6 @@ arrow_sprite = NodePath("Left Arrow Sprite")
 
 [node name="Left Arrow Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+animation = "confirm_tap"
+frame = 4
 playing = true

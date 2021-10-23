@@ -10,6 +10,7 @@ func play_animation(anim):
 	var arrow_node : AnimatedSprite = get_node(arrow_sprite)
 	arrow_node.stop()
 	arrow_node.play(anim)
+	arrow_node.frame = 0
 
 func play_press():
 	var node : AnimatedSprite = get_node(arrow_sprite)
@@ -27,6 +28,9 @@ func play_confirm_loop():
 	play_animation("confirm_loop")
 	pass
 
+func play_confirm_tap():
+	print("CONFIRM TAP")
+	play_animation("confirm_tap")
 
 func play_default():
 	play_animation("default")

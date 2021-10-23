@@ -141,6 +141,19 @@ func update_mem_overlay():
 #	print(overlay_node.show_memory_usage)
 #	print(overlay_node.visible)
 
+func toggle_debug_console():
+	var debug_console = get_node_or_null("Console Overlay/Console Overlay")
+	if not debug_console:
+		var console_overlay = load("res://assets/scenes/Console Overlay.tscn").instance()
+		var canvas = CanvasLayer.new()
+		canvas.name = "Console Overlay"
+		canvas.add_child(console_overlay)
+		add_child(canvas)
+		console_overlay.visible = false
+		debug_console = console_overlay
+	debug_console.visible = !debug_console.visible
+	pass
+
 func load_video_settings():
 	print("Loading Video Settings...")
 	update_window_mode()
@@ -193,6 +206,10 @@ func load_volume():
 func print_debug_info():
 #	print_debug()
 	print("\n\n\n","#".repeat(20),"\n","DEBUG PRINT STATEMENT\n","#".repeat(20),"\n")
+	print("SYSTEM DATE (MM/DD/YYYY): {month}/{day}/{year}".format(OS.get_datetime()))
+	print("SYSTEM CLOCK: {hour}:{minute}:{second}".format(OS.get_time()))
+	print("SYSTEM UNIX TIME: ", OS.get_unix_time())
+	print("UP TIME (MICROSECONDS): ", OS.get_ticks_usec())
 	print("MEMORY USAGE (BYTES): ", Performance.get_monitor(Performance.MEMORY_STATIC))
 	print("FRAME RATE (FPS): ", Performance.get_monitor(Performance.TIME_FPS))
 	print("OBJECTS: ", Performance.get_monitor(Performance.OBJECT_COUNT))
@@ -216,6 +233,8 @@ func _input(event):
 		if event.scancode == KEY_F11 and event.pressed:
 #			load_volume()
 			print_debug_info()
+		if event.scancode == KEY_T and Input.is_key_pressed(KEY_CONTROL) and Input.is_key_pressed(KEY_ALT) and event.pressed:
+			toggle_debug_console()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

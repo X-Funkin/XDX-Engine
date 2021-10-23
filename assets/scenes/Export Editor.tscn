@@ -197,6 +197,7 @@ clip_text = true
 [connection signal="text_changed" from="Control/TextEdit" to="." method="_on_TextEdit_text_changed"]
 [connection signal="text_entered" from="Control/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="Import Chart Data Button" to="." method="_on_Import_Chart_Data_Button_pressed"]
+[connection signal="pressed" from="Export Chart" to="." method="_on_Export_Chart_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="file_selected" from="Export Chart Box" to="." method="_on_Export_Chart_Box_file_selected"]
 [connection signal="pressed" from="JSON Parse Error Button" to="." method="_on_JSON_Parse_Error_Button_pressed"]

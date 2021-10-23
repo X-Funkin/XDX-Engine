@@ -156,7 +156,7 @@ func load_wav_file(path):
 
 
 func play_audio(from_time):
-	var start_time = from_time/1000.0
+	var start_time = max(from_time/1000.0,0)
 	$"Enemy Vocals".play(start_time)
 	$Instumentals.play(start_time)
 	$"Player Vocals".play(start_time)
@@ -176,6 +176,14 @@ func seek_audio(seek_time):
 	$Instumentals.seek(time)
 	$"Player Vocals".seek(time)
 
+func scrub_enemy_audio(time):
+	$"Enemy Audio Scrubbing Timer".start(0.2)
+	$"Enemy Vocals".play(max(time/1000.0,0.0))
+	pass
+
+func scrub_player_audio(time):
+	$"Player Audio Scrubbing Timer".start(0.2)
+	$"Player Vocals".play(max(time/1000.0,0.0))
 
 func seek_song_time(time):
 	seek_audio(time)
@@ -212,7 +220,14 @@ func recieve_song_time(time):
 #		print("JUMP BACK ", song_time-time, " BRUHHH ", song_time, " ", time)
 	song_time = time
 
-
+func recieve_chart_file(path):
+	var file = File.new()
+	file.open(path, File.READ)
+	var thingy = JSON.parse(file.get_as_text()).result
+	var strthing = JSON.print(thingy, "\t")
+	file.close()
+	file.open("res://filething.json", File.WRITE)
+	file.store_string(strthing)
 
 var thing = true
 func _input(event):
@@ -233,3 +248,19 @@ func _ready():
 #func _process(delta):
 #	pass
 
+
+
+func _on_Enemy_Audio_Scrubbing_Timer_timeout():
+	print("ENEMY SCRUB TIMEOUT")
+#	seek_audio(song_time)
+	$"Enemy Vocals".stop()
+#	$"Enemy Vocals".stream_paused = true
+#	$"Enemy Vocals".playing = false
+#	pause_audio(true)
+#	$"Enemy Vocals".stream_paused = false
+	pass # Replace with function body.
+
+
+func _on_Player_Audio_Scrubbing_Timer_timeout():
+	$"Player Vocals".stop()
+	pass # Replace with function body.

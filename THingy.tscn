@@ -6,6 +6,7 @@
 [node name="THingy" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1920, 1080 )
@@ -14,11 +15,13 @@ __meta__ = {
 }
 
 [node name="BF HEY!!0025" type="Sprite" parent="."]
+visible = false
 position = Vector2( 917.818, 565.647 )
 scale = Vector2( 1.56668, 1.56668 )
 texture = ExtResource( 2 )
 
 [node name="Control" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1920.0
@@ -33,17 +36,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
-margin_left = 189.0
-margin_top = 193.0
-margin_right = 1731.0
-margin_bottom = 886.0
+margin_left = 497.0
+margin_top = 158.0
+margin_right = 1423.0
+margin_bottom = 921.0
 custom_constants/separation = -79
 alignment = 1
 
 [node name="FNF Text" parent="Control/CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_right = 1542.0
-margin_bottom = 183.0
-rect_min_size = Vector2( 1542, 183 )
+margin_right = 926.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 926, 218 )
 text = "ONE UPVOTE AND ILL
 COMPLETELY PORT
 THE ENTIRE GAME"
@@ -51,19 +54,43 @@ THE ENTIRE GAME"
 [node name="TextureRect" type="TextureRect" parent="Control/CenterContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
-margin_top = 104.0
-margin_right = 1542.0
-margin_bottom = 516.0
+margin_top = 139.0
+margin_right = 926.0
+margin_bottom = 551.0
 texture = ExtResource( 2 )
 stretch_mode = 4
 
 [node name="FNF Text2" parent="Control/CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_left = 66.18
-margin_top = 437.0
-margin_right = 1460.18
-margin_bottom = 693.0
-rect_min_size = Vector2( 1394, 256 )
+margin_top = 472.0
+margin_right = 881.0
+margin_bottom = 763.0
+rect_min_size = Vector2( 881, 291 )
 text = "INTO A COMPLETELY
 NEW ENGINE
 FOR CODELESS
 MODDING SUPPORT"
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FNF Text" parent="ColorRect2/CenterContainer" instance=ExtResource( 1 )]
+margin_left = 778.0
+margin_top = 505.0
+margin_right = 1142.0
+margin_bottom = 575.0
+rect_min_size = Vector2( 364, 70 )
+text = "Loading"

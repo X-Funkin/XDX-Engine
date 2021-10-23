@@ -14,7 +14,9 @@ export(int) var count_down = 3
 func _ready():
 	if "offset_ms" in GameData.data.settings:
 		offset_ms = GameData.data.settings.offset_ms
-	$"Count Down Timer".wait_time = 60.0/bpm
+	var countdown_node = get_node_or_null("Count Down Timer")
+	if countdown_node:
+		$"Count Down Timer".wait_time = 60.0/bpm
 	pass # Replace with function body.
 
 
