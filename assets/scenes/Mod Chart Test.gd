@@ -10,15 +10,19 @@ export(NodePath) var instrumentals
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("yeah")
-	$Timer.start()
-	$"Note Track".load_chart()
+	get_tree().call_group("Start Timers", "start")
+#	$Timer.start()
+#	$"note dupe timer".start()
+#	$"Note Track".load_chart()
+	get_tree().call_group("Note Tracks", "load_chart")
+	get_tree().call_group("Note Tracks", "signal_self")
 	pass # Replace with function body.
 
 var started = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if !started:
-		get_tree().call_group("Song Time Recievers", "recieve_song_time", -$Timer.time_left*1000.0)
+#func _process(delta):
+#	if !started:
+#		get_tree().call_group("Song Time Recievers", "recieve_song_time", -$Timer.time_left*1000.0)
 #	pass
 
 
@@ -44,23 +48,30 @@ func score_note(scoring_group):
 	var scorable_notes = get_tree().get_nodes_in_group(scoring_group)
 #	print("scorable notes ", scorable_notes)
 	if scorable_notes != []:
+		print(len(scorable_notes), " notes in the timing window")
 		var closest_note : Note = scorable_notes[0]
+		var closest_notes = [closest_note]
 		var hit_error = closest_note.hit_time-song_time
 		for note in scorable_notes:
 #			print("scorable note ", note)
+			if note.hit_time == closest_note.hit_time:
+				closest_notes.append(note)
+				pass
 			if abs(note.hit_time-song_time) < abs(hit_error):
 				closest_note = note
 				hit_error = closest_note.hit_time-song_time
+				closest_notes = [closest_note]
 		get_tree().call_group("Player Hit Recievers", "recieve_player_hit", closest_note, hit_error)
 #		judge_hit(hit_error)
 #		player_combo += 1
 #		get_tree().call_group("Player Hit Recievers", "recieve_player_combo", player_combo)
 #		get_node(label_thingy).text = "%5.4f ms"%hit_error
-		if closest_note.hold_note:
-			closest_note.holding = true
-			closest_note.playing = true
-			closest_note.score_note()
-		else: closest_note.despawn()
+		for note in closest_notes:
+			if note.hold_note:
+				note.holding = true
+				note.playing = true
+				note.score_note()
+			else: note.despawn()
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if !get_tree().paused:
@@ -131,3 +142,13 @@ func recieve_player_miss(note_type):
 #	get_node(player_vocals).volume_db = -80.0
 #	get_node(sounds_path).play_miss()
 
+
+
+func _on_note_dupe_timer_timeout():
+	get_tree().call_group("Song Event Recievers", "recieve_split_note_track")
+	pass # Replace with function body.
+
+
+func _on_neeeto_timer_timeout():
+	get_tree().call_group("Song Event Recievers", "recieve_neato_transition")
+	pass # Replace with function body.

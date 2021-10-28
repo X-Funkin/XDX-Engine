@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/scenes/Editor Song Track.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/notes/Note Track.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/characters/boyfriend/Boyfriend.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scripts/modchart test/Timer.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/modchart test/test2.gd" type="Script" id=5]
+[ext_resource path="res://assets/sounds/test/simple test song ig lol instrume3ntals 2.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/test/simple test song ig lol bf vocals 2.wav" type="AudioStream" id=7]
+
+[node name="test2" type="Node2D" groups=[
+"Player Input Recievers",
+]]
+script = ExtResource( 5 )
+instrumentals = NodePath("Instrumentals")
+
+[node name="Boyfriend" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1603.15, 950.51 )
+
+[node name="Note Track" parent="." groups=[
+"Note Tracks",
+] instance=ExtResource( 2 )]
+position = Vector2( 449.257, 438.667 )
+chart_file = "res://test thingy chart yay lol2.json"
+chart_format = 1
+player_track = true
+scroll_speed = 2.525
+
+[node name="Instrumentals" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 0.5
+script = ExtResource( 1 )
+offset_ms = -50.5
+
+[node name="Player Vocals" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+pitch_scale = 0.5
+
+[node name="Timer" type="Timer" parent="." groups=[
+"Start Timers",
+]]
+wait_time = 2.0
+one_shot = true
+script = ExtResource( 4 )
+
+[node name="dupe" type="Node2D" parent="."]
+position = Vector2( 857.561, 4.48987 )
+
+[node name="dupe timer" type="Timer" parent="." groups=[
+"Start Timers",
+]]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]
+[connection signal="timeout" from="dupe timer" to="." method="_on_dupe_timer_timeout"]

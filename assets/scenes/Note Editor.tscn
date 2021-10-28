@@ -508,6 +508,30 @@ anchor_bottom = 0.45
 text = "Snap Offset"
 align = 1
 
+[node name="Control3" type="Control" parent="Main UI/Left Buttons"]
+anchor_top = 0.459577
+anchor_right = 1.0
+anchor_bottom = 0.497577
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Playback Speed Edit" type="LineEdit" parent="Main UI/Left Buttons/Control3"]
+anchor_top = 0.45
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "100.0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main UI/Left Buttons/Control3"]
+anchor_right = 1.0
+anchor_bottom = 0.45
+text = "Speed"
+align = 1
+
 [node name="Right Buttons" type="Control" parent="Main UI" groups=[
 "Mouse Input Pass",
 ]]
@@ -945,6 +969,7 @@ do you want to exit??"
 [connection signal="toggled" from="Main UI/Left Buttons/Grid Button" to="." method="_on_Grid_Button_toggled"]
 [connection signal="text_entered" from="Main UI/Left Buttons/Control/BPM Edit" to="." method="_on_BPM_Edit_text_entered"]
 [connection signal="text_entered" from="Main UI/Left Buttons/Control2/Snapping Offset Edit" to="." method="_on_Snapping_Offset_Edit_text_entered"]
+[connection signal="text_entered" from="Main UI/Left Buttons/Control3/Playback Speed Edit" to="." method="_on_Playback_Speed_Edit_text_entered"]
 [connection signal="pressed" from="Main UI/Right Buttons/Exit Button" to="." method="_on_Exit_Button_pressed"]
 [connection signal="pressed" from="Main UI/Right Buttons/Help Button" to="Popups/Help Popups" method="_on_Help_Button_pressed"]
 [connection signal="pressed" from="Bottom Buttons/Control/Control/Note Track Audio Buttons/Control/Button4" to="." method="_on_Button4_pressed"]

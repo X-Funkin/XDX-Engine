@@ -347,3 +347,10 @@ func _on_Player_Input_Area_mouse_entered():
 func _on_LinkButton_pressed():
 	OS.shell_open("https://www.youtube.com/watch?v=x_dP_EWLANI")
 	pass # Replace with function body.
+
+
+func _on_Playback_Speed_Edit_text_entered(new_text):
+	if new_text.is_valid_float():
+		var n_speed = float(new_text)/100.0
+		get_tree().call_group("Audio Stream Recievers", "set_playback_speed", n_speed)
+	pass # Replace with function body.

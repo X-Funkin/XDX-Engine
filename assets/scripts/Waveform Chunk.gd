@@ -5,6 +5,7 @@ export(int) var starting_sample = 0
 export(int) var ending_sample = 44100
 export(AudioStreamSample) var audio_stream : AudioStreamSample
 export(bool) var multi_threading = false
+export(bool) var can_redraw = true
 var draw = false
 # Declare member variables here. Examples:
 # var a = 2
@@ -26,6 +27,8 @@ func multithread_draw(yeah):
 	return 1
 
 func _draw(): #Function calling is like 3 times slower than direct computation, that's why there aren't any get_sample() functions here
+	if !can_redraw:
+		return 0
 	emit_signal("draw_start")
 	if multi_threading:
 		if !draw:
@@ -85,6 +88,7 @@ func _draw(): #Function calling is like 3 times slower than direct computation, 
 	for sample in range(ending_sample-starting_sample):
 		pass
 	emit_signal("draw_complete")
+	can_redraw = false
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

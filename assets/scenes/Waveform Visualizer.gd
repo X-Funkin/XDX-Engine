@@ -9,6 +9,7 @@ export(float) var end_time = 1000.0
 export(int) var draw_samples = 1000
 export(int) var draw_sub_samples = 4
 export(int) var chunk_size = 44100
+export(bool) var can_redraw = true
 var t0 = 0
 var t1 = 0
 var drawing = false

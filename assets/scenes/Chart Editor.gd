@@ -6,6 +6,8 @@ class_name ChartEditor
 export(float) var song_time
 export(bool) var song_playing = false
 export(String) var chart_file
+export(float) var playback_speed = 1.0 setget set_playback_speed
+export(float) var playback_offset = 0.0
 var chart_data = {}
 
 var audio_data : PoolVector2Array
@@ -187,6 +189,14 @@ func scrub_player_audio(time):
 
 func seek_song_time(time):
 	seek_audio(time)
+
+func set_playback_speed(n_speed):
+	playback_speed = n_speed
+	if not is_inside_tree(): yield(self,"ready")
+	$"Enemy Vocals".pitch_scale = playback_speed
+	$"Instumentals".pitch_scale = playback_speed
+	$"Player Vocals".pitch_scale = playback_speed
+	pass
 
 func recieve_enemy_audio_stream(stream):
 	$"Enemy Vocals".stream = stream

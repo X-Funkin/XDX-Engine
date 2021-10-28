@@ -112,6 +112,10 @@ func import_fnf_chart():
 						else:
 							import_note(note)
 	notes = get_notes(true)
+	var n_index = 0
+	for note in notes:
+		note.note_index = n_index
+		n_index+=1
 
 #func import_kade_chart():
 #	pass
@@ -203,7 +207,8 @@ func get_notes(sorted=false):
 		note_arr.sort_custom(Note.NoteSorter, "sort_hit_time")
 	return note_arr
 
-
+func signal_self():
+	get_tree().call_group("Note Track Recievers", "recieve_note_track", self)
 
 #funky input stuff
 func recieve_player_left_input(event : InputEvent):

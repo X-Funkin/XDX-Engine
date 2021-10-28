@@ -9,6 +9,7 @@ export(float) var hit_time
 export(int, "Left", "Down", "Up", "Right") var note_type
 export(bool) var hold_note
 export(float) var hold_time setget set_hold_time
+export(int) var note_index = 0
 export(bool) var player_note
 export(Dictionary) var custom_data
 export(String) var scorable_group
@@ -19,6 +20,7 @@ func set_hold_time(n_time):
 	pass # To be overwritten by the HoldNote class
 
 func get_data():
+#	get_index()
 	var data_array = [hit_time, note_type, hold_time]
 	if !custom_data.empty():
 		data_array.append(custom_data)

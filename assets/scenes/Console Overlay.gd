@@ -28,14 +28,15 @@ func get_input():
 	$Input.text = ""
 
 func parse_input(string):
-	var args = string.split(" ", false, 1)
-	match args[0]:
-		"load":
-			load_scene(args[1])
-			pass
-		_:
-			cout("\"%s\" is not a valid command"%args[0])
-	pass
+	if string != "":
+		var args = string.split(" ", false, 1)
+		match args[0]:
+			"load":
+				load_scene(args[1])
+				pass
+			_:
+				cout("\"%s\" is not a valid command"%args[0])
+		pass
 
 func cout(string):
 	$Output.text += "\n"+String(string)
