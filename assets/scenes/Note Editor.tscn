@@ -830,6 +830,7 @@ __meta__ = {
 }
 
 [node name="Help" type="WindowDialog" parent="Popups/Help Popups"]
+visible = true
 margin_left = 815.0
 margin_top = 267.0
 margin_right = 1239.0
@@ -850,7 +851,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Popups/Help Popups/Help/Control"]
 anchor_right = 1.0
 custom_fonts/font = SubResource( 1 )
-text = "This editor is in Alpha 1.1.0
+text = "This editor is in Alpha 1.2.0
 Alot of it probably doesn't work or isn't here yet
 There is no undo"
 autowrap = true
@@ -905,7 +906,6 @@ autowrap = true
 clip_text = true
 
 [node name="How To" type="WindowDialog" parent="Popups/Help Popups"]
-visible = true
 margin_left = 314.0
 margin_top = 190.0
 margin_right = 752.0

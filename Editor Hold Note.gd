@@ -2,6 +2,7 @@ extends HoldNote
 class_name EditorHoldNote
 
 export(NodePath) var hold_note_input_area
+export(int, "Enemy Note", "Player Note") var editor_note_type
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

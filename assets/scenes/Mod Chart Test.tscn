@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://assets/scenes/notes/Note Track.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/characters/boyfriend/Boyfriend.tscn" type="PackedScene" id=2]
@@ -9,12 +9,16 @@
 [ext_resource path="res://assets/sounds/test/simple test song ig lol bf vocals 2.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/scripts/modchart test/Timer.gd" type="Script" id=8]
 [ext_resource path="res://assets/images/debug_texture.png" type="Texture" id=9]
-[ext_resource path="res://assets/scripts/modchart test/Viewport 2.gd" type="Script" id=10]
+[ext_resource path="res://assets/weeks/week 4/assets/images/limoSunset.png" type="Texture" id=10]
 [ext_resource path="res://assets/weeks/tutorial/assets/images/stagefront.png" type="Texture" id=11]
 [ext_resource path="res://assets/weeks/tutorial/assets/images/stageback.png" type="Texture" id=12]
 [ext_resource path="res://assets/weeks/tutorial/assets/images/stagecurtains.png" type="Texture" id=13]
 [ext_resource path="res://assets/scripts/modchart test/stage scene.gd" type="Script" id=14]
 [ext_resource path="res://assets/scripts/modchart test/screen mesh.gd" type="Script" id=15]
+[ext_resource path="res://assets/scripts/modchart test/Viewport.gd" type="Script" id=16]
+[ext_resource path="res://assets/weeks/week 4/assets/images/background limo pink0000.png" type="Texture" id=17]
+[ext_resource path="res://assets/weeks/week 4/assets/images/Limo stage0003.png" type="Texture" id=18]
+[ext_resource path="res://assets/scripts/modchart test/week4.gd" type="Script" id=19]
 
 [sub_resource type="Animation" id=1]
 resource_name = "MOOOOVE OVER"
@@ -132,20 +136,64 @@ tracks/1/keys = {
 [sub_resource type="VisualShaderNodeBooleanUniform" id=20]
 uniform_name = "switchaaa"
 
+[sub_resource type="VisualShaderNodeTextureUniform" id=25]
+uniform_name = "screen_3"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=26]
+uniform_name = "transition_cool"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=27]
+
+[sub_resource type="VisualShaderNodeVec3Constant" id=28]
+constant = Vector3( 0.5, 0.5, 0 )
+
+[sub_resource type="VisualShaderNodeDotProduct" id=29]
+
+[sub_resource type="VisualShaderNodeCompare" id=30]
+function = 2
+
+[sub_resource type="VisualShaderNodeScalarSwitch" id=31]
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=32]
+
 [sub_resource type="VisualShaderNodeTextureUniform" id=2]
 uniform_name = "screen_1"
+
+[sub_resource type="VisualShaderNodeInput" id=33]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeDotProduct" id=34]
+
+[sub_resource type="VisualShaderNodeVec3Constant" id=35]
+constant = Vector3( 0.5, 0.5, 0 )
+
+[sub_resource type="VisualShaderNodeVec3Constant" id=36]
+constant = Vector3( 0, 1, 0 )
+
+[sub_resource type="VisualShaderNodeDotProduct" id=37]
+
+[sub_resource type="VisualShaderNodeCompare" id=38]
+function = 2
+
+[sub_resource type="VisualShaderNodeCompare" id=39]
+function = 2
+
+[sub_resource type="VisualShaderNodeScalarSwitch" id=40]
+
+[sub_resource type="VisualShaderNodeScalarSwitch" id=41]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id=42]
 
 [sub_resource type="VisualShaderNodeInput" id=7]
 input_name = "uv"
 
+[sub_resource type="VisualShaderNodeTransformCompose" id=43]
+default_input_values = [ 0, Vector3( 1, 0, 0 ), 1, Vector3( 0, -1, 0 ), 2, Vector3( 0, 0, 0 ), 3, Vector3( 0.5, 0.5, 0 ) ]
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id=44]
+
 [sub_resource type="VisualShaderNodeInput" id=8]
 input_name = "time"
-
-[sub_resource type="VisualShaderNodeVectorOp" id=9]
-
-[sub_resource type="VisualShaderNodeVectorOp" id=10]
-default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 1 ) ]
-operator = 4
 
 [sub_resource type="VisualShaderNodeScalarFunc" id=11]
 function = 0
@@ -160,9 +208,11 @@ uniform_name = "screen_2"
 [sub_resource type="VisualShader" id=3]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
+uniform float transition_cool;
 uniform bool switchaaa;
 uniform sampler2D screen_2;
 uniform sampler2D screen_1;
+uniform sampler2D screen_3;
 
 
 
@@ -172,6 +222,21 @@ void vertex() {
 }
 
 void fragment() {
+// Vector:23
+	vec3 n_out23p0 = vec3(0.000000, 1.000000, 0.000000);
+
+// Input:20
+	vec3 n_out20p0 = vec3(UV, 0.0);
+
+// DotProduct:24
+	float n_out24p0 = dot(n_out23p0, n_out20p0);
+
+// ScalarUniform:13
+	float n_out13p0 = transition_cool;
+
+// Compare:17
+	bool n_out17p0 = n_out24p0>n_out13p0;
+
 // BooleanUniform:11
 	bool n_out11p0 = switchaaa;
 
@@ -187,19 +252,11 @@ void fragment() {
 // Input:3
 	vec3 n_out3p0 = vec3(UV, 0.0);
 
-// VectorOp:5
-	vec3 n_in5p0 = vec3(0.00000, 0.00000, 0.00000);
-	vec3 n_out5p0 = n_in5p0 + n_out3p0;
-
-// VectorOp:6
-	vec3 n_in6p1 = vec3(1.00000, 1.00000, 1.00000);
-	vec3 n_out6p0 = mod(n_out5p0, n_in6p1);
-
 // TextureUniform:2
 	vec3 n_out2p0;
 	float n_out2p1;
 	{
-		vec4 n_tex_read = texture(screen_1, n_out6p0.xy);
+		vec4 n_tex_read = texture(screen_1, n_out3p0.xy);
 		n_out2p0 = n_tex_read.rgb;
 		n_out2p1 = n_tex_read.a;
 	}
@@ -215,8 +272,91 @@ void fragment() {
 		n_out10p0 = n_out2p0;
 	}
 
+// VectorDecompose:14
+	float n_out14p0 = n_out10p0.x;
+	float n_out14p1 = n_out10p0.y;
+	float n_out14p2 = n_out10p0.z;
+
+// TextureUniform:12
+	vec3 n_out12p0;
+	float n_out12p1;
+	{
+		vec4 n_tex_read = texture(screen_3, UV.xy);
+		n_out12p0 = n_tex_read.rgb;
+		n_out12p1 = n_tex_read.a;
+	}
+
+// VectorDecompose:19
+	float n_out19p0 = n_out12p0.x;
+	float n_out19p1 = n_out12p0.y;
+	float n_out19p2 = n_out12p0.z;
+
+// ScalarSwitch:18
+	float n_out18p0;
+	if(n_out17p0)
+	{
+		n_out18p0 = n_out14p0;
+	}
+	else
+	{
+		n_out18p0 = n_out19p0;
+	}
+
+// TransformCompose:30
+	vec3 n_in30p0 = vec3(1.00000, 0.00000, 0.00000);
+	vec3 n_in30p1 = vec3(0.00000, -1.00000, 0.00000);
+	vec3 n_in30p2 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in30p3 = vec3(0.50000, 0.50000, 0.00000);
+	mat4 n_out30p0 = mat4(vec4(n_in30p0, 0.0), vec4(n_in30p1, 0.0), vec4(n_in30p2, 0.0), vec4(n_in30p3, 1.0));
+
+// TransformVectorMult:31
+	vec3 n_out31p0 = (n_out30p0 * vec4(n_out20p0, 1.0)).xyz;
+
+// Vector:22
+	vec3 n_out22p0 = vec3(0.500000, 0.500000, 0.000000);
+
+// DotProduct:21
+	float n_out21p0 = dot(n_out31p0, n_out22p0);
+
+// Compare:25
+	bool n_out25p0 = n_out21p0>n_out13p0;
+
+// ScalarSwitch:27
+	float n_out27p0;
+	if(n_out25p0)
+	{
+		n_out27p0 = n_out14p1;
+	}
+	else
+	{
+		n_out27p0 = n_out19p1;
+	}
+
+// Vector:15
+	vec3 n_out15p0 = vec3(0.500000, 0.500000, 0.000000);
+
+// DotProduct:16
+	float n_out16p0 = dot(n_out15p0, n_out20p0);
+
+// Compare:26
+	bool n_out26p0 = n_out16p0>n_out13p0;
+
+// ScalarSwitch:28
+	float n_out28p0;
+	if(n_out26p0)
+	{
+		n_out28p0 = n_out14p2;
+	}
+	else
+	{
+		n_out28p0 = n_out19p2;
+	}
+
+// VectorCompose:29
+	vec3 n_out29p0 = vec3(n_out18p0, n_out27p0, n_out28p0);
+
 // Output:0
-	COLOR.rgb = n_out10p0;
+	COLOR.rgb = n_out29p0;
 
 }
 
@@ -225,31 +365,67 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -242.497, 0 )
+graph_offset = Vector2( 191.912, -380.609 )
 mode = 1
 flags/light_only = false
-nodes/fragment/0/position = Vector2( 600, 160 )
+nodes/fragment/0/position = Vector2( 1480, -280 )
 nodes/fragment/2/node = SubResource( 2 )
-nodes/fragment/2/position = Vector2( 120, 120 )
+nodes/fragment/2/position = Vector2( 200, 140 )
 nodes/fragment/3/node = SubResource( 7 )
-nodes/fragment/3/position = Vector2( -380, 240 )
+nodes/fragment/3/position = Vector2( -320, 240 )
 nodes/fragment/4/node = SubResource( 8 )
 nodes/fragment/4/position = Vector2( -620, 120 )
-nodes/fragment/5/node = SubResource( 9 )
-nodes/fragment/5/position = Vector2( -100, 120 )
-nodes/fragment/6/node = SubResource( 10 )
-nodes/fragment/6/position = Vector2( 60, 20 )
 nodes/fragment/7/node = SubResource( 11 )
 nodes/fragment/7/position = Vector2( -440, 100 )
 nodes/fragment/8/node = SubResource( 12 )
-nodes/fragment/8/position = Vector2( -300, 100 )
+nodes/fragment/8/position = Vector2( -280, -80 )
 nodes/fragment/9/node = SubResource( 21 )
-nodes/fragment/9/position = Vector2( 120, 300 )
+nodes/fragment/9/position = Vector2( 180, 300 )
 nodes/fragment/10/node = SubResource( 19 )
-nodes/fragment/10/position = Vector2( 400, 60 )
+nodes/fragment/10/position = Vector2( 540, 100 )
 nodes/fragment/11/node = SubResource( 20 )
-nodes/fragment/11/position = Vector2( 180, 40 )
-nodes/fragment/connections = PoolIntArray( 3, 0, 5, 1, 5, 0, 6, 0, 6, 0, 2, 0, 4, 0, 7, 0, 7, 0, 8, 0, 9, 0, 10, 1, 2, 0, 10, 2, 10, 0, 0, 0, 11, 0, 10, 0 )
+nodes/fragment/11/position = Vector2( 280, 40 )
+nodes/fragment/12/node = SubResource( 25 )
+nodes/fragment/12/position = Vector2( 580, 260 )
+nodes/fragment/13/node = SubResource( 26 )
+nodes/fragment/13/position = Vector2( 540, -40 )
+nodes/fragment/14/node = SubResource( 27 )
+nodes/fragment/14/position = Vector2( 820, -60 )
+nodes/fragment/15/node = SubResource( 28 )
+nodes/fragment/15/position = Vector2( 80, -160 )
+nodes/fragment/16/node = SubResource( 29 )
+nodes/fragment/16/position = Vector2( 540, -160 )
+nodes/fragment/17/node = SubResource( 30 )
+nodes/fragment/17/position = Vector2( 840, -420 )
+nodes/fragment/18/node = SubResource( 31 )
+nodes/fragment/18/position = Vector2( 1120, -180 )
+nodes/fragment/19/node = SubResource( 32 )
+nodes/fragment/19/position = Vector2( 800, 240 )
+nodes/fragment/20/node = SubResource( 33 )
+nodes/fragment/20/position = Vector2( 160, -60 )
+nodes/fragment/21/node = SubResource( 34 )
+nodes/fragment/21/position = Vector2( 560, -240 )
+nodes/fragment/22/node = SubResource( 35 )
+nodes/fragment/22/position = Vector2( 60, -260 )
+nodes/fragment/23/node = SubResource( 36 )
+nodes/fragment/23/position = Vector2( 60, -360 )
+nodes/fragment/24/node = SubResource( 37 )
+nodes/fragment/24/position = Vector2( 540, -320 )
+nodes/fragment/25/node = SubResource( 38 )
+nodes/fragment/25/position = Vector2( 840, -280 )
+nodes/fragment/26/node = SubResource( 39 )
+nodes/fragment/26/position = Vector2( 840, -180 )
+nodes/fragment/27/node = SubResource( 40 )
+nodes/fragment/27/position = Vector2( 1140, -60 )
+nodes/fragment/28/node = SubResource( 41 )
+nodes/fragment/28/position = Vector2( 1140, 100 )
+nodes/fragment/29/node = SubResource( 42 )
+nodes/fragment/29/position = Vector2( 1380, -80 )
+nodes/fragment/30/node = SubResource( 43 )
+nodes/fragment/30/position = Vector2( -100, -40 )
+nodes/fragment/31/node = SubResource( 44 )
+nodes/fragment/31/position = Vector2( 320, -40 )
+nodes/fragment/connections = PoolIntArray( 4, 0, 7, 0, 7, 0, 8, 0, 9, 0, 10, 1, 2, 0, 10, 2, 11, 0, 10, 0, 10, 0, 14, 0, 15, 0, 16, 0, 13, 0, 17, 1, 17, 0, 18, 0, 14, 0, 18, 1, 12, 0, 19, 0, 19, 0, 18, 2, 3, 0, 2, 0, 20, 0, 16, 1, 23, 0, 24, 0, 24, 0, 17, 0, 13, 0, 25, 1, 13, 0, 26, 1, 16, 0, 26, 0, 25, 0, 27, 0, 14, 1, 27, 1, 19, 1, 27, 2, 26, 0, 28, 0, 19, 2, 28, 2, 14, 2, 28, 1, 28, 0, 29, 2, 27, 0, 29, 1, 22, 0, 21, 1, 21, 0, 25, 0, 20, 0, 24, 1, 30, 0, 31, 0, 20, 0, 31, 1, 31, 0, 21, 0, 18, 0, 29, 0, 29, 0, 0, 0 )
 
 [sub_resource type="ViewportTexture" id=4]
 viewport_path = NodePath("Viewport 1")
@@ -257,12 +433,17 @@ viewport_path = NodePath("Viewport 1")
 [sub_resource type="ViewportTexture" id=22]
 viewport_path = NodePath("Viewport 2")
 
+[sub_resource type="ViewportTexture" id=45]
+viewport_path = NodePath("Viewport 3")
+
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 shader = SubResource( 3 )
+shader_param/transition_cool = 0.0
 shader_param/switchaaa = null
 shader_param/screen_2 = SubResource( 22 )
 shader_param/screen_1 = SubResource( 4 )
+shader_param/screen_3 = SubResource( 45 )
 
 [sub_resource type="QuadMesh" id=6]
 size = Vector2( 1920, 1080 )
@@ -301,7 +482,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -578.572, 0 )
+graph_offset = Vector2( -242.497, 0 )
 mode = 1
 flags/light_only = false
 nodes/fragment/2/node = SubResource( 13 )
@@ -372,17 +553,123 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
+[sub_resource type="Animation" id=46]
+resource_name = "transition cool"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Viewport 3/week4/Camera2D:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1.37538, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Viewport 3/week4/Camera2D:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1.37538, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Viewport 3/week4/Camera2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Viewport 3/week4/Camera2D:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -0.373043, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Viewport 3/week4/Camera2D:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -179.897, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Viewport 3/week4/track:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 464.682, -0.25, 0, 0.5, 0, -464.682, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Viewport 3/week4/track:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -565.414, -0.25, 0, 0.25, 0, -565.414, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Viewport 2/stage scene/track:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 464.682, -0.25, 0, 0.5, 0, -464.682, -0.5, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Viewport 2/stage scene/track:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( -565.414, -0.25, 0, 0.25, 0, -565.414, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("screen mesh:material:shader_param/transition_cool")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.75, 0, 1, -0.75, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
 [node name="Mod Chart Test" type="Node2D" groups=[
 "Player Input Recievers",
+"Viewport Handlers",
 ]]
 script = ExtResource( 3 )
 instrumentals = NodePath("Instrumentals")
+viewports = [ NodePath("Viewport 1"), NodePath("Viewport 2"), NodePath("Viewport 3") ]
 
 [node name="Viewport 1" type="Viewport" parent="."]
 size = Vector2( 1920, 1080 )
 own_world = true
 usage = 0
 render_target_update_mode = 3
+script = ExtResource( 16 )
 
 [node name="Camera2D" type="Camera2D" parent="Viewport 1"]
 visible = false
@@ -454,7 +741,7 @@ script = ExtResource( 15 )
 ]]
 size = Vector2( 1920, 1080 )
 render_target_update_mode = 0
-script = ExtResource( 10 )
+script = ExtResource( 16 )
 
 [node name="stage scene" type="Node2D" parent="Viewport 2" groups=[
 "Note Track Recievers",
@@ -466,17 +753,6 @@ script = ExtResource( 14 )
 position = Vector2( -8.63953, -94.9584 )
 texture = ExtResource( 12 )
 
-[node name="stagefront" type="Sprite" parent="Viewport 2/stage scene"]
-position = Vector2( 46.3196, 193.209 )
-texture = ExtResource( 11 )
-
-[node name="Boyfriend" parent="Viewport 2/stage scene" instance=ExtResource( 2 )]
-position = Vector2( 372.169, 49.8198 )
-
-[node name="stagecurtains" type="Sprite" parent="Viewport 2/stage scene"]
-position = Vector2( 56.4143, -100.615 )
-texture = ExtResource( 13 )
-
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Viewport 2/stage scene"]
 material = SubResource( 16 )
 position = Vector2( -36.009, -350.95 )
@@ -485,21 +761,70 @@ scale = Vector2( 0.235277, 0.235277 )
 mesh = SubResource( 17 )
 
 [node name="Camera2D" type="Camera2D" parent="Viewport 2/stage scene/MeshInstance2D"]
-position = Vector2( -168.547, 723.258 )
-rotation = 0.434561
 scale = Vector2( 5.8458, 5.8458 )
+z_index = 1
 rotating = true
 current = true
+zoom = Vector2( 0.235, 0.235 )
+
+[node name="stagefront" type="Sprite" parent="Viewport 2/stage scene"]
+position = Vector2( 46.3196, 193.209 )
+texture = ExtResource( 11 )
+
+[node name="Boyfriend" parent="Viewport 2/stage scene" instance=ExtResource( 2 )]
+position = Vector2( -493.676, 49.8198 )
+scale = Vector2( -1, 1 )
+
+[node name="stagecurtains" type="Sprite" parent="Viewport 2/stage scene"]
+position = Vector2( 56.4143, -100.615 )
+texture = ExtResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Viewport 2/stage scene"]
 playback_speed = 3.0
 "anims/transition in bois" = SubResource( 18 )
 
 [node name="track" type="Node2D" parent="Viewport 2/stage scene"]
-position = Vector2( -601.372, -554.411 )
+position = Vector2( 464.682, -565.414 )
 
 [node name="Note Track" parent="Viewport 2/stage scene/track" instance=ExtResource( 1 )]
-visible = false
+
+[node name="Viewport 3" type="Viewport" parent="."]
+size = Vector2( 1920, 1080 )
+render_target_update_mode = 0
+script = ExtResource( 16 )
+
+[node name="week4" type="Node2D" parent="Viewport 3" groups=[
+"Note Track Recievers",
+]]
+script = ExtResource( 19 )
+
+[node name="limoSunset" type="Sprite" parent="Viewport 3/week4"]
+position = Vector2( -2.66846, 65.6526 )
+scale = Vector2( 1.26664, 1.26664 )
+texture = ExtResource( 10 )
+
+[node name="background limo pink0000" type="Sprite" parent="Viewport 3/week4"]
+position = Vector2( 464.953, 141.598 )
+scale = Vector2( 1.36875, 1.36875 )
+texture = ExtResource( 17 )
+
+[node name="Limo stage0003" type="Sprite" parent="Viewport 3/week4"]
+position = Vector2( 55.1401, 314.021 )
+scale = Vector2( 1.12872, 1.12872 )
+texture = ExtResource( 18 )
+
+[node name="Boyfriend" parent="Viewport 3/week4" instance=ExtResource( 2 )]
+position = Vector2( 584.316, -1.93878 )
+
+[node name="Camera2D" type="Camera2D" parent="Viewport 3/week4"]
+position = Vector2( -0.373043, -179.897 )
+scale = Vector2( 1.37538, 1.37538 )
+current = true
+
+[node name="track" type="Node2D" parent="Viewport 3/week4"]
+position = Vector2( 464.682, -565.414 )
+
+[node name="Note Track" parent="Viewport 3/week4/track" instance=ExtResource( 1 )]
 
 [node name="Instrumentals" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -510,6 +835,7 @@ offset_ms = -15.5
 stream = ExtResource( 7 )
 
 [node name="Camera2D3" type="Camera2D" parent="."]
+visible = false
 current = true
 
 [node name="neeeto timer" type="Timer" parent="." groups=[
@@ -518,9 +844,21 @@ current = true
 wait_time = 13.0
 one_shot = true
 
-[connection signal="timeout" from="Viewport 1/Timer" to="Viewport 1/Timer" method="_on_Timer_timeout"]
+[node name="Mod Chart Anim" type="AnimationPlayer" parent="."]
+"anims/transition cool" = SubResource( 46 )
+
+[node name="neeeto timer 2" type="Timer" parent="." groups=[
+"Start Timers",
+]]
+wait_time = 20.0
+one_shot = true
+
 [connection signal="timeout" from="Viewport 1/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Viewport 1/Timer" to="Viewport 1/Timer" method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="Viewport 1/Note Track thingy thing/Note Track Anim" to="Viewport 1/Note Track thingy thing" method="_on_Note_Track_Anim_animation_finished"]
 [connection signal="timeout" from="Viewport 1/note dupe timer" to="." method="_on_note_dupe_timer_timeout"]
 [connection signal="timeout" from="Viewport 1/note rota te timer" to="Viewport 1/Note Track thingy thing" method="_on_note_rota_te_timer_timeout"]
 [connection signal="timeout" from="neeeto timer" to="." method="_on_neeeto_timer_timeout"]
+[connection signal="animation_finished" from="Mod Chart Anim" to="." method="_on_Mod_Chart_Anim_animation_finished"]
+[connection signal="animation_started" from="Mod Chart Anim" to="." method="_on_Mod_Chart_Anim_animation_started"]
+[connection signal="timeout" from="neeeto timer 2" to="." method="_on_neeeto_timer_2_timeout"]

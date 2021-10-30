@@ -1,4 +1,4 @@
-extends Viewport
+extends DynamicViewport
 
 
 # Declare member variables here. Examples:

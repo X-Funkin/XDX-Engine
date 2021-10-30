@@ -6,6 +6,7 @@ extends Node2D
 # var b = "text"
 
 export(NodePath) var instrumentals
+export(Array, NodePath) var viewports
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -142,7 +143,23 @@ func recieve_player_miss(note_type):
 #	get_node(player_vocals).volume_db = -80.0
 #	get_node(sounds_path).play_miss()
 
+func show_viewport(viewport_index):
+	var viewport : Viewport = get_node(viewports[viewport_index])
+	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
 
+func show_viewports(viewports):
+	for viewport in viewports:
+		show_viewport(viewport)
+	pass
+
+func hide_viewport(viewport_index):
+	var viewport : Viewport = get_node(viewports[viewport_index])
+	viewport.render_target_update_mode = Viewport.UPDATE_DISABLED
+
+func hide_viewports(viewports):
+	for viewport in viewports:
+		hide_viewport(viewport)
+	pass
 
 func _on_note_dupe_timer_timeout():
 	get_tree().call_group("Song Event Recievers", "recieve_split_note_track")
@@ -151,4 +168,22 @@ func _on_note_dupe_timer_timeout():
 
 func _on_neeeto_timer_timeout():
 	get_tree().call_group("Song Event Recievers", "recieve_neato_transition")
+	show_viewport(1)
+	pass # Replace with function body.
+
+
+func _on_Mod_Chart_Anim_animation_started(anim_name):
+	if anim_name == "transition cool":
+		show_viewport(2)
+	pass # Replace with function body.
+
+
+func _on_Mod_Chart_Anim_animation_finished(anim_name):
+	if anim_name == "transition cool":
+		hide_viewports([0,1])
+	pass # Replace with function body.
+
+
+func _on_neeeto_timer_2_timeout():
+	$"Mod Chart Anim".play("transition cool")
 	pass # Replace with function body.

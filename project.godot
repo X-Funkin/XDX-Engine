@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scenes/notes/Down Note Lane.gd"
 }, {
+"base": "Viewport",
+"class": "DynamicViewport",
+"language": "GDScript",
+"path": "res://assets/scripts/modchart test/Viewport.gd"
+}, {
 "base": "EditorHoldNote",
 "class": "EditorDownHoldNote",
 "language": "GDScript",
@@ -250,6 +255,7 @@ _global_script_class_icons={
 "DownHoldNote": "",
 "DownNote": "res://assets/images/NOTE_assets/blue0000.png",
 "DownNoteLane": "",
+"DynamicViewport": "",
 "EditorDownHoldNote": "",
 "EditorDownNote": "",
 "EditorHoldNote": "",

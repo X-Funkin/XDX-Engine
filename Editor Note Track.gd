@@ -47,6 +47,7 @@ func import_hold_note(note_data, player_note = false):
 	note.player_note = (player_note and false)
 	note.update_scale()
 	notes = get_notes()
+	note.editor_note_type = int(player_note)
 	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
 	
 
