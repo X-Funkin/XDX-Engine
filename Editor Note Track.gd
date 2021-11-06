@@ -86,7 +86,11 @@ func import_note(note_data, player_note=false):
 
 func recieve_chart_file(path):
 	chart_file = path
-	import_fnf_chart()
+	if path.split(".")[-1] == "json":
+		import_fnf_chart()
+	elif path.split(".")[-1] == "osu":
+		print("OSU CHART")
+		import_osu_chart()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

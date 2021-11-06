@@ -108,11 +108,12 @@ func export_chart(path):
 	pass
 
 func recieve_chart_file(path):
-	var file = File.new()
-	file.open(path, File.READ)
-	chart_data = JSON.parse(file.get_as_text()).result
-	preview_data = chart_data.duplicate(true)
-	$Control/TextEdit.text = JSON.print(chart_data, "\t")
+	if path.split(".")[-1] == "json":
+		var file = File.new()
+		file.open(path, File.READ)
+		chart_data = JSON.parse(file.get_as_text()).result
+		preview_data = chart_data.duplicate(true)
+		$Control/TextEdit.text = JSON.print(chart_data, "\t")
 
 func recieve_json_parse_error(json_parse:JSONParseResult):
 	if json_parse.error != OK:

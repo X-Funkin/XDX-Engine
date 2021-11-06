@@ -68,11 +68,13 @@ func input_event(viewport, event, shape_idx):
 var yielding = false
 func _process(delta):
 #	can_process()
-	if yielding:
-		return 0
-	yielding = true
-	yield(get_parent(),"song_time_set")
-	yielding = false
+#	if yielding:
+#		return 0
+#	yielding = true
+	set_process(false)
+#	yield(get_parent(),"song_time_set")
+#	set_process(true)
+#	yielding = false
 #	check_active()
 	if active:
 		if player_note:

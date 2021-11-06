@@ -4,7 +4,7 @@ class_name NoteTrack
 
 # Export very ables mm yes
 export(String, FILE) var chart_file
-export(int, "XDX", "FNF") var chart_format
+export(int, "XDX", "FNF", "OSU") var chart_format
 export(int) var chart_channel
 export(bool) var player_track
 export(float) var scroll_speed = 1.0 setget set_scroll_speed, get_scroll_speed
@@ -76,6 +76,7 @@ func import_chart():
 	pass
 
 func import_fnf_chart():
+	clear_notes()
 	var file = File.new()
 	file.open(chart_file, File.READ)
 	var chart_data = JSON.parse(file.get_as_text()).result
@@ -116,6 +117,50 @@ func import_fnf_chart():
 	for note in notes:
 		note.note_index = n_index
 		n_index+=1
+
+func import_osu_chart():
+	clear_notes()
+	print("IMPORTING OSU CHART")
+	var file = File.new()
+	file.open(chart_file, File.READ)
+	var data_string = file.get_as_text()
+	var data_parse_array = data_string.split("\n")
+	var decyphering_data = false
+	var index_thingy = []
+	for data_line in data_parse_array:
+		print(data_line)
+		if !decyphering_data:
+			if data_line == "[HitObjects]":
+				print("FOUND HIT OBJECTS")
+				decyphering_data = true
+			continue
+		var data_string_array : PoolStringArray = (data_line.split(":")[0]).split(",")
+		var data_array = [0,0,0]
+		if data_string_array.size() > 3:
+			data_array[0] = int(data_string_array[2])
+#			if !int(data_string_array[0]) in index_thingy:
+#				index_thingy.append(int(data_string_array[0]))
+#				index_thingy.sort()
+			match int(data_string_array[0]):
+				64:
+					data_array[1] = 0
+				192:
+					data_array[1] = 1
+				320:
+					data_array[1] = 2
+				448:
+					data_array[1] = 3
+				_:
+					continue
+			if int(data_string_array[5]) > 0:
+				data_array[2] = int(data_string_array[5])-data_array[0]
+			print(data_array)
+			if data_array[2] != 0:
+				import_hold_note(data_array, player_track)
+			else:
+				import_note(data_array,player_track)
+			pass
+#	data_string.lstrip()
 
 #func import_kade_chart():
 #	pass
@@ -181,8 +226,8 @@ func load_chart():
 			import_chart()
 		1:
 			import_fnf_chart()
-#		2:
-#			import_kade_chart()
+		2:
+			import_osu_chart()
 
 #Note Getterrrs
 func get_left_notes():
@@ -206,6 +251,12 @@ func get_notes(sorted=false):
 	if sorted:
 		note_arr.sort_custom(Note.NoteSorter, "sort_hit_time")
 	return note_arr
+
+func clear_notes():
+#	notes.empty()
+	for note in notes:
+		note.queue_free()
+	notes.clear()
 
 func signal_self():
 	get_tree().call_group("Note Track Recievers", "recieve_note_track", self)
