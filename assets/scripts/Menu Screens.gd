@@ -33,12 +33,22 @@ func save_current_menu():
 func load_previous_menu():
 	var file = File.new()
 	file.open(menu_data_file, File.READ_WRITE)
-	var menu_data = JSON.parse(file.get_as_text()).result
-	if "menu_path" in menu_data:
-		if menu_data["menu_path"] != "":
-			target_scene = load(menu_data["menu_path"])
-			if target_scene:
-				load_menu()
+	var menu_data_parse = JSON.parse(file.get_as_text())
+	if menu_data_parse.error == OK:
+		var menu_data = menu_data_parse.result
+		if "menu_path" in menu_data:
+			if menu_data["menu_path"] != "":
+				target_scene = load(menu_data["menu_path"])
+				if target_scene:
+					load_menu()
+	else:
+#		file.get_buffer()
+#		var asfjdkeuyr = file.get_as_text()
+#		file.store_string('{menu_path:""}')
+		file.close()
+		file.open(menu_data_file, File.WRITE)
+		file.store_string('{"menu_path":""}')
+		file.close()
 
 func load_menu():
 	for node in $"Current Menu".get_children():

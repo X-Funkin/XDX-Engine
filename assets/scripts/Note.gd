@@ -29,6 +29,8 @@ func get_data():
 class NoteSorter:
 	static func sort_hit_time(a,b):
 		return a.hit_time < b.hit_time
+	static func search_hit_time(a,b):
+		return a.hit_time < b
 # Called when the node enters the scene tree for the first time.
 
 func check_scorability():
@@ -72,6 +74,7 @@ func despawn():
 	visible = false
 	scorable = false
 	remove_from_group(scorable_group)
+	set_process(false)
 
 func spawn():
 	active = true
@@ -92,4 +95,6 @@ func _process(delta):
 			check_scorability()
 		else:
 			check_auto_play()
+	if get_parent().song_time < hit_time-1000.0:
+			set_process(false)
 #	pass

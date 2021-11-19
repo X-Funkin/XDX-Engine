@@ -179,9 +179,7 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[node name="Menu Screens" type="Node2D" groups=[
-"Menu Switchers",
-]]
+[node name="Menu Screens" type="Node2D" groups=["Menu Switchers"]]
 script = ExtResource( 1 )
 start_screen = ExtResource( 2 )
 main_menu = ExtResource( 4 )

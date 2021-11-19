@@ -41,18 +41,21 @@ func recieve_zoom(zoom):
 	redraw_waveforms()
 
 func recieve_enemy_audio_stream(stream):
-	$"Enemy Vocals/Position2D/Waveform Visualizer".audio_stream = stream
 	$"Enemy Vocals/Position2D/Waveform Visualizer".clear_waveforms()
+	return 0
+	$"Enemy Vocals/Position2D/Waveform Visualizer".audio_stream = stream
 	$"Enemy Vocals/Position2D/Waveform Visualizer".draw_waveform()
 
 func recieve_instrumentals_audio_stream(stream):
-	$"Instrumentals/Position2D/Waveform Visualizer".audio_stream = stream
 	$"Instrumentals/Position2D/Waveform Visualizer".clear_waveforms()
+	return 0
+	$"Instrumentals/Position2D/Waveform Visualizer".audio_stream = stream
 	$"Instrumentals/Position2D/Waveform Visualizer".draw_waveform()
 
 func recieve_player_audio_stream(stream):
-	$"Player Vocals/Position2D/Waveform Visualizer".audio_stream = stream
 	$"Player Vocals/Position2D/Waveform Visualizer".clear_waveforms()
+	return 0
+	$"Player Vocals/Position2D/Waveform Visualizer".audio_stream = stream
 	$"Player Vocals/Position2D/Waveform Visualizer".draw_waveform()
 	pass
 

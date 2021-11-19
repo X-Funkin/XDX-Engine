@@ -10,7 +10,7 @@ export(bool) var player_track
 export(float) var scroll_speed = 1.0 setget set_scroll_speed, get_scroll_speed
 export(float) var timing_window = 120.0
 var song_time : float = 0.0
-var notes = []
+var notes : Array = []
 
 #export(PackedScene) var left_note
 #export(PackedScene) var down_note
@@ -128,10 +128,10 @@ func import_osu_chart():
 	var decyphering_data = false
 	var index_thingy = []
 	for data_line in data_parse_array:
-		print(data_line)
+#		print(data_line)
 		if !decyphering_data:
 			if data_line == "[HitObjects]":
-				print("FOUND HIT OBJECTS")
+#				print("FOUND HIT OBJECTS")
 				decyphering_data = true
 			continue
 		var data_string_array : PoolStringArray = (data_line.split(":")[0]).split(",")
@@ -154,7 +154,7 @@ func import_osu_chart():
 					continue
 			if int(data_string_array[5]) > 0:
 				data_array[2] = int(data_string_array[5])-data_array[0]
-			print(data_array)
+#			print(data_array)
 			if data_array[2] != 0:
 				import_hold_note(data_array, player_track)
 			else:
@@ -191,6 +191,7 @@ func import_note(note_data, player_note=false):
 	note.position.y = note.hit_time
 	note.scale.y = 1.0/scroll_speed
 	note.player_note = player_note
+	note.set_process(false)
 
 func import_hold_note(note_data, player_note = false):
 	var note : HoldNote = null
@@ -218,7 +219,7 @@ func import_hold_note(note_data, player_note = false):
 	note.scale.y = 1.0/scroll_speed
 	note.player_note = player_note
 	note.update_scale()
-	
+	note.set_process(false)
 
 func load_chart():
 	match chart_format:
@@ -228,6 +229,7 @@ func load_chart():
 			import_fnf_chart()
 		2:
 			import_osu_chart()
+	notes = get_notes(true)
 
 #Note Getterrrs
 func get_left_notes():
@@ -251,6 +253,15 @@ func get_notes(sorted=false):
 	if sorted:
 		note_arr.sort_custom(Note.NoteSorter, "sort_hit_time")
 	return note_arr
+
+func search_hit_time(hit_time):
+	return notes.bsearch_custom(hit_time,Note.NoteSorter,"search_hit_time")
+
+func update_notes():
+	var start_index = search_hit_time(song_time-50.0)
+	var end_index = search_hit_time(song_time+1000.0)
+	for i in range(start_index,end_index):
+		notes[i].set_process(true)
 
 func clear_notes():
 #	notes.empty()
@@ -428,6 +439,7 @@ func recieve_song_time(n_time):
 	get_node(down_note_track).song_time = n_time
 	get_node(up_note_track).song_time = n_time
 	get_node(right_note_track).song_time = n_time
+	update_notes()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

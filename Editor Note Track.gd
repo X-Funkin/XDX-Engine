@@ -46,10 +46,12 @@ func import_hold_note(note_data, player_note = false):
 	note.scale.y = 1.0/scroll_speed
 	note.player_note = (player_note and false)
 	note.update_scale()
-	notes = get_notes()
+#	notes = get_notes()
+	var note_index = notes.bsearch_custom(note.hit_time,Note.NoteSorter,"search_hit_time")
+	notes.insert(note_index,note)
 	note.editor_note_type = int(player_note)
 	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
-	
+	note.set_process(false)
 
 func import_note(note_data, player_note=false):
 	var note : EditorNote = null
@@ -77,8 +79,11 @@ func import_note(note_data, player_note=false):
 	note.scale.y = 1.0/scroll_speed
 	note.player_note = (player_note and false)
 	note.editor_note_type = int(player_note)
-	notes = get_notes()
+#	notes = get_notes()
+	var note_index = notes.bsearch_custom(note.hit_time,Note.NoteSorter,"search_hit_time")
+	notes.insert(note_index,note)
 	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
+	note.set_process(false)
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -91,6 +96,10 @@ func recieve_chart_file(path):
 	elif path.split(".")[-1] == "osu":
 		print("OSU CHART")
 		import_osu_chart()
+#	notes = get_notes(true)
+	for note_i in range(notes.size()):
+		var thingy = float(note_i)/notes.size()
+		notes[note_i].modulate = Color.from_hsv(thingy,1,1,1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

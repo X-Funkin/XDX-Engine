@@ -11,9 +11,9 @@ export(int, "Enemy Note", "Player Note") var editor_note_type
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node(hold_note_input_area).connect("mouse_entered", self, "mouse_entered")
-	get_node(hold_note_input_area).connect("mouse_exited", self, "mouse_exited")
-	get_node(hold_note_input_area).connect("input_event", self, "input_event")
+#	get_node(hold_note_input_area).connect("mouse_entered", self, "mouse_entered")
+#	get_node(hold_note_input_area).connect("mouse_exited", self, "mouse_exited")
+#	get_node(hold_note_input_area).connect("input_event", self, "input_event")
 	pass # Replace with function body.
 
 
@@ -79,6 +79,8 @@ func _process(delta):
 		if get_parent().song_time < hit_time+hold_time:
 			spawn()
 			update_scale()
+	if get_parent().song_time < hit_time-1000.0:
+			set_process(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

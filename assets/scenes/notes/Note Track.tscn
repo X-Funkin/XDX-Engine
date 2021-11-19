@@ -94,14 +94,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 
-[node name="Note Track" type="Node2D" groups=[
-"Enemy Hit Recievers",
-"Enemy Input Recievers",
-"Player Hit Recievers",
-"Player Input Recievers",
-"Setting Recievers",
-"Song Time Recievers",
-]]
+[node name="Note Track" type="Node2D" groups=["Enemy Hit Recievers", "Enemy Input Recievers", "Player Hit Recievers", "Player Input Recievers", "Setting Recievers", "Song Time Recievers"]]
 script = ExtResource( 1 )
 
 [node name="Left Track" type="Position2D" parent="."]

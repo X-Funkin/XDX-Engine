@@ -10,9 +10,9 @@ export(int, "Enemy Note", "Player Note") var editor_note_type
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"Area2D".connect("mouse_entered", self, "mouse_entered")
-	$"Area2D".connect("mouse_exited", self, "mouse_exited")
-	$"Area2D".connect("input_event", self, "input_event")
+#	$"Area2D".connect("mouse_entered", self, "mouse_entered")
+#	$"Area2D".connect("mouse_exited", self, "mouse_exited")
+#	$"Area2D".connect("input_event", self, "input_event")
 	pass # Replace with function body.
 
 
@@ -71,7 +71,7 @@ func _process(delta):
 #	if yielding:
 #		return 0
 #	yielding = true
-	set_process(false)
+#	set_process(false)
 #	yield(get_parent(),"song_time_set")
 #	set_process(true)
 #	yielding = false
@@ -85,3 +85,5 @@ func _process(delta):
 	if !active:
 		if get_parent().song_time < hit_time:
 			spawn()
+	if get_parent().song_time < hit_time-1000.0:
+			set_process(false)
