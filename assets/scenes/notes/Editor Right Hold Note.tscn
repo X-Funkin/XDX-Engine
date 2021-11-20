@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/scenes/notes/Hold Note Shader.tres" type="Shader" id=1]
 [ext_resource path="res://assets/images/NOTE_assets/red0000.png" type="Texture" id=2]
@@ -13,9 +13,6 @@ shader_param/Sprite_Scale = 1.0
 shader_param/Played_Amount = null
 shader_param/Hold_Texture = ExtResource( 4 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 80, 80 )
-
 [sub_resource type="QuadMesh" id=3]
 size = Vector2( 160, 160 )
 
@@ -27,7 +24,6 @@ scorable_group = "Scorable Right Notes"
 hold_note_start = NodePath("Right Note Sprite")
 hold_note_body = NodePath("Right Note Hold")
 hold_note_end = NodePath("Right Note Hold/Right Note Hold End")
-hold_note_input_area = NodePath("Right Note Sprite/Area2D")
 
 [node name="Right Note Hold" type="Sprite" parent="."]
 material = SubResource( 1 )
@@ -41,13 +37,6 @@ offset = Vector2( 0, 32 )
 
 [node name="Right Note Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-
-[node name="Area2D" type="Area2D" parent="Right Note Sprite"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Note Sprite/Area2D"]
-visible = false
-shape = SubResource( 2 )
 
 [node name="Debug Mesh" type="MeshInstance2D" parent="."]
 visible = false

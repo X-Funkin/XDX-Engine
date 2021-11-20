@@ -97,9 +97,9 @@ func recieve_chart_file(path):
 		print("OSU CHART")
 		import_osu_chart()
 #	notes = get_notes(true)
-	for note_i in range(notes.size()):
-		var thingy = float(note_i)/notes.size()
-		notes[note_i].modulate = Color.from_hsv(thingy,1,1,1)
+#	for note_i in range(notes.size()):
+#		var thingy = float(note_i)/notes.size()
+#		notes[note_i].modulate = Color.from_hsv(thingy,1,1,1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -87,3 +87,6 @@ func _process(delta):
 			spawn()
 	if get_parent().song_time < hit_time-1000.0:
 			set_process(false)
+	if get_parent().song_time > hit_time+150.0:
+		visible = false
+		set_process(false)
