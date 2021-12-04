@@ -6,10 +6,7 @@
 [ext_resource path="res://assets/images/NOTE_assets/green0000.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/NOTE_assets/red0000.png" type="Texture" id=5]
 
-[node name="Editor Note Sets" type="Position2D" groups=[
-"Cursor Recievers",
-"Track Input Recievers",
-]]
+[node name="Editor Note Sets" type="Position2D" groups=["Cursor Recievers", "Note Editor Mode Recievers", "Track Input Recievers"]]
 script = ExtResource( 3 )
 
 [node name="Default Note Set" type="Position2D" parent="."]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/images/note mode icon lmao.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/selection moooode iconnnn ha.png" type="Texture" id=2]
+[ext_resource path="res://assets/scenes/Editor Mode Buttons.gd" type="Script" id=3]
+
+[node name="Editor Mode Buttons" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Select Mode Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.45
+focus_mode = 1
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Select Mode Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Note Mode Button" type="Button" parent="."]
+anchor_top = 0.55
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 1
+toggle_mode = true
+enabled_focus_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Note Mode Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[connection signal="toggled" from="Select Mode Button" to="." method="_on_Select_Mode_Button_toggled"]
+[connection signal="toggled" from="Note Mode Button" to="." method="_on_Note_Mode_Button_toggled"]

@@ -41,6 +41,14 @@ func recieve_track_mouse_exited(track_type, lane_type):
 			3:
 				$"Default Note Set/Right Note".visible = false
 
+func recieve_editor_mode(mode):
+	match mode:
+		0:
+			visible = false
+		1:
+			visible = true
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

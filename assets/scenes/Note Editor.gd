@@ -15,6 +15,7 @@ export(float) var snapping_offset = 0.0 setget set_snapping_offset
 export(float) var song_time_cursor = 0.0
 export(Vector2) var editor_cursor
 export(NodePath) var waveform
+var note_clipboard = []
 
 
 func set_zoom(n_zoom):
@@ -141,6 +142,24 @@ func _input(event):
 		if in_player_track:
 			get_tree().call_group("Audio Stream Recievers", "scrub_player_audio", song_time_transform(get_global_mouse_position().y))
 		pass
+	if event.is_action_pressed("copy"):
+		var notes = get_tree().get_nodes_in_group("Selected Notes")
+		note_clipboard = []
+		for note in notes:
+			note_clipboard.append(note.get_data())
+			pass
+#		get_tree().call_group("Note Clipboard Recievers", "recieve_")
+	if event.is_action_pressed("paste"):
+		get_tree().call_group("Track Input Recievers", "recieve_mouse_over_player_track", in_player_track)
+		get_tree().call_group("Note Clipboard Recievers", "recieve_paste_notes", note_clipboard)
+	if event.is_action_pressed("select_all"):
+		get_tree().call_group("Track Input Recievers", "recieve_select_all")
+	if event.is_action_pressed("delete"):
+#		get_tree().call_group("Track Input Recievers", "recieve_delete_selected")
+		var notes = get_tree().get_nodes_in_group("Selected Notes")
+		for note in notes:
+			note.delete()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

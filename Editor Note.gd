@@ -7,8 +7,26 @@ class_name EditorNote
 # var b = "text"
 
 export(int, "Enemy Note", "Player Note") var editor_note_type
+export(NodePath) var click_area
+export(bool) var selected setget set_selected
+
+func set_selected(n_selected):
+	selected = n_selected
+	if selected:
+		add_to_group("Selected Notes")
+		modulate = Color.skyblue
+	else:
+		if is_in_group("Selected Notes"):
+			remove_from_group("Selected Notes")
+		modulate = Color.white
+
+func delete():
+	get_tree().call_group("Note Delete Recievers", "recieve_delete_note", self)
+	pass
 
 # Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 #	$"Area2D".connect("mouse_entered", self, "mouse_entered")
 #	$"Area2D".connect("mouse_exited", self, "mouse_exited")
