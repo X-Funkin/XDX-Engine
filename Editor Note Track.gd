@@ -5,9 +5,18 @@ class_name EditorNoteTrack
 export(float) var song_cursor
 export(float) var cursor_time
 export(int, "Select", "Note") var editor_mode
-export(bool) var hover_over
+export(bool) var hover_over #setget set_hover_over
 
+func set_hover_over(n_hover):
+	hover_over = n_hover
+	if hover_over:
+		modulate = Color.black
+	else:
+		modulate = Color.white
 
+var undo_array = []
+var op_cache = []
+var redo_array = []
 
 var editor_left_note : PackedScene = preload("res://assets/scenes/notes/Editor Left Note.tscn")
 var editor_down_note : PackedScene = preload("res://assets/scenes/notes/Editor Down Note.tscn")
@@ -23,7 +32,7 @@ var editor_right_hold_note : PackedScene = preload("res://assets/scenes/notes/Ed
 var editor_note_click_area : PackedScene = preload("res://assets/scenes/notes/Editor Note Click Area.tscn")
 
 
-func import_hold_note(note_data, player_note = false):
+func import_hold_note(note_data, player_note = false, cache_op=true):
 	var note : EditorHoldNote = null
 	var track = null
 	match int(note_data[1])%4:
@@ -55,8 +64,11 @@ func import_hold_note(note_data, player_note = false):
 	note.editor_note_type = int(player_note)
 	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
 	note.set_process(false)
+	if cache_op:
+		op_cache.append([0, note])
+	return note
 
-func import_note(note_data, player_note=false):
+func import_note(note_data, player_note=false, cache_op=true):
 	var note : EditorNote = null
 	var track = null
 	match int(note_data[1])%4:
@@ -87,6 +99,9 @@ func import_note(note_data, player_note=false):
 	notes.insert(note_index,note)
 	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
 	note.set_process(false)
+	if cache_op:
+		op_cache.append([0, note])
+	return note
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -104,11 +119,13 @@ func recieve_chart_file(path):
 #		var thingy = float(note_i)/notes.size()
 #		notes[note_i].modulate = Color.from_hsv(thingy,1,1,1)
 
-func delete_note(note):
+func delete_note(note, cache_op=true):
 	var search_index = search_hit_time(note.hit_time-50.0)
 	var note_index = notes.find(note,search_index)
 	if note_index != -1:
 		var del_note = notes.pop_at(note_index)
+		if cache_op:
+			op_cache.append([1,del_note.get_data(),del_note])
 		del_note.queue_free()
 
 func select_notes(to_note):
@@ -214,14 +231,14 @@ func recieve_track_input(track_type, lane_type, event):
 
 func recieve_mouse_over_player_track(is_in_player_track):
 	if is_in_player_track == player_track:
-		hover_over = true
+		self.hover_over = true
 	else:
-		hover_over = false
+		self.hover_over = false
 	pass
 
 func recieve_enemy_hit(note, hit_error):
 	if int(player_track) == note.editor_note_type:
-		print("yeah baoybe ", player_track, " ", note.editor_note_type, " ", note.note_type)
+#		print("yeah baoybe ", player_track, " ", note.editor_note_type, " ", note.note_type)
 		match note.note_type:
 			0:
 				get_node(left_arrow).play_confirm_tap()
@@ -258,8 +275,82 @@ func recieve_select_all():
 	for note in notes:
 		note.selected = true
 
+func undo():
+	var op = undo_array.pop_back()
+	var r_op = []
+	if op != null:
+		for thing in op:
+			if thing[1] is Object:
+				if !is_instance_valid(thing[1]):
+					op.erase(thing)
+					continue
+#				return 0
+#			else:
+			match thing[0]:
+				0:
+					r_op.append([0,thing[1].get_data()])
+					delete_note(thing[1],false)
+					pass
+				1:
+					if thing[1][2] > 0:
+						var note = import_hold_note(thing[1], player_track, false)
+						r_op.append([1,note])
+					else:
+						var note = import_note(thing[1], player_track, false)
+						r_op.append([1,note])
+		if r_op != []:
+			redo_array.append(r_op)
+	pass
+
+func redo():
+	var op = redo_array.pop_back()
+	var u_op = []
+	if op != null:
+		for thing in op:
+			match thing[0]:
+				0:
+					if thing[1][2] > 0:
+						var note = import_hold_note(thing[1], player_track, false)
+						u_op.append([0,note])
+						thing[2]=note
+					else:
+						var note = import_note(thing[1], player_track, false)
+						u_op.append([0,note])
+						thing[2]=note
+				1:
+					u_op.append([1,thing[1].get_data()])
+					delete_note(thing[1],false)
+		undo_array.append(u_op)
+
 #func recieve_delete_selected
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _process(delta):
+	if op_cache != []:
+		print("OPERATIONBS HAVE BEEN MAAADEEEE")
+		yield(get_tree(),"idle_frame")
+		print("ONE FRAME LATERRRR")
+		print("OP CACHE ", op_cache)
+		undo_array.append(op_cache)
+		op_cache = []
+		redo_array = []
+		print("UNDO ARRRRRAYYY ", undo_array)
+		print("REDO ARRRRRAYYY ", redo_array)
+#		UndoRedo
+		pass
 #	pass
+
+func _input(event):
+	if event.is_action_pressed("undo") and !Input.is_key_pressed(KEY_SHIFT):
+		if hover_over:
+			undo()
+			print("\n\nUNDO\n")
+			print("UNDO ARRRRRAYYY ", undo_array)
+			print("REDO ARRRRRAYYY ", redo_array)
+		pass
+	if event.is_action_pressed("redo"):
+		if hover_over:
+			redo()
+			print("\n\nREDO\n")
+			print("UNDO ARRRRRAYYY ", undo_array)
+			print("REDO ARRRRRAYYY ", redo_array)

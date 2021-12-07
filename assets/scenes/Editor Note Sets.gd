@@ -16,7 +16,7 @@ func recieve_editor_cursor(cursor_pos):
 	self.global_position.y = cursor_pos.y
 
 func recieve_track_mouse_entered(track_type, lane_type):
-	print("eyahdsahfsad ", track_type, lane_type)
+#	print("eyahdsahfsad ", track_type, lane_type)
 	if track_type == note_set_type:
 		match lane_type:
 			0:
@@ -29,7 +29,7 @@ func recieve_track_mouse_entered(track_type, lane_type):
 				$"Default Note Set/Right Note".visible = true
 
 func recieve_track_mouse_exited(track_type, lane_type):
-	print("BMBMABNABASDJFSHSHHHEEDASSA AH", track_type, lane_type)
+#	print("BMBMABNABASDJFSHSHHHEEDASSA AH", track_type, lane_type)
 	if track_type == note_set_type:
 		match lane_type:
 			0:

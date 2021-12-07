@@ -135,7 +135,8 @@ func print_gui_input(event):
 
 func _input(event):
 	if event is InputEventMouseButton:
-		print(song_time_cursor)
+#		print(song_time_cursor)
+		pass
 	if event is InputEventMouseMotion and Input.is_key_pressed(KEY_CONTROL):
 		if in_enemy_track:
 			get_tree().call_group("Audio Stream Recievers", "scrub_enemy_audio", song_time_transform(get_global_mouse_position().y))
@@ -354,12 +355,14 @@ var in_enemy_track = false
 func _on_Enemy_Input_Area_mouse_entered():
 	in_enemy_track = true
 	in_player_track = false
+	get_tree().call_group("Track Input Recievers", "recieve_mouse_over_player_track", in_player_track)
 	pass # Replace with function body.
 
 var in_player_track = false
 func _on_Player_Input_Area_mouse_entered():
 	in_player_track = true
 	in_enemy_track = false
+	get_tree().call_group("Track Input Recievers", "recieve_mouse_over_player_track", in_player_track)
 	pass # Replace with function body.
 
 

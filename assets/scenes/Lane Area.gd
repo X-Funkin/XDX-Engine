@@ -44,14 +44,14 @@ func mouse_exited():
 func _on_GUI_Input_Area_mouse_entered():
 	mouse_entered()
 	get_tree().call_group("Track Input Recievers", "recieve_track_mouse_entered", track_type,lane_type)
-	print("Track Input Recievers", "recieve_track_mouse_entered", track_type,lane_type)
+#	print("Track Input Recievers", "recieve_track_mouse_entered", track_type,lane_type)
 	pass # Replace with function body.
 
 
 func _on_GUI_Input_Area_mouse_exited():
 	mouse_exited()
 	get_tree().call_group("Track Input Recievers", "recieve_track_mouse_exited", track_type,lane_type)
-	print("Track Input Recievers", "recieve_track_mouse_exited", track_type,lane_type)
+#	print("Track Input Recievers", "recieve_track_mouse_exited", track_type,lane_type)
 	pass # Replace with function body.
 
 
