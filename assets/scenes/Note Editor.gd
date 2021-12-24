@@ -144,15 +144,11 @@ func _input(event):
 			get_tree().call_group("Audio Stream Recievers", "scrub_player_audio", song_time_transform(get_global_mouse_position().y))
 		pass
 	if event.is_action_pressed("copy"):
-		var notes = get_tree().get_nodes_in_group("Selected Notes")
-		note_clipboard = []
-		for note in notes:
-			note_clipboard.append(note.get_data())
-			pass
+		copy_notes()
 #		get_tree().call_group("Note Clipboard Recievers", "recieve_")
 	if event.is_action_pressed("paste"):
 		get_tree().call_group("Track Input Recievers", "recieve_mouse_over_player_track", in_player_track)
-		get_tree().call_group("Note Clipboard Recievers", "recieve_paste_notes", note_clipboard)
+		paste_notes()
 	if event.is_action_pressed("select_all"):
 		get_tree().call_group("Track Input Recievers", "recieve_select_all")
 	if event.is_action_pressed("delete"):
@@ -161,6 +157,16 @@ func _input(event):
 		for note in notes:
 			note.delete()
 
+func copy_notes():
+	var notes = get_tree().get_nodes_in_group("Selected Notes")
+	note_clipboard = []
+	for note in notes:
+		note_clipboard.append(note.get_data())
+#		print(note.editor_note_type)
+		pass
+
+func paste_notes():
+	get_tree().call_group("Note Clipboard Recievers", "recieve_paste_notes", note_clipboard)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -184,6 +190,23 @@ func recieve_song_playing(playing):
 		self.transform_mode = 3
 	else:
 		self.transform_mode = 0
+
+func recieve_chart_data(chart_data):
+	if "player_audio" in chart_data:
+		_on_Player_Vocals_File_Dialog_file_selected(chart_data["player_audio"])
+		pass
+	if "instrumentals_audio" in chart_data:
+		_on_Instrumentals_File_Dialog_file_selected(chart_data["instrumentals_audio"])
+		pass
+	if "enemy_audio" in chart_data:
+		_on_FileDialog_file_selected(chart_data["enemy_audio"])
+	pass
+
+func recieve_paste_notes():
+	paste_notes()
+
+func recieve_copy_notes():
+	copy_notes()
 
 func _on_Instumental_Track_Input_Area_input_event(viewport, event, shape_idx):
 #	print("eyaidhf event ", event)
@@ -225,6 +248,7 @@ func _on_FileDialog_file_selected(path):
 	var thingy = ChartEditor.new()
 	var stream = thingy.load_wav_file(path)
 	get_tree().call_group("Audio Stream Recievers", "recieve_enemy_audio_stream", stream)
+	get_tree().call_group("Audio Stream Recievers", "recieve_enemy_audio_path", path)
 	pass # Replace with function body.
 
 
@@ -285,6 +309,7 @@ func _on_Instrumentals_File_Dialog_file_selected(path):
 	var thingy = ChartEditor.new()
 	var stream = thingy.load_wav_file(path)
 	get_tree().call_group("Audio Stream Recievers", "recieve_instrumentals_audio_stream", stream)
+	get_tree().call_group("Audio Stream Recievers", "recieve_instrumentals_audio_path", path)
 	pass # Replace with function body.
 
 
@@ -292,6 +317,7 @@ func _on_Player_Vocals_File_Dialog_file_selected(path):
 	var thingy = ChartEditor.new()
 	var stream = thingy.load_wav_file(path)
 	get_tree().call_group("Audio Stream Recievers", "recieve_player_audio_stream", stream)
+	get_tree().call_group("Audio Stream Recievers", "recieve_player_audio_path", path)
 	pass
 	pass # Replace with function body.
 

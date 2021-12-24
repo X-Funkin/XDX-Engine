@@ -10,6 +10,8 @@ export(int) var draw_samples = 1000
 export(int) var draw_sub_samples = 4
 export(int) var chunk_size = 44100
 export(bool) var can_redraw = true
+export(bool) var progressive_draw = true
+export(String) var draw_progress_group
 var t0 = 0
 var t1 = 0
 var drawing = false
@@ -40,6 +42,8 @@ func _process(delta):
 func draw_waveform(multi_threading = false):
 #	update()
 #	return 0
+	get_tree().call_group(draw_progress_group, "recieve_waveform_draw_start")
+	
 	print("\n\n\nSTARTING WAVEFORM DRAW")
 	print("CHUNK SIZE: ", chunk_size)
 	t0 = OS.get_ticks_usec()
@@ -55,6 +59,7 @@ func draw_waveform(multi_threading = false):
 			num = 4
 		var final_sample = len(audio_stream.data)/num
 		var current_sample = 0
+		get_tree().call_group(draw_progress_group, "recieve_waveform_total_chunks", int(ceil(final_sample/chunk_size)))
 		while current_sample < final_sample:
 			var new_sample = min(current_sample + chunk_size, final_sample)
 			var waveinst = waveform_chunk.instance()
@@ -65,7 +70,10 @@ func draw_waveform(multi_threading = false):
 			if multi_threading:
 				waveinst.multi_threading = true
 			add_child(waveinst)
+			get_tree().call_group(draw_progress_group, "recieve_waveform_current_chunk", int(ceil(current_sample/chunk_size)))
 			current_sample = new_sample
+			if progressive_draw:
+				yield(get_tree(),"idle_frame")
 	drawing = true
 	
 	if multi_threading:
@@ -78,6 +86,7 @@ func draw_waveform(multi_threading = false):
 #	t1 = OS.get_ticks_usec()
 	print("WAVE DRAWING DONE")
 #	print("Took ", t1-t0, " Microseconds")
+	get_tree().call_group(draw_progress_group, "recieve_waveform_draw_finish")
 	return 1
 	pass
 

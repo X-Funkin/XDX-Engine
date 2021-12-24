@@ -98,22 +98,56 @@ func fill_note_section_array(bpm=120):
 
 func export_chart(path):
 	fill_note_data_array()
-	if "bpm" in chart_data["song"]:
-		fill_note_section_array(chart_data["song"]["bpm"])
-		change_nested_key(chart_data, note_array_keys, note_section_data)
-		var file = File.new()
-		file.open(path, File.WRITE)
-		file.store_string(JSON.print(chart_data, "\t"))
-		file.close()
+	match path.split(".")[-1]:
+		"json":
+			if "bpm" in chart_data["song"]:
+				fill_note_section_array(chart_data["song"]["bpm"])
+				change_nested_key(chart_data, note_array_keys, note_section_data)
+				var file = File.new()
+				file.open(path, File.WRITE)
+				file.store_string(JSON.print(chart_data, "\t"))
+				file.close()
+		"osu":
+			var file = File.new()
+			file.open(path, File.WRITE)
+			var string = $Control/TextEdit.text
+			string += "[HitObjects]\n"
+			for note in player_note_array:
+				var note_data = note.get_data()
+				var note_type = 64
+				match note_data[1]:
+					1:
+						note_type = 192
+					2:
+						note_type = 320
+					3:
+						note_type = 448
+				var hold_type = 1
+				if note_data[2] > 0.0:
+					hold_type = 128
+				var note_string = "%s,192,%s,%s,0,%s:0:0:0:"%[note_type,int(note_data[0]),hold_type,int(hold_type!=1)*int(note_data[0]+note_data[2])]
+				if hold_type!=1:
+					note_string += "0:"
+				note_string += "\n"
+				string += note_string
+			file.store_string(string)
+			file.close()
 	pass
 
 func recieve_chart_file(path):
-	if path.split(".")[-1] == "json":
-		var file = File.new()
-		file.open(path, File.READ)
-		chart_data = JSON.parse(file.get_as_text()).result
-		preview_data = chart_data.duplicate(true)
-		$Control/TextEdit.text = JSON.print(chart_data, "\t")
+	match path.split(".")[-1]:
+		"json":
+			var file = File.new()
+			file.open(path, File.READ)
+			chart_data = JSON.parse(file.get_as_text()).result
+			preview_data = chart_data.duplicate(true)
+			$Control/TextEdit.text = JSON.print(chart_data, "\t")
+		"osu":
+			var file = File.new()
+			file.open(path, File.READ)
+			var text = file.get_as_text()
+			
+			$Control/TextEdit.text = text.split("[HitObjects]")[0]
 
 func recieve_json_parse_error(json_parse:JSONParseResult):
 	if json_parse.error != OK:

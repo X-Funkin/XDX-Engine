@@ -86,7 +86,9 @@ func check_auto_play():
 		get_tree().call_group("Enemy Hit Recievers", "recieve_enemy_hit", self, 0.0)
 		self.holding = true
 		self.playing = true
-		
+	if (song_time > hit_time + hold_time or song_time < hit_time) and holding:
+		self.holding = false
+		self.playing = false
 
 
 func check_active():
@@ -108,14 +110,15 @@ func update_scale():
 
 func check_holding():
 	if holding and playing:
-		var song_time = get_parent().song_time
-		var played = clamp(range_lerp(song_time, hit_time, hit_time+hold_time, 0.0, 1.0), 0.0, 1.0)
-		self.played_amount = played
-#		get_tree().call_group("Player Heal Recievers", "recieve_player_heal")
-		if played == 1.0:
-			despawn()
-			self.holding = false
-			self.playing = false
+		if get_parent():
+			var song_time = get_parent().song_time
+			var played = clamp(range_lerp(song_time, hit_time, hit_time+hold_time, 0.0, 1.0), 0.0, 1.0)
+			self.played_amount = played
+	#		get_tree().call_group("Player Heal Recievers", "recieve_player_heal")
+			if played == 1.0:
+				despawn()
+				self.holding = false
+				self.playing = false
 
 
 

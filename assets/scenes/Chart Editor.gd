@@ -5,9 +5,12 @@ class_name ChartEditor
 
 export(float) var song_time
 export(bool) var song_playing = false
+export(String) var chart_name
 export(String) var chart_file
+export(String) var save_file
 export(float) var playback_speed = 1.0 setget set_playback_speed
 export(float) var playback_offset = 0.0
+export(Array, int) var version = [1,2,0]
 var chart_data = {}
 
 var audio_data : PoolVector2Array
@@ -198,6 +201,54 @@ func set_playback_speed(n_speed):
 	$"Player Vocals".pitch_scale = playback_speed
 	pass
 
+func save():
+	fill_chart_data()
+	if !save_file:
+		$"Control/Popups/Save File Dialog".popup()
+		return 0
+		pass
+	var file = File.new()
+	file.open(save_file, File.WRITE)
+	file.store_string(JSON.print(chart_data))
+	file.close()
+	pass
+
+func load_chart(path):
+	var file = File.new()
+	file.open(path, File.READ)
+	var text = file.get_as_text()
+	var json_parse = JSON.parse(text)
+	if json_parse.error == OK:
+		chart_data = json_parse.result
+		send_chart_data()
+	pass
+
+
+func fill_chart_data():
+	get_tree().call_group("Chart Data Recievers", "send_chart_data", chart_data)
+
+func send_chart_data():
+	get_tree().call_group("Chart Data Recievers", "recieve_chart_data", chart_data)
+
+#func fill_audio_data():
+#	if $"Enemy Vocals".stream:
+#		chart_data["enemy_audio"] = $"Enemy Vocals".stream.get_
+#	pass
+
+func recieve_enemy_audio_path(path):
+	chart_data["enemy_audio"] = path
+#	$"Enemy Vocals".stream = stream
+#	get_tree().call_group("Song Time Recievers", "recieve_song_length", $Instumentals.stream.get_length()*1000.0)
+
+func recieve_instrumentals_audio_path(path):
+	chart_data["instrumentals_audio"] = path
+#	$Instumentals.stream = stream
+#	get_tree().call_group("Song Time Recievers", "recieve_song_length", $Instumentals.stream.get_length()*1000.0)
+
+func recieve_player_audio_path(path):
+	chart_data["player_audio"] = path
+#	$"Player Vocals".stream = stream
+
 func recieve_enemy_audio_stream(stream):
 	$"Enemy Vocals".stream = stream
 #	get_tree().call_group("Song Time Recievers", "recieve_song_length", $Instumentals.stream.get_length()*1000.0)
@@ -231,13 +282,20 @@ func recieve_song_time(time):
 	song_time = time
 
 func recieve_chart_file(path):
-	var file = File.new()
-	file.open(path, File.READ)
-	var thingy = JSON.parse(file.get_as_text()).result
-	var strthing = JSON.print(thingy, "\t")
-	file.close()
-	file.open("res://filething.json", File.WRITE)
-	file.store_string(strthing)
+	chart_file = path
+	match path.split(".")[-1]:
+		"chart":
+			load_chart(path)
+#	var file = File.new()
+#	file.open(path, File.READ)
+#	var thingy = JSON.parse(file.get_as_text()).result
+#	var strthing = JSON.print(thingy, "\t")
+#	file.close()
+#	file.open("res://filething.json", File.WRITE)
+#	file.store_string(strthing)
+
+#func send_chart_data(n_chart_data):
+#	pass
 
 var thing = true
 func _input(event):
@@ -249,6 +307,9 @@ func _input(event):
 			$"Control/Control/Export Editor".visible = thing
 			$"Control/Control/Note Editor".modulate = Color(1,1,1,1)*float(!thing)
 			thing = !thing
+	if event.is_action_pressed("save"):
+		save()
+		pass
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -258,6 +319,8 @@ func _ready():
 #func _process(delta):
 #	pass
 
+#func _input(event):
+#	if event.is_actio
 
 
 func _on_Enemy_Audio_Scrubbing_Timer_timeout():
@@ -273,4 +336,11 @@ func _on_Enemy_Audio_Scrubbing_Timer_timeout():
 
 func _on_Player_Audio_Scrubbing_Timer_timeout():
 	$"Player Vocals".stop()
+	pass # Replace with function body.
+
+
+func _on_Save_File_Dialog_file_selected(path):
+	save_file = path
+	save()
+	
 	pass # Replace with function body.

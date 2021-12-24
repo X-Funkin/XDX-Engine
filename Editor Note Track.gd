@@ -2,6 +2,7 @@ extends NoteTrack
 class_name EditorNoteTrack
 
 
+export(String) var track_name
 export(float) var song_cursor
 export(float) var cursor_time
 export(int, "Select", "Note") var editor_mode
@@ -59,13 +60,14 @@ func import_hold_note(note_data, player_note = false, cache_op=true):
 	note.player_note = (player_note and false)
 	note.update_scale()
 #	notes = get_notes()
-	var note_index = notes.bsearch_custom(note.hit_time,Note.NoteSorter,"search_hit_time")
-	notes.insert(note_index,note)
+#	var note_index = notes.bsearch_custom(note.hit_time,Note.NoteSorter,"search_hit_time")
+#	notes.insert(note_index,note)
+	list_note(note)
 	note.editor_note_type = int(player_note)
 	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
 	note.set_process(false)
 	if cache_op:
-		op_cache.append([0, note])
+		op_cache.append([0, note.get_data(), note])
 	return note
 
 func import_note(note_data, player_note=false, cache_op=true):
@@ -95,12 +97,13 @@ func import_note(note_data, player_note=false, cache_op=true):
 	note.player_note = (player_note and false)
 	note.editor_note_type = int(player_note)
 #	notes = get_notes()
-	var note_index = notes.bsearch_custom(note.hit_time,Note.NoteSorter,"search_hit_time")
-	notes.insert(note_index,note)
+#	var note_index = notes.bsearch_custom(note.hit_time,Note.NoteSorter,"search_hit_time")
+#	notes.insert(note_index,note)
+	list_note(note)
 	get_tree().call_group("Track Note Recievers", "recieve_track_notes", self, notes)
 	note.set_process(false)
 	if cache_op:
-		op_cache.append([0, note])
+		op_cache.append([0,note.get_data(),note])
 	return note
 
 # Declare member variables here. Examples:
@@ -109,15 +112,31 @@ func import_note(note_data, player_note=false, cache_op=true):
 
 func recieve_chart_file(path):
 	chart_file = path
-	if path.split(".")[-1] == "json":
-		import_fnf_chart()
-	elif path.split(".")[-1] == "osu":
-		print("OSU CHART")
-		import_osu_chart()
+	match path.split(".")[-1]:
+		"json":
+			import_fnf_chart()
+		"osu":
+			print("OSU CHART")
+			import_osu_chart()
+		"chart":
+			pass
 #	notes = get_notes(true)
 #	for note_i in range(notes.size()):
 #		var thingy = float(note_i)/notes.size()
 #		notes[note_i].modulate = Color.from_hsv(thingy,1,1,1)
+
+func list_note(note):
+	var note_index = notes.bsearch_custom(note.hit_time,Note.NoteSorter,"search_hit_time")
+	notes.insert(note_index,note)
+
+func unlist_note(note):
+	var search_index = search_hit_time(note.hit_time-50.0)
+	var note_index = notes.find(note,search_index)
+	if note_index != -1:
+		notes.remove(note_index)
+		pass
+#	var note_index = notes.bsearch_custom(note.hit_time,Note.NoteSorter,"search_hit_time")
+#	notes.erase()
 
 func delete_note(note, cache_op=true):
 	var search_index = search_hit_time(note.hit_time-50.0)
@@ -126,7 +145,33 @@ func delete_note(note, cache_op=true):
 		var del_note = notes.pop_at(note_index)
 		if cache_op:
 			op_cache.append([1,del_note.get_data(),del_note])
-		del_note.queue_free()
+#		del_note.queue_free()
+		del_note.get_parent().remove_child(del_note)
+
+func remove_note(note,cache_op=true):
+	pass
+
+func clear_notes():
+	for note in notes:
+#		note.delete()
+		unlist_note(note)
+		delete_note(note)
+
+func add_note(note):
+	var target_track = null
+	match note.note_type:
+		0:
+			target_track = left_note_track
+		1:
+			target_track = down_note_track
+		2:
+			target_track = up_note_track
+		3:
+			target_track = right_note_track
+	if target_track:
+		get_node(target_track).add_child(note)
+		list_note(note)
+		self.scroll_speed = scroll_speed
 
 func select_notes(to_note):
 	var selected_notes = get_tree().get_nodes_in_group("Selected Notes")
@@ -171,7 +216,7 @@ func add_hold_note(song_time, lane_type):
 				var note_data = closest_note.get_data()
 				closest_note.delete()
 				note_data[2] = abs(closest_note.hit_time - song_time)
-				import_hold_note(note_data)
+				import_hold_note(note_data, player_track)
 
 
 func update_note_click_areas():
@@ -275,8 +320,59 @@ func recieve_select_all():
 	for note in notes:
 		note.selected = true
 
+func recieve_mirror_notes():
+	var notes = get_tree().get_nodes_in_group("Selected Notes")
+	for note in notes:
+		if note.editor_note_type == int(player_track):
+			var note_data = note.get_data()
+			match note_data[1]:
+				0:
+					note_data[1] = 3
+				1:
+					note_data[1] = 2
+				2:
+					note_data[1] = 1
+				3:
+					note_data[1] = 0
+				
+			if note_data[2] > 0.0:
+				import_hold_note(note_data,player_track)
+			else:
+				import_note(note_data,player_track)
+			delete_note(note)
+
+func recieve_swap_notes_array(swap_array):
+	var notes = get_tree().get_nodes_in_group("Selected Notes")
+	for note in notes:
+		if note.editor_note_type == int(player_track):
+			var note_data = note.get_data()
+			note_data[1] = swap_array[note_data[1]]
+			if note_data[2] > 0.0:
+				import_hold_note(note_data,player_track)
+			else:
+				import_note(note_data,player_track)
+			delete_note(note)
+	pass
+
+func send_chart_data(chart_data : Dictionary):
+	var note_array = get_notes()
+	var note_data_array = []
+	for note in notes:
+		note_data_array.append(note.get_data())
+	chart_data[track_name] = note_data_array
+
+func recieve_chart_data(chart_data : Dictionary):
+	if track_name in chart_data:
+		clear_notes()
+		for note in chart_data[track_name]:
+			if note[2] > 0:
+				import_hold_note(note, player_track)
+			else:
+				import_note(note, player_track)
+
 func undo():
 	var op = undo_array.pop_back()
+#	print("UNDO OP ", op)
 	var r_op = []
 	if op != null:
 		for thing in op:
@@ -288,38 +384,43 @@ func undo():
 #			else:
 			match thing[0]:
 				0:
-					r_op.append([0,thing[1].get_data()])
-					delete_note(thing[1],false)
+					r_op.append([0,thing[1],thing[2]])
+					delete_note(thing[2],false)
 					pass
 				1:
-					if thing[1][2] > 0:
-						var note = import_hold_note(thing[1], player_track, false)
-						r_op.append([1,note])
-					else:
-						var note = import_note(thing[1], player_track, false)
-						r_op.append([1,note])
+					add_note(thing[2])
+					r_op.append([1,thing[1],thing[2]])
+#					if thing[1][2] > 0:
+#						var note = import_hold_note(thing[1], player_track, false)
+#						r_op.append([1,note])
+#					else:
+#						var note = import_note(thing[1], player_track, false)
+#						r_op.append([1,note])
 		if r_op != []:
 			redo_array.append(r_op)
 	pass
 
 func redo():
 	var op = redo_array.pop_back()
+#	print("REDO OP ", op)
 	var u_op = []
 	if op != null:
 		for thing in op:
 			match thing[0]:
 				0:
-					if thing[1][2] > 0:
-						var note = import_hold_note(thing[1], player_track, false)
-						u_op.append([0,note])
-						thing[2]=note
-					else:
-						var note = import_note(thing[1], player_track, false)
-						u_op.append([0,note])
-						thing[2]=note
+					add_note(thing[2])
+					u_op.append([0,thing[1],thing[2]])
+#					if thing[1][2] > 0:
+#						var note = import_hold_note(thing[1], player_track, false)
+#						u_op.append([0,note])
+#						thing[2]=note
+#					else:
+#						var note = import_note(thing[1], player_track, false)
+#						u_op.append([0,note])
+##						thing[2]=note
 				1:
-					u_op.append([1,thing[1].get_data()])
-					delete_note(thing[1],false)
+					u_op.append([1,thing[1],thing[2]])
+					delete_note(thing[2],false)
 		undo_array.append(u_op)
 
 #func recieve_delete_selected
@@ -327,15 +428,15 @@ func redo():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if op_cache != []:
-		print("OPERATIONBS HAVE BEEN MAAADEEEE")
+#		print("OPERATIONBS HAVE BEEN MAAADEEEE")
 		yield(get_tree(),"idle_frame")
-		print("ONE FRAME LATERRRR")
-		print("OP CACHE ", op_cache)
+#		print("ONE FRAME LATERRRR")
+#		print("OP CACHE ", op_cache)
 		undo_array.append(op_cache)
 		op_cache = []
 		redo_array = []
-		print("UNDO ARRRRRAYYY ", undo_array)
-		print("REDO ARRRRRAYYY ", redo_array)
+#		print("UNDO ARRRRRAYYY ", undo_array)
+#		print("REDO ARRRRRAYYY ", redo_array)
 #		UndoRedo
 		pass
 #	pass
@@ -343,14 +444,14 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("undo") and !Input.is_key_pressed(KEY_SHIFT):
 		if hover_over:
+#			print("\n\nUNDO\n")
 			undo()
-			print("\n\nUNDO\n")
-			print("UNDO ARRRRRAYYY ", undo_array)
-			print("REDO ARRRRRAYYY ", redo_array)
+#			print("UNDO ARRRRRAYYY ", undo_array)
+#			print("REDO ARRRRRAYYY ", redo_array)
 		pass
 	if event.is_action_pressed("redo"):
 		if hover_over:
+#			print("\n\nREDO\n")
 			redo()
-			print("\n\nREDO\n")
-			print("UNDO ARRRRRAYYY ", undo_array)
-			print("REDO ARRRRRAYYY ", redo_array)
+#			print("UNDO ARRRRRAYYY ", undo_array)
+#			print("REDO ARRRRRAYYY ", redo_array)

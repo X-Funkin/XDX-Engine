@@ -16,10 +16,7 @@ font_data = ExtResource( 3 )
 size = 15
 font_data = ExtResource( 3 )
 
-[node name="Export Editor" type="Control" groups=[
-"JSON Parse Error Recievers",
-"Track Note Recievers",
-]]
+[node name="Export Editor" type="Control" groups=["JSON Parse Error Recievers", "Track Note Recievers"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -148,7 +145,7 @@ margin_bottom = 627.0
 window_title = "Export Chart File"
 resizable = true
 access = 2
-filters = PoolStringArray( "*.json" )
+filters = PoolStringArray( "*.json", "*.osu" )
 current_dir = "/Godot/XDX Engine/XDX-Engine"
 current_path = "/Godot/XDX Engine/XDX-Engine/"
 
@@ -165,13 +162,11 @@ anchor_top = 0.17
 anchor_right = 0.724
 anchor_bottom = 0.193
 grow_horizontal = 2
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "JSON Parse Error"
 
-[node name="JSON Parse Error Dialog" type="AcceptDialog" parent="." groups=[
-"JSON Parse Error Recievers",
-]]
+[node name="JSON Parse Error Dialog" type="AcceptDialog" parent="." groups=["JSON Parse Error Recievers"]]
 margin_left = 1221.18
 margin_top = 294.101
 margin_right = 1406.18

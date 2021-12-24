@@ -267,6 +267,7 @@ func clear_notes():
 #	notes.empty()
 	for note in notes:
 		note.queue_free()
+#		note.delete()
 	notes.clear()
 
 func signal_self():
