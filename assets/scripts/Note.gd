@@ -31,6 +31,12 @@ class NoteSorter:
 		return a.hit_time < b.hit_time
 	static func search_hit_time(a,b):
 		return a.hit_time < b
+
+class NoteDataSorter:
+	static func sort_hit_time(a,b):
+		return a[0] < b[0]
+	static func search_hit_time(a,b):
+		return a[0] < b
 # Called when the node enters the scene tree for the first time.
 
 func check_scorability():

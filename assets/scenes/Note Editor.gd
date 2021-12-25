@@ -161,7 +161,10 @@ func copy_notes():
 	var notes = get_tree().get_nodes_in_group("Selected Notes")
 	note_clipboard = []
 	for note in notes:
-		note_clipboard.append(note.get_data())
+		var note_data = note.get_data()
+		var index = note_clipboard.bsearch_custom(note_data[0], Note.NoteDataSorter, "search_hit_time")
+		note_clipboard.insert(index,note_data)
+#		note_clipboard.append(note.get_data())
 #		print(note.editor_note_type)
 		pass
 

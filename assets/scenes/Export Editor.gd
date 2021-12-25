@@ -162,6 +162,13 @@ func recieve_track_notes(track : EditorNoteTrack, notes):
 		enemy_note_array = notes
 	pass
 
+func send_chart_data(chart_data):
+	chart_data["raw_export_string"] = $Control/TextEdit.text
+
+func recieve_chart_data(chart_data):
+	if "raw_export_string" in chart_data:
+		$Control/TextEdit.text = chart_data["raw_export_string"]
+
 func _on_Import_Chart_Data_Button_pressed():
 	$FileDialog.popup()
 	pass # Replace with function body.

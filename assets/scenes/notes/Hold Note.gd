@@ -87,6 +87,7 @@ func check_auto_play():
 		self.holding = true
 		self.playing = true
 	if (song_time > hit_time + hold_time or song_time < hit_time) and holding:
+		self.played_amount = 0.0
 		self.holding = false
 		self.playing = false
 
@@ -117,6 +118,7 @@ func check_holding():
 	#		get_tree().call_group("Player Heal Recievers", "recieve_player_heal")
 			if played == 1.0:
 				despawn()
+				self.played_amount = 0.0
 				self.holding = false
 				self.playing = false
 
@@ -126,6 +128,14 @@ func score_note():
 	scorable = false
 	remove_from_group(scorable_group)
 	scored = true
+
+func despawn():
+	self.played_amount = 0.0
+	active = false
+	visible = false
+	scorable = false
+	remove_from_group(scorable_group)
+	set_process(false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

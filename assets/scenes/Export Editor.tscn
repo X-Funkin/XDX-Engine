@@ -148,6 +148,9 @@ access = 2
 filters = PoolStringArray( "*.json", "*.osu" )
 current_dir = "/Godot/XDX Engine/XDX-Engine"
 current_path = "/Godot/XDX Engine/XDX-Engine/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Control2" type="Control" parent="."]
 visible = false
