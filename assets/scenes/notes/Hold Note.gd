@@ -134,7 +134,8 @@ func despawn():
 	active = false
 	visible = false
 	scorable = false
-	remove_from_group(scorable_group)
+	if is_in_group(scorable_group):
+		remove_from_group(scorable_group)
 	set_process(false)
 
 # Called when the node enters the scene tree for the first time.

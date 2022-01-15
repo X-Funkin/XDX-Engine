@@ -14,6 +14,8 @@ func _ready():
 	add_item("Delete Notes")
 	add_item("Mirror Notes")
 	add_item("Swap Notes")
+	add_item("Retime Tempo")
+	add_item("Extract Tempo")
 #	add_item("testest")
 #	add_check_item("wowzers")
 #	add_icon_item(yeahtexture, "wowee texture yeah")
@@ -47,5 +49,9 @@ func _on_Right_Click_Menu_id_pressed(id):
 			op_string = "recieve_mirror_notes"
 		4:
 			op_string = "recieve_swap_notes"
+		5:
+			op_string = "recieve_retime_notes"
+		6:
+			op_string = "recieve_extract_tempo"
 	get_tree().call_group("Operation Recievers", op_string)
 	pass # Replace with function body.

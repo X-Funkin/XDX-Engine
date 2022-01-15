@@ -1,6 +1,72 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/scenes/Waveform Visualizer.gd" type="Script" id=1]
 
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D Wav_Tex;
+uniform float start_time;
+uniform float end_time;
+uniform int sample_rate;
+uniform float debug_mix;
+
+vec2 index_uv(int index, int width, int height){
+	vec2 idx_uv;
+	int samp_x = index%width;
+	int samp_y = index/width;
+	idx_uv.x = (float(samp_x)+0.5)/float(width);
+	idx_uv.y = (float(samp_y)+0.5)/float(height);
+	return idx_uv;
+}
+
+void vertex() {
+	ivec2 tex_size = textureSize(Wav_Tex, 0);
+	float vert_time = mix(start_time, end_time, VERTEX.y);
+	float vert_sample = float(sample_rate)*vert_time/1000.0;
+	int sample_0 = clamp(int(floor(vert_sample)),0,tex_size.x*tex_size.y);
+	int sample_1 = clamp(int(ceil(vert_sample)),0,tex_size.x*tex_size.y);
+	float sample_mix = vert_sample-float(sample_0);
+//	vec2 sub_offset = vec2(0.25,0.25);
+	vec2 uv_0 = index_uv(sample_0, tex_size.x, tex_size.y);
+	vec2 uv_1 = index_uv(sample_1, tex_size.x, tex_size.y);
+	vec4 col_0 = texture(Wav_Tex,uv_0);
+	vec4 col_1 = texture(Wav_Tex,uv_1);
+	vec4 col = mix(col_0,col_1,sample_mix);
+//	VERTEX = vec2(col.r*1000.0,vert_time);
+//	VERTEX.x = col.r*1000.0+floor((uv_0.x-uv_1.x)/2.0);
+//	VERTEX.x = 1000.0*(uv_0.x-uv_1.x);
+//	VERTEX.x = 1000.0*distance(uv_0,uv_1);
+//	float x1 = col.r*1000.0;
+//	float x2 = 1000.0*distance(uv_0,uv_1);
+//	VERTEX.x = mix(x1,x2,debug_mix);
+	VERTEX.x = col.r*1000.0;
+// Output:0
+
+}
+
+void fragment() {
+	COLOR = vec4(1,1,1,1);
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/start_time = null
+shader_param/end_time = null
+shader_param/sample_rate = null
+shader_param/debug_mix = null
+
 [node name="Waveform Visualizer" type="Node2D"]
 script = ExtResource( 1 )
+debug_mix = 0.807
+
+[node name="Wave Mesh" type="MeshInstance2D" parent="."]
+material = SubResource( 2 )

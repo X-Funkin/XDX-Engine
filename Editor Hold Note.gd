@@ -95,6 +95,9 @@ func _process(delta):
 			update_scale()
 	if get_parent().song_time < hit_time-1000.0:
 			set_process(false)
+	if get_parent().song_time > hit_time+hold_time+150:
+		visible = false
+		set_process(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

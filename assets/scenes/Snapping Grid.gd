@@ -68,7 +68,7 @@ func _draw():
 	var snap_length = 60.0/(bpm*4.0*max(1.0,floor(zoom)))
 	var time_diff = end_time-start_time
 	var line_count = int(ceil(time_diff/(1000.0*snap_length)))
-	var line_start_time = stepify(start_time-snapping_offset, snap_length*1000.0)+snapping_offset
+	var line_start_time = stepify(max(start_time,0.0)-snapping_offset, snap_length*1000.0)+snapping_offset
 	var yeah : NoteEditor = get_node(note_editor_node)
 	for line in line_count:
 		var song_y = line_start_time+line*snap_length*1000.0

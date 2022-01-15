@@ -50,7 +50,7 @@ margin_left = 135.0
 margin_right = 267.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
-text = "Accept"
+text = "Apply"
 
 [node name="Main UI" type="Control" parent="."]
 anchor_right = 1.0

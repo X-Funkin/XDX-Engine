@@ -4,14 +4,20 @@ class_name WaveformVisualizer
 
 export(String, FILE, "*.wav") var wav_file
 export(AudioStreamSample) var audio_stream
-export(float) var start_time = 0.0
-export(float) var end_time = 1000.0
-export(int) var draw_samples = 1000
+export(Image) var wave_image = Image.new()
+export(ImageTexture) var wave_texture = ImageTexture.new()
+export(NodePath) var wave_mesh_node = @"Wave Mesh"
+export(float) var start_time = 0.0 setget set_start_time
+export(float) var end_time = 1000.0 setget set_end_time
+export(int) var draw_samples = 12000
 export(int) var draw_sub_samples = 4
 export(int) var chunk_size = 44100
 export(bool) var can_redraw = true
 export(bool) var progressive_draw = true
 export(String) var draw_progress_group
+export(float,0.0,1.0) var debug_mix setget set_debug_mix
+var progress : float = 0.0
+#export(NodePath) var mesh_obj
 var t0 = 0
 var t1 = 0
 var drawing = false
@@ -23,23 +29,167 @@ var waveform_chunk = preload("res://assets/scenes/Waveform Chunk.tscn")
 # var a = 2
 # var b = "text"
 
+func set_debug_mix(n_mix):
+	debug_mix = n_mix
+	if not is_inside_tree(): yield(self,"ready")
+
+func set_start_time(n_time):
+	start_time = n_time
+	if not is_inside_tree(): yield(self,"ready")
+	update_wave_mesh()
+
+
+
+func set_end_time(n_time):
+	end_time = n_time
+	if not is_inside_tree(): yield(self,"ready")
+	update_wave_mesh()
+
 signal debug_array(array)
 func _process(delta):
-#	print(drawing, " ", delta)
-	if drawing and frame_alt != current_alt:
-		t1 = OS.get_ticks_usec()
-		print("DONE DRAWING")
-		print(t1)
-		print("Took ", t1-t0, " Microseconds")
-		emit_signal("debug_array", [chunk_size,t1-t0])
-		print(get_child_count(), " Child Nodes here")
-		drawing = false
-		t0 = 0
-		t1 = 0
-	frame_alt = not frame_alt
+	if drawing:
+		get_tree().call_group(draw_progress_group, "recieve_waveform_draw_progress", progress)
+		
+##	print(drawing, " ", delta)
+#	if drawing and frame_alt != current_alt:
+#		t1 = OS.get_ticks_usec()
+#		print("DONE DRAWING")
+#		print(t1)
+#		print("Took ", t1-t0, " Microseconds")
+#		emit_signal("debug_array", [chunk_size,t1-t0])
+#		print(get_child_count(), " Child Nodes here")
+#		drawing = false
+#		t0 = 0
+#		t1 = 0
+#	frame_alt = not frame_alt
 #	pass
 
+func update_wave_mesh():
+	var wave_mesh = get_node_or_null(wave_mesh_node)
+	if wave_mesh:
+#		print("IN WAVE MESH YAY IT EXIST")
+		wave_mesh.position.y = start_time
+		wave_mesh.scale.y = end_time-start_time
+		wave_mesh.material.set_shader_param("start_time", start_time)
+		wave_mesh.material.set_shader_param("end_time", end_time)
+		wave_mesh.material.set_shader_param("debug_mix", debug_mix)
+
+func fill_wave_image():
+	
+	print("FILLING WAVE IMAGE")
+	if audio_stream != null:
+		drawing = true
+		var num = 1
+		if (audio_stream.stereo and audio_stream.format == 0) or (!audio_stream.stereo and audio_stream.format == 1):
+			num = 2
+		if (audio_stream.stereo and audio_stream.format == 1):
+			num = 4
+		var final_sample = len(audio_stream.data)/num
+		var width = 16384
+		var height = final_sample/16384+1
+#		var image_format = Image.FORMAT
+		var image = Image.new()
+		image.create(width,height,false,Image.FORMAT_RGBAF)
+		wave_image = image
+#		var yeah : ImageTexture
+#		yeah.set_data()
+#		wave_texture.set_data(wave_image)
+		wave_texture.create_from_image(wave_image, ImageTexture.FLAG_REPEAT)
+		var buffer = StreamPeerBuffer.new()
+		buffer.data_array = audio_stream.data
+		for sample in range(final_sample):
+			var samp_x = sample%width
+			var samp_y = sample/width
+			var x = 0
+			var y = 0
+			match num:
+				1:
+					x = buffer.get_8()/127.0
+#					wave_image.set_pixel(samp_x,samp_y, Color(x,0.0,0.0,1.0))
+				2:
+					if audio_stream.format == AudioStreamSample.FORMAT_16_BITS:
+						x = buffer.get_16()/32767.0
+						
+						pass
+					else:
+						x = buffer.get_8()/127.0
+						y = buffer.get_8()/127.0
+				4:
+					x = buffer.get_16()/32767.0
+					y = buffer.get_16()/32767.0
+			pass
+			var col = Color(x,y,0.0,1.0)
+			wave_image.lock()
+			wave_image.set_pixel(samp_x,samp_y,col)
+			wave_image.unlock()
+			progress = sample/float(final_sample)
+		wave_texture.set_data(wave_image)
+		wave_texture.flags = ImageTexture.FLAG_REPEAT
+		get_tree().call_group(draw_progress_group, "recieve_waveform_draw_finish")
+		drawing = false
+	pass
+
+func generate_wave_mesh():
+	print("GENERATEING WAVE MESH")
+	var vertz = PoolVector3Array()
+	var start = Vector3(0,0,0)
+	var end = Vector3(0,1.0,0)
+	var segments = draw_samples*draw_sub_samples
+#	vertz.push_back(Vector3(0,0,0))
+#	vertz.push_back(Vector3(0,1,0))
+#	vertz.push_back(Vector3(0,1,0))
+#	vertz.push_back(Vector3(0,2,0))
+#	vertz.push_back(Vector3(0,2,0))
+#	vertz.push_back(Vector3(0,3,0))
+	vertz.resize(segments*2)
+	var vec = start
+	print("MADE VERT ARRAY ", vertz.size())
+	for i in range(0,segments):
+		vertz[2*i] = vec
+		vec = lerp(start,end,i/float(segments))
+		vertz[2*i+1] = vec
+		pass
+	print("FILLED VERTZ ARRAY ")
+	var arrays = []
+	arrays.resize(ArrayMesh.ARRAY_MAX)
+	arrays[ArrayMesh.ARRAY_VERTEX] = vertz
+#	print(arrays[ArrayMesh.ARRAY_VERTEX])
+	var arr_mesh := ArrayMesh.new()
+	arr_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_LINES, arrays)
+#	arr_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_POINTS,arrays)
+	print("ADDED THING TO MESH INSTANCE")
+	var wave_mesh = get_node_or_null(wave_mesh_node)
+#	var wave_mesh = get_node(wave_mesh_node)
+#	var wave_mesh = get_child(0)
+	print(wave_mesh_node)
+	print(wave_mesh)
+	$"Wave Mesh".mesh = arr_mesh
+#	get_parent().mesh_yeah = arr_mesh
+	if wave_mesh:
+		print("IN WAVE MESH YAY IT EXIST")
+		wave_mesh.mesh = arr_mesh
+		wave_mesh.material.set_shader_param("Wav_Tex", wave_texture)
+		wave_mesh.material.set_shader_param("start_time", start_time)
+		wave_mesh.material.set_shader_param("end_time", end_time)
+#		wave_mesh.material.set_shader_param("sample_rate", 44100)
+		if audio_stream:
+			var sample_rate = audio_stream.mix_rate
+			wave_mesh.material.set_shader_param("sample_rate", sample_rate)
+	pass
+
 func draw_waveform(multi_threading = false):
+	print("DRAWING WAVEFORMS")
+	get_tree().call_group(draw_progress_group, "recieve_waveform_draw_start")
+	generate_wave_mesh()
+	if multi_threading:
+		var thread = Thread.new()
+		thread.start(self,"fill_wave_image")
+	else:
+		fill_wave_image()
+#	thread.wait_to_finish()
+	pass
+
+func draw_waveformzszszszzz(multi_threading = false):
 #	update()
 #	return 0
 	get_tree().call_group(draw_progress_group, "recieve_waveform_draw_start")
@@ -91,6 +241,7 @@ func draw_waveform(multi_threading = false):
 	pass
 
 func clear_waveforms():
+	return 0
 	for node in get_children():
 		node.queue_free()
 

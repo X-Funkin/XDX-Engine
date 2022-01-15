@@ -36,11 +36,17 @@ func set_transform_mode(n_mode):
 	transform_mode = n_mode
 	if not is_inside_tree(): yield(self,"ready")
 	if transform_mode == 3:
-		$"Main UI/Track UI/Snapping Grid".modulate = Color.transparent
-		$"Main UI/Track UI/Arrow Track Control/Audio Waveforms".modulate = Color.transparent
+		$"Main UI/Track UI/Snapping Grid".visible = false
+		$"Main UI/Track UI/Arrow Track Control/Audio Waveforms".visible = false
+		pass
+#		$"Main UI/Track UI/Snapping Grid".modulate = Color.transparent
+#		$"Main UI/Track UI/Arrow Track Control/Audio Waveforms".modulate = Color.transparent
 	else:
-		$"Main UI/Track UI/Snapping Grid".modulate = Color.white
-		$"Main UI/Track UI/Arrow Track Control/Audio Waveforms".modulate = Color.white
+		$"Main UI/Track UI/Snapping Grid".visible = true
+		$"Main UI/Track UI/Arrow Track Control/Audio Waveforms".visible = true
+		pass
+#		$"Main UI/Track UI/Snapping Grid".modulate = Color.white
+#		$"Main UI/Track UI/Arrow Track Control/Audio Waveforms".modulate = Color.white
 	pass
 # Declare member variables here. Examples:
 # var a = 2
@@ -164,6 +170,7 @@ func copy_notes():
 		var note_data = note.get_data()
 		var index = note_clipboard.bsearch_custom(note_data[0], Note.NoteDataSorter, "search_hit_time")
 		note_clipboard.insert(index,note_data)
+#		note.selected = false
 #		note_clipboard.append(note.get_data())
 #		print(note.editor_note_type)
 		pass
@@ -188,6 +195,18 @@ func _process(delta):
 func recieve_song_time(time):
 	song_time = time
 
+func recieve_bpm(tempo):
+	bpm = tempo
+
+func recieve_snapping_offset(offset):
+	snapping_offset = offset
+
+func recieve_visible_positions(v_pos_0, v_pos_1):
+	var v_time_0 = song_time_transform(v_pos_0)
+	var v_time_1 = song_time_transform(v_pos_1)
+	get_tree().call_group("Track Visibility Recievers", "recieve_visible_times", v_time_0, v_time_1)
+	pass
+
 func recieve_song_playing(playing):
 	if playing:
 		self.transform_mode = 3
@@ -203,6 +222,10 @@ func recieve_chart_data(chart_data):
 		pass
 	if "enemy_audio" in chart_data:
 		_on_FileDialog_file_selected(chart_data["enemy_audio"])
+	if "bpm" in chart_data:
+		self.bpm = chart_data["bpm"]
+	if "snapping_offset" in chart_data:
+		self.snapping_offset = chart_data["snapping_offset"]
 	pass
 
 func recieve_paste_notes():
@@ -210,6 +233,11 @@ func recieve_paste_notes():
 
 func recieve_copy_notes():
 	copy_notes()
+
+func send_chart_data(chart_data):
+	chart_data["bpm"] = bpm
+	chart_data["snapping_offset"] = snapping_offset
+	pass
 
 func _on_Instumental_Track_Input_Area_input_event(viewport, event, shape_idx):
 #	print("eyaidhf event ", event)

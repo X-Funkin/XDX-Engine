@@ -33,7 +33,7 @@ var editor_right_hold_note : PackedScene = preload("res://assets/scenes/notes/Ed
 var editor_note_click_area : PackedScene = preload("res://assets/scenes/notes/Editor Note Click Area.tscn")
 
 
-func import_hold_note(note_data, player_note = false, cache_op=true):
+func import_hold_note(note_data, player_note = false, cache_op=true, select_note=false):
 	var note : EditorHoldNote = null
 	var track = null
 	match int(note_data[1])%4:
@@ -68,9 +68,10 @@ func import_hold_note(note_data, player_note = false, cache_op=true):
 	note.set_process(false)
 	if cache_op:
 		op_cache.append([0, note.get_data(), note])
+	note.selected = select_note
 	return note
 
-func import_note(note_data, player_note=false, cache_op=true):
+func import_note(note_data, player_note=false, cache_op=true, select_note=false):
 	var note : EditorNote = null
 	var track = null
 	match int(note_data[1])%4:
@@ -104,6 +105,7 @@ func import_note(note_data, player_note=false, cache_op=true):
 	note.set_process(false)
 	if cache_op:
 		op_cache.append([0,note.get_data(),note])
+	note.selected = select_note
 	return note
 
 # Declare member variables here. Examples:
@@ -120,6 +122,7 @@ func recieve_chart_file(path):
 			import_osu_chart()
 		"chart":
 			pass
+		
 #	notes = get_notes(true)
 #	for note_i in range(notes.size()):
 #		var thingy = float(note_i)/notes.size()
@@ -146,6 +149,7 @@ func delete_note(note, cache_op=true):
 		if cache_op:
 			op_cache.append([1,del_note.get_data(),del_note])
 #		del_note.queue_free()
+		del_note.selected = false
 		del_note.get_parent().remove_child(del_note)
 
 func remove_note(note,cache_op=true):
@@ -171,6 +175,7 @@ func add_note(note):
 	if target_track:
 		get_node(target_track).add_child(note)
 		list_note(note)
+#		note.selected = true
 		self.scroll_speed = scroll_speed
 
 func select_notes(to_note):
@@ -283,6 +288,7 @@ func recieve_mouse_over_player_track(is_in_player_track):
 
 func recieve_enemy_hit(note, hit_error):
 	if int(player_track) == note.editor_note_type:
+		print("NOTE IG LOL ", note.name, " ", note)
 #		print("yeah baoybe ", player_track, " ", note.editor_note_type, " ", note.note_type)
 		match note.note_type:
 			0:
@@ -305,14 +311,18 @@ func recieve_editor_mode(mode):
 func recieve_paste_notes(note_clipboard):
 	if hover_over:
 		if note_clipboard != []:
+			for node in get_tree().get_nodes_in_group("Selected Notes"):
+				node.selected = false
 			var clipboard_start = note_clipboard[0]
 			for note_data in note_clipboard:
 				var new_note_data = note_data.duplicate(true)
 				new_note_data[0] = note_data[0]-clipboard_start[0]+song_cursor
 				if note_data[2] > 0.0:
-					import_hold_note(new_note_data,player_track)
+					import_hold_note(new_note_data,player_track, true, true)
+#					note.selected = true
 				else:
-					import_note(new_note_data,player_track)
+					import_note(new_note_data,player_track, true, true)
+#					note.selected = true
 				pass
 	pass
 
@@ -336,9 +346,9 @@ func recieve_mirror_notes():
 					note_data[1] = 0
 				
 			if note_data[2] > 0.0:
-				import_hold_note(note_data,player_track)
+				import_hold_note(note_data,player_track, true, true)
 			else:
-				import_note(note_data,player_track)
+				import_note(note_data,player_track, true, true)
 			delete_note(note)
 
 func recieve_swap_notes_array(swap_array):
@@ -348,11 +358,29 @@ func recieve_swap_notes_array(swap_array):
 			var note_data = note.get_data()
 			note_data[1] = swap_array[note_data[1]]
 			if note_data[2] > 0.0:
-				import_hold_note(note_data,player_track)
+				import_hold_note(note_data,player_track, true, true)
 			else:
-				import_note(note_data,player_track)
+				import_note(note_data,player_track, true, true)
 			delete_note(note)
 	pass
+
+func recieve_retime_notes_scale(retime_scale):
+	var notes = get_tree().get_nodes_in_group("Selected Notes")
+	var start_time = 0
+	var end_time = 0
+	if notes != []:
+		start_time = notes[0].hit_time
+#		end_time = lerp(start_time, notes[-1].hit_time, retime_scale)
+	for note in notes:
+		if note.editor_note_type == int(player_track):
+			var note_data = note.get_data()
+			note_data[0] = lerp(start_time, note_data[0], retime_scale)
+			note_data[2] *= retime_scale
+			if note_data[2] > 0.0:
+				import_hold_note(note_data,player_track, true, true)
+			else:
+				import_note(note_data,player_track, true, true)
+			delete_note(note)
 
 func send_chart_data(chart_data : Dictionary):
 	var note_array = get_notes()

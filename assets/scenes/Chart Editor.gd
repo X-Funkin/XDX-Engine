@@ -229,6 +229,12 @@ func fill_chart_data():
 
 func send_chart_data():
 	get_tree().call_group("Chart Data Recievers", "recieve_chart_data", chart_data)
+	recieve_chart_data(chart_data)
+
+func fill_the_chart_data_yeah():
+	chart_data["enemy_volume"] = db2linear($"Enemy Vocals".volume_db)
+	chart_data["instrumentals_volume"] = db2linear($Instumentals.volume_db)
+	chart_data["player_volume"] = db2linear($"Player Vocals".volume_db)
 
 #func fill_audio_data():
 #	if $"Enemy Vocals".stream:
@@ -294,6 +300,17 @@ func recieve_chart_file(path):
 #	file.open("res://filething.json", File.WRITE)
 #	file.store_string(strthing)
 
+func recieve_chart_data(chart_data):
+	if "enemy_volume" in chart_data:
+		get_tree().call_group("Audio Stream Recievers", "recieve_enemy_volume", chart_data["enemy_volume"])
+	if "instrumentals_volume" in chart_data:
+		get_tree().call_group("Audio Stream Recievers", "recieve_instrumentals_volume", chart_data["instrumentals_volume"])
+	if "player_volume" in chart_data:
+		get_tree().call_group("Audio Stream Recievers", "recieve_player_volume", chart_data["player_volume"])
+	
+	pass
+
+
 #func send_chart_data(n_chart_data):
 #	pass
 
@@ -305,7 +322,8 @@ func _input(event):
 			get_tree().call_group("Song Time Recievers", "recieve_song_playing", !song_playing)
 		if event.scancode == KEY_TAB and event.pressed:
 			$"Control/Control/Export Editor".visible = thing
-			$"Control/Control/Note Editor".modulate = Color(1,1,1,1)*float(!thing)
+#			$"Control/Control/Note Editor".modulate = Color(1,1,1,1)*float(!thing)
+			$"Control/Control/Note Editor".visible = !thing
 			thing = !thing
 	if event.is_action_pressed("save"):
 		save()
